@@ -1,4 +1,8 @@
 [flake8]
 
-ignore = E501
+ignore = E501, W605
 exclude = .git,__pycache__,build,dist
+max-complexity = 10
+statistics = True
+count = True
+show-source= True
