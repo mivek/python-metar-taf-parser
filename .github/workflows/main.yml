@@ -27,9 +27,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8 pipenv
           pipenv install -d
+
       - name: Lint with flake8
         run: |
           flake8 .
+
       - name: Test with unittest
         run: |
           pipenv run python -m unittest

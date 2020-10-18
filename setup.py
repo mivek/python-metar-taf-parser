@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="metar-taf-parser-mivek",
-    version="0.0.1",
+    version="1.0.0",
     author="Jean-Kevin KPADEY",
     author_email="jeankevin.kpadey@gmail.com",
     description="Python project parsing metar and taf message",

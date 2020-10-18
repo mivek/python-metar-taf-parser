@@ -1,5 +1,7 @@
 # METAR TAF Parser
 
+![Python test](https://github.com/mivek/python-metar-taf-parser/workflows/Python%20test/badge.svg)
+
 This project provides METAR and TAF parsers.
 
 ## Structure
