@@ -210,7 +210,7 @@ class MetarParserTestCase(unittest.TestCase):
 
         metar_2 = MetarParser().parse('KATL 220852Z 14010KT 8SM -RA BKN014 BKN022 OVC065 09/07 A3018 RMK AO2 PRESFR SLP221 CIG 011V016 P0002 60002 T00940072 58019')
 
-        self.assertEqual('inches Hg', metar_2.pressure.unit)
+        self.assertEqual('inHg', metar_2.pressure.unit)
         self.assertEqual('30.18', metar_2.pressure.pressure)
 
     def test_parse_altimeter_mercury(self):

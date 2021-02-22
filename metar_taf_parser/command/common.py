@@ -31,7 +31,7 @@ def set_wind_elements(wind: Wind, direction: str, speed: str, gust: str, unit: s
 
 def set_pressure_elements(pressure: Pressure, value: str):
     if value[0] == 'A':
-        pressure.unit = 'inches Hg'
+        pressure.unit = 'inHg'
         pressure.pressure = str(value[1:3] + '.' + value[3:])
     else:
         pressure.unit = 'hPa'
