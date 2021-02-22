@@ -204,7 +204,7 @@ class MetarParserTestCase(unittest.TestCase):
     def test_parse_pressure(self):
 
         metar_1 = MetarParser().parse('LIRF 220850Z 08005KT CAVOK 13/08 Q1029 NOSIG')
-        
+
         self.assertEqual('hPa', metar_1.pressure.unit)
         self.assertEqual('1029', metar_1.pressure.pressure)
 
