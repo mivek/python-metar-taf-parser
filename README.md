@@ -101,6 +101,13 @@ Represents a cloud layer in METAR, TAF or trend object.
 - quantity: `CloudQuantity`. The quantity of clouds.
 - type: `CloudType`. The type of cloud in the layer.
 
+#### Pressure
+
+Represents the pressure part of a METAR
+
+- pressure: `str`. The value of pressure.
+- unit: `str`. The unit of the pressure.
+
 #### AbstractWeatherContainer
 
 Abstract class containing the basic fields of METAR, TAF or trend objects.
@@ -110,6 +117,7 @@ Abstract class containing the basic fields of METAR, TAF or trend objects.
 - vertical_visibility: `int`. The vertical visibility, can be `None`
 - wind_shear: `WindShear`. The wind shear object.
 - cavok: `bool`. Indicates whether the message is CAVOK (Ceiling and visibility OK)
+- pressure: `Pressure`. The pressure.
 - remark: `str`. The remark part of the message.
 - clouds: `[Cloud]`. Array of clouds elements.
 - weather_conditions: `[WeatherCondition]`. Array of weather conditions.

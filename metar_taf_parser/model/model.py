@@ -347,6 +347,28 @@ class Cloud:
     type = property(_get_type, _set_type)
 
 
+class Pressure:
+
+    def __init__(self):
+        self._pressure = None
+        self._unit = None
+
+    def _get_pressure(self):
+        return self._pressure
+
+    def _set_pressure(self, value):
+        self._pressure = value
+
+    def _get_unit(self):
+        return self._unit
+
+    def _set_unit(self, value):
+        self._unit = value
+
+    pressure = property(_get_pressure, _set_pressure)
+    unit = property(_get_unit, _set_unit)
+
+
 class AbstractWeatherContainer(abc.ABC):
 
     def __init__(self):
@@ -355,6 +377,7 @@ class AbstractWeatherContainer(abc.ABC):
         self._vertical_visibility = None
         self._wind_shear = None
         self._cavok = None
+        self._pressure = None
         self._remark = None
         self._clouds = []
         self._weather_conditions = []
@@ -389,6 +412,12 @@ class AbstractWeatherContainer(abc.ABC):
     def _set_cavok(self, value: bool):
         self._cavok = value
 
+    def _get_pressure(self):
+        return self._pressure
+
+    def _set_pressure(self, pressure: Pressure):
+        self._pressure = pressure
+
     def _get_remark(self):
         return self._remark
 
@@ -415,6 +444,7 @@ class AbstractWeatherContainer(abc.ABC):
     vertical_visibility = property(_get_vertical_visibility, _set_vertical_visibility)
     wind_shear = property(_get_wind_shear, _set_wind_shear)
     cavok = property(_get_cavok, _set_cavok)
+    pressure = property(_get_pressure, _set_pressure)
     remark = property(_get_remark, _set_remark)
     clouds = property(_get_clouds)
     weather_conditions = property(_get_weather_conditions)
