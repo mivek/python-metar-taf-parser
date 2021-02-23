@@ -25,11 +25,11 @@ def convert_temperature(input):
 
 
 def convert_inhg_to_hpa(input):
-    return '{:4.0f}'.format(float(input) / 0.029529983071445)
+    return int('{:4.0f}'.format(float(input / 100) / 0.029529983071445))
 
 
 def convert_hpa_to_inhg(input):
-    return '{:5.2f}'.format(float(input) * 0.029529983071445)
+    return float('{:5.2f}'.format(int(input) * 0.029529983071445))
 
 
 def convert_pressure(input):
