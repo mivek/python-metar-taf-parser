@@ -4,41 +4,6 @@ from metar_taf_parser.commons import converter
 from metar_taf_parser.model.model import RunwayInfo, Metar
 
 
-class AltimeterCommand:
-    regex = r'^Q(\d{4})$'
-
-    def __init__(self):
-        self._pattern = re.compile(AltimeterCommand.regex)
-
-    def can_parse(self, input: str):
-        return self._pattern.search(input)
-
-    def execute(self, metar: Metar, input: str):
-        """
-
-        :param metar: metar_taf_parser.model.model.Metar
-        :param input: string
-        :return:
-        """
-        matches = self._pattern.search(input).groups()
-        metar.altimeter = int(matches[0])
-
-
-class AltimeterMercuryCommand:
-    regex = r'^A(\d{4})$'
-
-    def __init__(self):
-        self._pattern = re.compile(AltimeterMercuryCommand.regex)
-
-    def can_parse(self, input: str):
-        return self._pattern.search(input)
-
-    def execute(self, metar: Metar, input: str):
-        matches = self._pattern.search(input).groups()
-        mercury = float(matches[0]) / 100
-        metar.altimeter = int(converter.convert_inches_mercury_to_pascal(mercury))
-
-
 class RunwayCommand:
     generic_regex = r'^(R\d{2}\w?/)'
     runway_max_range_regex = r'^R(\d{2}\w?)/(\d{4})V(\d{3})(\w{0,2})'
@@ -85,9 +50,25 @@ class TemperatureCommand:
         metar.dew_point = converter.convert_temperature(matches[1])
 
 
+class PressureCommand:
+    regex = r'^((Q|A)?\d{4})$'
+
+    def __init__(self):
+        self._pattern = re.compile(PressureCommand.regex)
+
+    def can_parse(self, input: str):
+        return self._pattern.search(input)
+
+    def execute(self, metar: Metar, input: str):
+        matches = self._pattern.search(input).groups()
+        metar.pressure = converter.convert_pressure(matches[0])
+
+
 class CommandSupplier:
     def __init__(self):
-        self._commands = [RunwayCommand(), TemperatureCommand(), AltimeterCommand(), AltimeterMercuryCommand()]
+        self._commands = [
+            RunwayCommand(), TemperatureCommand(), PressureCommand()
+        ]
 
     def get(self, input: str):
         for command in self._commands:

@@ -377,7 +377,6 @@ class AbstractWeatherContainer(abc.ABC):
         self._vertical_visibility = None
         self._wind_shear = None
         self._cavok = None
-        self._pressure = None
         self._remark = None
         self._clouds = []
         self._weather_conditions = []
@@ -412,12 +411,6 @@ class AbstractWeatherContainer(abc.ABC):
     def _set_cavok(self, value: bool):
         self._cavok = value
 
-    def _get_pressure(self):
-        return self._pressure
-
-    def _set_pressure(self, pressure: Pressure):
-        self._pressure = pressure
-
     def _get_remark(self):
         return self._remark
 
@@ -444,7 +437,6 @@ class AbstractWeatherContainer(abc.ABC):
     vertical_visibility = property(_get_vertical_visibility, _set_vertical_visibility)
     wind_shear = property(_get_wind_shear, _set_wind_shear)
     cavok = property(_get_cavok, _set_cavok)
-    pressure = property(_get_pressure, _set_pressure)
     remark = property(_get_remark, _set_remark)
     clouds = property(_get_clouds)
     weather_conditions = property(_get_weather_conditions)
@@ -529,7 +521,7 @@ class Metar(AbstractWeatherCode):
         super().__init__()
         self._temperature = None
         self._dew_point = None
-        self._altimeter = None
+        self._pressure = None
         self._nosig = False
         self._auto = False
         self._runways_info = []
@@ -546,11 +538,11 @@ class Metar(AbstractWeatherCode):
     def _set_dew_point(self, value: int):
         self._dew_point = value
 
-    def _get_altimeter(self):
-        return self._altimeter
+    def _get_pressure(self):
+        return self._pressure
 
-    def _set_altimeter(self, value: int):
-        self._altimeter = value
+    def _set_pressure(self, pressure: Pressure):
+        self._pressure = pressure
 
     def _is_nosig(self):
         return self._nosig
@@ -572,7 +564,7 @@ class Metar(AbstractWeatherCode):
 
     temperature = property(_get_temperature, _set_temperature)
     dew_point = property(_get_dew_point, _set_dew_point)
-    altimeter = property(_get_altimeter, _set_altimeter)
+    pressure = property(_get_pressure, _set_pressure)
     nosig = property(_is_nosig, _set_nosig)
     auto = property(_is_auto, _set_auto)
     runways_info = property(_get_runways_info)

@@ -3,7 +3,7 @@ import re
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.converter import convert_visibility
 from metar_taf_parser.model.enum import CloudQuantity, CloudType
-from metar_taf_parser.model.model import Visibility, Wind, WindShear, Cloud, AbstractWeatherContainer, Pressure
+from metar_taf_parser.model.model import Visibility, Wind, WindShear, Cloud, AbstractWeatherContainer
 
 
 def set_wind_elements(wind: Wind, direction: str, speed: str, gust: str, unit: str):
@@ -27,15 +27,6 @@ def set_wind_elements(wind: Wind, direction: str, speed: str, gust: str, unit: s
         wind.unit = unit
     else:
         wind.unit = 'KT'
-
-
-def set_pressure_elements(pressure: Pressure, value: str):
-    if value[0] == 'A':
-        pressure.unit = 'inHg'
-        pressure.pressure = str(value[1:3] + '.' + value[3:])
-    else:
-        pressure.unit = 'hPa'
-        pressure.pressure = str(value[1:])
 
 
 class CloudCommand:
@@ -206,34 +197,13 @@ class MainVisibilityNauticalMilesCommand:
         return True
 
 
-class PressureCommand:
-    regex = r'^((Q|A)?\d{2}\d{2})$'
-
-    def __init__(self):
-        self._pattern = re.compile(PressureCommand.regex)
-
-    def can_parse(self, pressure_string: str):
-        return self._pattern.search(pressure_string)
-
-    def parse_pressure(self, pressure_string: str):
-        pressure = Pressure()
-        matches = self._pattern.search(pressure_string).groups()
-        set_pressure_elements(pressure, matches[0])
-        return pressure
-
-    def execute(self, container: AbstractWeatherContainer, pressure_string: str):
-        pressure = self.parse_pressure(pressure_string)
-        container.pressure = pressure
-        return True
-
-
 class CommandSupplier:
 
     def __init__(self):
         self._commands = [
             WindShearCommand(), WindCommand(), WindVariationCommand(), MainVisibilityCommand(),
             MainVisibilityNauticalMilesCommand(), MinimalVisibilityCommand(),
-            VerticalVisibilityCommand(), CloudCommand(), PressureCommand()
+            VerticalVisibilityCommand(), CloudCommand()
         ]
 
     def get(self, input: str):
