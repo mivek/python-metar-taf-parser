@@ -47,7 +47,7 @@ class ConverterTest(unittest.TestCase):
         p = Pressure()
         p.pressure = 1029
         p.unit = 'hPa'
-        self.assertEqual(str(p.pressure), converter.convert_pressure('Q1029').pressure)
+        self.assertEqual(p.pressure, converter.convert_pressure('Q1029').pressure)
         self.assertEqual(p.unit, converter.convert_pressure('Q1029').unit)
 
 

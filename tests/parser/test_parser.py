@@ -11,7 +11,6 @@ from metar_taf_parser.parser.parser import AbstractParser, MetarParser, _parse_v
 class AbstractParserTestCase(unittest.TestCase):
 
     def test_parse_weather_condition(self):
-
         weather_condition = StubParser()._parse_weather_condition('-DZ')
 
         self.assertEqual(Intensity.LIGHT, weather_condition.intensity)
@@ -27,9 +26,9 @@ class AbstractParserTestCase(unittest.TestCase):
         self.assertListEqual([Phenomenon.RAIN, Phenomenon.HAIL], weather_condition.phenomenons)
 
     def test_tokenize(self):
-
         code = 'METAR KTTN 051853Z 04011KT 1 1/2SM VCTS SN FZFG BKN003 OVC010 M02/M02 A3006 RMK AO2 TSB40 SLP176 P0002 T10171017='
-        expected = ['METAR', 'KTTN', '051853Z', '04011KT', '1 1/2SM', 'VCTS', 'SN', 'FZFG', 'BKN003', 'OVC010', 'M02/M02', 'A3006', 'RMK', 'AO2', 'TSB40', 'SLP176', 'P0002', 'T10171017']
+        expected = ['METAR', 'KTTN', '051853Z', '04011KT', '1 1/2SM', 'VCTS', 'SN', 'FZFG', 'BKN003', 'OVC010',
+                    'M02/M02', 'A3006', 'RMK', 'AO2', 'TSB40', 'SLP176', 'P0002', 'T10171017']
 
         res = StubParser().tokenize(code)
 
@@ -75,7 +74,8 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual('N', metar.runways_info[0].trend)
 
     def test_parse_with_tempo(self):
-        metar = MetarParser().parse('LFBG 081130Z AUTO 23012KT 9999 SCT022 BKN072 BKN090 22/16 Q1011 TEMPO 26015G25KT 3000 TSRA SCT025CB BKN050')
+        metar = MetarParser().parse(
+            'LFBG 081130Z AUTO 23012KT 9999 SCT022 BKN072 BKN090 22/16 Q1011 TEMPO 26015G25KT 3000 TSRA SCT025CB BKN050')
 
         self.assertTrue(metar.auto)
         self.assertEqual(3, len(metar.clouds))
@@ -130,7 +130,6 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual(30, trend.times[0].time.minute)
 
     def test_parse_with_tempo_tl(self):
-
         metar = MetarParser().parse('LFRM 081630Z AUTO 30007KT 260V360 9999 24/15 Q1008 TEMPO FM1700 TL1830 SHRA')
 
         self.assertEqual(1, len(metar.trends))
@@ -191,31 +190,29 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual('> 10km', metar.visibility.distance)
 
     def test_parse_with_cavok(self):
-
         metar = MetarParser().parse('LFPG 212030Z 03003KT CAVOK 09/06 Q1031 NOSIG')
 
         self.assertTrue(metar.cavok)
         self.assertEqual('> 10km', metar.visibility.distance)
         self.assertEqual(9, metar.temperature)
         self.assertEqual(6, metar.dew_point)
-        self.assertEqual('1031', metar.pressure.pressure)
+        self.assertEqual(1031, int(metar.pressure.pressure))
+        self.assertEqual('hPa', metar.pressure.unit)
         self.assertTrue(metar.nosig)
 
     def test_parse_pressure(self):
-
         metar_1 = MetarParser().parse('LIRF 220850Z 08005KT CAVOK 13/08 Q1029 NOSIG')
 
         self.assertEqual('hPa', metar_1.pressure.unit)
-        self.assertEqual('1029', metar_1.pressure.pressure)
+        self.assertEqual(1029, int(metar_1.pressure.pressure))
 
         metar_2 = MetarParser().parse('KATL 220852Z 14010KT 8SM -RA BKN014 BKN022 OVC065 09/07 A3018 RMK AO2 PRESFR '
                                       'SLP221 CIG 011V016 P0002 60002 T00940072 58019')
 
         self.assertEqual('inHg', metar_2.pressure.unit)
-        self.assertEqual('30.18', metar_2.pressure.pressure)
+        self.assertEqual(30.18, float(metar_2.pressure.pressure))
 
     def test_parse_wind_alternative_form(self):
-
         metar = MetarParser().parse('ENLK 081350Z 26026G40 240V300 9999 VCSH FEW025 BKN030 02/M01 Q0996')
 
         self.assertEqual(260, metar.wind.degrees)
@@ -235,7 +232,6 @@ class MetarParserTestCase(unittest.TestCase):
 class FunctionTestCase(unittest.TestCase):
 
     def test_parse_visibility(self):
-
         validity = _parse_validity('3118/0124')
 
         self.assertEqual(31, validity.start_day)
@@ -244,14 +240,12 @@ class FunctionTestCase(unittest.TestCase):
         self.assertEqual(24, validity.end_hour)
 
     def test_parse_temperature_max(self):
-
         temperature = _parse_temperature('TX15/0612Z')
         self.assertEqual(15, temperature.temperature)
         self.assertEqual(6, temperature.day)
         self.assertEqual(12, temperature.hour)
 
     def test_parse_temperature_min(self):
-
         temperature = _parse_temperature('TNM02/0612Z')
 
         self.assertEqual(-2, temperature.temperature)
@@ -389,8 +383,8 @@ class TAFPArserTestCase(unittest.TestCase):
         self.assertEqual(40, trend_5.probability)
 
     def test_parse_without_line_breaks(self):
-
-        taf = TAFParser().parse('TAF LSZH 292025Z 2921/3103 VRB03KT 9999 FEW020 BKN080 TX20/3014Z TN06/3003Z PROB30 TEMPO 2921/2923 SHRA BECMG 3001/3004 4000 MIFG NSC PROB40 3003/3007 1500 BCFG SCT004 PROB30 3004/3007 0800 FG VV003 BECMG 3006/3009 9999 FEW030 PROB40 TEMPO 3012/3017 30008KT')
+        taf = TAFParser().parse(
+            'TAF LSZH 292025Z 2921/3103 VRB03KT 9999 FEW020 BKN080 TX20/3014Z TN06/3003Z PROB30 TEMPO 2921/2923 SHRA BECMG 3001/3004 4000 MIFG NSC PROB40 3003/3007 1500 BCFG SCT004 PROB30 3004/3007 0800 FG VV003 BECMG 3006/3009 9999 FEW030 PROB40 TEMPO 3012/3017 30008KT')
 
         # Check on time delivery.
         self.assertEqual(29, taf.day)
@@ -514,8 +508,8 @@ class TAFPArserTestCase(unittest.TestCase):
         self.assertEqual(40, tempo1.probability)
 
     def test_parse_without_line_breaks_and_ending_temperature(self):
-
-        taf = TAFParser().parse('TAF KLSV 120700Z 1207/1313 VRB06KT 9999 SCT250 QNH2992INS BECMG 1217/1218 10010G15KT 9999 SCT250 QNH2980INS BECMG 1303/1304 VRB06KT 9999 FEW250 QNH2979INS TX42/1223Z TN24/1213Z')
+        taf = TAFParser().parse(
+            'TAF KLSV 120700Z 1207/1313 VRB06KT 9999 SCT250 QNH2992INS BECMG 1217/1218 10010G15KT 9999 SCT250 QNH2980INS BECMG 1303/1304 VRB06KT 9999 FEW250 QNH2979INS TX42/1223Z TN24/1213Z')
 
         # Check on time delivery.
         self.assertEqual(12, taf.day)
@@ -616,7 +610,8 @@ class TAFPArserTestCase(unittest.TestCase):
         self.assertEqual(55, fm.wind_shear.speed)
 
     def test_parse_with_nautical_miles_visibility(self):
-        taf = TAFParser().parse('TAF AMD CZBF 300939Z 3010/3022 VRB03KT 6SM -SN OVC015 TEMPO 3010/3012 11/2SM -SN OVC009 \nFM301200 10008KT 2SM -SN OVC010 TEMPO 3012/3022 3/4SM -SN VV007 RMK FCST BASED ON AUTO OBS. NXT FCST BY 301400Z')
+        taf = TAFParser().parse(
+            'TAF AMD CZBF 300939Z 3010/3022 VRB03KT 6SM -SN OVC015 TEMPO 3010/3012 11/2SM -SN OVC009 \nFM301200 10008KT 2SM -SN OVC010 TEMPO 3012/3022 3/4SM -SN VV007 RMK FCST BASED ON AUTO OBS. NXT FCST BY 301400Z')
 
         # THEN the visibility of the main event is 6 SM
         self.assertEqual("6SM", taf.visibility.distance)
@@ -629,14 +624,16 @@ class TAFPArserTestCase(unittest.TestCase):
         self.assertTrue(taf.amendment)
 
     def test_parse_with_remark(self):
-        taf = TAFParser().parse('TAF CZBF 300939Z 3010/3022 VRB03KT 6SM -SN OVC015 RMK FCST BASED ON AUTO OBS. NXT FCST BY 301400Z\n TEMPO 3010/3012 11/2SM -SN OVC009 FM301200 10008KT 2SM -SN OVC010 \nTEMPO 3012/3022 3/4SM -SN VV007')
+        taf = TAFParser().parse(
+            'TAF CZBF 300939Z 3010/3022 VRB03KT 6SM -SN OVC015 RMK FCST BASED ON AUTO OBS. NXT FCST BY 301400Z\n TEMPO 3010/3012 11/2SM -SN OVC009 FM301200 10008KT 2SM -SN OVC010 \nTEMPO 3012/3022 3/4SM -SN VV007')
 
         self.assertIsNotNone(taf)
         self.assertIsNotNone(taf.remark)
         self.assertEqual('RMK FCST BASED ON AUTO OBS. NXT FCST BY 301400Z', taf.remark)
 
     def test_parse_with_trend_remark(self):
-        taf = TAFParser().parse('TAF CZBF 300939Z 3010/3022 VRB03KT 6SM -SN OVC015\n TEMPO 3010/3012 11/2SM -SN OVC009 FM301200 10008KT 2SM -SN OVC010 TEMPO 3012/3022 3/4SM -SN VV007 RMK FCST BASED ON AUTO OBS. NXT FCST BY 301400Z')
+        taf = TAFParser().parse(
+            'TAF CZBF 300939Z 3010/3022 VRB03KT 6SM -SN OVC015\n TEMPO 3010/3012 11/2SM -SN OVC009 FM301200 10008KT 2SM -SN OVC010 TEMPO 3012/3022 3/4SM -SN VV007 RMK FCST BASED ON AUTO OBS. NXT FCST BY 301400Z')
 
         self.assertEqual(3, len(taf.trends))
         self.assertIsNotNone(taf.trends[2].remark)
