@@ -105,8 +105,8 @@ Represents a cloud layer in METAR, TAF or trend object.
 
 Represents the pressure part of a METAR
 
-- pressure: `str`. The value of pressure.
-- unit: `str`. The unit of the pressure.
+- pressure: `float`. The value of pressure.
+- unit: `str`. The unit of the pressure, can be 'hPa' or 'inHg'.
 
 #### AbstractWeatherContainer
 
@@ -117,7 +117,6 @@ Abstract class containing the basic fields of METAR, TAF or trend objects.
 - vertical_visibility: `int`. The vertical visibility, can be `None`
 - wind_shear: `WindShear`. The wind shear object.
 - cavok: `bool`. Indicates whether the message is CAVOK (Ceiling and visibility OK)
-- pressure: `Pressure`. The pressure.
 - remark: `str`. The remark part of the message.
 - clouds: `[Cloud]`. Array of clouds elements.
 - weather_conditions: `[WeatherCondition]`. Array of weather conditions.
@@ -145,7 +144,7 @@ Class representing a metar object.
 
 - temperature: `int`. The temperature in celsius.
 - dew_point: `int`. The dew_point in celsius.
-- altimeter: `float`. The altimeter value in HPa.
+- pressure: `Pressure`. The pressure in hPa or inHg.
 - nosig: `bool`. Whether the message is nosig: No significant changes to come.
 - auto: `bool`. Whether the message is auto.
 - runway_info: `[RunwayInfo]`. Array of runway information.

@@ -25,19 +25,19 @@ def convert_temperature(input):
 
 
 def convert_inhg_to_hpa(input):
-    return int('{:4.0f}'.format(float(input / 100) / 0.029529983071445))
+    return float('{:4.0f}'.format(float(input / 100) / 0.029529983071445))
 
 
 def convert_hpa_to_inhg(input):
-    return float('{:5.2f}'.format(int(input) * 0.029529983071445))
+    return float('{:5.2f}'.format(float(input) * 0.029529983071445))
 
 
 def convert_pressure(input):
     pressure = Pressure()
     if input.startswith('Q'):
-        pressure.pressure = '{:4.0f}'.format(float(input.split('Q')[1]))
+        pressure.pressure = float('{:4.0f}'.format(float(input.split('Q')[1])))
         pressure.unit = 'hPa'
     else:
-        pressure.pressure = '{:5.2f}'.format(float(input.split('A')[1]) / 100)
+        pressure.pressure = float('{:5.2f}'.format(float(input.split('A')[1]) / 100))
         pressure.unit = 'inHg'
     return pressure
