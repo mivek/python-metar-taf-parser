@@ -73,7 +73,7 @@ class CommonTestCase(unittest.TestCase):
     def test_command_supplier(self):
         supplier = CommandSupplier()
 
-        self.assertEqual(9, len(supplier._commands))
+        self.assertEqual(8, len(supplier._commands))
 
     def test_execute(self):
         command = WindCommand()

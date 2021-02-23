@@ -43,7 +43,7 @@ class MetarCommandTestCase(unittest.TestCase):
     def test_command_supplier(self):
         command_supplier = CommandSupplier()
 
-        self.assertEqual(4, len(command_supplier._commands))
+        self.assertEqual(3, len(command_supplier._commands))
 
 
 if __name__ == '__main__':

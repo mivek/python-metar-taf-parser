@@ -2,6 +2,7 @@ import unittest
 
 from parameterized import parameterized
 from metar_taf_parser.commons import converter
+from metar_taf_parser.model.model import Pressure
 
 
 class ConverterTest(unittest.TestCase):
@@ -36,8 +37,14 @@ class ConverterTest(unittest.TestCase):
     def test_convert_temperature(self):
         self.assertEqual(5, converter.convert_temperature('05'))
 
-    def test_convert_inches_mercury_to_pascal(self):
-        self.assertAlmostEqual(1013.20, converter.convert_inches_mercury_to_pascal(29.92), None, None, 0.01)
+    def test_convert_inhg_to_hpa(self):
+        self.assertEqual(1047, converter.convert_inhg_to_hpa(30.92))
+
+    def test_convert_hpa_to_inhg(self):
+        self.assertEqual(30.92, converter.convert_inhg_to_hpa(1047))
+
+    def test_convert_pressure(self, input, expected):
+        self.assertEqual(expected, converter.convert_pressure(input))
 
 
 if __name__ == '__main__':
