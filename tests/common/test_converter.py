@@ -2,7 +2,6 @@ import unittest
 
 from parameterized import parameterized
 from metar_taf_parser.commons import converter
-from metar_taf_parser.model.model import Pressure
 
 
 class ConverterTest(unittest.TestCase):
