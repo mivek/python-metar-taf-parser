@@ -38,10 +38,10 @@ class ConverterTest(unittest.TestCase):
         self.assertEqual(5, converter.convert_temperature('05'))
 
     def test_convert_inhg_to_hpa(self):
-        self.assertEqual('1047', converter.convert_inhg_to_hpa(3092))
+        self.assertEqual(1047, converter.convert_inhg_to_hpa(3092))
 
     def test_convert_hpa_to_inhg(self):
-        self.assertEqual('30.92', converter.convert_hpa_to_inhg(1047))
+        self.assertEqual(30.92, converter.convert_hpa_to_inhg(1047))
 
     def test_convert_pressure(self):
         p = Pressure()
