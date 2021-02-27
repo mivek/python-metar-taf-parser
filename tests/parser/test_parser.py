@@ -236,6 +236,7 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertTrue(metar.nosig)
         self.assertEqual('RMK QFE741', metar.remark)
 
+
 class FunctionTestCase(unittest.TestCase):
 
     def test_parse_visibility(self):
