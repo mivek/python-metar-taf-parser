@@ -79,7 +79,7 @@ class MainVisibilityCommand:
 
 
 class WindCommand:
-    regex = r'(VRB|\d{3})(\d{2})G?(\d{2})?(KT|MPS|KM\/H)?'
+    regex = r'^(VRB|\d{3})(\d{2})G?(\d{2})?(KT|MPS|KM\/H)?'
 
     def __init__(self):
         self._pattern = re.compile(WindCommand.regex)
@@ -125,7 +125,7 @@ class WindVariationCommand:
 
 
 class WindShearCommand:
-    regex = r'WS(\d{3})\/(\w{3})(\d{2})G?(\d{2})?(KT|MPS|KM\/H)'
+    regex = r'^WS(\d{3})\/(\w{3})(\d{2})G?(\d{2})?(KT|MPS|KM\/H)'
 
     def __init__(self):
         self._pattern = re.compile(WindShearCommand.regex)

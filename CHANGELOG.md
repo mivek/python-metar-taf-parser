@@ -1,5 +1,16 @@
 # Change Log 
 
+## [1.0.1] - 2021-02-28
+
+### Changed
+
+- Removed the regex search from the weatherCondition parsing.
+Replaced by a single string search.
+  
+### Fixed
+
+- Added `^` (start of string) at the beginning of the wind regex.
+
 ## [1.0.0] - 2020-10-18
 
 ### Added

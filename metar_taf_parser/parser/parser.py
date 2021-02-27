@@ -78,6 +78,7 @@ def _parse_from_validity(input: str):
 
 class AbstractParser(abc.ABC):
     """
+    Abstract class.
     Base parser.
     """
     FM = 'FM'
@@ -109,11 +110,11 @@ class AbstractParser(abc.ABC):
             weather_condition.intensity = Intensity(match)
 
         for name, member in Descriptive.__members__.items():
-            if re.compile('(' + member.value + ')').findall(input):
+            if member.value in input:
                 weather_condition.descriptive = member
 
         for name, member in Phenomenon.__members__.items():
-            if re.compile('(' + member.value + ')').findall(input):
+            if member.value in input:
                 weather_condition.add_phenomenon(member)
 
         return weather_condition
@@ -215,6 +216,9 @@ class MetarParser(AbstractParser):
 
 
 class TAFParser(AbstractParser):
+    """
+    Parser of TAF messages.
+    """
     TAF = 'TAF'
     PROB = 'PROB'
     TX = 'TX'

@@ -225,6 +225,16 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual(1, len(metar.weather_conditions))
         self.assertEqual(Descriptive.THUNDERSTORM, metar.weather_conditions[0].descriptive)
 
+    def test_parse_with_runway_deposit(self):
+        metar = MetarParser().parse('UNAA 240830Z 34002MPS CAVOK M14/M18 Q1019 R02/190054 NOSIG RMK QFE741')
+
+        self.assertEqual('UNAA', metar.station)
+        self.assertEqual(340, metar.wind.degrees)
+        self.assertEquals(2, metar.wind.speed)
+        self.assertEqual('MPS', metar.wind.unit)
+        self.assertTrue(metar.cavok)
+        self.assertTrue(metar.nosig)
+        self.assertEqual('RMK QFE741', metar.remark)
 
 class FunctionTestCase(unittest.TestCase):
 
