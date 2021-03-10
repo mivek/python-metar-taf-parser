@@ -230,7 +230,7 @@ class MetarParserTestCase(unittest.TestCase):
 
         self.assertEqual('UNAA', metar.station)
         self.assertEqual(340, metar.wind.degrees)
-        self.assertEquals(2, metar.wind.speed)
+        self.assertEqual(2, metar.wind.speed)
         self.assertEqual('MPS', metar.wind.unit)
         self.assertTrue(metar.cavok)
         self.assertTrue(metar.nosig)
