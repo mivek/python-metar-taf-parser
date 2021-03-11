@@ -1,6 +1,6 @@
 import enum
 
-from metar_taf_parser.command.i18n import _
+from metar_taf_parser.commons.i18n import _
 
 
 class CloudQuantity(enum.Enum):
