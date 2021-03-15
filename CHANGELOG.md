@@ -1,5 +1,12 @@
 # Change Log 
 
+## [TBD] - TBD
+
+### Added
+
+- i18n module to support English, French, German and Polish locales.
+
+
 ## [1.0.1] - 2021-02-28
 
 ### Changed
