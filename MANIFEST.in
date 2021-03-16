@@ -1,0 +1,6 @@
+# Include the local folder
+recursive-include metar_taf_parser/locale *
+
+# Include the license
+include LICENSE
+include CHANGELOG.md
