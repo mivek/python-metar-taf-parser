@@ -1,7 +1,6 @@
 
 import re
 
-
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.converter import convert_visibility
 from metar_taf_parser.model.enum import CloudQuantity, CloudType

@@ -1,5 +1,7 @@
 import enum
 
+from metar_taf_parser.commons.i18n import _
+
 
 class CloudQuantity(enum.Enum):
     SKC = 'SKC'   # Sky clear
@@ -8,6 +10,9 @@ class CloudQuantity(enum.Enum):
     SCT = 'SCT'  # Scattered
     OVC = 'OVC'  # Overcast
     NSC = 'NSC'  # No significant cloud
+
+    def __str__(self):
+        return _('CloudQuantity.' + self.value)
 
 
 class CloudType(enum.Enum):
@@ -23,11 +28,17 @@ class CloudType(enum.Enum):
     NS = 'NS'  # Nimbostratus
     SC = 'SC'  # Stratocumulus
 
+    def __str__(self):
+        return _('CloudType.' + self.value)
+
 
 class Intensity(enum.Enum):
     LIGHT = '-'
     HEAVY = '+'
     IN_VICINITY = 'VC'
+
+    def __str__(self):
+        return _('Intensity.' + self.value)
 
 
 class Descriptive(enum.Enum):
@@ -39,6 +50,9 @@ class Descriptive(enum.Enum):
     THUNDERSTORM = 'TS'
     BLOWING = 'BL'
     FREEZING = 'FZ'
+
+    def __str__(self):
+        return _('Descriptive.' + self.value)
 
 
 class Phenomenon(enum.Enum):
@@ -65,11 +79,17 @@ class Phenomenon(enum.Enum):
     SANDSTORM = 'SS'
     FUNNEL_CLOUD = 'FC'
 
+    def __str__(self):
+        return _('Phenomenon.' + self.value)
+
 
 class TimeIndicator(enum.Enum):
     AT = 'AT'
     FM = 'FM'
     TL = 'TL'
+
+    def __str__(self):
+        return _('TimeIndicator.' + self.value)
 
 
 class WeatherChangeType(enum.Enum):
@@ -77,3 +97,6 @@ class WeatherChangeType(enum.Enum):
     BECMG = 'BECMG'
     TEMPO = 'TEMPO'
     PROB = 'PROB'
+
+    def __str__(self):
+        return _('WeatherChangeType.' + self.value)

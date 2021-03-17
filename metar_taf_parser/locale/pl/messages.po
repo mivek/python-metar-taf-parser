@@ -1,0 +1,409 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: metarParser\n"
+"Language: pl\n"
+
+#. There is no other translation in wikipedia and/or known resources to translate cloud quantity without numerals. I can translate it to common levels, but I think that this is not common way of naming those levels in aviation domain.
+#: 
+msgid "CloudQuantity.BKN"
+msgstr "Od 5/8 do 7/8"
+
+#: 
+msgid "CloudQuantity.FEW"
+msgstr "Od 1/8 do 2/8"
+
+#: 
+msgid "CloudQuantity.NSC"
+msgstr "Nieznaczne zachmurzenie."
+
+#: 
+msgid "CloudQuantity.OVC"
+msgstr "8/8"
+
+#: 
+msgid "CloudQuantity.SCT"
+msgstr "Od 3/8 do 4/8"
+
+#: 
+msgid "CloudQuantity.SKC"
+msgstr "Czyste niebo"
+
+#: 
+#, fuzzy
+msgid "CloudType.AC"
+msgstr "Średnie kłębiaste"
+
+#: 
+#, fuzzy
+msgid "CloudType.AS"
+msgstr "Średnia warstwowa"
+
+#: 
+#, fuzzy
+msgid "CloudType.CB"
+msgstr "Kłębiasta deszczowa"
+
+#: 
+#, fuzzy
+msgid "CloudType.CC"
+msgstr "Piętra wysokiego rodzaj kłębiasto-pierzaste"
+
+#: 
+#, fuzzy
+msgid "CloudType.CI"
+msgstr "Pierzasta"
+
+#: 
+#, fuzzy
+msgid "CloudType.CS"
+msgstr "Warstwowo - pierzasta"
+
+#: 
+#, fuzzy
+msgid "CloudType.CU"
+msgstr "Kłębiasta"
+
+#: 
+#, fuzzy
+msgid "CloudType.NS"
+msgstr "Warstwowa deszczowa"
+
+#: 
+#, fuzzy
+msgid "CloudType.SC"
+msgstr "Kłębiasto warstwowa"
+
+#: 
+#, fuzzy
+msgid "CloudType.ST"
+msgstr "Warstwowa"
+
+#: 
+#, fuzzy
+msgid "CloudType.TCU"
+msgstr "Wypiętrzona chmura kłębiasta"
+
+#: 
+msgid "Converter.D"
+msgstr "malejący"
+
+#: 
+msgid "Converter.E"
+msgstr "wschód"
+
+#: 
+msgid "Converter.N"
+msgstr "północ"
+
+#: 
+msgid "Converter.NE"
+msgstr "północny wschód"
+
+#: 
+msgid "Converter.NSC"
+msgstr "nieznaczna zmiana"
+
+#: 
+msgid "Converter.NW"
+msgstr "północny zachód"
+
+#: 
+msgid "Converter.S"
+msgstr "południe"
+
+#: 
+msgid "Converter.SE"
+msgstr "południowy zachód"
+
+#: 
+msgid "Converter.SW"
+msgstr "połódniowy wschód"
+
+#: 
+msgid "Converter.U"
+msgstr "rosnący"
+
+#: 
+msgid "Converter.VRB"
+msgstr "Zmienny"
+
+#: 
+msgid "Converter.W"
+msgstr "zachód"
+
+#: 
+msgid "Descriptive.BC"
+msgstr "płaty"
+
+#: 
+msgid "Descriptive.BL"
+msgstr "zawieja"
+
+#: 
+msgid "Descriptive.DR"
+msgstr "zamieć przyziemna"
+
+#: 
+msgid "Descriptive.FZ"
+msgstr "opad marznący"
+
+#: 
+msgid "Descriptive.MI"
+msgstr "niskie"
+
+#: 
+msgid "Descriptive.PR"
+msgstr "częściowe"
+
+#: 
+msgid "Descriptive.SH"
+msgstr "opad przelotny"
+
+#: 
+msgid "Descriptive.TS"
+msgstr "burza"
+
+#: 
+msgid "Error.prefix"
+msgstr "Wystąpił błąd. Kod błędu numer"
+
+#: 
+msgid "ErrorCode.AirportNotFound"
+msgstr "Nie znaleziono lotniska w tej depeszy."
+
+#: 
+msgid "ErrorCode.InvalidMessage"
+msgstr "Wprowadzona depesza jest nieprawidłowa."
+
+#: 
+msgid "Intensity.-"
+msgstr "Słaby"
+
+#: 
+msgid "Intensity.+"
+msgstr "Silny"
+
+#: 
+msgid "Intensity.VC"
+msgstr "W pobliżu"
+
+#: 
+msgid "MetarFacade.InvalidIcao"
+msgstr "Kod Icao jest nieprawidłowy"
+
+#: 
+msgid "Phenomenon.BR"
+msgstr "zamglenie"
+
+#: 
+msgid "Phenomenon.DS"
+msgstr "burza piaskowa"
+
+#: 
+msgid "Phenomenon.DU"
+msgstr "pył"
+
+#: 
+msgid "Phenomenon.DZ"
+msgstr "mżawka"
+
+#: 
+msgid "Phenomenon.FC"
+msgstr "trąba powietrzna"
+
+#: 
+msgid "Phenomenon.FG"
+msgstr "mgła"
+
+#: 
+msgid "Phenomenon.FU"
+msgstr "dym"
+
+#: 
+msgid "Phenomenon.GR"
+msgstr "grad"
+
+#: 
+msgid "Phenomenon.GS"
+msgstr "krupa śnieżna"
+
+#: 
+msgid "Phenomenon.HZ"
+msgstr "zmętnienie"
+
+#: 
+msgid "Phenomenon.IC"
+msgstr "słupki lodowe"
+
+#: 
+msgid "Phenomenon.PL"
+msgstr "deszcz lodowy"
+
+#: 
+msgid "Phenomenon.PO"
+msgstr "wiry pyłowe"
+
+#: 
+msgid "Phenomenon.PY"
+msgstr "aerozol"
+
+#: 
+msgid "Phenomenon.RA"
+msgstr "deszcz"
+
+#: 
+msgid "Phenomenon.SA"
+msgstr "piasek"
+
+#: 
+msgid "Phenomenon.SG"
+msgstr "śnieg ziarnisty"
+
+#: 
+msgid "Phenomenon.SN"
+msgstr "śnieg"
+
+#: 
+msgid "Phenomenon.SQ"
+msgstr "nawałnica"
+
+#: 
+msgid "Phenomenon.SS"
+msgstr "burza piaskowa"
+
+#: 
+msgid "Phenomenon.TS"
+msgstr "burza"
+
+#: 
+msgid "Phenomenon.UP"
+msgstr "marznący deszcz"
+
+#: 
+msgid "Phenomenon.VA"
+msgstr "popiół wulkaniczny"
+
+#: 
+msgid "Remark.Ceiling.Height"
+msgstr "zmienne zachmurzenie pomiędzy {0} a {1} stóp"
+
+#: 
+msgid "Remark.Ceiling.Second.Location"
+msgstr "zachmurzenie {0} stóp zmierzone przez czujnik na {1}"
+
+#: 
+msgid "Remark.FCST"
+msgstr "prognoza"
+
+#: 
+msgid "Remark.TORNADO"
+msgstr "tornado"
+
+#: 
+msgid "Remark.Tower.Visibility"
+msgstr "widoczność wierzy kontrolnej {0} mil"
+
+#: 
+msgid "TimeIndicator.AT"
+msgstr "o"
+
+#: 
+msgid "TimeIndicator.TL"
+msgstr "do"
+
+#: 
+msgid "ToString.dew.point"
+msgstr "punkt rosy"
+
+#: 
+msgid "ToString.name"
+msgstr "nazwa"
+
+#: 
+msgid "ToString.probability"
+msgstr "prawdopodobieństwo"
+
+#: 
+msgid "ToString.report.time"
+msgstr "czas raportu"
+
+#: 
+msgid "ToString.temperature"
+msgstr "temperatura [°C]"
+
+#: 
+msgid "ToString.temperature.max"
+msgstr "maksymalna temperatura [°C]"
+
+#: 
+msgid "ToString.temperature.min"
+msgstr "minimalna tempreatura [°C]"
+
+#: 
+msgid "ToString.vertical.visibility"
+msgstr "widoczność pozioma [stopa]"
+
+#: 
+msgid "ToString.visibility.main"
+msgstr "widoczność"
+
+#: 
+msgid "ToString.visibility.max"
+msgstr "maksymalna widoczność"
+
+#: 
+msgid "ToString.visibility.min"
+msgstr "minimalna widoczność"
+
+#: 
+msgid "ToString.visibility.min.direction"
+msgstr "minimalna widoczność kierunkowa"
+
+#: 
+msgid "ToString.weather.conditions"
+msgstr "warunki pogodowe"
+
+#: 
+msgid "ToString.wind.direction.degrees"
+msgstr "kierunek (stopni)"
+
+#: 
+msgid "ToString.wind.gusts"
+msgstr "porywy"
+
+#: 
+msgid "ToString.wind.max.variation"
+msgstr "maksymalna zmienność wiatru"
+
+#: 
+msgid "ToString.wind.min.variation"
+msgstr "minimalna zmienność wiatru"
+
+#: 
+msgid "ToString.wind.speed"
+msgstr "prędkość"
+
+#: 
+msgid "ToString.wind.unit"
+msgstr "jednostka"
+
+#: 
+msgid "WeatherChangeType.BECMG"
+msgstr "Nadchodząca"
+
+#: 
+msgid "WeatherChangeType.FM"
+msgstr "od"
+
+#: 
+msgid "WeatherChangeType.PROB"
+msgstr "Prawdopodobieństwo"
+
+#: 
+msgid "WeatherChangeType.TEMPO"
+msgstr "Tymczasowa"
+
