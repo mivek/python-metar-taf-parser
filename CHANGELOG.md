@@ -5,7 +5,9 @@
 ### Added
 
 -   i18n module to support English, French, German and Polish locales.
-
+-   Remarks are now parsed and converted in readable sentence.
+The value is stored in properties `remark` and `remarks`. The `remarks` property contains an element for each remark or
+    token. The `remark` property contains the whole decoded remarks in a sentence.
 
 ## [1.0.1] - 2021-02-28
 

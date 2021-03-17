@@ -4,7 +4,9 @@ from datetime import time
 
 from metar_taf_parser.command.common import CommandSupplier
 from metar_taf_parser.command.metar import CommandSupplier as MetarCommandSupplier
+from metar_taf_parser.command.remark import RemarkCommandSupplier
 from metar_taf_parser.commons import converter
+from metar_taf_parser.commons.exception import TranslationError
 from metar_taf_parser.model.enum import Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
 from metar_taf_parser.model.model import WeatherCondition, Visibility, Metar, TemperatureDated, \
     AbstractWeatherContainer, TAF, TAFTrend, MetarTrend, Validity, FMValidity, MetarTrendTime
@@ -26,10 +28,12 @@ def parse_remark(container: AbstractWeatherContainer, line: [str], index: int):
     This function parses the array containing the remark and concat the array into a string
     :param container: the metar, taf or taf trend to update
     :param line: The array containing the current line tokens
-    :param index: the index starting the remark
+    :param index: the index starting the remark ie token RMK
     :return: None
     """
-    container.remark = str.join(' ', line[index:])
+    remarks = RemarkParser().parse(str.join(' ', line[index + 1:]))
+    container.remarks = remarks
+    container.remark = str.join(' ', remarks)
 
 
 def _parse_temperature(input: str):
@@ -326,3 +330,19 @@ class TAFParser(AbstractParser):
                 trend.validity = _parse_validity(line[i])
             else:
                 super().general_parse(trend, line[i])
+
+
+class RemarkParser:
+    def __init__(self):
+        self._supplier = RemarkCommandSupplier()
+
+    def parse(self, code: str) -> [str]:
+        rmk_str = code
+        rmk_list = []
+
+        while rmk_str:
+            try:
+                (rmk_str, rmk_list) = self._supplier.get(rmk_str).execute(rmk_str, rmk_list)
+            except TranslationError:
+                (rmk_str, rmk_list) = self._supplier.default_command.execute(rmk_str, rmk_list)
+        return rmk_list
