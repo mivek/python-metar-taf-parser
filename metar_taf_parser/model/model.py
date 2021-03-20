@@ -356,6 +356,7 @@ class AbstractWeatherContainer(abc.ABC):
         self._wind_shear = None
         self._cavok = None
         self._remark = None
+        self._remarks = []
         self._clouds = []
         self._weather_conditions = []
 
@@ -395,6 +396,12 @@ class AbstractWeatherContainer(abc.ABC):
     def _set_remark(self, value: str):
         self._remark = value
 
+    def _get_remarks(self):
+        return self._remarks
+
+    def _set_remarks(self, remarks: [str]):
+        self._remarks = remarks
+
     def _get_clouds(self):
         return self._clouds
 
@@ -416,6 +423,7 @@ class AbstractWeatherContainer(abc.ABC):
     wind_shear = property(_get_wind_shear, _set_wind_shear)
     cavok = property(_get_cavok, _set_cavok)
     remark = property(_get_remark, _set_remark)
+    remarks = property(_get_remarks, _set_remarks)
     clouds = property(_get_clouds)
     weather_conditions = property(_get_weather_conditions)
 
