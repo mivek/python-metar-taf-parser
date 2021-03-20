@@ -35,7 +35,7 @@ jobs:
 
       - name: Test with unittest and generates reports
         run: |
-          make reports
+          make report
 
       - name: SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
