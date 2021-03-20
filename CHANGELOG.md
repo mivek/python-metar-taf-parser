@@ -8,7 +8,7 @@
 -   Remarks are now parsed and converted in a readable sentence.
 The value is stored in properties `remark` and `remarks`. The `remarks` property contains an element for each remark or
     token. The `remark` property contains the whole decoded remarks in a sentence.
--   Makefile and `pyproject.toml`
+-   Makefile and `pyproject.toml`.
 -   Coverage measurement.
 
 ### Changed
