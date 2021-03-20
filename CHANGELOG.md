@@ -10,6 +10,7 @@ The value is stored in properties `remark` and `remarks`. The `remarks` property
     token. The `remark` property contains the whole decoded remarks in a sentence.
 
 -   Makefile and `pyproject.toml`.
+    
 -   Coverage measurement.
 
 ### Changed
