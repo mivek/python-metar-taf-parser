@@ -44,4 +44,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            - Dsonar.verbose=true
+            -Dsonar.verbose=true
