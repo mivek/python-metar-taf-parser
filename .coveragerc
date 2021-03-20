@@ -1,0 +1,4 @@
+[run]
+branch = True
+source = metar_taf_parser
+command_line = -m unittest
