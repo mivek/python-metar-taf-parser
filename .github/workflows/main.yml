@@ -37,17 +37,11 @@ jobs:
         run: |
           make report
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@master
         with:
-          args: >
-            -Dsonar.python.coverage.reportPaths=./coverage.xml
-            -Dsonar.sources=./metar_taf_parser/
-            -Dsonar.tests=./tests/
-            -Dsonar.verbose=true
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: coverage.xml
 
       - name: Upload coverage results
         uses: actions/upload-artifact@v2
