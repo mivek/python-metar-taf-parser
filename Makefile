@@ -27,3 +27,7 @@ install:
 	@echo "Install dependencies"
 	${PYTHON} -m pip install flake8 pipenv
 	${PYTHON} -m pipenv install -d
+
+install_deploy:
+	@echo "Install build/deployment dependencies"
+	${PYTHON} -m pip install --upgrade build twine
