@@ -44,9 +44,10 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.python.coverage.reportPaths=coverage.xml
-            -Dsonar.sources=metar_taf_parser/
-            -Dsonar.tests=tests/
+            -Dsonar.python.coverage.reportPaths=./coverage.xml
+            -Dsonar.sources=./metar_taf_parser/
+            -Dsonar.tests=./tests/
+            -Dsonar.verbose=true
 
       - name: Upload coverage results
         uses: actions/upload-artifact@v2
