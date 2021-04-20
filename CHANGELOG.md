@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- Added packages source directory in `setup.cfg` to fix deployment.   
+-   Added packages source directory in `setup.cfg` to fix deployment.   
 
 ## [1.1.0] - 2021-03-20
 
