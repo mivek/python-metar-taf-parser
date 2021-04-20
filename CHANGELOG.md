@@ -1,5 +1,11 @@
 # Change Log 
 
+## [1.1.1] - 2021-04-20
+
+### Fixed
+
+- Added packages source directory in `setup.cfg` to fix deployment.   
+
 ## [1.1.0] - 2021-03-20
 
 ### Added
