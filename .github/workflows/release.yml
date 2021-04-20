@@ -4,25 +4,9 @@ on:
     tags:
       - '\d\.\d\.\d'
 
-name: Create Release and publish to Pypi
+name: Publish to Pypi
 
 jobs:
-  build:
-    name: Create Release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
   deploy:
     name: Deploy to PYPI
     runs-on: ubuntu-latest
@@ -41,10 +25,9 @@ jobs:
 
       - name: Build the archives
         run: |
-          python -m build
+          python -m build --sdist --wheel --outdir dist/
 
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@master
         with:
-          user: ${{ secrets.PYPI_USERNAME }}
           password: ${{ secrets.PYPI_PASSWORD }}
