@@ -5,7 +5,7 @@ from metar_taf_parser.commons.exception import TranslationError
 
 
 localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), '../locale')
-t = gettext.translation(domain='messages', localedir=localedir, fallback=True, languages=['en', 'fr', 'pl', 'de'])
+t = gettext.translation(domain='messages', localedir=localedir, fallback=True, languages=['en', 'fr', 'pl', 'de', 'it'])
 
 
 def _(message: str) -> str:
