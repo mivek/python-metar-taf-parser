@@ -226,3 +226,4 @@ The following locales are supported:
 - fr
 - de
 - pl
+- it
