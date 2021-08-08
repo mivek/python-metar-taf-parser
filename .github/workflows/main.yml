@@ -37,11 +37,11 @@ jobs:
         run: |
           make report
 
-      - name: Run codacy-coverage-reporter
-        uses: codacy/codacy-coverage-reporter-action@master
-        with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: coverage.xml
+#      - name: Run codacy-coverage-reporter
+#        uses: codacy/codacy-coverage-reporter-action@master
+#        with:
+#          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+#          coverage-reports: coverage.xml
 
       - name: Upload coverage results
         uses: actions/upload-artifact@v2
