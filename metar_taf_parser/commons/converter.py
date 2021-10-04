@@ -30,5 +30,5 @@ def convert_temperature_remarks(sign: str, temperature: str):
     return temp if '0' == sign else -1 * temp
 
 
-def convert_precipitation_amount(input: str):
-    return float(input) / 100
+def convert_precipitation_amount(amount: str):
+    return float(amount) / 100
