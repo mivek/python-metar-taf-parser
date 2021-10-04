@@ -24,9 +24,11 @@ def convert_temperature(input):
 def convert_inches_mercury_to_pascal(input):
     return 33.8639 * input
 
-def convert_temperature_remarks(sign: str, temperature:str):
+
+def convert_temperature_remarks(sign: str, temperature: str):
     temp = float(temperature) / 10
     return temp if '0' == sign else -1 * temp
 
-def convert_precipitation_amount(input:str):
+
+def convert_precipitation_amount(input: str):
     return float(input) / 100

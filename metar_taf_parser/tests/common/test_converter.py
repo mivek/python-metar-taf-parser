@@ -48,5 +48,6 @@ class ConverterTest(unittest.TestCase):
     def test_convert_precipitation_amount(self):
         self.assertEqual(2.17, converter.convert_precipitation_amount('0217'))
 
+
 if __name__ == '__main__':
     unittest.main()

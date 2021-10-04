@@ -5,13 +5,14 @@
 ### Added
 
 - i18n support for simplified Chinese locale
+- Completed remarks parsing
 
 ## [1.2.0] - 2021-05-04
 
 ### Added
 
 - i18n support for Italian locale
-- Completed remarks parsing
+
 ## [1.1.1] - 2021-04-20
 
 ### Fixed

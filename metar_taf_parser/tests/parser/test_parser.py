@@ -947,6 +947,7 @@ class RemarkParserTestCase(unittest.TestCase):
         remarks = RemarkParser().parse('60217')
         self.assertEqual('2.17 inches of precipitation fell in the last 6 hours', remarks[0])
 
+
 class StubParser(AbstractParser):
     def __init__(self):
         super().__init__()

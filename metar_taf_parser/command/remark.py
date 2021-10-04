@@ -162,9 +162,10 @@ class HourlyPressureCommand(Command):
     def execute(self, code: str, remark: [str]) -> (str, [str]):
         matches = self._pattern.search(code).groups()
         remark.append(
-            _(HourlyPressureCommand.barometer_tendency[int(matches[0])]) + ' ' +
-            _('Remark.Pressure.Tendency').format(float(matches[1])/10)
-                      )
+            _(HourlyPressureCommand.barometer_tendency[int(matches[0])])
+            + ' '
+            + _('Remark.Pressure.Tendency').format(float(matches[1]) / 10)
+        )
         return self._pattern.sub('', code, 1), remark
 
 
@@ -227,6 +228,7 @@ class PrecipitationAmount24HourCommand(Command):
 
     def __init__(self):
         self._pattern = re.compile(PrecipitationAmount24HourCommand.regex)
+
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
@@ -241,6 +243,7 @@ class PrecipitationAmount36HourCommand(Command):
 
     def __init__(self):
         self._pattern = re.compile(PrecipitationAmount36HourCommand.regex)
+
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
@@ -608,7 +611,7 @@ class WaterEquivalentSnowCommand(Command):
     def execute(self, code: str, remark: [str]) -> (str, [str]):
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Water.Equivalent.Snow.Ground').format(
-            float(matches[0]) /10
+            float(matches[0]) / 10
         ))
         return self._pattern.sub('', code, 1), remark
 
