@@ -222,8 +222,10 @@ taf = TAFParser().parse(
 ## Internationalization
 
 The following locales are supported:
--   en (default)
--   fr
--   de
--   pl
--   it
+- en (default)
+- fr
+- de
+- pl
+- it
+
+To add or complete locales please see [CONTRIBUTING](CONTRIBUTING.md)

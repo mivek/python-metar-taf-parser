@@ -1,11 +1,17 @@
 # Change Log 
 
+## [1.3.0] - 2021-10-05
+
+### Added
+
+- i18n support for simplified Chinese locale
+
 ## [1.2.0] - 2021-05-04
 
 ### Added
 
--   i18n support for Italian locale
-
+- i18n support for Italian locale
+- Completed remarks parsing
 ## [1.1.1] - 2021-04-20
 
 ### Fixed

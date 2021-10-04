@@ -1,6 +1,7 @@
-import re
 import abc
+import re
 
+from metar_taf_parser.commons.converter import convert_temperature_remarks, convert_precipitation_amount
 from metar_taf_parser.commons.exception import TranslationError
 from metar_taf_parser.commons.i18n import _
 
@@ -21,7 +22,7 @@ class Command(abc.ABC):
 
 
 class CeilingHeightCommand(Command):
-    regex = r'^CIG (\d{3})V(\d{3})'
+    regex = r'^CIG (\d{3})V(\d{3})\b'
 
     def __init__(self):
         self._pattern = re.compile(CeilingHeightCommand.regex)
@@ -33,12 +34,12 @@ class CeilingHeightCommand(Command):
         matches = self._pattern.search(code).groups()
         min_ceiling = int(matches[0]) * 100
         max_ceiling = int(matches[1]) * 100
-        remark.append(_("Remark.Ceiling.Height").format(min_ceiling, max_ceiling))
+        remark.append(_('Remark.Ceiling.Height').format(min_ceiling, max_ceiling))
         return self._pattern.sub('', code, 1), remark
 
 
 class CeilingSecondLocationCommand(Command):
-    regex = r'^CIG (\d{3}) (\w+)'
+    regex = r'^CIG (\d{3}) (\w+)\b'
 
     def __init__(self):
         self._pattern = re.compile(CeilingSecondLocationCommand.regex)
@@ -68,6 +69,141 @@ class HailSizeCommand(Command):
         return self._pattern.sub('', code, 1), remark
 
 
+class HourlyMaximumMinimumTemperatureCommand(Command):
+    regex = r'^4([01])(\d{3})([01])(\d{3})\b'
+
+    def __init__(self):
+        self._pattern = re.compile(HourlyMaximumMinimumTemperatureCommand.regex)
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Hourly.Maximum.Minimum.Temperature').format(
+            convert_temperature_remarks(matches[0], matches[1]),
+            convert_temperature_remarks(matches[2], matches[3])
+        ))
+        return self._pattern.sub('', code, 1), remark
+
+
+class HourlyMaximumTemperatureCommand(Command):
+    regex = r'^1([01])(\d{3})\b'
+
+    def __init__(self):
+        self._pattern = re.compile(HourlyMaximumTemperatureCommand.regex)
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Hourly.Maximum.Temperature').format(
+            convert_temperature_remarks(matches[0], matches[1])
+        ))
+        return self._pattern.sub('', code, 1), remark
+
+
+class HourlyMinimumTemperatureCommand(Command):
+    regex = r'^2([01])(\d{3})\b'
+
+    def __init__(self):
+        self._pattern = re.compile(HourlyMinimumTemperatureCommand.regex)
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Hourly.Minimum.Temperature').format(
+            convert_temperature_remarks(matches[0], matches[1])
+        ))
+        return self._pattern.sub('', code, 1), remark
+
+
+class HourlyPrecipitationAmountCommand(Command):
+    regex = r'^P(\d{4})\b'
+
+    def __init__(self):
+        self._pattern = re.compile(HourlyPrecipitationAmountCommand.regex)
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Precipitation.Amount.Hourly').format(
+            int(matches[0])
+        ))
+        return self._pattern.sub('', code, 1), remark
+
+
+class HourlyPressureCommand(Command):
+    regex = r'^5(\d)(\d{3})\b'
+
+    barometer_tendency = {
+        0: 'Remark.Barometer.0',
+        1: 'Remark.Barometer.1',
+        2: 'Remark.Barometer.2',
+        3: 'Remark.Barometer.3',
+        4: 'Remark.Barometer.4',
+        5: 'Remark.Barometer.5',
+        6: 'Remark.Barometer.6',
+        7: 'Remark.Barometer.7',
+        8: 'Remark.Barometer.8'
+    }
+
+    def __init__(self):
+        self._pattern = re.compile(HourlyPressureCommand.regex)
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        remark.append(
+            _(HourlyPressureCommand.barometer_tendency[int(matches[0])]) + ' ' +
+            _('Remark.Pressure.Tendency').format(float(matches[1])/10)
+                      )
+        return self._pattern.sub('', code, 1), remark
+
+
+class HourlyTemperatureDewPointCommand(Command):
+    regex = r'^T([01])(\d{3})(([01])(\d{3}))?'
+
+    def __init__(self):
+        self._pattern = re.compile(HourlyTemperatureDewPointCommand.regex)
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        if matches[2] is None:
+            remark.append(_('Remark.Hourly.Temperature').format(convert_temperature_remarks(matches[0], matches[1])))
+        else:
+            remark.append(_('Remark.Hourly.Temperature.Dew.Point').format(
+                convert_temperature_remarks(matches[0], matches[1]),
+                convert_temperature_remarks(matches[3], matches[4])
+            ))
+        return self._pattern.sub('', code, 1), remark
+
+
+class IceAccretionCommand(Command):
+    regex = r'^l(\d)(\d{3})\b'
+
+    def __init__(self):
+        self._pattern = re.compile(IceAccretionCommand.regex)
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Ice.Accretion.Amount').format(int(matches[1]), int(matches[0])))
+        return self._pattern.sub('', code, 1), remark
+
+
 class ObscurationCommand(Command):
     regex = r'^([A-Z]{2}) ([A-Z]{3})(\d{3})'
 
@@ -84,6 +220,35 @@ class ObscurationCommand(Command):
 
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
+
+
+class PrecipitationAmount24HourCommand(Command):
+    regex = r'^7(\d{4})\b'
+
+    def __init__(self):
+        self._pattern = re.compile(PrecipitationAmount24HourCommand.regex)
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Precipitation.Amount.24').format(convert_precipitation_amount(matches[0])))
+        return self._pattern.sub('', code, 1), remark
+
+
+class PrecipitationAmount36HourCommand(Command):
+    regex = r'^([36])(\d{4})\b'
+
+    def __init__(self):
+        self._pattern = re.compile(PrecipitationAmount36HourCommand.regex)
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Precipitation.Amount.3.6').
+                      format(matches[0], convert_precipitation_amount(matches[1])))
+        return self._pattern.sub('', code, 1), remark
 
 
 class PrecipitationBegEndCommand(Command):
@@ -192,6 +357,21 @@ class SmallHailSizeCommand(Command):
         return self._pattern.match(code)
 
 
+class SnowDepthCommand(Command):
+    regex = r'^4/(\d{3})'
+
+    def __init__(self):
+        self._pattern = re.compile(SnowDepthCommand.regex)
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Snow.Depth').format(int(matches[0])))
+        return self._pattern.sub('', code, 1), remark
+
+
 class SnowIncreaseCommand(Command):
     regex = r'^SNINCR (\d+)/(\d+)'
 
@@ -216,6 +396,21 @@ class SnowPelletsCommand(Command):
     def execute(self, code: str, remark: [str]) -> (str, [str]):
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Snow.Pellets').format(_('Remark.' + matches[0])))
+        return self._pattern.sub('', code, 1), remark
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+
+class SunshineDurationCommand(Command):
+    regex = r'^98(\d{3})'
+
+    def __init__(self):
+        self._pattern = re.compile(SunshineDurationCommand.regex)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Sunshine.Duration').format(int(matches[0])))
         return self._pattern.sub('', code, 1), remark
 
     def can_parse(self, code: str) -> any:
@@ -401,6 +596,23 @@ class VirgaDirectionCommand(Command):
         return self._pattern.match(code)
 
 
+class WaterEquivalentSnowCommand(Command):
+    regex = r'^933(\d{3})\b'
+
+    def __init__(self):
+        self._pattern = re.compile(WaterEquivalentSnowCommand.regex)
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: [str]) -> (str, [str]):
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Water.Equivalent.Snow.Ground').format(
+            float(matches[0]) /10
+        ))
+        return self._pattern.sub('', code, 1), remark
+
+
 class WindPeakCommand(Command):
     regex = r'^PK WND (\d{3})(\d{2,3})/(\d{2})?(\d{2})'
 
@@ -499,7 +711,20 @@ class RemarkCommandSupplier:
                               VariableSkyCommand(),
                               CeilingSecondLocationCommand(),
                               SeaLevelPressureCommand(),
-                              SnowIncreaseCommand()]
+                              SnowIncreaseCommand(),
+                              HourlyMaximumMinimumTemperatureCommand(),
+                              HourlyMaximumTemperatureCommand(),
+                              HourlyMinimumTemperatureCommand(),
+                              HourlyPrecipitationAmountCommand(),
+                              HourlyTemperatureDewPointCommand(),
+                              HourlyPressureCommand(),
+                              IceAccretionCommand(),
+                              PrecipitationAmount36HourCommand(),
+                              PrecipitationAmount24HourCommand(),
+                              SnowDepthCommand(),
+                              SunshineDurationCommand(),
+                              WaterEquivalentSnowCommand()
+                              ]
 
     def get(self, code: str) -> Command:
         for command in self._command_list:
