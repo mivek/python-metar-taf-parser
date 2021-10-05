@@ -5,297 +5,325 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: Mivek prop2po"
 "Project-Id-Version: metar-parser"
-"Language: pl"
+"Language: zn-CN"
 
 #:
 msgid "CloudQuantity.BKN"
-msgstr "Od 5/8 do 7/8"
+msgstr "碎云"
 
 #:
 msgid "CloudQuantity.FEW"
-msgstr "Od 1/8 do 2/8"
+msgstr "少量"
 
 #:
 msgid "CloudQuantity.NSC"
-msgstr "Nieznaczne zachmurzenie."
+msgstr "没有明显的云。"
 
 #:
 msgid "CloudQuantity.OVC"
-msgstr "8/8"
+msgstr "多云"
 
 #:
 msgid "CloudQuantity.SCT"
-msgstr "Od 3/8 do 4/8"
+msgstr "散云"
 
 #:
 msgid "CloudQuantity.SKC"
-msgstr "Czyste niebo"
+msgstr "天空晴朗"
 
 #:
 msgid "CloudType.AC"
-msgstr "Średnie kłębiaste"
+msgstr "高积云"
 
 #:
 msgid "CloudType.AS"
-msgstr "Średnia warstwowa"
+msgstr "高层云"
 
 #:
 msgid "CloudType.CB"
-msgstr "Kłębiasta deszczowa"
+msgstr "积雨云"
 
 #:
 msgid "CloudType.CC"
-msgstr "Piętra wysokiego rodzaj kłębiasto-pierzaste"
+msgstr "卷积云"
 
 #:
 msgid "CloudType.CI"
-msgstr "Pierzasta"
+msgstr "Cirrus"
 
 #:
 msgid "CloudType.CS"
-msgstr "Warstwowo - pierzasta"
+msgstr "卷层云"
 
 #:
 msgid "CloudType.CU"
-msgstr "Kłębiasta"
+msgstr "积云"
 
 #:
 msgid "CloudType.NS"
-msgstr "Warstwowa deszczowa"
+msgstr "雨层云"
 
 #:
 msgid "CloudType.SC"
-msgstr "Kłębiasto warstwowa"
+msgstr "层积云"
 
 #:
 msgid "CloudType.ST"
-msgstr "Warstwowa"
+msgstr "层云"
 
 #:
 msgid "CloudType.TCU"
-msgstr "Wypiętrzona chmura kłębiasta"
+msgstr "高耸积云"
 
 #:
 msgid "Descriptive.BC"
-msgstr "płaty"
+msgstr "补丁"
 
 #:
 msgid "Descriptive.BL"
-msgstr "zawieja"
+msgstr "吹"
 
 #:
 msgid "Descriptive.DR"
-msgstr "zamieć przyziemna"
+msgstr "低漂"
 
 #:
 msgid "Descriptive.FZ"
-msgstr "opad marznący"
+msgstr "冰冻"
 
 #:
 msgid "Descriptive.MI"
-msgstr "niskie"
+msgstr "浅"
 
 #:
 msgid "Descriptive.PR"
-msgstr "częściowe"
+msgstr "部分的"
 
 #:
 msgid "Descriptive.SH"
-msgstr "opad przelotny"
+msgstr "阵雨"
 
 #:
 msgid "Descriptive.TS"
-msgstr "burza"
+msgstr "雷雨"
 
 #:
 msgid "Error.prefix"
-msgstr "Wystąpił błąd. Kod błędu numer"
+msgstr "发生错误。 错误代码 n°"
 
 #:
 msgid "ErrorCode.AirportNotFound"
-msgstr "Nie znaleziono lotniska w tej depeszy."
+msgstr "找不到此消息的机场。"
 
 #:
 msgid "ErrorCode.InvalidMessage"
-msgstr "Wprowadzona depesza jest nieprawidłowa."
+msgstr "输入的消息无效。"
 
 #:
 msgid "Intensity.-"
-msgstr "Słaby"
+msgstr "光"
 
 #:
 msgid "Intensity.+"
-msgstr "Silny"
+msgstr "重的"
 
 #:
 msgid "Intensity.VC"
-msgstr "W pobliżu"
+msgstr "在附近"
 
 #:
 msgid "Phenomenon.BR"
-msgstr "zamglenie"
+msgstr "薄雾"
 
 #:
 msgid "Phenomenon.DS"
-msgstr "burza piaskowa"
+msgstr "沙尘暴"
 
 #:
 msgid "Phenomenon.DU"
-msgstr "pył"
+msgstr "弥漫的灰尘"
 
 #:
 msgid "Phenomenon.DZ"
-msgstr "mżawka"
+msgstr "细雨"
 
 #:
 msgid "Phenomenon.FC"
-msgstr "trąba powietrzna"
+msgstr "漏斗云"
 
 #:
 msgid "Phenomenon.FG"
-msgstr "mgła"
+msgstr "雾"
 
 #:
 msgid "Phenomenon.FU"
-msgstr "dym"
+msgstr "烟"
 
 #:
 msgid "Phenomenon.GR"
-msgstr "grad"
+msgstr "冰雹"
 
 #:
 msgid "Phenomenon.GS"
-msgstr "krupa śnieżna"
+msgstr "小冰雹和/或雪粒"
 
 #:
 msgid "Phenomenon.HZ"
-msgstr "zmętnienie"
+msgstr "雾霾"
 
 #:
 msgid "Phenomenon.IC"
-msgstr "słupki lodowe"
+msgstr "冰晶"
 
 #:
 msgid "Phenomenon.PL"
-msgstr "deszcz lodowy"
+msgstr "冰粒"
 
 #:
 msgid "Phenomenon.PO"
-msgstr "wiry pyłowe"
+msgstr "尘土或沙尘旋风"
 
 #:
 msgid "Phenomenon.PY"
-msgstr "aerozol"
+msgstr "喷"
 
 #:
 msgid "Phenomenon.RA"
-msgstr "deszcz"
+msgstr "雨"
 
 #:
 msgid "Phenomenon.SA"
-msgstr "piasek"
+msgstr "沙"
 
 #:
 msgid "Phenomenon.SG"
-msgstr "śnieg ziarnisty"
+msgstr "雪粒"
 
 #:
 msgid "Phenomenon.SN"
-msgstr "śnieg"
+msgstr "雪"
 
 #:
 msgid "Phenomenon.SQ"
-msgstr "nawałnica"
+msgstr "狂风"
 
 #:
 msgid "Phenomenon.SS"
-msgstr "burza piaskowa"
+msgstr "沙暴"
 
 #:
 msgid "Phenomenon.UP"
-msgstr "marznący deszcz"
+msgstr "未知降水"
 
 #:
 msgid "Phenomenon.VA"
-msgstr "popiół wulkaniczny"
+msgstr "火山灰"
+
+#:
+msgid "Phenomenon.TS"
+msgstr "雷雨"
+
+#:
+msgid "Remark.AO1"
+msgstr "没有降水鉴别器的自动化站"
+
+#:
+msgid "Remark.AO2"
+msgstr "带有降水鉴别器的自动化站"
+
+#:
+msgid "Remark.BASED"
+msgstr "基于"
+
+#:
+msgid "Remark.Ceiling.Height"
+msgstr "上限在 {0} 到 {1} 英尺之间变化"
+
+#:
+msgid "Remark.Ceiling.Second.Location"
+msgstr "由位于 {1} 处的第二个传感器测量的 {0} 英尺的上限"
+
+#:
+msgid "Remark.FCST"
+msgstr "预报"
+
+#:
+msgid "Remark.FUNNELCLOUD"
+msgstr "漏斗云 "
 
 #:
 msgid "MetarFacade.InvalidIcao"
-msgstr "Kod Icao jest nieprawidłowy"
+msgstr "ICAO 代码无效。"
 
 #:
 msgid "Converter.D"
-msgstr "malejący"
+msgstr "减少"
 
 #:
 msgid "Converter.E"
-msgstr "wschód"
+msgstr "东"
 
 #:
 msgid "Converter.N"
-msgstr "północ"
+msgstr "北"
 
 #:
 msgid "Converter.NE"
-msgstr "północny wschód"
+msgstr "东北"
 
 #:
 msgid "Converter.NSC"
-msgstr "nieznaczna zmiana"
+msgstr "无明显变化"
 
 #:
 msgid "Converter.NW"
-msgstr "północny zachód"
+msgstr "西北"
 
 #:
 msgid "Converter.S"
-msgstr "południe"
+msgstr "南"
 
 #:
 msgid "Converter.SE"
-msgstr "południowy zachód"
+msgstr "东南"
 
 #:
 msgid "Converter.SW"
-msgstr "połódniowy wschód"
+msgstr "西南"
 
 #:
 msgid "Converter.U"
-msgstr "rosnący"
+msgstr "上升"
 
 #:
 msgid "Converter.VRB"
-msgstr "Zmienny"
+msgstr "多变的"
 
 #:
 msgid "Converter.W"
-msgstr "zachód"
+msgstr "西"
 
 #:
 msgid "WeatherChangeType.FM"
-msgstr "od"
+msgstr "从"
 
 #:
 msgid "WeatherChangeType.BECMG"
-msgstr "Nadchodząca"
+msgstr "变得"
 
 #:
 msgid "WeatherChangeType.TEMPO"
-msgstr "Tymczasowa"
+msgstr "暂时的"
 
 #:
 msgid "WeatherChangeType.PROB"
-msgstr "Prawdopodobieństwo"
+msgstr "可能性"
 
 #:
 msgid "TimeIndicator.AT"
-msgstr "o"
-
-#:
-msgid "TimeIndicator.FM"
-msgstr "od"
+msgstr "在"
 
 #:
 msgid "TimeIndicator.TL"
-msgstr "do"
+msgstr "直到"
 

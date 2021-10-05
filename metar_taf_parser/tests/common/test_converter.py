@@ -39,6 +39,15 @@ class ConverterTest(unittest.TestCase):
     def test_convert_inches_mercury_to_pascal(self):
         self.assertAlmostEqual(1013.20, converter.convert_inches_mercury_to_pascal(29.92), None, None, 0.01)
 
+    def test_convert_temperature_remarks_positive(self):
+        self.assertEqual(14.2, converter.convert_temperature_remarks('0', '142'))
+
+    def test_convert_temperature_remarks_negative(self):
+        self.assertEqual(-2.1, converter.convert_temperature_remarks('1', '021'))
+
+    def test_convert_precipitation_amount(self):
+        self.assertEqual(2.17, converter.convert_precipitation_amount('0217'))
+
 
 if __name__ == '__main__':
     unittest.main()

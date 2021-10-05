@@ -883,6 +883,70 @@ class RemarkParserTestCase(unittest.TestCase):
         remarks = RemarkParser().parse('CF1AC8 CF TR SLP091 DENSITY ALT 200FT')
         self.assertEqual(_('Remark.Sea.Level.Pressure').format('1009.1'), remarks[3])
 
+    def test_parse_hourly_maximum_minimum_temperature_command(self):
+        remarks = RemarkParser().parse('401001015 AO1')
+        self.assertEqual('24-hour maximum temperature of 10.0°C and 24-hour minimum temperature of -1.5°C', remarks[0])
+
+    def test_parse_hourly_maximum_temperature_below_zero(self):
+        remarks = RemarkParser().parse('11021 AO1')
+        self.assertEqual('6-hourly maximum temperature of -2.1°C', remarks[0])
+
+    def test_parse_hourly_maximum_temperature_above_zero(self):
+        remarks = RemarkParser().parse('10142')
+        self.assertEqual('6-hourly maximum temperature of 14.2°C', remarks[0])
+
+    def test_parse_hourly_minimum_temperature_negative(self):
+        remarks = RemarkParser().parse('21001')
+        self.assertEqual('6-hourly minimum temperature of -0.1°C', remarks[0])
+
+    def test_parse_hourly_minimum_temperature_positive(self):
+        remarks = RemarkParser().parse('20012')
+        self.assertEqual('6-hourly minimum temperature of 1.2°C', remarks[0])
+
+    def test_parse_hourly_pressure(self):
+        remarks = RemarkParser().parse('52032')
+        self.assertEqual('steady or unsteady increase of 3.2 hectopascals in the past 3 hours', remarks[0])
+
+    def test_parse_hourly_precipitation_amount(self):
+        remarks = RemarkParser().parse('P0009')
+        self.assertEqual('9/100 of an inch of precipitation fell in the last hour', remarks[0])
+
+    def test_parse_precipitation_amount_24_hour(self):
+        remarks = RemarkParser().parse('70125')
+        self.assertEqual('1.25 inches of precipitation fell in the last 24 hours', remarks[0])
+
+    def test_parse_snow_depth(self):
+        remarks = RemarkParser().parse('4/021')
+        self.assertEqual('snow depth of 21 inches', remarks[0])
+
+    def test_parse_sunshine_duration(self):
+        remarks = RemarkParser().parse('98096')
+        self.assertEqual('96 minutes of sunshine', remarks[0])
+
+    def test_parse_water_equivalent_snow(self):
+        remarks = RemarkParser().parse('933036')
+        self.assertEqual('water equivalent of 3.6 inches of snow', remarks[0])
+
+    def test_parse_ice_accretion(self):
+        remarks = RemarkParser().parse('l1004 AO1')
+        self.assertEqual('4/100 of an inch of ice accretion in the past 1 hour(s)', remarks[0])
+
+    def test_parse_hourly_temperature(self):
+        remarks = RemarkParser().parse('T0026 AO1')
+        self.assertEqual('hourly temperature of 2.6°C', remarks[0])
+
+    def test_parse_hourly_temperature_dew_point(self):
+        remarks = RemarkParser().parse('T00261015 AO1')
+        self.assertEqual('hourly temperature of 2.6°C and dew point of -1.5°C', remarks[0])
+
+    def test_parse_precipitation_amount_3_hours(self):
+        remarks = RemarkParser().parse('30217')
+        self.assertEqual('2.17 inches of precipitation fell in the last 3 hours', remarks[0])
+
+    def test_parse_precipitation_amount_6_hours(self):
+        remarks = RemarkParser().parse('60217')
+        self.assertEqual('2.17 inches of precipitation fell in the last 6 hours', remarks[0])
+
 
 class StubParser(AbstractParser):
     def __init__(self):
