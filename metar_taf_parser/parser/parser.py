@@ -281,7 +281,7 @@ class TAFParser(AbstractParser):
         """
         single_line = taf_code.replace('\n', ' ')
         clean_line = re.sub(r'\s{2,}', ' ', single_line)
-        lines = re.sub(r'\s(PROB\d{2}\sTEMPO|TEMPO|BECMG|FM|PROB)', '\n\g<1>', clean_line).splitlines()
+        lines = re.sub(r'\s(PROB\d{2}\sTEMPO|TEMPO|INTER|BECMG|FM|PROB)', '\n\g<1>', clean_line).splitlines()
         lines_token = [self.tokenize(line) for line in lines]
 
         if len(lines_token) > 1:

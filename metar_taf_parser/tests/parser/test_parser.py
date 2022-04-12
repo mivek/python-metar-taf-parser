@@ -430,6 +430,11 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(3, taf.min_temperature.hour)
         self.assertEqual(6, taf.min_temperature.temperature)
 
+        self.assertEqual(2, len(taf.tempos()))
+        self.assertEqual(2, len(taf.becmgs()))
+        self.assertEqual(2, len(taf.probs()))
+        self.assertEqual(0, len(taf.fms()))
+
         # First TEMPO
         tempo0 = taf.trends[0]
         self.assertEqual(29, tempo0.validity.start_day)
@@ -554,6 +559,7 @@ class TAFParserTestCase(unittest.TestCase):
 
         # Checks on BECOMGs.
         self.assertEqual(2, len(taf.trends))
+        self.assertEqual(2, len(taf.becmgs()))
 
         # First BECOMG
         becmg0 = taf.trends[0]

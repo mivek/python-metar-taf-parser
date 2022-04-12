@@ -1,5 +1,13 @@
 # Change Log 
 
+## [1.4.0] - TBD
+
+### Added
+
+- Added `WeatherChangeType.INTER` for TAFTrend.
+- Added methods to retrieve Taf trends by `WeatherChangeType`: taf.becmgs, taf.fms, taf.inters, taf.probs and taf.tempos
+
+
 ## [1.3.0] - 2021-10-05
 
 ### Added

@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.6, 3.7, 3.8]
+        python-version: [3.6, 3.7, 3.8, 3.9, 3.10]
 
     steps:
       - uses: actions/checkout@v2
@@ -36,12 +36,6 @@ jobs:
       - name: Test with unittest and generates reports
         run: |
           make report
-
-#      - name: Run codacy-coverage-reporter
-#        uses: codacy/codacy-coverage-reporter-action@master
-#        with:
-#          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-#          coverage-reports: coverage.xml
 
       - name: Upload coverage results
         uses: actions/upload-artifact@v2

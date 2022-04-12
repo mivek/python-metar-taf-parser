@@ -97,6 +97,7 @@ class WeatherChangeType(enum.Enum):
     BECMG = 'BECMG'
     TEMPO = 'TEMPO'
     PROB = 'PROB'
+    INTER = 'INTER'
 
     def __str__(self):
         return _('WeatherChangeType.' + self.value)

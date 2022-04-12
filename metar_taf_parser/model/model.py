@@ -589,6 +589,21 @@ class TAF(AbstractWeatherCode):
     def _set_amendment(self, value: bool):
         self._amendment = value
 
+    def becmgs(self):
+        return list(filter(lambda trend: trend.type == WeatherChangeType.BECMG, self.trends))
+
+    def probs(self):
+        return list(filter(lambda trend: trend.type == WeatherChangeType.PROB, self.trends))
+
+    def tempos(self):
+        return list(filter(lambda trend: trend.type == WeatherChangeType.TEMPO, self.trends))
+
+    def inters(self):
+        return list(filter(lambda trend: trend.type == WeatherChangeType.INTER, self.trends))
+
+    def fms(self):
+        return list(filter(lambda trend: trend.type == WeatherChangeType.FM, self.trends))
+
     validity = property(_get_validity, _set_validity)
     max_temperature = property(_get_max_temperature, _set_max_temperature)
     min_temperature = property(_get_min_temperature, _set_min_temperature)
