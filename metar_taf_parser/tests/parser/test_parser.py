@@ -976,10 +976,11 @@ class RemarkParserTestCase(unittest.TestCase):
     def test_parse_precipitation_end(self):
         remarks = RemarkParser().parse('RAE45 AO1')
         self.assertEqual(' rain ending at :45', remarks[0])
-    
+
     def test_parse_precipitation_end_with_descriptive(self):
         remarks = RemarkParser().parse('SHRAE0545 AO1')
         self.assertEqual('showers of rain ending at 05:45', remarks[0])
+
 
 class StubParser(AbstractParser):
     def __init__(self):
