@@ -111,7 +111,7 @@ Abstract class containing the basic fields of METAR, TAF or trend objects.
 -   wind_shear: `WindShear`. The wind shear object.
 -   cavok: `bool`. Indicates whether the message is CAVOK (Ceiling and visibility OK)
 -   remark: `str`. The remark part of the message.
--   remarks: `[str]`. List of remarks. Each element is a different remark or token 
+-   remarks: `list[str]`. List of remarks. Each element is a different remark or token 
 -   clouds: `[Cloud]`. Array of clouds elements.
 -   weather_conditions: `[WeatherCondition]`. Array of weather conditions.
 

@@ -399,7 +399,7 @@ class AbstractWeatherContainer(abc.ABC):
     def _get_remarks(self):
         return self._remarks
 
-    def _set_remarks(self, remarks: [str]):
+    def _set_remarks(self, remarks: list):
         self._remarks = remarks
 
     def _get_clouds(self):

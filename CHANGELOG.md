@@ -1,12 +1,17 @@
 # Change Log 
 
-## [1.4.0] - TBD
+## [1.4.0] - 2022-04-20
 
 ### Added
 
 - Added `WeatherChangeType.INTER` for TAFTrend.
 - Added methods to retrieve Taf trends by `WeatherChangeType`: taf.becmgs, taf.fms, taf.inters, taf.probs and taf.tempos
+- Turkish translation
+- Added `PrecipitationBegCommand` and `PrecipitationEndCommand` in remark parsing.
 
+### Fixed
+
+- Parsing of remarks added Phenomenon.FC to the list of WeatherConditions when the remarks contained `FCST`
 
 ## [1.3.0] - 2021-10-05
 

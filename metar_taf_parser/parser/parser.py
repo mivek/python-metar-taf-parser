@@ -23,7 +23,7 @@ def parse_delivery_time(abstract_weather_code, time_string):
     abstract_weather_code.time = time(int(time_string[2:4]), int(time_string[4:6]))
 
 
-def parse_remark(container: AbstractWeatherContainer, line: [str], index: int):
+def parse_remark(container: AbstractWeatherContainer, line: list, index: int):
     """
     This function parses the array containing the remark and concat the array into a string
     :param container: the metar, taf or taf trend to update
@@ -163,7 +163,7 @@ class MetarParser(AbstractParser):
         super().__init__()
         self._metar_command_supplier = MetarCommandSupplier()
 
-    def _parse_trend(self, index: int, trend: MetarTrend, trend_parts: [str]):
+    def _parse_trend(self, index: int, trend: MetarTrend, trend_parts: list):
         """
         Parses a trend of a metar
         :param index: the index starting the trend in the list
@@ -260,6 +260,7 @@ class TAFParser(AbstractParser):
             token = lines[0][i]
             if AbstractParser.RMK == token:
                 parse_remark(taf, lines[0], i)
+                break
             elif token.startswith(TAFParser.TX):
                 taf.max_temperature = _parse_temperature(token)
             elif token.startswith(TAFParser.TN):
@@ -293,7 +294,7 @@ class TAFParser(AbstractParser):
                 lines_token[len(lines) - 1] = list(filter(lambda x: not x.startswith(TAFParser.TX) and not x.startswith(TAFParser.TN), last_line))
         return lines_token
 
-    def _parse_line(self, taf: TAF, line_tokens: [str]):
+    def _parse_line(self, taf: TAF, line_tokens: list):
         """
         Parses the tokens of the line and updates the TAF object.
         :param taf: TAF object to update
@@ -315,7 +316,7 @@ class TAFParser(AbstractParser):
         self._parse_trend(index, line_tokens, trend)
         taf.add_trend(trend)
 
-    def _parse_trend(self, index: int, line: [str], trend: TAFTrend):
+    def _parse_trend(self, index: int, line: list, trend: TAFTrend):
         """
         Parses a trend of the TAF
         :param index: the index at which the array should be parsed
@@ -326,6 +327,7 @@ class TAFParser(AbstractParser):
         for i in range(index, len(line)):
             if AbstractParser.RMK == line[i]:
                 parse_remark(trend, line, i)
+                break
             elif self._validity_pattern.search(line[i]):
                 trend.validity = _parse_validity(line[i])
             else:
@@ -336,7 +338,7 @@ class RemarkParser:
     def __init__(self):
         self._supplier = RemarkCommandSupplier()
 
-    def parse(self, code: str) -> [str]:
+    def parse(self, code: str) -> list:
         rmk_str = code
         rmk_list = []
 
