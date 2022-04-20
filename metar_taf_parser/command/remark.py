@@ -13,7 +13,7 @@ def empty_if_none(code: str) -> str:
 class Command(abc.ABC):
 
     @abc.abstractmethod
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         pass
 
     @abc.abstractmethod
@@ -30,7 +30,7 @@ class CeilingHeightCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         min_ceiling = int(matches[0]) * 100
         max_ceiling = int(matches[1]) * 100
@@ -47,7 +47,7 @@ class CeilingSecondLocationCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         height = 100 * int(matches[0])
         remark.append(_('Remark.Ceiling.Second.Location').format(height, matches[1]))
@@ -63,7 +63,7 @@ class HailSizeCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Hail').format(matches[0]))
         return self._pattern.sub('', code, 1), remark
@@ -78,7 +78,7 @@ class HourlyMaximumMinimumTemperatureCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Hourly.Maximum.Minimum.Temperature').format(
             convert_temperature_remarks(matches[0], matches[1]),
@@ -96,7 +96,7 @@ class HourlyMaximumTemperatureCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Hourly.Maximum.Temperature').format(
             convert_temperature_remarks(matches[0], matches[1])
@@ -113,7 +113,7 @@ class HourlyMinimumTemperatureCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Hourly.Minimum.Temperature').format(
             convert_temperature_remarks(matches[0], matches[1])
@@ -130,7 +130,7 @@ class HourlyPrecipitationAmountCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Precipitation.Amount.Hourly').format(
             int(matches[0])
@@ -159,7 +159,7 @@ class HourlyPressureCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(
             _(HourlyPressureCommand.barometer_tendency[int(matches[0])])
@@ -178,7 +178,7 @@ class HourlyTemperatureDewPointCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         if matches[2] is None:
             remark.append(_('Remark.Hourly.Temperature').format(convert_temperature_remarks(matches[0], matches[1])))
@@ -199,7 +199,7 @@ class IceAccretionCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Ice.Accretion.Amount').format(int(matches[1]), int(matches[0])))
         return self._pattern.sub('', code, 1), remark
@@ -211,7 +211,7 @@ class ObscurationCommand(Command):
     def __init__(self):
         self._pattern = re.compile(ObscurationCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         layer = _('CloudQuantity.' + matches[1])
         height = 100 * int(matches[2])
@@ -232,7 +232,7 @@ class PrecipitationAmount24HourCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Precipitation.Amount.24').format(convert_precipitation_amount(matches[0])))
         return self._pattern.sub('', code, 1), remark
@@ -247,11 +247,32 @@ class PrecipitationAmount36HourCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Precipitation.Amount.3.6').
                       format(matches[0], convert_precipitation_amount(matches[1])))
         return self._pattern.sub('', code, 1), remark
+
+
+class PrecipitationBegCommand(Command):
+    regex = r'^(([A-Z]{2})?([A-Z]{2})B(\d{2})?(\d{2}))'
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._pattern = re.compile(PrecipitationBegCommand.regex)
+
+    def execute(self, code: str, remark: list) -> tuple:
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Precipitation.Beg').format(
+            '' if matches[1] is None else _('Descriptive.' + matches[1]),
+            _('Phenomenon.' + matches[2]),
+            empty_if_none(matches[3]),
+            matches[4]
+        ))
+        return self._pattern.sub('', code, 1), remark
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
 
 
 class PrecipitationBegEndCommand(Command):
@@ -260,7 +281,7 @@ class PrecipitationBegEndCommand(Command):
     def __init__(self):
         self._pattern = re.compile(PrecipitationBegEndCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Precipitation.Beg.End').format(
             '' if matches[1] is None else _('Descriptive.' + matches[1]),
@@ -276,13 +297,33 @@ class PrecipitationBegEndCommand(Command):
         return self._pattern.match(code)
 
 
+class PrecipitationEndCommand(Command):
+    regex = r'^(([A-Z]{2})?([A-Z]{2})E(\d{2})?(\d{2}))'
+
+    def __init__(self):
+        self._pattern = re.compile(PrecipitationEndCommand.regex)
+
+    def can_parse(self, code: str) -> any:
+        return self._pattern.match(code)
+
+    def execute(self, code: str, remark: list) -> tuple:
+        matches = self._pattern.search(code).groups()
+        remark.append(_('Remark.Precipitation.End').format(
+            '' if matches[1] is None else _('Descriptive.' + matches[1]),
+            _('Phenomenon.' + matches[2]),
+            empty_if_none(matches[3]),
+            matches[4]
+        ))
+        return self._pattern.sub('', code, 1), remark
+
+
 class PrevailingVisibilityCommand(Command):
     regex = r'^VIS ((\d)*( )?(\d?/?\d))V((\d)*( )?(\d?/?\d))'
 
     def __init__(self):
         self._pattern = re.compile(PrevailingVisibilityCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Variable.Prevailing.Visibility').format(
             matches[0], matches[4])
@@ -299,7 +340,7 @@ class SeaLevelPressureCommand(Command):
     def __init__(self):
         self._pattern = re.compile(SeaLevelPressureCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         pressure = '9' if matches[0].startswith('9') else '10'
         pressure += matches[0] + '.' + matches[1]
@@ -316,7 +357,7 @@ class SecondLocationVisibilityCommand(Command):
     def __init__(self):
         self._pattern = re.compile(SecondLocationVisibilityCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Second.Location.Visibility').format(
             matches[0], matches[4])
@@ -333,7 +374,7 @@ class SectorVisibilityCommand(Command):
     def __init__(self):
         self._pattern = re.compile(SectorVisibilityCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Sector.Visibility').format(
             _('Converter.' + matches[0]),
@@ -351,7 +392,7 @@ class SmallHailSizeCommand(Command):
     def __init__(self):
         self._pattern = re.compile(SmallHailSizeCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Hail.LesserThan').format(matches[0]))
         return self._pattern.sub('', code, 1), remark
@@ -369,7 +410,7 @@ class SnowDepthCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Snow.Depth').format(int(matches[0])))
         return self._pattern.sub('', code, 1), remark
@@ -381,7 +422,7 @@ class SnowIncreaseCommand(Command):
     def __init__(self):
         self._pattern = re.compile(SnowIncreaseCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Snow.Increasing.Rapidly').format(matches[0], matches[1]))
         return self._pattern.sub('', code, 1), remark
@@ -396,7 +437,7 @@ class SnowPelletsCommand(Command):
     def __init__(self):
         self._pattern = re.compile(SnowPelletsCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Snow.Pellets').format(_('Remark.' + matches[0])))
         return self._pattern.sub('', code, 1), remark
@@ -411,7 +452,7 @@ class SunshineDurationCommand(Command):
     def __init__(self):
         self._pattern = re.compile(SunshineDurationCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Sunshine.Duration').format(int(matches[0])))
         return self._pattern.sub('', code, 1), remark
@@ -426,7 +467,7 @@ class SurfaceVisibilityCommand(Command):
     def __init__(self):
         self._pattern = re.compile(SurfaceVisibilityCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Surface.Visibility').format(matches[0]))
         return self._pattern.sub('', code, 1), remark
@@ -441,7 +482,7 @@ class ThunderStormLocationCommand(Command):
     def __init__(self):
         self._pattern = re.compile(ThunderStormLocationCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Thunderstorm.Location').format(_('Converter.' + matches[0])))
         return self._pattern.sub('', code, 1), remark
@@ -456,7 +497,7 @@ class ThunderStormLocationMovingCommand(Command):
     def __init__(self):
         self._pattern = re.compile(ThunderStormLocationMovingCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Thunderstorm.Location.Moving').format(
             _('Converter.' + matches[0]), _('Converter.' + matches[1])
@@ -473,7 +514,7 @@ class TornadicActivityBegCommand(Command):
     def __init__(self):
         self._pattern = re.compile(TornadicActivityBegCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Tornadic.Activity.Beginning').format(
             _('Remark.' + matches[0].replace(' ', '')),
@@ -494,7 +535,7 @@ class TornadicActivityBegEndCommand(Command):
     def __init__(self):
         self._pattern = re.compile(TornadicActivityBegEndCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Tornadic.Activity.BegEnd').format(
             _('Remark.' + matches[0].replace(' ', '')),
@@ -517,7 +558,7 @@ class TornadicActivityEndCommand(Command):
     def __init__(self):
         self._pattern = re.compile(TornadicActivityEndCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Tornadic.Activity.Ending').format(
             _('Remark.' + matches[0].replace(' ', '')),
@@ -538,7 +579,7 @@ class TowerVisibilityCommand(Command):
     def __init__(self):
         self._pattern = re.compile(TowerVisibilityCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Tower.Visibility').format(matches[0]))
         return self._pattern.sub('', code, 1), remark
@@ -553,7 +594,7 @@ class VariableSkyCommand(Command):
     def __init__(self):
         self._pattern = re.compile(VariableSkyCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Variable.Sky.Condition').format(
             _('CloudQuantity.' + matches[0]),
@@ -571,7 +612,7 @@ class VariableSkyHeightCommand(Command):
     def __init__(self):
         self._pattern = re.compile(VariableSkyHeightCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Variable.Sky.Condition.Height').format(
             100 * int(matches[1]),
@@ -590,7 +631,7 @@ class VirgaDirectionCommand(Command):
     def __init__(self):
         self._pattern = re.compile(VirgaDirectionCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         match = self._pattern.search(code).groups()
         remark.append(_('Remark.Virga.Direction').format(_('Converter.' + match[0])))
         return self._pattern.sub('', code, 1), remark
@@ -608,7 +649,7 @@ class WaterEquivalentSnowCommand(Command):
     def can_parse(self, code: str) -> any:
         return self._pattern.match(code)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Water.Equivalent.Snow.Ground').format(
             float(matches[0]) / 10
@@ -622,7 +663,7 @@ class WindPeakCommand(Command):
     def __init__(self):
         self._pattern = re.compile(WindPeakCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.PeakWind').format(
             matches[0],
@@ -642,7 +683,7 @@ class WindShiftCommand(Command):
     def __init__(self):
         self._pattern = re.compile(WindShiftCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.WindShift').format(
             empty_if_none(matches[0]),
@@ -660,7 +701,7 @@ class WindShiftFropaCommand(Command):
     def __init__(self):
         self._pattern = re.compile(WindShiftFropaCommand.regex)
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.WindShift.FROPA').format(
             empty_if_none(matches[0]),
@@ -676,7 +717,7 @@ class DefaultCommand(Command):
     def can_parse(self, code: str) -> any:
         return True
 
-    def execute(self, code: str, remark: [str]) -> (str, [str]):
+    def execute(self, code: str, remark: list) -> tuple:
         rmk_split = code.split(' ', 1)
         try:
             rem = _('Remark.' + rmk_split[0])
@@ -702,6 +743,8 @@ class RemarkCommandSupplier:
                               TornadicActivityBegCommand(),
                               TornadicActivityEndCommand(),
                               PrecipitationBegEndCommand(),
+                              PrecipitationBegCommand(),
+                              PrecipitationEndCommand(),
                               ThunderStormLocationMovingCommand(),
                               ThunderStormLocationCommand(),
                               SmallHailSizeCommand(),

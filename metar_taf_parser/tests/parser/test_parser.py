@@ -430,6 +430,11 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(3, taf.min_temperature.hour)
         self.assertEqual(6, taf.min_temperature.temperature)
 
+        self.assertEqual(2, len(taf.tempos()))
+        self.assertEqual(2, len(taf.becmgs()))
+        self.assertEqual(2, len(taf.probs()))
+        self.assertEqual(0, len(taf.fms()))
+
         # First TEMPO
         tempo0 = taf.trends[0]
         self.assertEqual(29, tempo0.validity.start_day)
@@ -554,6 +559,7 @@ class TAFParserTestCase(unittest.TestCase):
 
         # Checks on BECOMGs.
         self.assertEqual(2, len(taf.trends))
+        self.assertEqual(2, len(taf.becmgs()))
 
         # First BECOMG
         becmg0 = taf.trends[0]
@@ -645,6 +651,18 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(3, len(taf.trends))
         self.assertIsNotNone(taf.trends[2].remark)
         self.assertEqual(9, len(taf.trends[2].remarks))
+
+    def test_parse_with_remarks_forecast(self):
+        taf = TAFParser().parse(
+            """TAF CYTL 121940Z 1220/1308
+              TEMPO 1303/1308 2SM -SN RMK FCST BASED ON AUTO OBS. FCST BASED ON OBS BY OTHER SRCS. WIND SENSOR INOP. NXT FCST BY 130200Z"""
+        )
+
+        self.assertEqual(1, len(taf.tempos()))
+        self.assertEqual(1, len(taf.tempos()[0].weather_conditions))
+        self.assertEqual(Intensity.LIGHT, taf.tempos()[0].weather_conditions[0].intensity)
+        self.assertEqual(1, len(taf.tempos()[0].weather_conditions[0].phenomenons))
+        self.assertEqual(Phenomenon.SNOW, taf.tempos()[0].weather_conditions[0].phenomenons[0])
 
 
 class RemarkParserTestCase(unittest.TestCase):
@@ -946,6 +964,22 @@ class RemarkParserTestCase(unittest.TestCase):
     def test_parse_precipitation_amount_6_hours(self):
         remarks = RemarkParser().parse('60217')
         self.assertEqual('2.17 inches of precipitation fell in the last 6 hours', remarks[0])
+
+    def test_parse_precipitation_beg(self):
+        remarks = RemarkParser().parse('RAB45 AO1')
+        self.assertEqual(' rain beginning at :45', remarks[0])
+
+    def test_parse_precipitation_beg_with_descriptive(self):
+        remarks = RemarkParser().parse('SHRAB45')
+        self.assertEqual('showers of rain beginning at :45', remarks[0])
+
+    def test_parse_precipitation_end(self):
+        remarks = RemarkParser().parse('RAE45 AO1')
+        self.assertEqual(' rain ending at :45', remarks[0])
+
+    def test_parse_precipitation_end_with_descriptive(self):
+        remarks = RemarkParser().parse('SHRAE0545 AO1')
+        self.assertEqual('showers of rain ending at 05:45', remarks[0])
 
 
 class StubParser(AbstractParser):
