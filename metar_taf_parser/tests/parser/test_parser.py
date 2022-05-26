@@ -664,6 +664,25 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(1, len(taf.tempos()[0].weather_conditions[0].phenomenons))
         self.assertEqual(Phenomenon.SNOW, taf.tempos()[0].weather_conditions[0].phenomenons[0])
 
+    def test_parse_trend_visibility(self):
+        taf = TAFParser().parse(
+            """TAF AMD KEWR 191303Z 1913/2018 09006KT 5SM -RA BR BKN007 OVC025
+            FM191600 17007KT P6SM BKN020
+            FM192100 26008KT P3SM SCT030 SCT050
+            FM200000 29005KT P4SM SCT050
+            FM200600 VRB03KT P9SM SCT050
+            """
+        )
+
+        self.assertEqual('KEWR', taf.station)
+        self.assertIsNotNone(taf.visibility)
+        self.assertEqual('5SM', taf.visibility.distance)
+        self.assertEqual(4, len(taf.fms()))
+        self.assertEqual('P6SM', taf.fms()[0].visibility.distance)
+        self.assertEqual('P3SM', taf.fms()[1].visibility.distance)
+        self.assertEqual('P4SM', taf.fms()[2].visibility.distance)
+        self.assertEqual('P9SM', taf.fms()[3].visibility.distance)
+
 
 class RemarkParserTestCase(unittest.TestCase):
 
