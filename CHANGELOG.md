@@ -1,5 +1,11 @@
 # Change Log 
 
+## [1.4.1] - 2022-05-29
+
+### Fixed
+
+- Parsing of visibility in miles having indication: `P` for greater than and `M` for less than.
+
 ## [1.4.0] - 2022-04-20
 
 ### Added
