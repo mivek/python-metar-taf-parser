@@ -1,6 +1,6 @@
 import unittest
 
-from metar_taf_parser.command.common import CloudCommand, WindCommand, CommandSupplier
+from metar_taf_parser.command.common import CloudCommand, MainVisibilityNauticalMilesCommand, WindCommand, CommandSupplier
 from metar_taf_parser.model.enum import CloudQuantity, CloudType
 from metar_taf_parser.model.model import Metar
 
@@ -79,6 +79,14 @@ class CommonTestCase(unittest.TestCase):
         command = WindCommand()
         metar = Metar()
         self.assertTrue(command.execute(metar, 'VRB08KT'))
+
+    def test_main_visibility_nautical_miles_command_with_greater_than(self):
+        command = MainVisibilityNauticalMilesCommand()
+        self.assertTrue(command.can_parse('P3SM'))
+
+    def test_main_visibility_nautical_miles_command_with_minus_than(self):
+        command = MainVisibilityNauticalMilesCommand()
+        self.assertTrue(command.can_parse('M1SM'))
 
 
 if __name__ == '__main__':

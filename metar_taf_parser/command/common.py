@@ -185,7 +185,7 @@ class MinimalVisibilityCommand:
 
 class MainVisibilityNauticalMilesCommand:
 
-    regex = r'^(\d)*(\s)?((\d\/\d)?SM)$'
+    regex = r'^(P|M)?(\d)*(\s)?((\d\/\d)?SM)$'
 
     def __init__(self):
         self._pattern = re.compile(MainVisibilityNauticalMilesCommand.regex)
