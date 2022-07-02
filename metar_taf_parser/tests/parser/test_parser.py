@@ -79,7 +79,7 @@ class MetarParserTestCase(unittest.TestCase):
         metar = MetarParser().parse(
             'LFBG 081130Z AUTO 23012KT 9999 SCT022 BKN072 BKN090 22/16 Q1011 TEMPO 26015G25KT 3000 TSRA SCT025CB BKN050')
 
-        self.assertTrue(metar.auto)
+        self.assertTrue(metar._is_auto)
         self.assertEqual(3, len(metar.clouds))
         self.assertEqual(1, len(metar.trends))
 
@@ -234,6 +234,11 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertTrue(metar.nosig)
         self.assertEqual('QFE741', metar.remark)
         self.assertEqual(1, len(metar.remarks))
+
+    def test_parse_with_nil(self):
+        metar = MetarParser().parse('SVMC 211703Z AUTO NIL')
+
+        self.assertTrue(metar.nil)
 
 
 class FunctionTestCase(unittest.TestCase):
@@ -682,6 +687,14 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual('P3SM', taf.fms()[1].visibility.distance)
         self.assertEqual('P4SM', taf.fms()[2].visibility.distance)
         self.assertEqual('P9SM', taf.fms()[3].visibility.distance)
+
+    def test_parse_canceled(self):
+        taf = TAFParser().parse('TAF VTBD 281000Z 2812/2912 CNL=')
+        self.assertTrue(taf.canceled)
+
+    def test_parse_corrected(self):
+        taf = TAFParser().parse('TAF COR EDDS 201148Z 2012/2112 31010KT CAVOK BECMG 2018/2021 33004KT BECMG 2106/2109 07005KT')
+        self.assertTrue(taf.corrected)
 
 
 class RemarkParserTestCase(unittest.TestCase):

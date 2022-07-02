@@ -1,5 +1,12 @@
 # Change Log 
 
+## [1.5.0] - TBD
+
+### Added
+
+- Added `flags` property to `AbstractWeatherCode`. This property is a set holding flags: AUTO, AMD, CNL, NIL and COR.
+Properties `auto`, `amendment`, `nil`, `canceled` and `corrected` are also available.
+
 ## [1.4.1] - 2022-05-29
 
 ### Fixed
