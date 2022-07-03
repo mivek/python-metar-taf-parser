@@ -1,0 +1,840 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=None"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: MetarParser"
+"Language: zh_CN"
+#:
+msgid "CloudQuantity.BKN"
+msgstr "5-7分云"
+
+#:
+msgid "CloudQuantity.FEW"
+msgstr "少云"
+
+#:
+msgid "CloudQuantity.NSC"
+msgstr "没有明显的云。"
+
+#:
+msgid "CloudQuantity.OVC"
+msgstr "满天云"
+
+#:
+msgid "CloudQuantity.SCT"
+msgstr "3-4分云"
+
+#:
+msgid "CloudQuantity.SKC"
+msgstr "天空晴朗"
+
+#:
+msgid "CloudType.AC"
+msgstr "高积云"
+
+#:
+msgid "CloudType.AS"
+msgstr "高层云"
+
+#:
+msgid "CloudType.CB"
+msgstr "积雨云"
+
+#:
+msgid "CloudType.CC"
+msgstr "卷积云"
+
+#:
+msgid "CloudType.CI"
+msgstr "Cirrus"
+
+#:
+msgid "CloudType.CS"
+msgstr "卷层云"
+
+#:
+msgid "CloudType.CU"
+msgstr "积云"
+
+#:
+msgid "CloudType.NS"
+msgstr "雨层云"
+
+#:
+msgid "CloudType.SC"
+msgstr "层积云"
+
+#:
+msgid "CloudType.ST"
+msgstr "层云"
+
+#:
+msgid "CloudType.TCU"
+msgstr "高耸积云"
+
+#:
+msgid "DepositBrakingCapacity.NOT_REPORTED"
+msgstr "未报告"
+
+#:
+msgid "DepositBrakingCapacity.POOR"
+msgstr "差"
+
+#:
+msgid "DepositBrakingCapacity.MEDIUM_POOR"
+msgstr "中差"
+
+#:
+msgid "DepositBrakingCapacity.MEDIUM"
+msgstr "中"
+
+#:
+msgid "DepositBrakingCapacity.MEDIUM_GOOD"
+msgstr "良好"
+
+#:
+msgid "DepositBrakingCapacity.GOOD"
+msgstr "好"
+
+#:
+msgid "DepositBrakingCapacity.UNRELIABLE"
+msgstr "数字不可靠"
+
+#:
+msgid "DepositCoverage.NOT_REPORTED"
+msgstr "未报告"
+
+#:
+msgid "DepositCoverage.LESS_10"
+msgstr "低于10%"
+
+#:
+msgid "DepositCoverage.FROM_11_TO_25"
+msgstr "从11%到25%"
+
+#:
+msgid "DepositCoverage.FROM_26_TO_50"
+msgstr "从26%到50%"
+
+#:
+msgid "DepositCoverage.FROM_51_TO_100"
+msgstr "从51%到100%"
+
+#:
+msgid "DepositThickness.NOT_REPORTED"
+msgstr "未报告"
+
+#:
+msgid "DepositThickness.LESS_1_MM"
+msgstr "小于 1 毫米"
+
+#:
+msgid "DepositThickness.THICKNESS_10"
+msgstr "10 厘米"
+
+#:
+msgid "DepositThickness.THICKNESS_15"
+msgstr "15 厘米"
+
+#:
+msgid "DepositThickness.THICKNESS_20"
+msgstr "20 厘米"
+
+#:
+msgid "DepositThickness.THICKNESS_25"
+msgstr "25 厘米"
+
+#:
+msgid "DepositThickness.THICKNESS_30"
+msgstr "30 厘米"
+
+#:
+msgid "DepositThickness.THICKNESS_35"
+msgstr "35 厘米"
+
+#:
+msgid "DepositThickness.THICKNESS_40"
+msgstr "40厘米或以上"
+
+#:
+msgid "DepositThickness.CLOSED"
+msgstr "已关闭"
+
+#:
+msgid "DepositType.NOT_REPORTED"
+msgstr "未报告"
+
+#:
+msgid "DepositType.CLEAR_DRY"
+msgstr "干净"
+
+#:
+msgid "DepositType.DAMP"
+msgstr "潮湿"
+
+#:
+msgid "DepositType.WET_WATER_PATCHES"
+msgstr "湿和水纹"
+
+#:
+msgid "DepositType.RIME_FROST_COVERED"
+msgstr "雾凇和霜覆盖"
+
+#:
+msgid "DepositType.DRY_SNOW"
+msgstr "干雪"
+
+#:
+msgid "DepositType.WET_SNOW"
+msgstr "湿雪"
+
+#:
+msgid "DepositType.ICE"
+msgstr "冰"
+
+#:
+msgid "DepositType.COMPACTED_SNOW"
+msgstr "压实或滚压的雪"
+
+#:
+msgid "DepositType.FROZEN_RIDGES"
+msgstr "冷冻的轮辙或冰脊"
+
+#:
+msgid "DepositType.SLUSH"
+msgstr "雪浆"
+
+#:
+msgid "Descriptive.BC"
+msgstr "补丁"
+
+#:
+msgid "Descriptive.BL"
+msgstr "吹"
+
+#:
+msgid "Descriptive.DR"
+msgstr "低漂"
+
+#:
+msgid "Descriptive.FZ"
+msgstr "冰冻"
+
+#:
+msgid "Descriptive.MI"
+msgstr "浅"
+
+#:
+msgid "Descriptive.PR"
+msgstr "部分的"
+
+#:
+msgid "Descriptive.SH"
+msgstr "阵雨"
+
+#:
+msgid "Descriptive.TS"
+msgstr "雷雨"
+
+#:
+msgid "Error.prefix"
+msgstr "发生错误。 错误代码 n°"
+
+#:
+msgid "ErrorCode.AirportNotFound"
+msgstr "找不到此消息的机场。"
+
+#:
+msgid "ErrorCode.InvalidMessage"
+msgstr "输入的消息无效。"
+
+#:
+msgid "Indicator.M"
+msgstr "小于"
+
+#:
+msgid "Indicator.P"
+msgstr "大于"
+
+#:
+msgid "Intensity.-"
+msgstr "弱的"
+
+#:
+msgid "Intensity.+"
+msgstr "强的"
+
+#:
+msgid "Intensity.VC"
+msgstr "在附近"
+
+#:
+msgid "Phenomenon.BR"
+msgstr "薄雾"
+
+#:
+msgid "Phenomenon.DS"
+msgstr "沙尘暴"
+
+#:
+msgid "Phenomenon.DU"
+msgstr "弥漫的灰尘"
+
+#:
+msgid "Phenomenon.DZ"
+msgstr "细雨"
+
+#:
+msgid "Phenomenon.FC"
+msgstr "漏斗云"
+
+#:
+msgid "Phenomenon.FG"
+msgstr "雾"
+
+#:
+msgid "Phenomenon.FU"
+msgstr "烟"
+
+#:
+msgid "Phenomenon.GR"
+msgstr "冰雹"
+
+#:
+msgid "Phenomenon.GS"
+msgstr "小冰雹和/或雪粒"
+
+#:
+msgid "Phenomenon.HZ"
+msgstr "雾霾"
+
+#:
+msgid "Phenomenon.IC"
+msgstr "冰晶"
+
+#:
+msgid "Phenomenon.PL"
+msgstr "冰粒"
+
+#:
+msgid "Phenomenon.PO"
+msgstr "尘土或沙尘旋风"
+
+#:
+msgid "Phenomenon.PY"
+msgstr "喷"
+
+#:
+msgid "Phenomenon.RA"
+msgstr "雨"
+
+#:
+msgid "Phenomenon.SA"
+msgstr "沙"
+
+#:
+msgid "Phenomenon.SG"
+msgstr "雪粒"
+
+#:
+msgid "Phenomenon.SN"
+msgstr "雪"
+
+#:
+msgid "Phenomenon.SQ"
+msgstr "狂风"
+
+#:
+msgid "Phenomenon.SS"
+msgstr "沙暴"
+
+#:
+msgid "Phenomenon.UP"
+msgstr "未知降水"
+
+#:
+msgid "Phenomenon.VA"
+msgstr "火山灰"
+
+#:
+msgid "Phenomenon.TS"
+msgstr "雷雨"
+
+#:
+msgid "Remark.AO1"
+msgstr "没有降水鉴别器的自动化站"
+
+#:
+msgid "Remark.AO2"
+msgstr "带有降水鉴别器的自动化站"
+
+#:
+msgid "Remark.ALQDS"
+msgstr "全象限"
+
+#:
+msgid "Remark.Barometer.0"
+msgstr "先增加后减少"
+
+#:
+msgid "Remark.Barometer.1"
+msgstr "先增加后稳定, 或是先增加后缓慢增加"
+
+#:
+msgid "Remark.Barometer.2"
+msgstr "稳定或不稳定的增加"
+
+#:
+msgid "Remark.Barometer.3"
+msgstr "先减少或保持稳定，然后增加；或先增加然后快速增加"
+
+#:
+msgid "Remark.Barometer.4"
+msgstr "稳定"
+
+#:
+msgid "Remark.Barometer.5"
+msgstr "减小，然后增加"
+
+#:
+msgid "Remark.Barometer.6"
+msgstr "先减少后稳定；或先减少后更缓慢减少"
+
+#:
+msgid "Remark.Barometer.7"
+msgstr "稳定或不稳定地减少"
+
+#:
+msgid "Remark.Barometer.8"
+msgstr "先稳定或增加，然后减少；或先减少快速减少"
+
+#:
+msgid "Remark.BASED"
+msgstr "基于"
+
+#:
+msgid "Remark.Ceiling.Height"
+msgstr "上限在 {0} 到 {1} 英尺之间变化"
+
+#:
+msgid "Remark.Ceiling.Second.Location"
+msgstr "由位于 {1} 处的第二个传感器测量的 {0} 英尺的上限"
+
+#:
+msgid "Remark.DSNT"
+msgstr "距离"
+
+#:
+msgid "Remark.FCST"
+msgstr "预报"
+
+#:
+msgid "Remark.FUNNELCLOUD"
+msgstr "漏斗云"
+
+#:
+msgid "Remark.Hail"
+msgstr "直径为 {0} 英寸的最大的冰雹"
+
+#:
+msgid "Remark.Hail.LesserThan"
+msgstr "直径小于 {0} 英寸的最大的冰雹"
+
+#:
+msgid "Remark.Hourly.Maximum.Temperature"
+msgstr "6小时最高温度为{0}°C"
+
+#:
+msgid "Remark.Hourly.Maximum.Minimum.Temperature"
+msgstr "24小时最高温度为{0}°C，24小时最低温度为{1}°C"
+
+#:
+msgid "Remark.Hourly.Minimum.Temperature"
+msgstr "6 小时最低温度为 {0}° C"
+
+#:
+msgid "Remark.Hourly.Temperature"
+msgstr "小时气温 {0}°C"
+
+#:
+msgid "Remark.Hourly.Temperature.Dew.Point"
+msgstr "小时气温为{0}°C，露点为{1}°C"
+
+#:
+msgid "Remark.Ice.Accretion.Amount"
+msgstr "过去{1} 小时内积冰{0}/100英寸"
+
+#:
+msgid "Remark.HVY"
+msgstr "重度的"
+
+#:
+msgid "Remark.LGT"
+msgstr "轻微的"
+
+#:
+msgid "Remark.LTG"
+msgstr "闪电"
+
+#:
+msgid "Remark.MOD"
+msgstr "中等"
+
+#:
+msgid "Remark.Obscuration"
+msgstr "{0} 层位于 {1} 英尺，由 {2} 组成"
+
+#:
+msgid "Remark.ON"
+msgstr "在"
+
+#:
+msgid "Remark.NXT"
+msgstr "下一个"
+
+#:
+msgid "Remark.PeakWind"
+msgstr "在 {2}:{3} 有位于 {0} 度，风速 {1} 节的峰值风"
+
+#:
+msgid "Remark.TORNADO"
+msgstr "龙卷风"
+
+#:
+msgid "Remark.VIRGA"
+msgstr "幡状云"
+
+#:
+msgid "Remark.WATERSPOUT"
+msgstr "水龙卷"
+
+#:
+msgid "Remark.Water.Equivalent.Snow.Ground"
+msgstr "相当于{0} 英寸雪的降水"
+
+#:
+msgid "Remark.WindShift"
+msgstr "风力转变于 {0}:{1}"
+
+#:
+msgid "MetarFacade.InvalidIcao"
+msgstr "ICAO 代码无效。"
+
+#:
+msgid "Converter.D"
+msgstr "减少"
+
+#:
+msgid "Converter.E"
+msgstr "东"
+
+#:
+msgid "Converter.ENE"
+msgstr "东东北"
+
+#:
+msgid "Converter.ESE"
+msgstr "东东南"
+
+#:
+msgid "Converter.N"
+msgstr "北"
+
+#:
+msgid "Converter.NE"
+msgstr "东北"
+
+#:
+msgid "Converter.NNE"
+msgstr "北东北"
+
+#:
+msgid "Converter.NNW"
+msgstr "北西北"
+
+#:
+msgid "Converter.NSC"
+msgstr "无明显变化"
+
+#:
+msgid "Converter.NW"
+msgstr "西北"
+
+#:
+msgid "Converter.S"
+msgstr "南"
+
+#:
+msgid "Converter.SE"
+msgstr "东南"
+
+#:
+msgid "Converter.SSE"
+msgstr "南东南"
+
+#:
+msgid "Converter.SSW"
+msgstr "南西南"
+
+#:
+msgid "Converter.SW"
+msgstr "西南"
+
+#:
+msgid "Converter.U"
+msgstr "上升"
+
+#:
+msgid "Converter.VRB"
+msgstr "多变的"
+
+#:
+msgid "Converter.W"
+msgstr "西"
+
+#:
+msgid "Converter.WNW"
+msgstr "西西北"
+
+#:
+msgid "Converter.WSW"
+msgstr "西西南"
+
+#:
+msgid "WeatherChangeType.FM"
+msgstr "从"
+
+#:
+msgid "WeatherChangeType.BECMG"
+msgstr "变得"
+
+#:
+msgid "WeatherChangeType.INTER"
+msgstr "间歇的"
+
+#:
+msgid "WeatherChangeType.TEMPO"
+msgstr "暂时的"
+
+#:
+msgid "WeatherChangeType.PROB"
+msgstr "可能性"
+
+#:
+msgid "TimeIndicator.AT"
+msgstr "在"
+
+#:
+msgid "TimeIndicator.FM"
+msgstr "从"
+
+#:
+msgid "TimeIndicator.TL"
+msgstr "直到"
+
+#:
+msgid "ToString.airport"
+msgstr "机场"
+
+#:
+msgid "ToString.altimeter"
+msgstr "修正海压（百帕）"
+
+#:
+msgid "ToString.amendment"
+msgstr "修订"
+
+#:
+msgid "ToString.auto"
+msgstr "自动观测"
+
+#:
+msgid "ToString.cavok"
+msgstr "能见度≥10km"
+
+#:
+msgid "ToString.clouds"
+msgstr "云"
+
+#:
+msgid "ToString.day.month"
+msgstr "当月某天"
+
+#:
+msgid "ToString.day.hour"
+msgstr "当日某小时"
+
+#:
+msgid "ToString.deposit.braking"
+msgstr "制动能力"
+
+#:
+msgid "ToString.deposit.coverage"
+msgstr "覆盖范围"
+
+#:
+msgid "ToString.deposit.thickness"
+msgstr "厚度"
+
+#:
+msgid "ToString.deposit.type"
+msgstr "沉积物类型"
+
+#:
+msgid "ToString.descriptive"
+msgstr "描述"
+
+#:
+msgid "ToString.dew.point"
+msgstr "露点"
+
+#:
+msgid "ToString.end.day.month"
+msgstr "当月的结束日"
+
+#:
+msgid "ToString.end.hour.day"
+msgstr "当日的结束小时"
+
+#:
+msgid "ToString.height.feet"
+msgstr "高度（英尺）"
+
+#:
+msgid "ToString.height.meter"
+msgstr "高度（米）"
+
+#:
+msgid "ToString.intensity"
+msgstr "强度"
+
+#:
+msgid "ToString.indicator"
+msgstr "指示器"
+
+#:
+msgid "ToString.message"
+msgstr "原始消息"
+
+#:
+msgid "ToString.name"
+msgstr "名称"
+
+#:
+msgid "ToString.nosig"
+msgstr "无重大变化"
+
+#:
+msgid "ToString.phenomenons"
+msgstr "现象"
+
+#:
+msgid "ToString.probability"
+msgstr "可能性"
+
+#:
+msgid "ToString.quantity"
+msgstr "数量"
+
+#:
+msgid "ToString.remark"
+msgstr "备注"
+
+#:
+msgid "ToString.report.time"
+msgstr "报告时间"
+
+#:
+msgid "ToString.runway.info"
+msgstr "跑道信息"
+
+#:
+msgid "ToString.start.day.month"
+msgstr "当月起始日"
+
+#:
+msgid "ToString.start.hour.day"
+msgstr "当日起始小时"
+
+#:
+msgid "ToString.start.minute"
+msgstr "起始分钟"
+
+#:
+msgid "ToString.temperature"
+msgstr "温度（°C）"
+
+#:
+msgid "ToString.temperature.max"
+msgstr "最高温度（°C）"
+
+#:
+msgid "ToString.temperature.min"
+msgstr "最低温度（°C）"
+
+#:
+msgid "ToString.trend"
+msgstr "趋势预报"
+
+#:
+msgid "ToString.trends"
+msgstr "趋势"
+
+#:
+msgid "ToString.type"
+msgstr "类型"
+
+#:
+msgid "ToString.visibility.main"
+msgstr "主要能见度"
+
+#:
+msgid "ToString.visibility.min"
+msgstr "最小能见度"
+
+#:
+msgid "ToString.visibility.min.direction"
+msgstr "最小能见方向"
+
+#:
+msgid "ToString.visibility.max"
+msgstr "最大能见度"
+
+#:
+msgid "ToString.vertical.visibility"
+msgstr "垂直能见度（英尺）"
+
+#:
+msgid "ToString.weather.conditions"
+msgstr "天气状况"
+
+#:
+msgid "ToString.wind.direction"
+msgstr "方向"
+
+#:
+msgid "ToString.wind.direction.degrees"
+msgstr "方向(度)"
+
+#:
+msgid "ToString.wind.gusts"
+msgstr "阵风"
+
+#:
+msgid "ToString.wind.min.variation"
+msgstr "最小风力变化量"
+
+#:
+msgid "ToString.wind.max.variation"
+msgstr "最大风力变化量"
+
+#:
+msgid "ToString.wind.speed"
+msgstr "速度"
+
+#:
+msgid "ToString.wind.unit"
+msgstr "单位"
+

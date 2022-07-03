@@ -3,10 +3,9 @@ msgstr ""
 "MIME-Version: 1.0"
 "Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
-"X-Generator: Mivek prop2po"
-"Project-Id-Version: metar-parser"
+"X-Generator: prop2po"
+"Project-Id-Version: MetarParser"
 "Language: en"
-
 #:
 msgid "CloudQuantity.BKN"
 msgstr "broken"
@@ -250,6 +249,26 @@ msgstr "The airport was not found for this message."
 #:
 msgid "ErrorCode.InvalidMessage"
 msgstr "The entered message is invalid."
+
+#:
+msgid "Flag.AMD"
+msgstr "amended TAF"
+
+#:
+msgid "Flag.AUTO"
+msgstr "automated METAR"
+
+#:
+msgid "Flag.CNL"
+msgstr "canceled TAF"
+
+#:
+msgid "Flag.COR"
+msgstr "corrected METAR/TAF"
+
+#:
+msgid "Flag.NIL"
+msgstr "no data"
 
 #:
 msgid "Indicator.M"
@@ -513,7 +532,7 @@ msgstr "{0} inches of precipitation fell in the last 24 hours"
 
 #:
 msgid "Remark.Precipitation.Beg"
-msgstr "{0} {1} beginning at {2}:{3}"
+msgstr "{0} {1} beginning at {2}:{3} "
 
 #:
 msgid "Remark.Precipitation.Beg.End"
@@ -726,6 +745,10 @@ msgstr "From"
 #:
 msgid "WeatherChangeType.BECMG"
 msgstr "Becoming"
+
+#:
+msgid "WeatherChangeType.INTER"
+msgstr "Intermittent"
 
 #:
 msgid "WeatherChangeType.TEMPO"

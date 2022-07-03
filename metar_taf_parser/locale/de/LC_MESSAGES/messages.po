@@ -3,10 +3,9 @@ msgstr ""
 "MIME-Version: 1.0"
 "Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
-"X-Generator: Mivek prop2po"
-"Project-Id-Version: metar-parser"
+"X-Generator: prop2po"
+"Project-Id-Version: MetarParser"
 "Language: de"
-
 #:
 msgid "CloudQuantity.BKN"
 msgstr "stark bewölkt"
@@ -361,11 +360,11 @@ msgstr "nächster"
 
 #:
 msgid "Remark.PeakWind"
-msgstr "Windspitze von {1} Knoten aus {0} Grad um {2}\:{3}"
+msgstr "Windspitze von {1} Knoten aus {0} Grad um {2}:{3}"
 
 #:
 msgid "Remark.Precipitation.Beg.End"
-msgstr "{0} {1} begann um {2}\:{3} endete um {4}\:{5}"
+msgstr "{0} {1} begann um {2}:{3} endete um {4}:{5}"
 
 #:
 msgid "Remark.PRESFR"
@@ -413,15 +412,15 @@ msgstr "Gewitter im {0} der Station, zieht nach {1}"
 
 #:
 msgid "Remark.Tornadic.Activity.Beginning"
-msgstr "{0} begann um {1}\:{2} {3} SM im {4} der Station"
+msgstr "{0} begann um {1}:{2} {3} SM im {4} der Station"
 
 #:
 msgid "Remark.Tornadic.Activity.BegEnd"
-msgstr "{0} begann um {1}\:{2} endete um {3}\:{4} {5} SM im {6} der Station"
+msgstr "{0} begann um {1}:{2} endete um {3}:{4} {5} SM im {6} der Station"
 
 #:
 msgid "Remark.Tornadic.Activity.Ending"
-msgstr "{0} endete um {1}\:{2} {3} SM im {4} der Station"
+msgstr "{0} endete um {1}:{2} {3} SM im {4} der Station"
 
 #:
 msgid "Remark.TORNADO"
@@ -457,11 +456,11 @@ msgstr "Wasserhose"
 
 #:
 msgid "Remark.WindShift"
-msgstr "Windveränderung um {0}\:{1}"
+msgstr "Windveränderung um {0}:{1}"
 
 #:
 msgid "Remark.WindShift.FROPA"
-msgstr "Windveränderung begleitet von Frontdurchzug um {0}\:{1}"
+msgstr "Windveränderung begleitet von Frontdurchzug um {0}:{1}"
 
 #:
 msgid "MetarFacade.InvalidIcao"
