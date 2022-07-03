@@ -39,6 +39,9 @@ class Flag(enum.Enum):
     COR = 'COR'
     NIL = 'NIL'
 
+    def __str__(self):
+        return _('Flag.' + self.value)
+
 
 class Intensity(enum.Enum):
     LIGHT = '-'

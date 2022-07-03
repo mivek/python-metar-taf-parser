@@ -3,10 +3,9 @@ msgstr ""
 "MIME-Version: 1.0"
 "Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
-"X-Generator: Mivek prop2po"
-"Project-Id-Version: metar-parser"
+"X-Generator: prop2po"
+"Project-Id-Version: MetarParser"
 "Language: fr"
-
 #:
 msgid "CloudQuantity.BKN"
 msgstr "nuages fragmentés"
@@ -194,6 +193,26 @@ msgstr "L'aéroport n'a pas été trouvé pour ce message."
 #:
 msgid "ErrorCode.InvalidMessage"
 msgstr "Le message entré est invalide."
+
+#:
+msgid "Flag.AMD"
+msgstr "TAF modifié"
+
+#:
+msgid "Flag.AUTO"
+msgstr "METAR automatisé"
+
+#:
+msgid "Flag.CNL"
+msgstr "TAF annulé"
+
+#:
+msgid "Flag.COR"
+msgstr "METAR/TAF corrigé"
+
+#:
+msgid "Flag.NIL"
+msgstr "Aucune donnée"
 
 #:
 msgid "Indicator.M"
@@ -437,7 +456,7 @@ msgstr "prochain"
 
 #:
 msgid "Remark.PeakWind"
-msgstr "vent de pointe de {1} noeuds en provenance de {0} degrés à {2}:{3}"
+msgstr "vent de pointe de {1} noeuds en provenance de {0} degrés à {2}\:{3}"
 
 #:
 msgid "Remark.Precipitation.Amount.Hourly"
@@ -453,15 +472,15 @@ msgstr "{0} pouces de précipitations tombées au cours des 24 dernières heures
 
 #:
 msgid "Remark.Precipitation.Beg"
-msgstr "{0} {1} commençant à {2}:{3}"
+msgstr "{0} {1} commençant à {2}\:{3}"
 
 #:
 msgid "Remark.Precipitation.Beg.End"
-msgstr "{0} {1} commencant à {2}:{3} finissant à {4}:{5}"
+msgstr "{0} {1} commencant à {2}\:{3} finissant à {4}\:{5}"
 
 #:
 msgid "Remark.Precipitation.End"
-msgstr "{0} {1} se terminant à {2}:{3}"
+msgstr "{0} {1} se terminant à {2}\:{3}"
 
 #:
 msgid "Remark.Pressure.Tendency"
@@ -521,15 +540,15 @@ msgstr "orage se situant {0} de la station se déplacant vers {1}"
 
 #:
 msgid "Remark.Tornadic.Activity.Beginning"
-msgstr "{0} commencant à {1}:{2} {3} SM {4} de la station"
+msgstr "{0} commencant à {1}\:{2} {3} SM {4} de la station"
 
 #:
 msgid "Remark.Tornadic.Activity.BegEnd"
-msgstr "{0} commencant à {1}:{2} finissant à {3}:{4} {5} SM {6} de la station"
+msgstr "{0} commencant à {1}\:{2} finissant à {3}\:{4} {5} SM {6} de la station"
 
 #:
 msgid "Remark.Tornadic.Activity.Ending"
-msgstr "{0} finissant à {1}:{2} {3} SM {4} de la station"
+msgstr "{0} finissant à {1}\:{2} {3} SM {4} de la station"
 
 #:
 msgid "Remark.TORNADO"
@@ -565,11 +584,11 @@ msgstr "équivalent d''eau de {0} pouces de neige"
 
 #:
 msgid "Remark.WindShift"
-msgstr "changement de vent à {0}:{1}"
+msgstr "changement de vent à {0}\:{1}"
 
 #:
 msgid "Remark.WindShift.FROPA"
-msgstr "changement de vent accompagné d''un passage de front à {0}:{1}"
+msgstr "changement de vent accompagné d''un passage de front à {0}\:{1}"
 
 #:
 msgid "MetarFacade.InvalidIcao"
@@ -658,6 +677,10 @@ msgstr "De"
 #:
 msgid "WeatherChangeType.BECMG"
 msgstr "Devenant"
+
+#:
+msgid "WeatherChangeType.INTER"
+msgstr "Intermittent"
 
 #:
 msgid "WeatherChangeType.TEMPO"
