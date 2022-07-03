@@ -240,7 +240,7 @@ msgstr "oraj"
 
 #:
 msgid "Error.prefix"
-msgstr "Hata oluştu. Hata kodu: {0}"
+msgstr "Hata oluştu. Hata kodu\: {0}"
 
 #:
 msgid "ErrorCode.AirportNotFound"
@@ -496,7 +496,7 @@ msgstr "sonraki"
 
 #:
 msgid "Remark.PeakWind"
-msgstr "{2}:{3}''da {0} dereceden {1} knot maksimum rüzgar"
+msgstr "{2}\:{3}''da {0} dereceden {1} knot maksimum rüzgar"
 
 #:
 msgid "Remark.Precipitation.Amount.Hourly"
@@ -512,15 +512,15 @@ msgstr "son 24 saat içinde düşen yağış {0} inç"
 
 #:
 msgid "Remark.Precipitation.Beg"
-msgstr "{0} {1} başlangıç saati {2}:{3} "
+msgstr "{0} {1} başlangıç saati {2}\:{3} "
 
 #:
 msgid "Remark.Precipitation.Beg.End"
-msgstr "{0} {1} başlangıç saati {2}:{3} bitiş saati {4}:{5}"
+msgstr "{0} {1} başlangıç saati {2}\:{3} bitiş saati {4}\:{5}"
 
 #:
 msgid "Remark.Precipitation.End"
-msgstr "{0} {1} bitiş saati {2}:{3}"
+msgstr "{0} {1} bitiş saati {2}\:{3}"
 
 #:
 msgid "Remark.Pressure.Tendency"
@@ -580,15 +580,15 @@ msgstr "{0} istasyonunda {1} yönünde hareket eden fırtına"
 
 #:
 msgid "Remark.Tornadic.Activity.Beginning"
-msgstr "{4} istasyonunda {3} kara mili uzaklıkta olan {0} saat {1}:{2}''de başlıyor"
+msgstr "{4} istasyonunda {3} kara mili uzaklıkta olan {0} saat {1}\:{2}''de başlıyor"
 
 #:
 msgid "Remark.Tornadic.Activity.BegEnd"
-msgstr "{6} istasyonunda {5} kara mili uzaklıkta olan {0} saat {1}:{2}''de başlıyor {3}:{4}''de bitiyor"
+msgstr "{6} istasyonunda {5} kara mili uzaklıkta olan {0} saat {1}\:{2}''de başlıyor {3}\:{4}''de bitiyor"
 
 #:
 msgid "Remark.Tornadic.Activity.Ending"
-msgstr "{4} istasyonunda {3} kara mili uzaklıkta olan {0} saat {1}:{2}''de bitiyor"
+msgstr "{4} istasyonunda {3} kara mili uzaklıkta olan {0} saat {1}\:{2}''de bitiyor"
 
 #:
 msgid "Remark.TORNADO"
@@ -628,11 +628,11 @@ msgstr "{0} inç kar su eşdeğeri"
 
 #:
 msgid "Remark.WindShift"
-msgstr "rüzgar yön kırılması saat {0}:{1}"
+msgstr "rüzgar yön kırılması saat {0}\:{1}"
 
 #:
 msgid "Remark.WindShift.FROPA"
-msgstr "saat {0}:{1}''te önden geçiş eşliğinde rüzgar değişimi"
+msgstr "saat {0}\:{1}''te önden geçiş eşliğinde rüzgar değişimi"
 
 #:
 msgid "MetarFacade.InvalidIcao"
