@@ -532,7 +532,7 @@ msgstr "{0} inches of precipitation fell in the last 24 hours"
 
 #:
 msgid "Remark.Precipitation.Beg"
-msgstr "{0} {1} beginning at {2}:{3} "
+msgstr "{0} {1} beginning at {2}:{3}"
 
 #:
 msgid "Remark.Precipitation.Beg.End"
