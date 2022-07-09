@@ -10,6 +10,14 @@ from metar_taf_parser.parser.parser import AbstractParser, MetarParser, _parse_v
 from metar_taf_parser.commons.i18n import _
 
 
+CLOUD_QUANTITY_BROKEN = 'CloudQuantity.BKN'
+CONVERTER_NE = 'Converter.NE'
+REMARK_AO1 = 'Remark.AO1'
+REMARK_PRECIPITATION_BEG_END = 'Remark.Precipitation.Beg.End'
+REMARK_SEA_LEVEL_PRESSURE = 'Remark.Sea.Level.Pressure'
+TEN_KM = '> 10km'
+
+
 class AbstractParserTestCase(unittest.TestCase):
 
     def test_parse_weather_condition(self):
@@ -148,7 +156,7 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual(TimeIndicator.TL, trend.times[1].type)
         self.assertEqual(18, trend.times[1].time.hour)
         self.assertEqual(30, trend.times[1].time.minute)
-        self.assertEqual('> 10km', metar.visibility.distance)
+        self.assertEqual(TEN_KM, metar.visibility.distance)
 
     def test_parse_with_min_visibility(self):
         metar = MetarParser().parse('LFPG 161430Z 24015G25KT 5000 1100w')
@@ -189,13 +197,13 @@ class MetarParserTestCase(unittest.TestCase):
     def test_parse_visibility_Ndv(self):
         metar = MetarParser().parse('LSZL 300320Z AUTO 00000KT 9999NDV BKN060 OVC074 00/M04 Q1001\n RMK=')
 
-        self.assertEqual('> 10km', metar.visibility.distance)
+        self.assertEqual(TEN_KM, metar.visibility.distance)
 
     def test_parse_with_cavok(self):
         metar = MetarParser().parse('LFPG 212030Z 03003KT CAVOK 09/06 Q1031 NOSIG')
 
         self.assertTrue(metar.cavok)
-        self.assertEqual('> 10km', metar.visibility.distance)
+        self.assertEqual(TEN_KM, metar.visibility.distance)
         self.assertEqual(9, metar.temperature)
         self.assertEqual(6, metar.dew_point)
         self.assertEqual(1031, metar.altimeter)
@@ -414,7 +422,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertIsNone(taf.wind.gust)
         self.assertEqual("KT", taf.wind.unit)
         # Checks on visibility.
-        self.assertEqual('> 10km', taf.visibility.distance)
+        self.assertEqual(TEN_KM, taf.visibility.distance)
         # Check on clouds.
         self.assertEqual(2, len(taf.clouds))
         self.assertEqual(CloudQuantity.FEW, taf.clouds[0].quantity)
@@ -504,7 +512,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(6, becmg1.validity.start_hour)
         self.assertEqual(30, becmg1.validity.end_day)
         self.assertEqual(9, becmg1.validity.end_hour)
-        self.assertEqual('> 10km', becmg1.visibility.distance)
+        self.assertEqual(TEN_KM, becmg1.visibility.distance)
         self.assertEqual(0, len(becmg1.weather_conditions))
         self.assertEqual(1, len(becmg1.clouds))
         self.assertEqual(CloudQuantity.FEW, becmg1.clouds[0].quantity)
@@ -544,7 +552,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertIsNone(taf.wind.gust)
         self.assertEqual("KT", taf.wind.unit)
         # Checks on visibility.
-        self.assertEqual('> 10km', taf.visibility.distance)
+        self.assertEqual(TEN_KM, taf.visibility.distance)
         # Check on clouds.
         self.assertEqual(1, len(taf.clouds))
         self.assertEqual(CloudQuantity.SCT, taf.clouds[0].quantity)
@@ -572,7 +580,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(17, becmg0.validity.start_hour)
         self.assertEqual(12, becmg0.validity.end_day)
         self.assertEqual(18, becmg0.validity.end_hour)
-        self.assertEqual('> 10km', becmg0.visibility.distance)
+        self.assertEqual(TEN_KM, becmg0.visibility.distance)
         self.assertEqual(0, len(becmg0.weather_conditions))
         self.assertEqual(CloudQuantity.SCT, becmg0.clouds[0].quantity)
         self.assertEqual(25000, becmg0.clouds[0].height)
@@ -587,7 +595,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(3, becmg1.validity.start_hour)
         self.assertEqual(13, becmg1.validity.end_day)
         self.assertEqual(4, becmg1.validity.end_hour)
-        self.assertEqual('> 10km', becmg1.visibility.distance)
+        self.assertEqual(TEN_KM, becmg1.visibility.distance)
         self.assertIsNone(becmg1.wind.degrees)
         self.assertEqual("VRB", becmg1.wind.direction)
         self.assertEqual(6, becmg1.wind.speed)
@@ -703,7 +711,7 @@ class RemarkParserTestCase(unittest.TestCase):
         remarks = RemarkParser().parse('Token AO1 End of remark')
 
         self.assertEqual(5, len(remarks))
-        self.assertEqual(_('Remark.AO1'), remarks[1])
+        self.assertEqual(_(REMARK_AO1), remarks[1])
 
     def test_parse_AO2(self):
         remarks = RemarkParser().parse('Token AO2 End of remark')
@@ -715,14 +723,14 @@ class RemarkParserTestCase(unittest.TestCase):
         remarks = RemarkParser().parse('AO1 PK WND 28045/15')
 
         self.assertEqual(2, len(remarks))
-        self.assertEqual(_('Remark.AO1'), remarks[0])
+        self.assertEqual(_(REMARK_AO1), remarks[0])
         self.assertEqual(_('Remark.PeakWind').format('280', '45', '', '15'), remarks[1])
 
     def test_parse_peak_wind_another_hour(self):
         remarks = RemarkParser().parse('AO1 PK WND 28045/1515')
 
         self.assertEqual(2, len(remarks))
-        self.assertEqual(_('Remark.AO1'), remarks[0])
+        self.assertEqual(_(REMARK_AO1), remarks[0])
         self.assertEqual(_('Remark.PeakWind').format('280', '45', '15', '15'), remarks[1])
 
     def test_parse_wind_shift_hour(self):
@@ -771,7 +779,7 @@ class RemarkParserTestCase(unittest.TestCase):
         remarks = RemarkParser().parse('AO1 VIS NE 2 1/2')
 
         self.assertEqual(2, len(remarks))
-        self.assertEqual(_('Remark.Sector.Visibility').format(_('Converter.NE'), '2 1/2'), remarks[1])
+        self.assertEqual(_('Remark.Sector.Visibility').format(_(CONVERTER_NE), '2 1/2'), remarks[1])
 
     def test_parse_second_location_visibility(self):
         remarks = RemarkParser().parse('AO1 VIS 2 1/2 RWY11')
@@ -784,7 +792,7 @@ class RemarkParserTestCase(unittest.TestCase):
 
         self.assertEqual(2, len(remarks))
         self.assertEqual(
-            _('Remark.Tornadic.Activity.Beginning').format(_('Remark.TORNADO'), '', 13, 6, _('Converter.NE')),
+            _('Remark.Tornadic.Activity.Beginning').format(_('Remark.TORNADO'), '', 13, 6, _(CONVERTER_NE)),
             remarks[1])
 
     def test_parse_tornadic_activity_tornado_hour(self):
@@ -792,7 +800,7 @@ class RemarkParserTestCase(unittest.TestCase):
 
         self.assertEqual(2, len(remarks))
         self.assertEqual(
-            _('Remark.Tornadic.Activity.Beginning').format(_('Remark.TORNADO'), 15, 13, 6, _('Converter.NE')),
+            _('Remark.Tornadic.Activity.Beginning').format(_('Remark.TORNADO'), 15, 13, 6, _(CONVERTER_NE)),
             remarks[1])
 
     def test_parse_tornadic_activity_funnel_cloud(self):
@@ -800,7 +808,7 @@ class RemarkParserTestCase(unittest.TestCase):
 
         self.assertEqual(2, len(remarks))
         self.assertEqual(
-            _('Remark.Tornadic.Activity.BegEnd').format(_('Remark.FUNNELCLOUD'), 15, 13, 16, 30, 6, _('Converter.NE')),
+            _('Remark.Tornadic.Activity.BegEnd').format(_('Remark.FUNNELCLOUD'), 15, 13, 16, 30, 6, _(CONVERTER_NE)),
             remarks[1])
 
     def test_parse_tornadic_activity_water_sprout_ending_time_minutes(self):
@@ -808,7 +816,7 @@ class RemarkParserTestCase(unittest.TestCase):
 
         self.assertEqual(2, len(remarks))
         self.assertEqual(
-            _('Remark.Tornadic.Activity.Ending').format(_('Remark.WATERSPOUT'), '', 16, 12, _('Converter.NE')),
+            _('Remark.Tornadic.Activity.Ending').format(_('Remark.WATERSPOUT'), '', 16, 12, _(CONVERTER_NE)),
             remarks[1])
 
     def test_parse_tornadic_activity_watersprout_ending_time(self):
@@ -816,32 +824,32 @@ class RemarkParserTestCase(unittest.TestCase):
 
         self.assertEqual(2, len(remarks))
         self.assertEqual(
-            _('Remark.Tornadic.Activity.Ending').format(_('Remark.WATERSPOUT'), 15, 16, 12, _('Converter.NE')),
+            _('Remark.Tornadic.Activity.Ending').format(_('Remark.WATERSPOUT'), 15, 16, 12, _(CONVERTER_NE)),
             remarks[1])
 
     def test_parse_precipitation_start_end(self):
         remarks = RemarkParser().parse('AO1 RAB05E30SNB1520E1655')
 
         self.assertEqual(3, len(remarks))
-        self.assertEqual(_('Remark.Precipitation.Beg.End').format('', _('Phenomenon.RA'), '', '05', '', 30), remarks[1])
-        self.assertEqual(_('Remark.Precipitation.Beg.End').format('', _('Phenomenon.SN'), 15, 20, 16, 55), remarks[2])
+        self.assertEqual(_(REMARK_PRECIPITATION_BEG_END).format('', _('Phenomenon.RA'), '', '05', '', 30), remarks[1])
+        self.assertEqual(_(REMARK_PRECIPITATION_BEG_END).format('', _('Phenomenon.SN'), 15, 20, 16, 55), remarks[2])
 
     def test_parse_precipitation_start_end_descriptive(self):
         remarks = RemarkParser().parse('AO1 SHRAB05E30SHSNB20E55')
 
         self.assertEqual(3, len(remarks))
         self.assertEqual(
-            _('Remark.Precipitation.Beg.End').format(_('Descriptive.SH'), _('Phenomenon.RA'), '', '05', '', 30),
+            _(REMARK_PRECIPITATION_BEG_END).format(_('Descriptive.SH'), _('Phenomenon.RA'), '', '05', '', 30),
             remarks[1])
         self.assertEqual(
-            _('Remark.Precipitation.Beg.End').format(_('Descriptive.SH'), _('Phenomenon.SN'), '', 20, '', 55),
+            _(REMARK_PRECIPITATION_BEG_END).format(_('Descriptive.SH'), _('Phenomenon.SN'), '', 20, '', 55),
             remarks[2])
 
     def test_parse_thunderstorm_start(self):
         remarks = RemarkParser().parse('AO1 TSB0159E30')
 
         self.assertEqual(2, len(remarks))
-        self.assertEqual(_('Remark.Precipitation.Beg.End').format('', _('Phenomenon.TS'), '01', 59, '', 30), remarks[1])
+        self.assertEqual(_(REMARK_PRECIPITATION_BEG_END).format('', _('Phenomenon.TS'), '01', 59, '', 30), remarks[1])
 
     def test_parse_thunderstorm_location(self):
         remarks = RemarkParser().parse('AO1 TS SE')
@@ -853,7 +861,7 @@ class RemarkParserTestCase(unittest.TestCase):
         remarks = RemarkParser().parse('AO1 TS SE MOV NE')
 
         self.assertEqual(2, len(remarks))
-        self.assertEqual(_('Remark.Thunderstorm.Location.Moving').format(_('Converter.SE'), _('Converter.NE')),
+        self.assertEqual(_('Remark.Thunderstorm.Location.Moving').format(_('Converter.SE'), _(CONVERTER_NE)),
                          remarks[1])
 
     def test_parse_hail_size(self):
@@ -896,18 +904,18 @@ class RemarkParserTestCase(unittest.TestCase):
         remarks = RemarkParser().parse('AO1 FU BKN020')
 
         self.assertEqual(2, len(remarks))
-        self.assertEqual(_('Remark.Obscuration').format(_('CloudQuantity.BKN'), 2000, _('Phenomenon.FU')), remarks[1])
+        self.assertEqual(_('Remark.Obscuration').format(_(CLOUD_QUANTITY_BROKEN), 2000, _('Phenomenon.FU')), remarks[1])
 
     def test_parse_variable_sky_condition_without_layer(self):
         remarks = RemarkParser().parse('BKN V OVC')
 
-        self.assertEqual(_('Remark.Variable.Sky.Condition').format(_('CloudQuantity.BKN'), _('CloudQuantity.OVC')),
+        self.assertEqual(_('Remark.Variable.Sky.Condition').format(_(CLOUD_QUANTITY_BROKEN), _('CloudQuantity.OVC')),
                          remarks[0])
 
     def test_parse_variable_sky_conditions(self):
         remarks = RemarkParser().parse('BKN014 V OVC')
         self.assertEqual(
-            _('Remark.Variable.Sky.Condition.Height').format(1400, _('CloudQuantity.BKN'), _('CloudQuantity.OVC')),
+            _('Remark.Variable.Sky.Condition.Height').format(1400, _(CLOUD_QUANTITY_BROKEN), _('CloudQuantity.OVC')),
             remarks[0])
 
     def test_parse_ceiling_second_location(self):
@@ -918,12 +926,12 @@ class RemarkParserTestCase(unittest.TestCase):
     def test_parse_sea_level_pressure(self):
         remarks = RemarkParser().parse('AO1 SLP134')
 
-        self.assertEqual(_('Remark.Sea.Level.Pressure').format('1013.4'), remarks[1])
+        self.assertEqual(_(REMARK_SEA_LEVEL_PRESSURE).format('1013.4'), remarks[1])
 
     def test_parse_sea_level_pressure_lower(self):
         remarks = RemarkParser().parse('AO1 SLP982')
 
-        self.assertEqual(_('Remark.Sea.Level.Pressure').format('998.2'), remarks[1])
+        self.assertEqual(_(REMARK_SEA_LEVEL_PRESSURE).format('998.2'), remarks[1])
 
     def test_parse_snow_increasing_rapidly(self):
         remarks = RemarkParser().parse('AO1 SNINCR 2/10')
@@ -931,7 +939,7 @@ class RemarkParserTestCase(unittest.TestCase):
 
     def test_parse_rmk_slp(self):
         remarks = RemarkParser().parse('CF1AC8 CF TR SLP091 DENSITY ALT 200FT')
-        self.assertEqual(_('Remark.Sea.Level.Pressure').format('1009.1'), remarks[3])
+        self.assertEqual(_(REMARK_SEA_LEVEL_PRESSURE).format('1009.1'), remarks[3])
 
     def test_parse_hourly_maximum_minimum_temperature_command(self):
         remarks = RemarkParser().parse('401001015 AO1')

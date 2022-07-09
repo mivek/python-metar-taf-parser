@@ -6,6 +6,13 @@ from metar_taf_parser.commons.exception import TranslationError
 from metar_taf_parser.commons.i18n import _
 
 
+CLOUD_QUANTITY = 'CloudQuantity.'
+CONVERTER = 'Converter.'
+DESCRIPTIVE = 'Descriptive.'
+PHENOMENON = 'Phenomenon.'
+REMARK = 'Remark.'
+
+
 def empty_if_none(code: str) -> str:
     return '' if code is None else code
 
@@ -213,9 +220,9 @@ class ObscurationCommand(Command):
 
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
-        layer = _('CloudQuantity.' + matches[1])
+        layer = _(CLOUD_QUANTITY + matches[1])
         height = 100 * int(matches[2])
-        detail = _('Phenomenon.' + matches[0])
+        detail = _(PHENOMENON + matches[0])
         remark.append(_('Remark.Obscuration').format(layer, height, detail))
         return self._pattern.sub('', code, 1), remark
 
@@ -264,8 +271,8 @@ class PrecipitationBegCommand(Command):
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Precipitation.Beg').format(
-            '' if matches[1] is None else _('Descriptive.' + matches[1]),
-            _('Phenomenon.' + matches[2]),
+            '' if matches[1] is None else _(DESCRIPTIVE + matches[1]),
+            _(PHENOMENON + matches[2]),
             empty_if_none(matches[3]),
             matches[4]
         ))
@@ -284,8 +291,8 @@ class PrecipitationBegEndCommand(Command):
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Precipitation.Beg.End').format(
-            '' if matches[1] is None else _('Descriptive.' + matches[1]),
-            _('Phenomenon.' + matches[2]),
+            '' if matches[1] is None else _(DESCRIPTIVE + matches[1]),
+            _(PHENOMENON + matches[2]),
             empty_if_none(matches[3]),
             matches[4],
             empty_if_none(matches[5]),
@@ -309,8 +316,8 @@ class PrecipitationEndCommand(Command):
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Precipitation.End').format(
-            '' if matches[1] is None else _('Descriptive.' + matches[1]),
-            _('Phenomenon.' + matches[2]),
+            '' if matches[1] is None else _(DESCRIPTIVE + matches[1]),
+            _(PHENOMENON + matches[2]),
             empty_if_none(matches[3]),
             matches[4]
         ))
@@ -377,7 +384,7 @@ class SectorVisibilityCommand(Command):
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Sector.Visibility').format(
-            _('Converter.' + matches[0]),
+            _(CONVERTER + matches[0]),
             matches[1]
         ))
         return self._pattern.sub('', code, 1), remark
@@ -439,7 +446,7 @@ class SnowPelletsCommand(Command):
 
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
-        remark.append(_('Remark.Snow.Pellets').format(_('Remark.' + matches[0])))
+        remark.append(_('Remark.Snow.Pellets').format(_(REMARK + matches[0])))
         return self._pattern.sub('', code, 1), remark
 
     def can_parse(self, code: str) -> any:
@@ -484,7 +491,7 @@ class ThunderStormLocationCommand(Command):
 
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
-        remark.append(_('Remark.Thunderstorm.Location').format(_('Converter.' + matches[0])))
+        remark.append(_('Remark.Thunderstorm.Location').format(_(CONVERTER + matches[0])))
         return self._pattern.sub('', code, 1), remark
 
     def can_parse(self, code: str) -> any:
@@ -500,7 +507,7 @@ class ThunderStormLocationMovingCommand(Command):
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Thunderstorm.Location.Moving').format(
-            _('Converter.' + matches[0]), _('Converter.' + matches[1])
+            _(CONVERTER + matches[0]), _(CONVERTER + matches[1])
         ))
         return self._pattern.sub('', code, 1), remark
 
@@ -517,11 +524,11 @@ class TornadicActivityBegCommand(Command):
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Tornadic.Activity.Beginning').format(
-            _('Remark.' + matches[0].replace(' ', '')),
+            _(REMARK + matches[0].replace(' ', '')),
             empty_if_none(matches[2]),
             matches[3],
             matches[5],
-            _('Converter.' + matches[6])
+            _(CONVERTER + matches[6])
         ))
         return self._pattern.sub('', code, 1), remark
 
@@ -538,13 +545,13 @@ class TornadicActivityBegEndCommand(Command):
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Tornadic.Activity.BegEnd').format(
-            _('Remark.' + matches[0].replace(' ', '')),
+            _(REMARK + matches[0].replace(' ', '')),
             empty_if_none(matches[2]),
             matches[3],
             empty_if_none(matches[5]),
             matches[6],
             matches[8],
-            _('Converter.' + matches[9])
+            _(CONVERTER + matches[9])
         ))
         return self._pattern.sub('', code, 1), remark
 
@@ -561,11 +568,11 @@ class TornadicActivityEndCommand(Command):
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Tornadic.Activity.Ending').format(
-            _('Remark.' + matches[0].replace(' ', '')),
+            _(REMARK + matches[0].replace(' ', '')),
             empty_if_none(matches[2]),
             matches[3],
             matches[5],
-            _('Converter.' + matches[6])
+            _(CONVERTER + matches[6])
         ))
         return self._pattern.sub('', code, 1), remark
 
@@ -597,8 +604,8 @@ class VariableSkyCommand(Command):
     def execute(self, code: str, remark: list) -> tuple:
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Variable.Sky.Condition').format(
-            _('CloudQuantity.' + matches[0]),
-            _('CloudQuantity.' + matches[1])
+            _(CLOUD_QUANTITY + matches[0]),
+            _(CLOUD_QUANTITY + matches[1])
         ))
         return self._pattern.sub('', code, 1), remark
 
@@ -616,8 +623,8 @@ class VariableSkyHeightCommand(Command):
         matches = self._pattern.search(code).groups()
         remark.append(_('Remark.Variable.Sky.Condition.Height').format(
             100 * int(matches[1]),
-            _('CloudQuantity.' + matches[0]),
-            _('CloudQuantity.' + matches[2])
+            _(CLOUD_QUANTITY + matches[0]),
+            _(CLOUD_QUANTITY + matches[2])
         ))
         return self._pattern.sub('', code, 1), remark
 
@@ -633,7 +640,7 @@ class VirgaDirectionCommand(Command):
 
     def execute(self, code: str, remark: list) -> tuple:
         match = self._pattern.search(code).groups()
-        remark.append(_('Remark.Virga.Direction').format(_('Converter.' + match[0])))
+        remark.append(_('Remark.Virga.Direction').format(_(CONVERTER + match[0])))
         return self._pattern.sub('', code, 1), remark
 
     def can_parse(self, code: str) -> any:
@@ -720,7 +727,7 @@ class DefaultCommand(Command):
     def execute(self, code: str, remark: list) -> tuple:
         rmk_split = code.split(' ', 1)
         try:
-            rem = _('Remark.' + rmk_split[0])
+            rem = _(REMARK + rmk_split[0])
             remark.append(rem)
         except TranslationError:
             remark.append(rmk_split[0])
