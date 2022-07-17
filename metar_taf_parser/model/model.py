@@ -1,7 +1,7 @@
 import abc
 from datetime import time
 
-from metar_taf_parser.model.enum import Descriptive, WeatherChangeType, TimeIndicator
+from metar_taf_parser.model.enum import Descriptive, Flag, WeatherChangeType, TimeIndicator
 
 
 class Country:
@@ -455,6 +455,7 @@ class AbstractWeatherCode(AbstractWeatherContainer):
         self._airport = None
         self._message = None
         self._station = None
+        self._flags = set()
         self._trends = []
 
     def _get_day(self):
@@ -493,12 +494,36 @@ class AbstractWeatherCode(AbstractWeatherContainer):
     def add_trend(self, value):
         self._trends.append(value)
 
+    def _get_flags(self):
+        return self._flags
+
+    def _is_auto(self):
+        return Flag.AUTO in self._flags
+
+    def _is_amendment(self):
+        return Flag.AMD in self._flags
+
+    def _is_canceled(self):
+        return Flag.CNL in self._flags
+
+    def _is_corrected(self):
+        return Flag.COR in self._flags
+
+    def _is_nil(self):
+        return Flag.NIL in self._flags
+
     day = property(_get_day, _set_day)
     time = property(_get_time, _set_time)
     airport = property(_get_airport, _set_airport)
     message = property(_get_message, _set_message)
     station = property(_get_station, _set_station)
     trends = property(_get_trends)
+    flags = property(_get_flags)
+    amendment = property(_is_amendment)
+    auto = property(_is_auto)
+    canceled = property(_is_canceled)
+    corrected = property(_is_corrected)
+    nil = property(_is_nil)
 
 
 class Metar(AbstractWeatherCode):
@@ -509,7 +534,6 @@ class Metar(AbstractWeatherCode):
         self._dew_point = None
         self._altimeter = None
         self._nosig = False
-        self._auto = False
         self._runways_info = []
 
     def _get_temperature(self):
@@ -536,12 +560,6 @@ class Metar(AbstractWeatherCode):
     def _set_nosig(self, value: bool):
         self._nosig = value
 
-    def _is_auto(self):
-        return self._auto
-
-    def _set_auto(self, value: bool):
-        self._auto = value
-
     def _get_runways_info(self):
         return self._runways_info
 
@@ -552,7 +570,6 @@ class Metar(AbstractWeatherCode):
     dew_point = property(_get_dew_point, _set_dew_point)
     altimeter = property(_get_altimeter, _set_altimeter)
     nosig = property(_is_nosig, _set_nosig)
-    auto = property(_is_auto, _set_auto)
     runways_info = property(_get_runways_info)
 
 
@@ -563,7 +580,6 @@ class TAF(AbstractWeatherCode):
         self._validity = None
         self._max_temperature = None
         self._min_temperature = None
-        self._amendment = False
 
     def _get_validity(self):
         return self._validity
@@ -583,12 +599,6 @@ class TAF(AbstractWeatherCode):
     def _set_max_temperature(self, value: TemperatureDated):
         self._max_temperature = value
 
-    def _is_amendment(self):
-        return self._amendment
-
-    def _set_amendment(self, value: bool):
-        self._amendment = value
-
     def becmgs(self):
         return list(filter(lambda trend: trend.type == WeatherChangeType.BECMG, self.trends))
 
@@ -607,7 +617,6 @@ class TAF(AbstractWeatherCode):
     validity = property(_get_validity, _set_validity)
     max_temperature = property(_get_max_temperature, _set_max_temperature)
     min_temperature = property(_get_min_temperature, _set_min_temperature)
-    amendment = property(_is_amendment, _set_amendment)
 
 
 class AbstractTrend(AbstractWeatherContainer):

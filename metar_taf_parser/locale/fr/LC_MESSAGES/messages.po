@@ -3,10 +3,9 @@ msgstr ""
 "MIME-Version: 1.0"
 "Content-Type: text/plain; charset=utf-8"
 "Content-Transfer-Encoding: 8bit"
-"X-Generator: Mivek prop2po"
-"Project-Id-Version: metar-parser"
+"X-Generator: prop2po"
+"Project-Id-Version: MetarParser"
 "Language: fr"
-
 #:
 msgid "CloudQuantity.BKN"
 msgstr "nuages fragmentés"
@@ -194,6 +193,26 @@ msgstr "L'aéroport n'a pas été trouvé pour ce message."
 #:
 msgid "ErrorCode.InvalidMessage"
 msgstr "Le message entré est invalide."
+
+#:
+msgid "Flag.AMD"
+msgstr "TAF modifié"
+
+#:
+msgid "Flag.AUTO"
+msgstr "METAR automatisé"
+
+#:
+msgid "Flag.CNL"
+msgstr "TAF annulé"
+
+#:
+msgid "Flag.COR"
+msgstr "METAR/TAF corrigé"
+
+#:
+msgid "Flag.NIL"
+msgstr "Aucune donnée"
 
 #:
 msgid "Indicator.M"
@@ -658,6 +677,10 @@ msgstr "De"
 #:
 msgid "WeatherChangeType.BECMG"
 msgstr "Devenant"
+
+#:
+msgid "WeatherChangeType.INTER"
+msgstr "Intermittent"
 
 #:
 msgid "WeatherChangeType.TEMPO"

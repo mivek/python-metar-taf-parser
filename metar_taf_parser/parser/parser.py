@@ -7,7 +7,7 @@ from metar_taf_parser.command.metar import CommandSupplier as MetarCommandSuppli
 from metar_taf_parser.command.remark import RemarkCommandSupplier
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import TranslationError
-from metar_taf_parser.model.enum import Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
+from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
 from metar_taf_parser.model.model import WeatherCondition, Visibility, Metar, TemperatureDated, \
     AbstractWeatherContainer, TAF, TAFTrend, MetarTrend, Validity, FMValidity, MetarTrendTime
 
@@ -21,6 +21,14 @@ def parse_delivery_time(abstract_weather_code, time_string):
     """
     abstract_weather_code.day = int(time_string[0:2])
     abstract_weather_code.time = time(int(time_string[2:4]), int(time_string[4:6]))
+
+
+def _parse_flags(abstract_weather_code, flag_string):
+    try:
+        abstract_weather_code.flags.add(Flag(flag_string))
+        return True
+    except ValueError:
+        return False
 
 
 def parse_remark(container: AbstractWeatherContainer, line: list, index: int):
@@ -199,11 +207,9 @@ class MetarParser(AbstractParser):
         parse_delivery_time(metar, metar_tab[1])
         index = 2
         while index < len(metar_tab):
-            if not super().general_parse(metar, metar_tab[index]):
+            if not super().general_parse(metar, metar_tab[index]) and not _parse_flags(metar, metar_tab[index]):
                 if 'NOSIG' == metar_tab[index]:
                     metar.nosig = True
-                elif 'AUTO' == metar_tab[index]:
-                    metar.auto = True
                 elif AbstractParser.TEMPO == metar_tab[index] or AbstractParser.BECMG == metar_tab[index]:
                     trend = MetarTrend(WeatherChangeType[metar_tab[index]])
                     index = self._parse_trend(index, trend, metar_tab)
@@ -245,8 +251,7 @@ class TAFParser(AbstractParser):
         index = 1
         if TAFParser.TAF == lines[0][1]:
             index = 2
-        if 'AMD' == lines[0][index]:
-            taf.amendment = True
+        if _parse_flags(taf, lines[0][index]):
             index += 1
 
         taf.station = lines[0][index]
@@ -266,6 +271,7 @@ class TAFParser(AbstractParser):
             elif token.startswith(TAFParser.TN):
                 taf.min_temperature = _parse_temperature(token)
             else:
+                _parse_flags(taf, token)
                 self.general_parse(taf, token)
 
         # Handle the other lines

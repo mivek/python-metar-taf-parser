@@ -32,6 +32,17 @@ class CloudType(enum.Enum):
         return _('CloudType.' + self.value)
 
 
+class Flag(enum.Enum):
+    AMD = 'AMD'
+    AUTO = 'AUTO'
+    CNL = 'CNL'
+    COR = 'COR'
+    NIL = 'NIL'
+
+    def __str__(self):
+        return _('Flag.' + self.value)
+
+
 class Intensity(enum.Enum):
     LIGHT = '-'
     HEAVY = '+'

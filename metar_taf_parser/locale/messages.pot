@@ -497,7 +497,7 @@ msgstr "next"
 
 #:
 msgid "Remark.PeakWind"
-msgstr "peak wind of {1} knots from {0} degrees at {2}\:{3}"
+msgstr "peak wind of {1} knots from {0} degrees at {2}:{3}"
 
 #:
 msgid "Remark.Precipitation.Amount.Hourly"
@@ -513,15 +513,15 @@ msgstr "{0} inches of precipitation fell in the last 24 hours"
 
 #:
 msgid "Remark.Precipitation.Beg"
-msgstr "{0} {1} beginning at {2}\:{3} "
+msgstr "{0} {1} beginning at {2}:{3}"
 
 #:
 msgid "Remark.Precipitation.Beg.End"
-msgstr "{0} {1} beginning at {2}\:{3} ending at {4}\:{5}"
+msgstr "{0} {1} beginning at {2}:{3} ending at {4}:{5}"
 
 #:
 msgid "Remark.Precipitation.End"
-msgstr "{0} {1} ending at {2}\:{3}"
+msgstr "{0} {1} ending at {2}:{3}"
 
 #:
 msgid "Remark.Pressure.Tendency"
@@ -581,15 +581,15 @@ msgstr "thunderstorm {0} of the station moving towards {1}"
 
 #:
 msgid "Remark.Tornadic.Activity.Beginning"
-msgstr "{0} beginning at {1}\:{2} {3} SM {4} of the station"
+msgstr "{0} beginning at {1}:{2} {3} SM {4} of the station"
 
 #:
 msgid "Remark.Tornadic.Activity.BegEnd"
-msgstr "{0} beginning at {1}\:{2} ending at {3}\:{4} {5} SM {6} of the station"
+msgstr "{0} beginning at {1}:{2} ending at {3}:{4} {5} SM {6} of the station"
 
 #:
 msgid "Remark.Tornadic.Activity.Ending"
-msgstr "{0} ending at {1}\:{2} {3} SM {4} of the station"
+msgstr "{0} ending at {1}:{2} {3} SM {4} of the station"
 
 #:
 msgid "Remark.TORNADO"
@@ -629,11 +629,11 @@ msgstr "water equivalent of {0} inches of snow"
 
 #:
 msgid "Remark.WindShift"
-msgstr "wind shift at {0}\:{1}"
+msgstr "wind shift at {0}:{1}"
 
 #:
 msgid "Remark.WindShift.FROPA"
-msgstr "wind shift accompanied by frontal passage at {0}\:{1}"
+msgstr "wind shift accompanied by frontal passage at {0}:{1}"
 
 #:
 msgid "MetarFacade.InvalidIcao"

@@ -131,6 +131,12 @@ Class extending the AbstractWeatherContainer. Abstract parent class of METAR and
 -   message: `str`. The message of the METAR/TAF.
 -   station: `str`. The station for which the message was issued.
 -   trends: `[TAFTrend/MetarTrend]`. Array of trends
+-   flags: `[Flag]`. Set of flags.
+-   auto: `bool`. Whether the METAR is automated.
+-   amendment: `bool`. Whether the TAF is an amendment.
+-   nil: `bool`. Whether the METAR/TAF is null.
+-   canceled: `bool`. Whether the METAR/TAF is canceled.
+-   corrected: `bool`. Whether the METAR/TAF is a correction.
 
 #### Metar
 
@@ -140,7 +146,6 @@ Class representing a metar object.
 -   dew_point: `int`. The dew_point in celsius.
 -   altimeter: `float`. The altimeter value in HPa.
 -   nosig: `bool`. Whether the message is nosig: No significant changes to come.
--   auto: `bool`. Whether the message is auto.
 -   runway_info: `[RunwayInfo]`. Array of runway information.
 
 #### TAF
