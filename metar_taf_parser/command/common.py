@@ -31,7 +31,8 @@ def set_wind_elements(wind: Wind, direction: str, speed: str, gust: str, unit: s
 
 
 class CloudCommand:
-    cloud_regex = r'^([A-Z]{3})(\d{3})?([A-Z]{2,3})?$'
+    cloud_regex = r'^([A-Z]{3})(\d{3}|/{3})?([A-Z]{2,3}|/{3})?$'
+    undefined = '///'
 
     def __init__(self):
         self._pattern = re.compile(CloudCommand.cloud_regex)
@@ -42,9 +43,9 @@ class CloudCommand:
         try:
             if CloudQuantity[m[0]]:
                 cloud.quantity = CloudQuantity[m[0]]
-            if m[1]:
+            if m[1] and m[1] != CloudCommand.undefined:
                 cloud.height = 100 * int(m[1])
-            if m[2] and CloudType[m[2]]:
+            if m[2] and m[2] != CloudCommand.undefined:
                 cloud.type = CloudType[m[2]]
             return cloud
         except KeyError:

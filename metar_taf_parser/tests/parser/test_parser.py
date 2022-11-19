@@ -255,7 +255,13 @@ class MetarParserTestCase(unittest.TestCase):
         metar = MetarParser().parse('SVMC 211703Z AUTO NIL')
 
         self.assertTrue(metar.nil)
+    
+    def test_parse_with_unknown_cloudtype(self):
+        metar = MetarParser().parse('EKVG 291550Z AUTO 13009KT 9999 BKN037/// BKN048/// 07/06 Q1009 RMK FEW011/// FEW035/// WIND SKEID 13020KT')
 
+        self.assertIsNotNone(metar)
+        self.assertEqual('EKVG', metar.station)
+        self.assertEqual(2, len(metar.clouds))
 
 class FunctionTestCase(unittest.TestCase):
 

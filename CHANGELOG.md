@@ -2,6 +2,10 @@
 
 ## [TBD] - TBD
 
+### Added
+
+- Support for unknown height and unknown types in cloud elements. Clouds elements with `///` are no longer ignored.
+
 ### Fixed
 
 - WeatherConditions are now added to the list only if the entire token was parsed. This prevents false positive matches.
