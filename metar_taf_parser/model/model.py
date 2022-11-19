@@ -413,7 +413,7 @@ class AbstractWeatherContainer(abc.ABC):
         return self._weather_conditions
 
     def add_weather_condition(self, wc: WeatherCondition):
-        if wc.is_valid():
+        if wc:
             self._weather_conditions.append(wc)
             return True
 

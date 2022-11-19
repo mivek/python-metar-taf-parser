@@ -120,16 +120,22 @@ class AbstractParser(abc.ABC):
         if self._intensity_regex_pattern.match(input):
             match = self._intensity_regex_pattern.findall(input)[0]
             weather_condition.intensity = Intensity(match)
+            input = input[len(match):]
 
         for name, member in Descriptive.__members__.items():
             if member.value in input:
                 weather_condition.descriptive = member
+                input = input[len(member.value):]
 
-        for name, member in Phenomenon.__members__.items():
-            if member.value in input:
-                weather_condition.add_phenomenon(member)
+        previous_token = ''
+        while input != '' and input != previous_token:
+            previous_token = input
+            for name, member in Phenomenon.__members__.items():
+                if re.match(r'^' + member.value, input):
+                    weather_condition.add_phenomenon(member)
+                    input = input[len(member.value):]
 
-        return weather_condition
+        return weather_condition if input == '' and weather_condition.is_valid() else None
 
     def tokenize(self, input: str):
         """

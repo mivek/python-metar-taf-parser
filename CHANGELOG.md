@@ -1,5 +1,12 @@
 # Change Log 
 
+## [TBD] - TBD
+
+### Fixed
+
+- WeatherConditions are now added to the list only if the entire token was parsed. This prevents false positive matches.
+- Phenomenons in WeatherConditions are now listed in the same order they appear in the token.
+
 ## [1.5.0] - 2022-07-17
 
 ### Added

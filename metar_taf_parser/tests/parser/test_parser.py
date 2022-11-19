@@ -35,6 +35,14 @@ class AbstractParserTestCase(unittest.TestCase):
         self.assertEqual(Descriptive.SHOWERS, weather_condition.descriptive)
         self.assertListEqual([Phenomenon.RAIN, Phenomenon.HAIL], weather_condition.phenomenons)
 
+    def test_parse_weather_condition_order(self):
+        weather_condition = StubParser()._parse_weather_condition('-SNRA')
+        
+        self.assertEqual(Intensity.LIGHT, weather_condition.intensity)
+        self.assertIsNone(weather_condition.descriptive)
+        self.assertEqual(Phenomenon.SNOW, weather_condition.phenomenons[0])
+        self.assertEqual(Phenomenon.RAIN, weather_condition.phenomenons[1])
+        
     def test_tokenize(self):
         code = 'METAR KTTN 051853Z 04011KT 1 1/2SM VCTS SN FZFG BKN003 OVC010 M02/M02 A3006 RMK AO2 TSB40 SLP176 P0002 T10171017='
         expected = ['METAR', 'KTTN', '051853Z', '04011KT', '1 1/2SM', 'VCTS', 'SN', 'FZFG', 'BKN003', 'OVC010',
