@@ -263,6 +263,19 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual('EKVG', metar.station)
         self.assertEqual(2, len(metar.clouds))
 
+    def test_parseVC(self):
+
+        metar = MetarParser().parse('CYVM 282100Z 36028G36KT 1SM -SN DRSN VCBLSN OVC008 M03/M04 A2935 RMK SN2ST8 LAST STFFD OBS/NXT 291200UTC SLP940')
+
+        self.assertEqual(3, len(metar.weather_conditions))
+        self.assertEqual(Intensity.LIGHT, metar.weather_conditions[0].intensity)
+        self.assertEqual(Phenomenon.SNOW, metar.weather_conditions[0].phenomenons[0])
+        self.assertEqual(Descriptive.DRIFTING, metar.weather_conditions[1].descriptive)
+        self.assertEqual(Phenomenon.SNOW, metar.weather_conditions[1].phenomenons[0])
+        self.assertEqual(Intensity.IN_VICINITY, metar.weather_conditions[2].intensity)
+        self.assertEqual(Descriptive.BLOWING, metar.weather_conditions[2].descriptive)
+        self.assertEqual(Phenomenon.SNOW, metar.weather_conditions[2].phenomenons[0])
+
 class FunctionTestCase(unittest.TestCase):
 
     def test_parse_visibility(self):
