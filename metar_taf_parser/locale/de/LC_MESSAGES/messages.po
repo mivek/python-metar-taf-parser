@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
+"Content-Type: text/plain; charset=UTF-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
-"Project-Id-Version: MetarParser"
+"Project-Id-Version: metar_taf_parser"
 "Language: de"
 #:
 msgid "CloudQuantity.BKN"

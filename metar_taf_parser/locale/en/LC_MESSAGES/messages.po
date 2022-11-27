@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
+"Content-Type: text/plain; charset=UTF-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
-"Project-Id-Version: MetarParser"
+"Project-Id-Version: metar_taf_parser"
 "Language: en"
 #:
 msgid "CloudQuantity.BKN"
@@ -269,6 +269,46 @@ msgstr "corrected METAR/TAF"
 #:
 msgid "Flag.NIL"
 msgstr "no data"
+
+#:
+msgid "IcingIntensity.0"
+msgstr "Trace Icing or None"
+
+#:
+msgid "IcingIntensity.1"
+msgstr "Light Mixed Icing"
+
+#:
+msgid "IcingIntensity.2"
+msgstr "Light Rime Icing In Cloud"
+
+#:
+msgid "IcingIntensity.3"
+msgstr "Light Clear Icing In Precipitation"
+
+#:
+msgid "IcingIntensity.4"
+msgstr "Moderate Mixed Icing"
+
+#:
+msgid "IcingIntensity.5"
+msgstr "Moderate Rime Icing In Cloud"
+
+#:
+msgid "IcingIntensity.6"
+msgstr "Moderate Clear Icing In Precipitation"
+
+#:
+msgid "IcingIntensity.7"
+msgstr "Severe Mixed Icing"
+
+#:
+msgid "IcingIntensity.8"
+msgstr "Severe Rime Icing In Cloud"
+
+#:
+msgid "IcingIntensity.9"
+msgstr "Severe Clear Icing In Precipitation"
 
 #:
 msgid "Indicator.M"
@@ -787,6 +827,10 @@ msgid "ToString.auto"
 msgstr "auto"
 
 #:
+msgid "ToString.baseHeight"
+msgstr "base layer in feet"
+
+#:
 msgid "ToString.cavok"
 msgstr "cavok"
 
@@ -819,6 +863,10 @@ msgid "ToString.deposit.type"
 msgstr "type of deposit"
 
 #:
+msgid "ToString.depth"
+msgstr "layer depth in feet"
+
+#:
 msgid "ToString.descriptive"
 msgstr "descriptive"
 
@@ -833,6 +881,10 @@ msgstr "end day of the month"
 #:
 msgid "ToString.end.hour.day"
 msgstr "end hour of the day"
+
+#:
+msgid "ToString.flags"
+msgstr "flags"
 
 #:
 msgid "ToString.height.feet"
@@ -973,4 +1025,48 @@ msgstr "speed"
 #:
 msgid "ToString.wind.unit"
 msgstr "unit"
+
+#:
+msgid "TurbulenceIntensity.0"
+msgstr "None"
+
+#:
+msgid "TurbulenceIntensity.1"
+msgstr "Light turbulence"
+
+#:
+msgid "TurbulenceIntensity.2"
+msgstr "Moderate turbulence in clear air, occasional"
+
+#:
+msgid "TurbulenceIntensity.3"
+msgstr "Moderate turbulence in clear air, frequent"
+
+#:
+msgid "TurbulenceIntensity.4"
+msgstr "Moderate turbulence in cloud, occasional"
+
+#:
+msgid "TurbulenceIntensity.5"
+msgstr "Moderate turbulence in cloud, frequent"
+
+#:
+msgid "TurbulenceIntensity.6"
+msgstr "Severe turbulence in clear air, occasional"
+
+#:
+msgid "TurbulenceIntensity.7"
+msgstr "Severe turbulence in clear air, frequent"
+
+#:
+msgid "TurbulenceIntensity.8"
+msgstr "Severe turbulence in cloud, occasional"
+
+#:
+msgid "TurbulenceIntensity.9"
+msgstr "Severe turbulence in cloud, frequent"
+
+#:
+msgid "TurbulenceIntensity.X"
+msgstr "Extreme turbulence"
 

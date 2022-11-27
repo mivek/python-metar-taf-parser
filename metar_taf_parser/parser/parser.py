@@ -5,6 +5,7 @@ from datetime import time
 from metar_taf_parser.command.common import CommandSupplier
 from metar_taf_parser.command.metar import CommandSupplier as MetarCommandSupplier
 from metar_taf_parser.command.remark import RemarkCommandSupplier
+from metar_taf_parser.command.taf import TAFCommandSupplier
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import TranslationError
 from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
@@ -243,6 +244,7 @@ class TAFParser(AbstractParser):
     def __init__(self):
         super().__init__()
         self._validity_pattern = re.compile(r'^\d{4}/\d{4}$')
+        self._taf_command_supplier = TAFCommandSupplier()
 
     def parse(self, input: str):
         """
@@ -269,6 +271,7 @@ class TAFParser(AbstractParser):
 
         for i in range(index + 1, len(lines[0])):
             token = lines[0][i]
+            command = self._taf_command_supplier.get(token)
             if AbstractParser.RMK == token:
                 parse_remark(taf, lines[0], i)
                 break
@@ -276,6 +279,8 @@ class TAFParser(AbstractParser):
                 taf.max_temperature = _parse_temperature(token)
             elif token.startswith(TAFParser.TN):
                 taf.min_temperature = _parse_temperature(token)
+            elif command:
+                command.execute(taf, token)
             else:
                 _parse_flags(taf, token)
                 self.general_parse(taf, token)
@@ -337,7 +342,11 @@ class TAFParser(AbstractParser):
         :return: None
         """
         for i in range(index, len(line)):
-            if AbstractParser.RMK == line[i]:
+            command = self._taf_command_supplier.get(line[i])
+
+            if command:
+                command.execute(trend, line[i])
+            elif AbstractParser.RMK == line[i]:
                 parse_remark(trend, line, i)
                 break
             elif self._validity_pattern.search(line[i]):
