@@ -79,7 +79,7 @@ class MainVisibilityCommand:
 
 
 class WindCommand:
-    regex = r'^(VRB|\d{3})(\d{2})G?(\d{2})?(KT|MPS|KM\/H)?'
+    regex = r'^(VRB|[0-3]\d{2})(\d{2})G?(\d{2})?(KT|MPS|KM\/H)?'
 
     def __init__(self):
         self._pattern = re.compile(WindCommand.regex)

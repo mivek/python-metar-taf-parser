@@ -105,7 +105,7 @@ class CommonTestCase(unittest.TestCase):
         self.assertEqual(CloudQuantity.SCT, cloud.quantity)
         self.assertIsNone(cloud.height)
         self.assertIsNone(cloud.type)
-        
+
 
 if __name__ == '__main__':
     unittest.main()
