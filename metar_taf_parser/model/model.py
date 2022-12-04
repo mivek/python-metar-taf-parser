@@ -352,55 +352,55 @@ class Icing:
         self._intensity: IcingIntensity = None
         self._base_height = 0
         self._depth = 0
-    
+
     def _get_intensity(self):
         return self._intensity
-    
+
     def _set_intensity(self, intensity: IcingIntensity):
         self._intensity = intensity
-    
+
     def _get_base_height(self):
         return self._base_height
-    
-    def _set_base_height(self, base_height:int):
+
+    def _set_base_height(self, base_height: int):
         self._base_height = base_height
-    
+
     def _get_depth(self):
         return self._depth
-    
+
     def _set_depth(self, depth: int):
         self._depth = depth
-    
+
     intensity = property(_get_intensity, _set_intensity)
     base_height = property(_get_base_height, _set_base_height)
     depth = property(_get_depth, _set_depth)
 
 
 class Turbulence:
-    
+
     def __init__(self):
         self._intensity: TurbulenceIntensity = None
         self._base_height = 0
         self._depth = 0
-    
+
     def _get_intensity(self):
         return self._intensity
-    
+
     def _set_intensity(self, intensity: TurbulenceIntensity):
         self._intensity = intensity
-    
+
     def _get_base_height(self):
         return self._base_height
-    
-    def _set_base_height(self, base_height:int):
+
+    def _set_base_height(self, base_height: int):
         self._base_height = base_height
-    
+
     def _get_depth(self):
         return self._depth
-    
+
     def _set_depth(self, depth: int):
         self._depth = depth
-    
+
     intensity = property(_get_intensity, _set_intensity)
     base_height = property(_get_base_height, _set_base_height)
     depth = property(_get_depth, _set_depth)
@@ -410,19 +410,19 @@ class ITafGroups:
     def __init__(self):
         self._turbulence = []
         self._icings = []
-    
+
     def _get_turbulence(self):
         return self._turbulence
-    
+
     def _get_icings(self):
         return self._icings
-    
+
     def add_turbulence(self, turbulence: Turbulence):
         self._turbulence.append(turbulence)
 
     def add_icing(self, icing: Icing):
         self._icings.append(icing)
-    
+
     turbulence = property(_get_turbulence)
     icings = property(_get_icings)
 

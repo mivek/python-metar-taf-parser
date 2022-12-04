@@ -1,6 +1,6 @@
 # Change Log 
 
-## [TBD] - TBD
+## [1.6.0] - 2022-12-04
 
 ### Added
 

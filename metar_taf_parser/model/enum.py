@@ -54,7 +54,7 @@ class IcingIntensity(enum.Enum):
     SEVERE_MIXED_ICING = '7'
     SEVERE_RIME_ICING_CLOUD = '8'
     SEVERE_CLEAR_ICING_PRECIPITATION = '9'
-    
+
     def __str__(self) -> str:
         return _('IcingIntensity.' + self.value)
 
@@ -134,6 +134,7 @@ class TurbulenceIntensity(enum.Enum):
 
     def __str__(self) -> str:
         return _('TurbuleneIntensity.' + self.value)
+
 
 class WeatherChangeType(enum.Enum):
     FM = 'FM'

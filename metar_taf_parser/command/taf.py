@@ -9,10 +9,10 @@ class IcingCommand:
 
     def __init__(self):
         self._pattern = re.compile(IcingCommand.regex)
-    
+
     def can_parse(self, input: str):
         return self._pattern.search(input)
-    
+
     def execute(self, itaf: ITafGroups, input: str):
         """
 
@@ -50,6 +50,7 @@ class TurbulenceCommand:
         turbulence.base_height = 100 * int(matches[1])
         turbulence.depth = 1000 * int(matches[2])
         itaf.add_turbulence(turbulence)
+
 
 class TAFCommandSupplier:
     def __init__(self):

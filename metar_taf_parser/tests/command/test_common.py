@@ -91,7 +91,7 @@ class CommonTestCase(unittest.TestCase):
     def test_cloud_command_unknown_type(self):
         command = CloudCommand()
         cloud = command.parse('SCT026///')
-        
+
         self.assertIsNotNone(cloud)
         self.assertEqual(CloudQuantity.SCT, cloud.quantity)
         self.assertEqual(2600, cloud.height)
@@ -100,7 +100,7 @@ class CommonTestCase(unittest.TestCase):
     def test_cloud_command_unknown_height_and_type(self):
         command = CloudCommand()
         cloud = command.parse('SCT//////')
-        
+
         self.assertIsNotNone(cloud)
         self.assertEqual(CloudQuantity.SCT, cloud.quantity)
         self.assertIsNone(cloud.height)

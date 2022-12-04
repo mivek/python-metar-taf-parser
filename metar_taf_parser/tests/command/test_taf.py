@@ -11,7 +11,6 @@ class TAFCommandTestCase(unittest.TestCase):
         command = IcingCommand()
         self.assertTrue(command.can_parse('620304'))
 
-
     def test_icing_command_execute(self):
         code = '620304'
         itaf = ITafGroups()
@@ -24,12 +23,10 @@ class TAFCommandTestCase(unittest.TestCase):
         self.assertEqual(3000, itaf.icings[0].base_height)
         self.assertEqual(4000, itaf.icings[0].depth)
 
-
     def test_turbulence_command_can_parse(self):
         command = TurbulenceCommand()
 
         self.assertTrue(command.can_parse('520004'))
-
 
     def test_turbulence_command_execute(self):
         command = TurbulenceCommand()
@@ -45,7 +42,6 @@ class TAFCommandTestCase(unittest.TestCase):
         command_supplier = TAFCommandSupplier()
 
         self.assertEqual(2, len(command_supplier._commands))
-
 
 
 if __name__ == '__main__':

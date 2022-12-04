@@ -276,6 +276,7 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual(Descriptive.BLOWING, metar.weather_conditions[2].descriptive)
         self.assertEqual(Phenomenon.SNOW, metar.weather_conditions[2].phenomenons[0])
 
+
 class FunctionTestCase(unittest.TestCase):
 
     def test_parse_visibility(self):
@@ -747,13 +748,12 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual('KT', taf.wind.unit)
 
         self.assertEqual(TurbulenceIntensity.MODERATE_CLEAR_AIR_FREQUENT, taf.turbulence[0].intensity)
-        self.assertEqual(0,taf.turbulence[0].base_height)
+        self.assertEqual(0, taf.turbulence[0].base_height)
         self.assertEqual(9000, taf.turbulence[0].depth)
 
         self.assertEqual(IcingIntensity.LIGHT_CLEAR_ICING_PRECIPITATION, taf.icings[0].intensity)
         self.assertEqual(0, taf.icings[0].base_height)
         self.assertEqual(9000, taf.icings[0].depth)
-
 
     def test_parse_with_icings_turbulence_trends(self):
         taf = TAFParser().parse(
@@ -779,9 +779,6 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(1, len(taf.becmgs()[4].icings))
         self.assertEqual(1, len(taf.becmgs()[5].icings))
         self.assertEqual(2, len(taf.becmgs()[5].turbulence))
-
-
-
 
 
 class RemarkParserTestCase(unittest.TestCase):
