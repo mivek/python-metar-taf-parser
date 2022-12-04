@@ -1,7 +1,7 @@
 import abc
 from datetime import time
 
-from metar_taf_parser.model.enum import Descriptive, Flag, WeatherChangeType, TimeIndicator
+from metar_taf_parser.model.enum import Descriptive, Flag, WeatherChangeType, TimeIndicator, IcingIntensity, TurbulenceIntensity
 
 
 class Country:
@@ -347,6 +347,86 @@ class Cloud:
     type = property(_get_type, _set_type)
 
 
+class Icing:
+    def __init__(self):
+        self._intensity: IcingIntensity = None
+        self._base_height = 0
+        self._depth = 0
+
+    def _get_intensity(self):
+        return self._intensity
+
+    def _set_intensity(self, intensity: IcingIntensity):
+        self._intensity = intensity
+
+    def _get_base_height(self):
+        return self._base_height
+
+    def _set_base_height(self, base_height: int):
+        self._base_height = base_height
+
+    def _get_depth(self):
+        return self._depth
+
+    def _set_depth(self, depth: int):
+        self._depth = depth
+
+    intensity = property(_get_intensity, _set_intensity)
+    base_height = property(_get_base_height, _set_base_height)
+    depth = property(_get_depth, _set_depth)
+
+
+class Turbulence:
+
+    def __init__(self):
+        self._intensity: TurbulenceIntensity = None
+        self._base_height = 0
+        self._depth = 0
+
+    def _get_intensity(self):
+        return self._intensity
+
+    def _set_intensity(self, intensity: TurbulenceIntensity):
+        self._intensity = intensity
+
+    def _get_base_height(self):
+        return self._base_height
+
+    def _set_base_height(self, base_height: int):
+        self._base_height = base_height
+
+    def _get_depth(self):
+        return self._depth
+
+    def _set_depth(self, depth: int):
+        self._depth = depth
+
+    intensity = property(_get_intensity, _set_intensity)
+    base_height = property(_get_base_height, _set_base_height)
+    depth = property(_get_depth, _set_depth)
+
+
+class ITafGroups:
+    def __init__(self):
+        self._turbulence = []
+        self._icings = []
+
+    def _get_turbulence(self):
+        return self._turbulence
+
+    def _get_icings(self):
+        return self._icings
+
+    def add_turbulence(self, turbulence: Turbulence):
+        self._turbulence.append(turbulence)
+
+    def add_icing(self, icing: Icing):
+        self._icings.append(icing)
+
+    turbulence = property(_get_turbulence)
+    icings = property(_get_icings)
+
+
 class AbstractWeatherContainer(abc.ABC):
 
     def __init__(self):
@@ -413,7 +493,7 @@ class AbstractWeatherContainer(abc.ABC):
         return self._weather_conditions
 
     def add_weather_condition(self, wc: WeatherCondition):
-        if wc.is_valid():
+        if wc:
             self._weather_conditions.append(wc)
             return True
 
@@ -573,10 +653,11 @@ class Metar(AbstractWeatherCode):
     runways_info = property(_get_runways_info)
 
 
-class TAF(AbstractWeatherCode):
+class TAF(ITafGroups, AbstractWeatherCode):
 
     def __init__(self):
-        super().__init__()
+        ITafGroups.__init__(self)
+        AbstractWeatherCode.__init__(self)
         self._validity = None
         self._max_temperature = None
         self._min_temperature = None
@@ -662,9 +743,10 @@ class MetarTrend(AbstractTrend):
     times = property(_get_times)
 
 
-class TAFTrend(AbstractTrend):
+class TAFTrend(AbstractTrend, ITafGroups):
     def __init__(self, weather_change_type: WeatherChangeType):
-        super().__init__(weather_change_type)
+        ITafGroups.__init__(self)
+        AbstractTrend.__init__(self, weather_change_type)
         self._probability = None
 
     def _get_validity(self):

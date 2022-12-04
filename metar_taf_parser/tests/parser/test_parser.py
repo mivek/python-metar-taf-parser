@@ -3,7 +3,7 @@ import unittest
 from parameterized import parameterized
 
 from metar_taf_parser.model.enum import Intensity, Phenomenon, Descriptive, WeatherChangeType, CloudQuantity, CloudType, \
-    TimeIndicator
+    TimeIndicator, TurbulenceIntensity, IcingIntensity
 from metar_taf_parser.model.model import AbstractWeatherContainer, Visibility, Wind
 from metar_taf_parser.parser.parser import AbstractParser, MetarParser, _parse_validity, _parse_temperature, TAFParser, \
     RemarkParser
@@ -34,6 +34,14 @@ class AbstractParserTestCase(unittest.TestCase):
         self.assertIsNone(weather_condition.intensity)
         self.assertEqual(Descriptive.SHOWERS, weather_condition.descriptive)
         self.assertListEqual([Phenomenon.RAIN, Phenomenon.HAIL], weather_condition.phenomenons)
+
+    def test_parse_weather_condition_order(self):
+        weather_condition = StubParser()._parse_weather_condition('-SNRA')
+
+        self.assertEqual(Intensity.LIGHT, weather_condition.intensity)
+        self.assertIsNone(weather_condition.descriptive)
+        self.assertEqual(Phenomenon.SNOW, weather_condition.phenomenons[0])
+        self.assertEqual(Phenomenon.RAIN, weather_condition.phenomenons[1])
 
     def test_tokenize(self):
         code = 'METAR KTTN 051853Z 04011KT 1 1/2SM VCTS SN FZFG BKN003 OVC010 M02/M02 A3006 RMK AO2 TSB40 SLP176 P0002 T10171017='
@@ -247,6 +255,26 @@ class MetarParserTestCase(unittest.TestCase):
         metar = MetarParser().parse('SVMC 211703Z AUTO NIL')
 
         self.assertTrue(metar.nil)
+
+    def test_parse_with_unknown_cloudtype(self):
+        metar = MetarParser().parse('EKVG 291550Z AUTO 13009KT 9999 BKN037/// BKN048/// 07/06 Q1009 RMK FEW011/// FEW035/// WIND SKEID 13020KT')
+
+        self.assertIsNotNone(metar)
+        self.assertEqual('EKVG', metar.station)
+        self.assertEqual(2, len(metar.clouds))
+
+    def test_parseVC(self):
+
+        metar = MetarParser().parse('CYVM 282100Z 36028G36KT 1SM -SN DRSN VCBLSN OVC008 M03/M04 A2935 RMK SN2ST8 LAST STFFD OBS/NXT 291200UTC SLP940')
+
+        self.assertEqual(3, len(metar.weather_conditions))
+        self.assertEqual(Intensity.LIGHT, metar.weather_conditions[0].intensity)
+        self.assertEqual(Phenomenon.SNOW, metar.weather_conditions[0].phenomenons[0])
+        self.assertEqual(Descriptive.DRIFTING, metar.weather_conditions[1].descriptive)
+        self.assertEqual(Phenomenon.SNOW, metar.weather_conditions[1].phenomenons[0])
+        self.assertEqual(Intensity.IN_VICINITY, metar.weather_conditions[2].intensity)
+        self.assertEqual(Descriptive.BLOWING, metar.weather_conditions[2].descriptive)
+        self.assertEqual(Phenomenon.SNOW, metar.weather_conditions[2].phenomenons[0])
 
 
 class FunctionTestCase(unittest.TestCase):
@@ -703,6 +731,54 @@ class TAFParserTestCase(unittest.TestCase):
     def test_parse_corrected(self):
         taf = TAFParser().parse('TAF COR EDDS 201148Z 2012/2112 31010KT CAVOK BECMG 2018/2021 33004KT BECMG 2106/2109 07005KT')
         self.assertTrue(taf.corrected)
+
+    def test_parse_with_turbulence_and_icing(self):
+        taf = TAFParser().parse(
+            """TAF KLSV 222300Z 2223/2405 21020G35KT 8000 BLDU BKN160 530009 630009 QNH2941INS
+              TEMPO 2223/2302 23035G52KT BKN150 560009
+              BECMG 2305/2306 35015G25KT 9999 VCSH BKN140 520009 QNH2948INS
+              BECMG 2316/2317 34010G18KT 9999 NSW SCT170 QNH2969INS TX28/2323Z TN12/2314Z
+            """
+        )
+
+        self.assertEqual('KLSV', taf.station)
+        self.assertEqual(210, taf.wind.degrees)
+        self.assertEqual(20, taf.wind.speed)
+        self.assertEqual(35, taf.wind.gust)
+        self.assertEqual('KT', taf.wind.unit)
+
+        self.assertEqual(TurbulenceIntensity.MODERATE_CLEAR_AIR_FREQUENT, taf.turbulence[0].intensity)
+        self.assertEqual(0, taf.turbulence[0].base_height)
+        self.assertEqual(9000, taf.turbulence[0].depth)
+
+        self.assertEqual(IcingIntensity.LIGHT_CLEAR_ICING_PRECIPITATION, taf.icings[0].intensity)
+        self.assertEqual(0, taf.icings[0].base_height)
+        self.assertEqual(9000, taf.icings[0].depth)
+
+    def test_parse_with_icings_turbulence_trends(self):
+        taf = TAFParser().parse(
+            """TAF AMD KNID 222300Z 0115/0215 21006KT 9999 SCT250 QNH2981INS
+              BECMG 0116/0118 19014G22KT 9999 FEW120 SCT250 520009 520909 QNH2978INS WND 160V230
+              BECMG 0118/0120 19018G26KT 9000 BLDU FEW003 FEW120 SCT250 530009 530909 QNH2972INS
+              BECMG 0120/0122 19022G35KT 9000 BLDU FEW003 SCT120 BKN250 560009 560906 531509 QNH2967INS
+              TEMPO 0122/0202 19030G40KT 1600 BLDUSA BKN002 SCT120 BKN250
+              BECMG 0202/0204 20018G30KT 9999 NSW SCT120 BKN220 530008 530909 QNH2972INS
+              BECMG 0208/0210 21015G25KT 9999 BKN120 BKN220 611208 530009 540909 QNH2974INS
+              BECMG 0214/0215 22012G25KT 9999 BKN120 BKN220 611208 520009 540909 QNH2980INS
+            """
+        )
+
+        self.assertIsNotNone(taf)
+        self.assertEqual(6, len(taf.becmgs()))
+        self.assertEqual(1, len(taf.tempos()))
+        self.assertEqual(2, len(taf.becmgs()[0].turbulence))
+        self.assertEqual(2, len(taf.becmgs()[1].turbulence))
+        self.assertEqual(3, len(taf.becmgs()[2].turbulence))
+        self.assertEqual(2, len(taf.becmgs()[3].turbulence))
+        self.assertEqual(2, len(taf.becmgs()[4].turbulence))
+        self.assertEqual(1, len(taf.becmgs()[4].icings))
+        self.assertEqual(1, len(taf.becmgs()[5].icings))
+        self.assertEqual(2, len(taf.becmgs()[5].turbulence))
 
 
 class RemarkParserTestCase(unittest.TestCase):

@@ -5,6 +5,7 @@ from datetime import time
 from metar_taf_parser.command.common import CommandSupplier
 from metar_taf_parser.command.metar import CommandSupplier as MetarCommandSupplier
 from metar_taf_parser.command.remark import RemarkCommandSupplier
+from metar_taf_parser.command.taf import TAFCommandSupplier
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import TranslationError
 from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
@@ -120,16 +121,22 @@ class AbstractParser(abc.ABC):
         if self._intensity_regex_pattern.match(input):
             match = self._intensity_regex_pattern.findall(input)[0]
             weather_condition.intensity = Intensity(match)
+            input = input[len(match):]
 
         for name, member in Descriptive.__members__.items():
             if member.value in input:
                 weather_condition.descriptive = member
+                input = input[len(member.value):]
 
-        for name, member in Phenomenon.__members__.items():
-            if member.value in input:
-                weather_condition.add_phenomenon(member)
+        previous_token = ''
+        while input != '' and input != previous_token:
+            previous_token = input
+            for name, member in Phenomenon.__members__.items():
+                if re.match(r'^' + member.value, input):
+                    weather_condition.add_phenomenon(member)
+                    input = input[len(member.value):]
 
-        return weather_condition
+        return weather_condition if input == '' and weather_condition.is_valid() else None
 
     def tokenize(self, input: str):
         """
@@ -237,6 +244,7 @@ class TAFParser(AbstractParser):
     def __init__(self):
         super().__init__()
         self._validity_pattern = re.compile(r'^\d{4}/\d{4}$')
+        self._taf_command_supplier = TAFCommandSupplier()
 
     def parse(self, input: str):
         """
@@ -263,6 +271,7 @@ class TAFParser(AbstractParser):
 
         for i in range(index + 1, len(lines[0])):
             token = lines[0][i]
+            command = self._taf_command_supplier.get(token)
             if AbstractParser.RMK == token:
                 parse_remark(taf, lines[0], i)
                 break
@@ -270,6 +279,8 @@ class TAFParser(AbstractParser):
                 taf.max_temperature = _parse_temperature(token)
             elif token.startswith(TAFParser.TN):
                 taf.min_temperature = _parse_temperature(token)
+            elif command:
+                command.execute(taf, token)
             else:
                 _parse_flags(taf, token)
                 self.general_parse(taf, token)
@@ -331,7 +342,11 @@ class TAFParser(AbstractParser):
         :return: None
         """
         for i in range(index, len(line)):
-            if AbstractParser.RMK == line[i]:
+            command = self._taf_command_supplier.get(line[i])
+
+            if command:
+                command.execute(trend, line[i])
+            elif AbstractParser.RMK == line[i]:
                 parse_remark(trend, line, i)
                 break
             elif self._validity_pattern.search(line[i]):

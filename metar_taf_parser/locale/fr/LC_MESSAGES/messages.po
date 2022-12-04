@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
+"Content-Type: text/plain; charset=UTF-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
-"Project-Id-Version: MetarParser"
+"Project-Id-Version: metar_taf_parser"
 "Language: fr"
 #:
 msgid "CloudQuantity.BKN"
@@ -213,6 +213,46 @@ msgstr "METAR/TAF corrigé"
 #:
 msgid "Flag.NIL"
 msgstr "Aucune donnée"
+
+#:
+msgid "IcingIntensity.0"
+msgstr "Aucune ou trace de givrage"
+
+#:
+msgid "IcingIntensity.1"
+msgstr "Givre léger"
+
+#:
+msgid "IcingIntensity.2"
+msgstr "Léger givre dans les nuages"
+
+#:
+msgid "IcingIntensity.3"
+msgstr "Glace transparente légère dans les précipitations"
+
+#:
+msgid "IcingIntensity.4"
+msgstr "Givre modéré"
+
+#:
+msgid "IcingIntensity.5"
+msgstr "Givre modéré dans les nuages"
+
+#:
+msgid "IcingIntensity.6"
+msgstr "Glace transparente modérée dans les précipitations"
+
+#:
+msgid "IcingIntensity.7"
+msgstr "Glaçage mixte sévère"
+
+#:
+msgid "IcingIntensity.8"
+msgstr "Givre sévère dans les nuages"
+
+#:
+msgid "IcingIntensity.9"
+msgstr "Sévère glace transparente dans les précipitations"
 
 #:
 msgid "Indicator.M"
@@ -715,6 +755,10 @@ msgid "ToString.amendment"
 msgstr "amendement"
 
 #:
+msgid "ToString.baseHeight"
+msgstr "Base de la couche en pied"
+
+#:
 msgid "ToString.clouds"
 msgstr "nuages"
 
@@ -743,6 +787,10 @@ msgid "ToString.deposit.type"
 msgstr "type dépôt"
 
 #:
+msgid "ToString.depth"
+msgstr "épaisseur de la couche en pieds"
+
+#:
 msgid "ToString.descriptive"
 msgstr "descriptif"
 
@@ -757,6 +805,10 @@ msgstr "jour de fin du mois"
 #:
 msgid "ToString.end.hour.day"
 msgstr "heure de fin du jour"
+
+#:
+msgid "ToString.flags"
+msgstr "drapeaux"
 
 #:
 msgid "ToString.height.feet"
@@ -885,4 +937,48 @@ msgstr "vitesse"
 #:
 msgid "ToString.wind.unit"
 msgstr "unité"
+
+#:
+msgid "TurbulenceIntensity.0"
+msgstr "Aucune"
+
+#:
+msgid "TurbulenceIntensity.1"
+msgstr "Turbulence légère"
+
+#:
+msgid "TurbulenceIntensity.2"
+msgstr "Turbulences modérées occasionnelles dans l'air"
+
+#:
+msgid "TurbulenceIntensity.3"
+msgstr "Turbulences modérées fréquentes dans l'air"
+
+#:
+msgid "TurbulenceIntensity.4"
+msgstr "Turbulences modérées occasionnelles dans l'air"
+
+#:
+msgid "TurbulenceIntensity.5"
+msgstr "Turbulences modérées fréquentes dans l'air"
+
+#:
+msgid "TurbulenceIntensity.6"
+msgstr "Turbulences sévères occasionnelles dans l'air"
+
+#:
+msgid "TurbulenceIntensity.7"
+msgstr "Turbulences sévères fréquentes dans l'air"
+
+#:
+msgid "TurbulenceIntensity.8"
+msgstr "Turbulences sévères occasionnelles dans les nuages"
+
+#:
+msgid "TurbulenceIntensity.9"
+msgstr "Turbulences sévères fréquentes dans les nuages"
+
+#:
+msgid "TurbulenceIntensity.X"
+msgstr "Turbulence extrême"
 

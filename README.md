@@ -38,6 +38,8 @@ This package contains the parser module with the `MetarParser` and `TAFParser` c
 -   Phenomenon: Represents the phenomenon of a weather phenomenon
 -   TimeIndicator: Indicates the time trend
 -   WeatherChangeType: Indicate the type of trend
+-   IcingIntensity: Represents the intensity of an icing element
+-   TurbulenceIntensity: Represents the intensity of a turbulence element
 
 
 ### Objects
@@ -100,6 +102,31 @@ Represents a cloud layer in METAR, TAF or trend object.
 -   height: `int`. The height of the layer in feet.
 -   quantity: `CloudQuantity`. The quantity of clouds.
 -   type: `CloudType`. The type of cloud in the layer.
+
+#### Icing
+
+Represents the icing in a TAF or TAFTrend object.
+
+-   intensity: `IcingIntensity`. The intensity of an icing.
+-   base_height: `int`. The base height of an icing element in feet.
+-   depth: `int`. The icing layer depth in feet. Adding this to the base height determines the top limit of the icing.
+
+#### Turbulence
+
+Represents the turbulence in a TAF or TAFTrend object.
+
+-   intensity: `TurbulenceIntensity`. The intensity of a turbulence.
+-   base_height: `int`. The base height of a turbulence element in feet.
+-   depth: `int`. The turbulence layer depth in feet. Adding this to the base height determines the top limit of the turbulence.
+
+#### ITafGroups
+
+Class holding turbulence and icing elements.
+
+-   icings: `[Icing]`. List of icing elements.
+-   turbulence: `[Turbulence]`. List of turbulence elements.
+
+This class is a parent class of `TAF` and `ITafGroups`.
 
 #### AbstractWeatherContainer
 

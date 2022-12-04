@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "MIME-Version: 1.0"
-"Content-Type: text/plain; charset=utf-8"
+"Content-Type: text/plain; charset=UTF-8"
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
-"Project-Id-Version: MetarParser"
+"Project-Id-Version: metar_taf_parser"
 "Language: it"
 #:
 msgid "CloudQuantity.BKN"
@@ -76,7 +76,7 @@ msgstr "Cumuli torreggiantidecreasing"
 
 #:
 msgid "DepositBrakingCapacity.NOT_REPORTED"
-msgstr "non riportato"
+msgstr "non riportato "
 
 #:
 msgid "DepositBrakingCapacity.POOR"
@@ -236,7 +236,7 @@ msgstr "temporale"
 
 #:
 msgid "Error.prefix"
-msgstr "Si è verificato un errore. Errore nr."
+msgstr "Si è verificato un errore. Errore nr. "
 
 #:
 msgid "ErrorCode.AirportNotFound"
@@ -272,7 +272,7 @@ msgstr "foschia"
 
 #:
 msgid "Phenomenon.DS"
-msgstr "tempesta di polvere"
+msgstr "tempesta di polvere "
 
 #:
 msgid "Phenomenon.DU"
@@ -428,7 +428,7 @@ msgstr "{0} {1} inizia a {2}:{3} e termina a {4}:{5}"
 
 #:
 msgid "Remark.PRESFR"
-msgstr "pressione in caduta rapidamente"
+msgstr "pressione in caduta rapidamente "
 
 #:
 msgid "Remark.PRESRR"
@@ -456,7 +456,7 @@ msgstr "aumento dell’altezza della neve di {0} pollici nell’ultima ora con u
 
 #:
 msgid "Remark.Snow.Pellets"
-msgstr "{0} neve tonda"
+msgstr "{0} neve tonda "
 
 #:
 msgid "Remark.Surface.Visibility"

@@ -1,5 +1,18 @@
 # Change Log 
 
+## [1.6.0] - 2022-12-04
+
+### Added
+
+- Support for unknown height and unknown types in cloud elements. Clouds elements with `///` are no longer ignored.
+- `Turbulence` and `Icing` elements are available in `TAF` and `TAFTrend` objects. The new properties are `turbulence` and `icings`.
+
+### Fixed
+
+- WeatherConditions are now added to the list only if the entire token was parsed. This prevents false positive matches.
+- Phenomenons in WeatherConditions are now listed in the same order they appear in the token.
+- Cloud regex matches the cloud type part only of the height is present. Tokens made of 6 letters do not match the regex anymore.
+
 ## [1.5.0] - 2022-07-17
 
 ### Added

@@ -1,0 +1,256 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=UTF-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: metar_taf_parser"
+"Language: es"
+#:
+msgid "CloudQuantity.NSC"
+msgstr "sin nubes significativas."
+
+#:
+msgid "CloudQuantity.OVC"
+msgstr "cubierto"
+
+#:
+msgid "CloudQuantity.SKC"
+msgstr "cielo claro"
+
+#:
+msgid "CloudType.AC"
+msgstr "Altocumulus"
+
+#:
+msgid "CloudType.AS"
+msgstr "Altostratus"
+
+#:
+msgid "CloudType.CB"
+msgstr "Cumulonimbus"
+
+#:
+msgid "CloudType.CC"
+msgstr "Cirrocumulus"
+
+#:
+msgid "CloudType.CI"
+msgstr "Cirrus"
+
+#:
+msgid "CloudType.CS"
+msgstr "Cirrostratus"
+
+#:
+msgid "CloudType.CU"
+msgstr "Cumulus"
+
+#:
+msgid "CloudType.NS"
+msgstr "Nimbostratus"
+
+#:
+msgid "CloudType.SC"
+msgstr "Stratocumulus"
+
+#:
+msgid "CloudType.ST"
+msgstr "Stratus"
+
+#:
+msgid "CloudType.TCU"
+msgstr "Torrecumulus"
+
+#:
+msgid "DepositBrakingCapacity.NOT_REPORTED"
+msgstr "no reportado"
+
+#:
+msgid "DepositCoverage.LESS_10"
+msgstr "menos de 10%"
+
+#:
+msgid "DepositCoverage.FROM_11_TO_25"
+msgstr "de 11% a 25%"
+
+#:
+msgid "DepositCoverage.FROM_26_TO_50"
+msgstr "de 26% a 50%"
+
+#:
+msgid "DepositCoverage.FROM_51_TO_100"
+msgstr "de 51% a 100%"
+
+#:
+msgid "DepositThickness.NOT_REPORTED"
+msgstr "no reportado"
+
+#:
+msgid "DepositThickness.LESS_1_MM"
+msgstr "menos de 1 mm"
+
+#:
+msgid "DepositThickness.THICKNESS_10"
+msgstr "10 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_15"
+msgstr "15 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_20"
+msgstr "20 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_25"
+msgstr "25 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_30"
+msgstr "30 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_35"
+msgstr "35 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_40"
+msgstr "40 cm o más"
+
+#:
+msgid "DepositThickness.CLOSED"
+msgstr "cerrado"
+
+#:
+msgid "DepositType.NOT_REPORTED"
+msgstr "no reportado"
+
+#:
+msgid "DepositType.CLEAR_DRY"
+msgstr "claro y seco"
+
+#:
+msgid "DepositType.DAMP"
+msgstr "húmedo"
+
+#:
+msgid "DepositType.WET_WATER_PATCHES"
+msgstr "húmedo o con charcos"
+
+#:
+msgid "DepositType.RIME_FROST_COVERED"
+msgstr "escarcha o cubierto de hielo"
+
+#:
+msgid "DepositType.DRY_SNOW"
+msgstr "nieve seca"
+
+#:
+msgid "DepositType.WET_SNOW"
+msgstr "nieve húmeda"
+
+#:
+msgid "DepositType.ICE"
+msgstr "hielo"
+
+#:
+msgid "DepositType.COMPACTED_SNOW"
+msgstr "nieve compactada o enrollada"
+
+#:
+msgid "DepositType.FROZEN_RIDGES"
+msgstr "huellas o cumbres congeladas"
+
+#:
+msgid "DepositType.SLUSH"
+msgstr "nieve derretida"
+
+#:
+msgid "Phenomenon.SS"
+msgstr "tormenta de arena"
+
+#:
+msgid "Phenomenon.UP"
+msgstr "precipitación desconocida"
+
+#:
+msgid "Phenomenon.VA"
+msgstr "ceniza volcánica"
+
+#:
+msgid "Phenomenon.TS"
+msgstr "tormenta"
+
+#:
+msgid "Remark.AO1"
+msgstr "estaciones automáticas sin discriminador de precipitación"
+
+#:
+msgid "Remark.AO2"
+msgstr "estaciones automáticas con discriminador de precipitación"
+
+#:
+msgid "Remark.ALQDS"
+msgstr "todos los cuadrantes"
+
+#:
+msgid "Remark.Barometer.0"
+msgstr "Subiendo, después bajando"
+
+#:
+msgid "Remark.Barometer.1"
+msgstr "Subiendo, después estacionaria; o subiendo,\ndespués aumentando con más lentitud"
+
+#:
+msgid "Remark.Barometer.2"
+msgstr "subiendo, regular o irregularmente"
+
+#:
+msgid "Remark.Barometer.3"
+msgstr "Bajando o estacionaria; después subiendo; o subiendo y después subiendo más rápidamente"
+
+#:
+msgid "Remark.Barometer.4"
+msgstr "Estacionaria"
+
+#:
+msgid "Remark.Barometer.5"
+msgstr "Bajando, después subiendo"
+
+#:
+msgid "Remark.Barometer.6"
+msgstr "Bajando, después estacionaria; o bajando y\ndespués bajando más lentamente"
+
+#:
+msgid "Remark.Barometer.7"
+msgstr "Bajando, regular o irregularmente"
+
+#:
+msgid "Remark.Barometer.8"
+msgstr "Estacionaria o subiendo y después bajando; o bajando y después bajando más rápidamente"
+
+#:
+msgid "Remark.BASED"
+msgstr "basado"
+
+#:
+msgid "Remark.Ceiling.Height"
+msgstr "techo de nubes entre {0} y {1} pies"
+
+#:
+msgid "Remark.Ceiling.Second.Location"
+msgstr "techo de nubes de {0} pies medido por un segundo sensor ubicado en {1}"
+
+#:
+msgid "Remark.DSNT"
+msgstr "distante"
+
+#:
+msgid "Remark.FCST"
+msgstr "pronóstico"
+
+#:
+msgid "Remark.FUNNELCLOUD"
+msgstr "nube embudo"
+
