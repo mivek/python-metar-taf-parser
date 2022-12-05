@@ -1,0 +1,956 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=UTF-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: metar_taf_parser"
+"Language: tr_TR"
+#:
+msgid "CloudQuantity.BKN"
+msgstr "parçalı çok bulutlu"
+
+#:
+msgid "CloudQuantity.FEW"
+msgstr "az bulutlu"
+
+#:
+msgid "CloudQuantity.NSC"
+msgstr "önemli bulut yok."
+
+#:
+msgid "CloudQuantity.OVC"
+msgstr "tamamen kapalı"
+
+#:
+msgid "CloudQuantity.SCT"
+msgstr "parçalı bulutlu"
+
+#:
+msgid "CloudQuantity.SKC"
+msgstr "gökyüzü açık"
+
+#:
+msgid "CloudType.AC"
+msgstr "Altokümülüs"
+
+#:
+msgid "CloudType.AS"
+msgstr "Altostratüs"
+
+#:
+msgid "CloudType.CB"
+msgstr "Kümülonimbus"
+
+#:
+msgid "CloudType.CC"
+msgstr "Sirrokümülüs"
+
+#:
+msgid "CloudType.CI"
+msgstr "Sirrus"
+
+#:
+msgid "CloudType.CS"
+msgstr "Sirrostratüs"
+
+#:
+msgid "CloudType.CU"
+msgstr "Kümülüs"
+
+#:
+msgid "CloudType.NS"
+msgstr "Nimbostratüs"
+
+#:
+msgid "CloudType.SC"
+msgstr "Stratokümülüs"
+
+#:
+msgid "CloudType.ST"
+msgstr "Stratüs"
+
+#:
+msgid "CloudType.TCU"
+msgstr "Yükselen kümülüs"
+
+#:
+msgid "DepositBrakingCapacity.NOT_REPORTED"
+msgstr "rapor edilmedi"
+
+#:
+msgid "DepositBrakingCapacity.POOR"
+msgstr "kötü"
+
+#:
+msgid "DepositBrakingCapacity.MEDIUM_POOR"
+msgstr "kötü/orta"
+
+#:
+msgid "DepositBrakingCapacity.MEDIUM"
+msgstr "orta"
+
+#:
+msgid "DepositBrakingCapacity.MEDIUM_GOOD"
+msgstr "orta/iyi"
+
+#:
+msgid "DepositBrakingCapacity.GOOD"
+msgstr "iyi"
+
+#:
+msgid "DepositBrakingCapacity.UNRELIABLE"
+msgstr "güvenilmez"
+
+#:
+msgid "DepositCoverage.NOT_REPORTED"
+msgstr "rapor edilmedi"
+
+#:
+msgid "DepositCoverage.LESS_10"
+msgstr "%10'dan daha az"
+
+#:
+msgid "DepositCoverage.FROM_11_TO_25"
+msgstr "%11 ila %25 arası"
+
+#:
+msgid "DepositCoverage.FROM_26_TO_50"
+msgstr "%26 ila %50 arası"
+
+#:
+msgid "DepositCoverage.FROM_51_TO_100"
+msgstr "%51 ila %100 arası"
+
+#:
+msgid "DepositThickness.NOT_REPORTED"
+msgstr "rapor edilmedi"
+
+#:
+msgid "DepositThickness.LESS_1_MM"
+msgstr "1 mm'den daha az"
+
+#:
+msgid "DepositThickness.THICKNESS_10"
+msgstr "10 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_15"
+msgstr "15 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_20"
+msgstr "20 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_25"
+msgstr "25 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_30"
+msgstr "30 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_35"
+msgstr "35 cm"
+
+#:
+msgid "DepositThickness.THICKNESS_40"
+msgstr "40 cm veya daha fazla"
+
+#:
+msgid "DepositThickness.CLOSED"
+msgstr "kullanılmaz"
+
+#:
+msgid "DepositType.NOT_REPORTED"
+msgstr "rapor edilmedi"
+
+#:
+msgid "DepositType.CLEAR_DRY"
+msgstr "açık ve kuru"
+
+#:
+msgid "DepositType.DAMP"
+msgstr "nemli"
+
+#:
+msgid "DepositType.WET_WATER_PATCHES"
+msgstr "ıslak veta küçük su parçaları"
+
+#:
+msgid "DepositType.RIME_FROST_COVERED"
+msgstr "kırağı veya donla kaplı"
+
+#:
+msgid "DepositType.DRY_SNOW"
+msgstr "kuru kar"
+
+#:
+msgid "DepositType.WET_SNOW"
+msgstr "ıslak kar"
+
+#:
+msgid "DepositType.ICE"
+msgstr "buz"
+
+#:
+msgid "DepositType.COMPACTED_SNOW"
+msgstr "yoğun veya sıkışmış kar"
+
+#:
+msgid "DepositType.FROZEN_RIDGES"
+msgstr "donan tekerlek izleri veya yığılmış kar"
+
+#:
+msgid "DepositType.SLUSH"
+msgstr "sulu kar"
+
+#:
+msgid "Descriptive.BC"
+msgstr "parçalı"
+
+#:
+msgid "Descriptive.BL"
+msgstr "savrulan"
+
+#:
+msgid "Descriptive.DR"
+msgstr "sürüklenen"
+
+#:
+msgid "Descriptive.FZ"
+msgstr "aşırı soğumuş"
+
+#:
+msgid "Descriptive.MI"
+msgstr "sığ"
+
+#:
+msgid "Descriptive.PR"
+msgstr "kısmi"
+
+#:
+msgid "Descriptive.SH"
+msgstr "sağanaklar"
+
+#:
+msgid "Descriptive.TS"
+msgstr "oraj"
+
+#:
+msgid "Error.prefix"
+msgstr "Hata oluştu. Hata kodu: {0}"
+
+#:
+msgid "ErrorCode.AirportNotFound"
+msgstr "Bu mesaj için havaalanı bulunamadı."
+
+#:
+msgid "ErrorCode.InvalidMessage"
+msgstr "Girilen mesaj geçersiz."
+
+#:
+msgid "Indicator.M"
+msgstr "daha az"
+
+#:
+msgid "Indicator.P"
+msgstr "daha fazla"
+
+#:
+msgid "Intensity.-"
+msgstr "Hafif"
+
+#:
+msgid "Intensity.+"
+msgstr "Kuvvetli"
+
+#:
+msgid "Intensity.VC"
+msgstr "Mutedil"
+
+#:
+msgid "Phenomenon.BR"
+msgstr "pus"
+
+#:
+msgid "Phenomenon.DS"
+msgstr "toz fırtınası"
+
+#:
+msgid "Phenomenon.DU"
+msgstr "geniş alana yayılmış toz"
+
+#:
+msgid "Phenomenon.DZ"
+msgstr "çisenti"
+
+#:
+msgid "Phenomenon.FC"
+msgstr "hortum bulutu tornado veya su hortumu"
+
+#:
+msgid "Phenomenon.FG"
+msgstr "sis"
+
+#:
+msgid "Phenomenon.FU"
+msgstr "duman"
+
+#:
+msgid "Phenomenon.GR"
+msgstr "dolu"
+
+#:
+msgid "Phenomenon.GS"
+msgstr "küçük dolu ve/veya kar paletleri"
+
+#:
+msgid "Phenomenon.HZ"
+msgstr "toz pusu"
+
+#:
+msgid "Phenomenon.IC"
+msgstr "buz kristalleri"
+
+#:
+msgid "Phenomenon.PL"
+msgstr "buz paletleri"
+
+#:
+msgid "Phenomenon.PO"
+msgstr "toz veya kum türbülonu"
+
+#:
+msgid "Phenomenon.PY"
+msgstr "çisenti"
+
+#:
+msgid "Phenomenon.RA"
+msgstr "yağmur"
+
+#:
+msgid "Phenomenon.SA"
+msgstr "kum"
+
+#:
+msgid "Phenomenon.SG"
+msgstr "kar grenleri"
+
+#:
+msgid "Phenomenon.SN"
+msgstr "fırtına"
+
+#:
+msgid "Phenomenon.SQ"
+msgstr "fırtına"
+
+#:
+msgid "Phenomenon.SS"
+msgstr "kum fırtınası"
+
+#:
+msgid "Phenomenon.UP"
+msgstr "tanımlanamayan yağış"
+
+#:
+msgid "Phenomenon.VA"
+msgstr "volkanik kül"
+
+#:
+msgid "Phenomenon.TS"
+msgstr "oraj"
+
+#:
+msgid "Remark.AO1"
+msgstr "yağış ayırıcısı bulunmayan istasyonla otomatize edilmiştir"
+
+#:
+msgid "Remark.AO2"
+msgstr "yağış ayırıcısı bulunan istasyonla otomatize edilmiştir"
+
+#:
+msgid "Remark.ALQDS"
+msgstr "tüm kadranlar"
+
+#:
+msgid "Remark.Barometer.0"
+msgstr "Artan, sonrasında azalan"
+
+#:
+msgid "Remark.Barometer.1"
+msgstr "Artan, sonrasında sabit, veya artan sonrasında daha yavaş artan"
+
+#:
+msgid "Remark.Barometer.2"
+msgstr "sabit veya kararsız artış"
+
+#:
+msgid "Remark.Barometer.3"
+msgstr "Azalan veya sabit, sonrasında artan; veya artan sonrasında daha hızlı artan"
+
+#:
+msgid "Remark.Barometer.4"
+msgstr "Sabit"
+
+#:
+msgid "Remark.Barometer.5"
+msgstr "Azalan, sonrasında artan"
+
+#:
+msgid "Remark.Barometer.6"
+msgstr "Azalan sonrasında sabit; veya azalan sonrasında daha yavaş azalan"
+
+#:
+msgid "Remark.Barometer.7"
+msgstr "Sabit veya kararsız azalan"
+
+#:
+msgid "Remark.Barometer.8"
+msgstr "Sabit veya artan, sonrasında azalan; veya azalan sonrasında daha hızlı azalan"
+
+#:
+msgid "Remark.BASED"
+msgstr "temel"
+
+#:
+msgid "Remark.Ceiling.Height"
+msgstr "tavan {0} ve {1} feet arasında değişken"
+
+#:
+msgid "Remark.Ceiling.Second.Location"
+msgstr "tavan {1} konumunda bulunan ikinci bir sensör tarafından ölçülen {0} feet"
+
+#:
+msgid "Remark.DSNT"
+msgstr "uzak"
+
+#:
+msgid "Remark.FCST"
+msgstr "tahmin"
+
+#:
+msgid "Remark.FUNNELCLOUD"
+msgstr "hortum bulutu"
+
+#:
+msgid "Remark.Hail"
+msgstr "en büyük dolu tanesi {0} inç çapında"
+
+#:
+msgid "Remark.Hail.LesserThan"
+msgstr "en büyük dolu tanesi {0} inç çapından küçük"
+
+#:
+msgid "Remark.Hourly.Maximum.Temperature"
+msgstr "6 saatlik maksimum sıcaklık {0}°C"
+
+#:
+msgid "Remark.Hourly.Maximum.Minimum.Temperature"
+msgstr "24 saatlik maksimum sıcaklık {0}°C ve 24 saatlik minimum sıcaklık {1}°C"
+
+#:
+msgid "Remark.Hourly.Minimum.Temperature"
+msgstr "6 saatlik minimum sıcaklık {0}°C"
+
+#:
+msgid "Remark.Hourly.Temperature"
+msgstr "saatlik sıcaklık {0}°C"
+
+#:
+msgid "Remark.Hourly.Temperature.Dew.Point"
+msgstr "saatlik sıcaklık {0}°C ve işba sıcaklık {1}°C"
+
+#:
+msgid "Remark.Ice.Accretion.Amount"
+msgstr "Son {1} saatte bir inçlik buz birikiminin {0}/100''ü"
+
+#:
+msgid "Remark.HVY"
+msgstr "kuvvetli"
+
+#:
+msgid "Remark.LGT"
+msgstr "hafif"
+
+#:
+msgid "Remark.LTG"
+msgstr "yıldırım"
+
+#:
+msgid "Remark.MOD"
+msgstr "mutedil"
+
+#:
+msgid "Remark.Obscuration"
+msgstr "{2}''den oluşan {1} feette {0} katmanı"
+
+#:
+msgid "Remark.ON"
+msgstr "sonra"
+
+#:
+msgid "Remark.NXT"
+msgstr "sonraki"
+
+#:
+msgid "Remark.PeakWind"
+msgstr "{2}:{3}''da {0} dereceden {1} knot maksimum rüzgar"
+
+#:
+msgid "Remark.Precipitation.Amount.Hourly"
+msgstr "{0}/100 inç yağış son bir saatte düştü"
+
+#:
+msgid "Remark.Precipitation.Amount.3.6"
+msgstr "son {0} saat içinde düşen yağış {1} inç"
+
+#:
+msgid "Remark.Precipitation.Amount.24"
+msgstr "son 24 saat içinde düşen yağış {0} inç"
+
+#:
+msgid "Remark.Precipitation.Beg"
+msgstr "{0} {1} başlangıç saati {2}:{3} "
+
+#:
+msgid "Remark.Precipitation.Beg.End"
+msgstr "{0} {1} başlangıç saati {2}:{3} bitiş saati {4}:{5}"
+
+#:
+msgid "Remark.Precipitation.End"
+msgstr "{0} {1} bitiş saati {2}:{3}"
+
+#:
+msgid "Remark.Pressure.Tendency"
+msgstr "son 3 saatte {0} hektopaskal"
+
+#:
+msgid "Remark.PRESFR"
+msgstr "hızla düşen basınç"
+
+#:
+msgid "Remark.PRESRR"
+msgstr "hızla artan basınç"
+
+#:
+msgid "Remark.Second.Location.Visibility"
+msgstr "{1} konumunda bulunan ikinci sensörde ölçülen görüş {0} kara mili"
+
+#:
+msgid "Remark.Sea.Level.Pressure"
+msgstr "deniz seviyesi basınç {0} HPa"
+
+#:
+msgid "Remark.Sector.Visibility"
+msgstr "{0} yönünde görüş {1} kara mili"
+
+#:
+msgid "Remark.SLPNO"
+msgstr "deniz seviyesi basınç mevcut değil"
+
+#:
+msgid "Remark.Snow.Depth"
+msgstr "kar kalınlığı {0} inç"
+
+#:
+msgid "Remark.Snow.Increasing.Rapidly"
+msgstr "zeminde toplam {1} inç kar kalınlığı ile birlikte son bir saatte {0} inçlik kar derinliği artışı"
+
+#:
+msgid "Remark.Snow.Pellets"
+msgstr "{0} kar tanecikleri"
+
+#:
+msgid "Remark.Sunshine.Duration"
+msgstr "{0} dakika güneş ışığı"
+
+#:
+msgid "Remark.Surface.Visibility"
+msgstr "yüzey görüşü {0} kara mili"
+
+#:
+msgid "Remark.Thunderstorm.Location"
+msgstr "{0} istasyonunda fırtına"
+
+#:
+msgid "Remark.Thunderstorm.Location.Moving"
+msgstr "{0} istasyonunda {1} yönünde hareket eden fırtına"
+
+#:
+msgid "Remark.Tornadic.Activity.Beginning"
+msgstr "{4} istasyonunda {3} kara mili uzaklıkta olan {0} saat {1}:{2}''de başlıyor"
+
+#:
+msgid "Remark.Tornadic.Activity.BegEnd"
+msgstr "{6} istasyonunda {5} kara mili uzaklıkta olan {0} saat {1}:{2}''de başlıyor {3}:{4}''de bitiyor"
+
+#:
+msgid "Remark.Tornadic.Activity.Ending"
+msgstr "{4} istasyonunda {3} kara mili uzaklıkta olan {0} saat {1}:{2}''de bitiyor"
+
+#:
+msgid "Remark.TORNADO"
+msgstr "hortum"
+
+#:
+msgid "Remark.Tower.Visibility"
+msgstr "kontrol kulesi görüş mesafesi {0} kara mili"
+
+#:
+msgid "Remark.Variable.Prevailing.Visibility"
+msgstr "{0} ve {1} kara mili arasında değişken geçerli görünürlük"
+
+#:
+msgid "Remark.Variable.Sky.Condition"
+msgstr "bulut katmanı {0} ve {1} arasında değişken"
+
+#:
+msgid "Remark.Variable.Sky.Condition.Height"
+msgstr "{0} feette bulut katmanı {1} ve {2} arasında değişken"
+
+#:
+msgid "Remark.VIRGA"
+msgstr "virga"
+
+#:
+msgid "Remark.Virga.Direction"
+msgstr "{0} istasyonunda virga"
+
+#:
+msgid "Remark.WATERSPOUT"
+msgstr "su hortumu"
+
+#:
+msgid "Remark.Water.Equivalent.Snow.Ground"
+msgstr "{0} inç kar su eşdeğeri"
+
+#:
+msgid "Remark.WindShift"
+msgstr "rüzgar yön kırılması saat {0}:{1}"
+
+#:
+msgid "Remark.WindShift.FROPA"
+msgstr "saat {0}:{1}''te önden geçiş eşliğinde rüzgar değişimi"
+
+#:
+msgid "MetarFacade.InvalidIcao"
+msgstr "Icao kodu geçersiz."
+
+#:
+msgid "Converter.D"
+msgstr "azalan"
+
+#:
+msgid "Converter.E"
+msgstr "Doğu"
+
+#:
+msgid "Converter.ENE"
+msgstr "Doğu/KuzeyDoğu"
+
+#:
+msgid "Converter.ESE"
+msgstr "Doğu/GündeyDoğu"
+
+#:
+msgid "Converter.N"
+msgstr "Kuzey"
+
+#:
+msgid "Converter.NE"
+msgstr "KuzeyDoğu"
+
+#:
+msgid "Converter.NNE"
+msgstr "Kuzey/KuzeyDoğu"
+
+#:
+msgid "Converter.NNW"
+msgstr "Kuzey/KuzeyBatı"
+
+#:
+msgid "Converter.NSC"
+msgstr "önemli değişiklik yok"
+
+#:
+msgid "Converter.NW"
+msgstr "KuzeyBatı"
+
+#:
+msgid "Converter.S"
+msgstr "Güney"
+
+#:
+msgid "Converter.SE"
+msgstr "GüneyDoğu"
+
+#:
+msgid "Converter.SSE"
+msgstr "Güney/GüneyDoğu"
+
+#:
+msgid "Converter.SSW"
+msgstr "Güney/GüneyBatı"
+
+#:
+msgid "Converter.SW"
+msgstr "GüneyBatı"
+
+#:
+msgid "Converter.U"
+msgstr "artan"
+
+#:
+msgid "Converter.VRB"
+msgstr "Değişken"
+
+#:
+msgid "Converter.W"
+msgstr "Batı"
+
+#:
+msgid "Converter.WNW"
+msgstr "Batı/KuzeyBatı"
+
+#:
+msgid "Converter.WSW"
+msgstr "Batı/GüneyBatı"
+
+#:
+msgid "WeatherChangeType.FM"
+msgstr "İtibaren"
+
+#:
+msgid "WeatherChangeType.BECMG"
+msgstr "Oluşacak"
+
+#:
+msgid "WeatherChangeType.INTER"
+msgstr "Aralıklı"
+
+#:
+msgid "WeatherChangeType.TEMPO"
+msgstr "Geçici"
+
+#:
+msgid "WeatherChangeType.PROB"
+msgstr "Olasılık"
+
+#:
+msgid "TimeIndicator.AT"
+msgstr "şurada"
+
+#:
+msgid "TimeIndicator.FM"
+msgstr "İtibaren"
+
+#:
+msgid "TimeIndicator.TL"
+msgstr "-e kadar"
+
+#:
+msgid "ToString.airport"
+msgstr "havaalanı"
+
+#:
+msgid "ToString.altimeter"
+msgstr "altimetre (hPa)"
+
+#:
+msgid "ToString.amendment"
+msgstr "düzeltme"
+
+#:
+msgid "ToString.auto"
+msgstr "otomatik"
+
+#:
+msgid "ToString.cavok"
+msgstr "cavok"
+
+#:
+msgid "ToString.clouds"
+msgstr "bulutlar"
+
+#:
+msgid "ToString.day.month"
+msgstr "ayın günü"
+
+#:
+msgid "ToString.day.hour"
+msgstr "günün saati"
+
+#:
+msgid "ToString.deposit.braking"
+msgstr "frenleme kapasitesi"
+
+#:
+msgid "ToString.deposit.coverage"
+msgstr "kapsam"
+
+#:
+msgid "ToString.deposit.thickness"
+msgstr "kalınlık"
+
+#:
+msgid "ToString.deposit.type"
+msgstr "kirlilik tipi"
+
+#:
+msgid "ToString.descriptive"
+msgstr "açıklama"
+
+#:
+msgid "ToString.dew.point"
+msgstr "işba sıcaklık"
+
+#:
+msgid "ToString.end.day.month"
+msgstr "ayın bitiş günü"
+
+#:
+msgid "ToString.end.hour.day"
+msgstr "günün bitiş saati"
+
+#:
+msgid "ToString.height.feet"
+msgstr "yükseklik (ft)"
+
+#:
+msgid "ToString.height.meter"
+msgstr "yükseklik (m)"
+
+#:
+msgid "ToString.intensity"
+msgstr "yoğunluk"
+
+#:
+msgid "ToString.indicator"
+msgstr "gösterge"
+
+#:
+msgid "ToString.message"
+msgstr "orijinal mesaj"
+
+#:
+msgid "ToString.name"
+msgstr "isim"
+
+#:
+msgid "ToString.nosig"
+msgstr "önemli değişiklik yok"
+
+#:
+msgid "ToString.phenomenons"
+msgstr "olaylar"
+
+#:
+msgid "ToString.probability"
+msgstr "olasılık"
+
+#:
+msgid "ToString.quantity"
+msgstr "miktar"
+
+#:
+msgid "ToString.remark"
+msgstr "diğer hususlar"
+
+#:
+msgid "ToString.report.time"
+msgstr "rapor zamanı"
+
+#:
+msgid "ToString.runway.info"
+msgstr "pistlerin bilgisi"
+
+#:
+msgid "ToString.start.day.month"
+msgstr "ayın başlangıç günü"
+
+#:
+msgid "ToString.start.hour.day"
+msgstr "günün başlangıç saati"
+
+#:
+msgid "ToString.start.minute"
+msgstr "başlangıç dakikası"
+
+#:
+msgid "ToString.temperature"
+msgstr "sıcaklık (°C)"
+
+#:
+msgid "ToString.temperature.max"
+msgstr "maksimum sıcaklık (℃)"
+
+#:
+msgid "ToString.temperature.min"
+msgstr "minimum sıcaklık (℃)"
+
+#:
+msgid "ToString.trend"
+msgstr "trend"
+
+#:
+msgid "ToString.trends"
+msgstr "trendler"
+
+#:
+msgid "ToString.type"
+msgstr "tip"
+
+#:
+msgid "ToString.visibility.main"
+msgstr "asıl görüş"
+
+#:
+msgid "ToString.visibility.min"
+msgstr "minimum görüş"
+
+#:
+msgid "ToString.visibility.min.direction"
+msgstr "minimum görüş yönü"
+
+#:
+msgid "ToString.visibility.max"
+msgstr "maksimum görüş"
+
+#:
+msgid "ToString.vertical.visibility"
+msgstr "dikey görüş (ft)"
+
+#:
+msgid "ToString.weather.conditions"
+msgstr "hava koşulları"
+
+#:
+msgid "ToString.wind.direction"
+msgstr "yön"
+
+#:
+msgid "ToString.wind.direction.degrees"
+msgstr "yön (derece)"
+
+#:
+msgid "ToString.wind.gusts"
+msgstr "hamleler"
+
+#:
+msgid "ToString.wind.min.variation"
+msgstr "minimum rüzgar değişim"
+
+#:
+msgid "ToString.wind.max.variation"
+msgstr "maksimum rüzgar değişim"
+
+#:
+msgid "ToString.wind.speed"
+msgstr "hız"
+
+#:
+msgid "ToString.wind.unit"
+msgstr "birim"
+

@@ -32,6 +32,33 @@ class CloudType(enum.Enum):
         return _('CloudType.' + self.value)
 
 
+class Flag(enum.Enum):
+    AMD = 'AMD'
+    AUTO = 'AUTO'
+    CNL = 'CNL'
+    COR = 'COR'
+    NIL = 'NIL'
+
+    def __str__(self):
+        return _('Flag.' + self.value)
+
+
+class IcingIntensity(enum.Enum):
+    NONE = '0'
+    LIGHT = '1'
+    LIGHT_RIME_ICING_CLOUD = '2'
+    LIGHT_CLEAR_ICING_PRECIPITATION = '3'
+    MODERATE_MIXED_ICING = '4'
+    MODERATE_RIME_ICING_CLOUD = '5'
+    MODERATE_CLEAR_ICING_PRECIPITATION = '6'
+    SEVERE_MIXED_ICING = '7'
+    SEVERE_RIME_ICING_CLOUD = '8'
+    SEVERE_CLEAR_ICING_PRECIPITATION = '9'
+
+    def __str__(self) -> str:
+        return _('IcingIntensity.' + self.value)
+
+
 class Intensity(enum.Enum):
     LIGHT = '-'
     HEAVY = '+'
@@ -92,11 +119,29 @@ class TimeIndicator(enum.Enum):
         return _('TimeIndicator.' + self.value)
 
 
+class TurbulenceIntensity(enum.Enum):
+    NONE = '0'
+    LIGHT = '1'
+    MODERATE_CLEAR_AIR_OCCASIONAL = '2'
+    MODERATE_CLEAR_AIR_FREQUENT = '3'
+    MODERATE_CLOUD_OCCASIONAL = '4'
+    MODERATE_CLOUD_FREQUENT = '5'
+    SEVERE_CLEAR_AIR_OCCASIONAL = '6'
+    SEVERE_CLEAR_AIR_FREQUENT = '7'
+    SEVERE_CLOUD_OCCASIONAL = '8'
+    SEVERE_CLOUD_FREQUENT = '9'
+    EXTREME = 'X'
+
+    def __str__(self) -> str:
+        return _('TurbuleneIntensity.' + self.value)
+
+
 class WeatherChangeType(enum.Enum):
     FM = 'FM'
     BECMG = 'BECMG'
     TEMPO = 'TEMPO'
     PROB = 'PROB'
+    INTER = 'INTER'
 
     def __str__(self):
         return _('WeatherChangeType.' + self.value)

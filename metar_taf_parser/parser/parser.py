@@ -5,9 +5,10 @@ from datetime import time
 from metar_taf_parser.command.common import CommandSupplier
 from metar_taf_parser.command.metar import CommandSupplier as MetarCommandSupplier
 from metar_taf_parser.command.remark import RemarkCommandSupplier
+from metar_taf_parser.command.taf import TAFCommandSupplier
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import TranslationError
-from metar_taf_parser.model.enum import Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
+from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
 from metar_taf_parser.model.model import WeatherCondition, Visibility, Metar, TemperatureDated, \
     AbstractWeatherContainer, TAF, TAFTrend, MetarTrend, Validity, FMValidity, MetarTrendTime
 
@@ -23,7 +24,15 @@ def parse_delivery_time(abstract_weather_code, time_string):
     abstract_weather_code.time = time(int(time_string[2:4]), int(time_string[4:6]))
 
 
-def parse_remark(container: AbstractWeatherContainer, line: [str], index: int):
+def _parse_flags(abstract_weather_code, flag_string):
+    try:
+        abstract_weather_code.flags.add(Flag(flag_string))
+        return True
+    except ValueError:
+        return False
+
+
+def parse_remark(container: AbstractWeatherContainer, line: list, index: int):
     """
     This function parses the array containing the remark and concat the array into a string
     :param container: the metar, taf or taf trend to update
@@ -112,16 +121,22 @@ class AbstractParser(abc.ABC):
         if self._intensity_regex_pattern.match(input):
             match = self._intensity_regex_pattern.findall(input)[0]
             weather_condition.intensity = Intensity(match)
+            input = input[len(match):]
 
         for name, member in Descriptive.__members__.items():
             if member.value in input:
                 weather_condition.descriptive = member
+                input = input[len(member.value):]
 
-        for name, member in Phenomenon.__members__.items():
-            if member.value in input:
-                weather_condition.add_phenomenon(member)
+        previous_token = ''
+        while input != '' and input != previous_token:
+            previous_token = input
+            for name, member in Phenomenon.__members__.items():
+                if re.match(r'^' + member.value, input):
+                    weather_condition.add_phenomenon(member)
+                    input = input[len(member.value):]
 
-        return weather_condition
+        return weather_condition if input == '' and weather_condition.is_valid() else None
 
     def tokenize(self, input: str):
         """
@@ -163,7 +178,7 @@ class MetarParser(AbstractParser):
         super().__init__()
         self._metar_command_supplier = MetarCommandSupplier()
 
-    def _parse_trend(self, index: int, trend: MetarTrend, trend_parts: [str]):
+    def _parse_trend(self, index: int, trend: MetarTrend, trend_parts: list):
         """
         Parses a trend of a metar
         :param index: the index starting the trend in the list
@@ -199,11 +214,9 @@ class MetarParser(AbstractParser):
         parse_delivery_time(metar, metar_tab[1])
         index = 2
         while index < len(metar_tab):
-            if not super().general_parse(metar, metar_tab[index]):
+            if not super().general_parse(metar, metar_tab[index]) and not _parse_flags(metar, metar_tab[index]):
                 if 'NOSIG' == metar_tab[index]:
                     metar.nosig = True
-                elif 'AUTO' == metar_tab[index]:
-                    metar.auto = True
                 elif AbstractParser.TEMPO == metar_tab[index] or AbstractParser.BECMG == metar_tab[index]:
                     trend = MetarTrend(WeatherChangeType[metar_tab[index]])
                     index = self._parse_trend(index, trend, metar_tab)
@@ -231,6 +244,7 @@ class TAFParser(AbstractParser):
     def __init__(self):
         super().__init__()
         self._validity_pattern = re.compile(r'^\d{4}/\d{4}$')
+        self._taf_command_supplier = TAFCommandSupplier()
 
     def parse(self, input: str):
         """
@@ -245,8 +259,7 @@ class TAFParser(AbstractParser):
         index = 1
         if TAFParser.TAF == lines[0][1]:
             index = 2
-        if 'AMD' == lines[0][index]:
-            taf.amendment = True
+        if _parse_flags(taf, lines[0][index]):
             index += 1
 
         taf.station = lines[0][index]
@@ -258,13 +271,18 @@ class TAFParser(AbstractParser):
 
         for i in range(index + 1, len(lines[0])):
             token = lines[0][i]
+            command = self._taf_command_supplier.get(token)
             if AbstractParser.RMK == token:
                 parse_remark(taf, lines[0], i)
+                break
             elif token.startswith(TAFParser.TX):
                 taf.max_temperature = _parse_temperature(token)
             elif token.startswith(TAFParser.TN):
                 taf.min_temperature = _parse_temperature(token)
+            elif command:
+                command.execute(taf, token)
             else:
+                _parse_flags(taf, token)
                 self.general_parse(taf, token)
 
         # Handle the other lines
@@ -281,7 +299,7 @@ class TAFParser(AbstractParser):
         """
         single_line = taf_code.replace('\n', ' ')
         clean_line = re.sub(r'\s{2,}', ' ', single_line)
-        lines = re.sub(r'\s(PROB\d{2}\sTEMPO|TEMPO|BECMG|FM|PROB)', '\n\g<1>', clean_line).splitlines()
+        lines = re.sub(r'\s(PROB\d{2}\sTEMPO|TEMPO|INTER|BECMG|FM|PROB)', '\n\g<1>', clean_line).splitlines()
         lines_token = [self.tokenize(line) for line in lines]
 
         if len(lines_token) > 1:
@@ -293,7 +311,7 @@ class TAFParser(AbstractParser):
                 lines_token[len(lines) - 1] = list(filter(lambda x: not x.startswith(TAFParser.TX) and not x.startswith(TAFParser.TN), last_line))
         return lines_token
 
-    def _parse_line(self, taf: TAF, line_tokens: [str]):
+    def _parse_line(self, taf: TAF, line_tokens: list):
         """
         Parses the tokens of the line and updates the TAF object.
         :param taf: TAF object to update
@@ -315,7 +333,7 @@ class TAFParser(AbstractParser):
         self._parse_trend(index, line_tokens, trend)
         taf.add_trend(trend)
 
-    def _parse_trend(self, index: int, line: [str], trend: TAFTrend):
+    def _parse_trend(self, index: int, line: list, trend: TAFTrend):
         """
         Parses a trend of the TAF
         :param index: the index at which the array should be parsed
@@ -324,8 +342,13 @@ class TAFParser(AbstractParser):
         :return: None
         """
         for i in range(index, len(line)):
-            if AbstractParser.RMK == line[i]:
+            command = self._taf_command_supplier.get(line[i])
+
+            if command:
+                command.execute(trend, line[i])
+            elif AbstractParser.RMK == line[i]:
                 parse_remark(trend, line, i)
+                break
             elif self._validity_pattern.search(line[i]):
                 trend.validity = _parse_validity(line[i])
             else:
@@ -336,7 +359,7 @@ class RemarkParser:
     def __init__(self):
         self._supplier = RemarkCommandSupplier()
 
-    def parse(self, code: str) -> [str]:
+    def parse(self, code: str) -> list:
         rmk_str = code
         rmk_list = []
 

@@ -15,7 +15,7 @@ class RemarkCommandTestCase(unittest.TestCase):
         self.assertTrue(DefaultCommand().can_parse(''))
 
     def test_supplier_commands_list(self):
-        self.assertEqual(25, len(RemarkCommandSupplier()._command_list))
+        self.assertEqual(39, len(RemarkCommandSupplier()._command_list))
 
 
 if __name__ == '__main__':

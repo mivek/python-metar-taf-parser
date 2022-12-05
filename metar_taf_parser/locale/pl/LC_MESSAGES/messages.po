@@ -1,0 +1,300 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=UTF-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: metar_taf_parser"
+"Language: pl_PL"
+#:
+msgid "CloudQuantity.BKN"
+msgstr "Od 5/8 do 7/8"
+
+#:
+msgid "CloudQuantity.FEW"
+msgstr "Od 1/8 do 2/8"
+
+#:
+msgid "CloudQuantity.NSC"
+msgstr "Nieznaczne zachmurzenie."
+
+#:
+msgid "CloudQuantity.OVC"
+msgstr "8/8"
+
+#:
+msgid "CloudQuantity.SCT"
+msgstr "Od 3/8 do 4/8"
+
+#:
+msgid "CloudQuantity.SKC"
+msgstr "Czyste niebo"
+
+#:
+msgid "CloudType.AC"
+msgstr "Średnie kłębiaste"
+
+#:
+msgid "CloudType.AS"
+msgstr "Średnia warstwowa"
+
+#:
+msgid "CloudType.CB"
+msgstr "Kłębiasta deszczowa"
+
+#:
+msgid "CloudType.CC"
+msgstr "Piętra wysokiego rodzaj kłębiasto-pierzaste"
+
+#:
+msgid "CloudType.CI"
+msgstr "Pierzasta"
+
+#:
+msgid "CloudType.CS"
+msgstr "Warstwowo - pierzasta"
+
+#:
+msgid "CloudType.CU"
+msgstr "Kłębiasta"
+
+#:
+msgid "CloudType.NS"
+msgstr "Warstwowa deszczowa"
+
+#:
+msgid "CloudType.SC"
+msgstr "Kłębiasto warstwowa"
+
+#:
+msgid "CloudType.ST"
+msgstr "Warstwowa"
+
+#:
+msgid "CloudType.TCU"
+msgstr "Wypiętrzona chmura kłębiasta"
+
+#:
+msgid "Descriptive.BC"
+msgstr "płaty"
+
+#:
+msgid "Descriptive.BL"
+msgstr "zawieja"
+
+#:
+msgid "Descriptive.DR"
+msgstr "zamieć przyziemna"
+
+#:
+msgid "Descriptive.FZ"
+msgstr "opad marznący"
+
+#:
+msgid "Descriptive.MI"
+msgstr "niskie"
+
+#:
+msgid "Descriptive.PR"
+msgstr "częściowe"
+
+#:
+msgid "Descriptive.SH"
+msgstr "opad przelotny"
+
+#:
+msgid "Descriptive.TS"
+msgstr "burza"
+
+#:
+msgid "Error.prefix"
+msgstr "Wystąpił błąd. Kod błędu numer"
+
+#:
+msgid "ErrorCode.AirportNotFound"
+msgstr "Nie znaleziono lotniska w tej depeszy."
+
+#:
+msgid "ErrorCode.InvalidMessage"
+msgstr "Wprowadzona depesza jest nieprawidłowa."
+
+#:
+msgid "Intensity.-"
+msgstr "Słaby"
+
+#:
+msgid "Intensity.+"
+msgstr "Silny"
+
+#:
+msgid "Intensity.VC"
+msgstr "W pobliżu"
+
+#:
+msgid "Phenomenon.BR"
+msgstr "zamglenie"
+
+#:
+msgid "Phenomenon.DS"
+msgstr "burza piaskowa"
+
+#:
+msgid "Phenomenon.DU"
+msgstr "pył"
+
+#:
+msgid "Phenomenon.DZ"
+msgstr "mżawka"
+
+#:
+msgid "Phenomenon.FC"
+msgstr "trąba powietrzna"
+
+#:
+msgid "Phenomenon.FG"
+msgstr "mgła"
+
+#:
+msgid "Phenomenon.FU"
+msgstr "dym"
+
+#:
+msgid "Phenomenon.GR"
+msgstr "grad"
+
+#:
+msgid "Phenomenon.GS"
+msgstr "krupa śnieżna"
+
+#:
+msgid "Phenomenon.HZ"
+msgstr "zmętnienie"
+
+#:
+msgid "Phenomenon.IC"
+msgstr "słupki lodowe"
+
+#:
+msgid "Phenomenon.PL"
+msgstr "deszcz lodowy"
+
+#:
+msgid "Phenomenon.PO"
+msgstr "wiry pyłowe"
+
+#:
+msgid "Phenomenon.PY"
+msgstr "aerozol"
+
+#:
+msgid "Phenomenon.RA"
+msgstr "deszcz"
+
+#:
+msgid "Phenomenon.SA"
+msgstr "piasek"
+
+#:
+msgid "Phenomenon.SG"
+msgstr "śnieg ziarnisty"
+
+#:
+msgid "Phenomenon.SN"
+msgstr "śnieg"
+
+#:
+msgid "Phenomenon.SQ"
+msgstr "nawałnica"
+
+#:
+msgid "Phenomenon.SS"
+msgstr "burza piaskowa"
+
+#:
+msgid "Phenomenon.UP"
+msgstr "marznący deszcz"
+
+#:
+msgid "Phenomenon.VA"
+msgstr "popiół wulkaniczny"
+
+#:
+msgid "MetarFacade.InvalidIcao"
+msgstr "Kod Icao jest nieprawidłowy"
+
+#:
+msgid "Converter.D"
+msgstr "malejący"
+
+#:
+msgid "Converter.E"
+msgstr "wschód"
+
+#:
+msgid "Converter.N"
+msgstr "północ"
+
+#:
+msgid "Converter.NE"
+msgstr "północny wschód"
+
+#:
+msgid "Converter.NSC"
+msgstr "nieznaczna zmiana"
+
+#:
+msgid "Converter.NW"
+msgstr "północny zachód"
+
+#:
+msgid "Converter.S"
+msgstr "południe"
+
+#:
+msgid "Converter.SE"
+msgstr "południowy zachód"
+
+#:
+msgid "Converter.SW"
+msgstr "połódniowy wschód"
+
+#:
+msgid "Converter.U"
+msgstr "rosnący"
+
+#:
+msgid "Converter.VRB"
+msgstr "Zmienny"
+
+#:
+msgid "Converter.W"
+msgstr "zachód"
+
+#:
+msgid "WeatherChangeType.FM"
+msgstr "od"
+
+#:
+msgid "WeatherChangeType.BECMG"
+msgstr "Nadchodząca"
+
+#:
+msgid "WeatherChangeType.TEMPO"
+msgstr "Tymczasowa"
+
+#:
+msgid "WeatherChangeType.PROB"
+msgstr "Prawdopodobieństwo"
+
+#:
+msgid "TimeIndicator.AT"
+msgstr "o"
+
+#:
+msgid "TimeIndicator.FM"
+msgstr "od"
+
+#:
+msgid "TimeIndicator.TL"
+msgstr "do"
+

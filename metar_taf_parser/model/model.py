@@ -1,7 +1,7 @@
 import abc
 from datetime import time
 
-from metar_taf_parser.model.enum import Descriptive, WeatherChangeType, TimeIndicator
+from metar_taf_parser.model.enum import Descriptive, Flag, WeatherChangeType, TimeIndicator, IcingIntensity, TurbulenceIntensity
 
 
 class Country:
@@ -347,6 +347,86 @@ class Cloud:
     type = property(_get_type, _set_type)
 
 
+class Icing:
+    def __init__(self):
+        self._intensity: IcingIntensity = None
+        self._base_height = 0
+        self._depth = 0
+
+    def _get_intensity(self):
+        return self._intensity
+
+    def _set_intensity(self, intensity: IcingIntensity):
+        self._intensity = intensity
+
+    def _get_base_height(self):
+        return self._base_height
+
+    def _set_base_height(self, base_height: int):
+        self._base_height = base_height
+
+    def _get_depth(self):
+        return self._depth
+
+    def _set_depth(self, depth: int):
+        self._depth = depth
+
+    intensity = property(_get_intensity, _set_intensity)
+    base_height = property(_get_base_height, _set_base_height)
+    depth = property(_get_depth, _set_depth)
+
+
+class Turbulence:
+
+    def __init__(self):
+        self._intensity: TurbulenceIntensity = None
+        self._base_height = 0
+        self._depth = 0
+
+    def _get_intensity(self):
+        return self._intensity
+
+    def _set_intensity(self, intensity: TurbulenceIntensity):
+        self._intensity = intensity
+
+    def _get_base_height(self):
+        return self._base_height
+
+    def _set_base_height(self, base_height: int):
+        self._base_height = base_height
+
+    def _get_depth(self):
+        return self._depth
+
+    def _set_depth(self, depth: int):
+        self._depth = depth
+
+    intensity = property(_get_intensity, _set_intensity)
+    base_height = property(_get_base_height, _set_base_height)
+    depth = property(_get_depth, _set_depth)
+
+
+class ITafGroups:
+    def __init__(self):
+        self._turbulence = []
+        self._icings = []
+
+    def _get_turbulence(self):
+        return self._turbulence
+
+    def _get_icings(self):
+        return self._icings
+
+    def add_turbulence(self, turbulence: Turbulence):
+        self._turbulence.append(turbulence)
+
+    def add_icing(self, icing: Icing):
+        self._icings.append(icing)
+
+    turbulence = property(_get_turbulence)
+    icings = property(_get_icings)
+
+
 class AbstractWeatherContainer(abc.ABC):
 
     def __init__(self):
@@ -399,7 +479,7 @@ class AbstractWeatherContainer(abc.ABC):
     def _get_remarks(self):
         return self._remarks
 
-    def _set_remarks(self, remarks: [str]):
+    def _set_remarks(self, remarks: list):
         self._remarks = remarks
 
     def _get_clouds(self):
@@ -413,7 +493,7 @@ class AbstractWeatherContainer(abc.ABC):
         return self._weather_conditions
 
     def add_weather_condition(self, wc: WeatherCondition):
-        if wc.is_valid():
+        if wc:
             self._weather_conditions.append(wc)
             return True
 
@@ -455,6 +535,7 @@ class AbstractWeatherCode(AbstractWeatherContainer):
         self._airport = None
         self._message = None
         self._station = None
+        self._flags = set()
         self._trends = []
 
     def _get_day(self):
@@ -493,12 +574,36 @@ class AbstractWeatherCode(AbstractWeatherContainer):
     def add_trend(self, value):
         self._trends.append(value)
 
+    def _get_flags(self):
+        return self._flags
+
+    def _is_auto(self):
+        return Flag.AUTO in self._flags
+
+    def _is_amendment(self):
+        return Flag.AMD in self._flags
+
+    def _is_canceled(self):
+        return Flag.CNL in self._flags
+
+    def _is_corrected(self):
+        return Flag.COR in self._flags
+
+    def _is_nil(self):
+        return Flag.NIL in self._flags
+
     day = property(_get_day, _set_day)
     time = property(_get_time, _set_time)
     airport = property(_get_airport, _set_airport)
     message = property(_get_message, _set_message)
     station = property(_get_station, _set_station)
     trends = property(_get_trends)
+    flags = property(_get_flags)
+    amendment = property(_is_amendment)
+    auto = property(_is_auto)
+    canceled = property(_is_canceled)
+    corrected = property(_is_corrected)
+    nil = property(_is_nil)
 
 
 class Metar(AbstractWeatherCode):
@@ -509,7 +614,6 @@ class Metar(AbstractWeatherCode):
         self._dew_point = None
         self._altimeter = None
         self._nosig = False
-        self._auto = False
         self._runways_info = []
 
     def _get_temperature(self):
@@ -536,12 +640,6 @@ class Metar(AbstractWeatherCode):
     def _set_nosig(self, value: bool):
         self._nosig = value
 
-    def _is_auto(self):
-        return self._auto
-
-    def _set_auto(self, value: bool):
-        self._auto = value
-
     def _get_runways_info(self):
         return self._runways_info
 
@@ -552,18 +650,17 @@ class Metar(AbstractWeatherCode):
     dew_point = property(_get_dew_point, _set_dew_point)
     altimeter = property(_get_altimeter, _set_altimeter)
     nosig = property(_is_nosig, _set_nosig)
-    auto = property(_is_auto, _set_auto)
     runways_info = property(_get_runways_info)
 
 
-class TAF(AbstractWeatherCode):
+class TAF(ITafGroups, AbstractWeatherCode):
 
     def __init__(self):
-        super().__init__()
+        ITafGroups.__init__(self)
+        AbstractWeatherCode.__init__(self)
         self._validity = None
         self._max_temperature = None
         self._min_temperature = None
-        self._amendment = False
 
     def _get_validity(self):
         return self._validity
@@ -583,16 +680,24 @@ class TAF(AbstractWeatherCode):
     def _set_max_temperature(self, value: TemperatureDated):
         self._max_temperature = value
 
-    def _is_amendment(self):
-        return self._amendment
+    def becmgs(self):
+        return list(filter(lambda trend: trend.type == WeatherChangeType.BECMG, self.trends))
 
-    def _set_amendment(self, value: bool):
-        self._amendment = value
+    def probs(self):
+        return list(filter(lambda trend: trend.type == WeatherChangeType.PROB, self.trends))
+
+    def tempos(self):
+        return list(filter(lambda trend: trend.type == WeatherChangeType.TEMPO, self.trends))
+
+    def inters(self):
+        return list(filter(lambda trend: trend.type == WeatherChangeType.INTER, self.trends))
+
+    def fms(self):
+        return list(filter(lambda trend: trend.type == WeatherChangeType.FM, self.trends))
 
     validity = property(_get_validity, _set_validity)
     max_temperature = property(_get_max_temperature, _set_max_temperature)
     min_temperature = property(_get_min_temperature, _set_min_temperature)
-    amendment = property(_is_amendment, _set_amendment)
 
 
 class AbstractTrend(AbstractWeatherContainer):
@@ -638,9 +743,10 @@ class MetarTrend(AbstractTrend):
     times = property(_get_times)
 
 
-class TAFTrend(AbstractTrend):
+class TAFTrend(AbstractTrend, ITafGroups):
     def __init__(self, weather_change_type: WeatherChangeType):
-        super().__init__(weather_change_type)
+        ITafGroups.__init__(self)
+        AbstractTrend.__init__(self, weather_change_type)
         self._probability = None
 
     def _get_validity(self):

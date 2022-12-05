@@ -38,6 +38,8 @@ This package contains the parser module with the `MetarParser` and `TAFParser` c
 -   Phenomenon: Represents the phenomenon of a weather phenomenon
 -   TimeIndicator: Indicates the time trend
 -   WeatherChangeType: Indicate the type of trend
+-   IcingIntensity: Represents the intensity of an icing element
+-   TurbulenceIntensity: Represents the intensity of a turbulence element
 
 
 ### Objects
@@ -101,6 +103,31 @@ Represents a cloud layer in METAR, TAF or trend object.
 -   quantity: `CloudQuantity`. The quantity of clouds.
 -   type: `CloudType`. The type of cloud in the layer.
 
+#### Icing
+
+Represents the icing in a TAF or TAFTrend object.
+
+-   intensity: `IcingIntensity`. The intensity of an icing.
+-   base_height: `int`. The base height of an icing element in feet.
+-   depth: `int`. The icing layer depth in feet. Adding this to the base height determines the top limit of the icing.
+
+#### Turbulence
+
+Represents the turbulence in a TAF or TAFTrend object.
+
+-   intensity: `TurbulenceIntensity`. The intensity of a turbulence.
+-   base_height: `int`. The base height of a turbulence element in feet.
+-   depth: `int`. The turbulence layer depth in feet. Adding this to the base height determines the top limit of the turbulence.
+
+#### ITafGroups
+
+Class holding turbulence and icing elements.
+
+-   icings: `[Icing]`. List of icing elements.
+-   turbulence: `[Turbulence]`. List of turbulence elements.
+
+This class is a parent class of `TAF` and `ITafGroups`.
+
 #### AbstractWeatherContainer
 
 Abstract class containing the basic fields of METAR, TAF or trend objects.
@@ -111,7 +138,7 @@ Abstract class containing the basic fields of METAR, TAF or trend objects.
 -   wind_shear: `WindShear`. The wind shear object.
 -   cavok: `bool`. Indicates whether the message is CAVOK (Ceiling and visibility OK)
 -   remark: `str`. The remark part of the message.
--   remarks: `[str]`. List of remarks. Each element is a different remark or token 
+-   remarks: `list[str]`. List of remarks. Each element is a different remark or token 
 -   clouds: `[Cloud]`. Array of clouds elements.
 -   weather_conditions: `[WeatherCondition]`. Array of weather conditions.
 
@@ -131,6 +158,12 @@ Class extending the AbstractWeatherContainer. Abstract parent class of METAR and
 -   message: `str`. The message of the METAR/TAF.
 -   station: `str`. The station for which the message was issued.
 -   trends: `[TAFTrend/MetarTrend]`. Array of trends
+-   flags: `[Flag]`. Set of flags.
+-   auto: `bool`. Whether the METAR is automated.
+-   amendment: `bool`. Whether the TAF is an amendment.
+-   nil: `bool`. Whether the METAR/TAF is null.
+-   canceled: `bool`. Whether the METAR/TAF is canceled.
+-   corrected: `bool`. Whether the METAR/TAF is a correction.
 
 #### Metar
 
@@ -140,7 +173,6 @@ Class representing a metar object.
 -   dew_point: `int`. The dew_point in celsius.
 -   altimeter: `float`. The altimeter value in HPa.
 -   nosig: `bool`. Whether the message is nosig: No significant changes to come.
--   auto: `bool`. Whether the message is auto.
 -   runway_info: `[RunwayInfo]`. Array of runway information.
 
 #### TAF
@@ -222,8 +254,10 @@ taf = TAFParser().parse(
 ## Internationalization
 
 The following locales are supported:
--   en (default)
--   fr
--   de
--   pl
--   it
+- en (default)
+- fr
+- de
+- pl
+- it
+
+To add or complete locales please see [CONTRIBUTING](CONTRIBUTING.md)

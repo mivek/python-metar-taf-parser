@@ -1,6 +1,6 @@
 import unittest
 
-from metar_taf_parser.command.common import CloudCommand, WindCommand, CommandSupplier
+from metar_taf_parser.command.common import CloudCommand, MainVisibilityNauticalMilesCommand, WindCommand, CommandSupplier
 from metar_taf_parser.model.enum import CloudQuantity, CloudType
 from metar_taf_parser.model.model import Metar
 
@@ -79,6 +79,32 @@ class CommonTestCase(unittest.TestCase):
         command = WindCommand()
         metar = Metar()
         self.assertTrue(command.execute(metar, 'VRB08KT'))
+
+    def test_main_visibility_nautical_miles_command_with_greater_than(self):
+        command = MainVisibilityNauticalMilesCommand()
+        self.assertTrue(command.can_parse('P3SM'))
+
+    def test_main_visibility_nautical_miles_command_with_minus_than(self):
+        command = MainVisibilityNauticalMilesCommand()
+        self.assertTrue(command.can_parse('M1SM'))
+
+    def test_cloud_command_unknown_type(self):
+        command = CloudCommand()
+        cloud = command.parse('SCT026///')
+
+        self.assertIsNotNone(cloud)
+        self.assertEqual(CloudQuantity.SCT, cloud.quantity)
+        self.assertEqual(2600, cloud.height)
+        self.assertIsNone(cloud.type)
+
+    def test_cloud_command_unknown_height_and_type(self):
+        command = CloudCommand()
+        cloud = command.parse('SCT//////')
+
+        self.assertIsNotNone(cloud)
+        self.assertEqual(CloudQuantity.SCT, cloud.quantity)
+        self.assertIsNone(cloud.height)
+        self.assertIsNone(cloud.type)
 
 
 if __name__ == '__main__':

@@ -1,10 +1,56 @@
 # Change Log 
 
+## [1.6.0] - 2022-12-04
+
+### Added
+
+- Support for unknown height and unknown types in cloud elements. Clouds elements with `///` are no longer ignored.
+- `Turbulence` and `Icing` elements are available in `TAF` and `TAFTrend` objects. The new properties are `turbulence` and `icings`.
+
+### Fixed
+
+- WeatherConditions are now added to the list only if the entire token was parsed. This prevents false positive matches.
+- Phenomenons in WeatherConditions are now listed in the same order they appear in the token.
+- Cloud regex matches the cloud type part only of the height is present. Tokens made of 6 letters do not match the regex anymore.
+
+## [1.5.0] - 2022-07-17
+
+### Added
+
+- Added `flags` property to `AbstractWeatherCode`. This property is a set holding flags: AUTO, AMD, CNL, NIL and COR. Properties `auto`, `amendment`, `nil`, `canceled` and `corrected` are also available.
+- Added new translations.
+
+## [1.4.1] - 2022-05-29
+
+### Fixed
+
+- Parsing of visibility in miles having indication: `P` for greater than and `M` for less than.
+
+## [1.4.0] - 2022-04-20
+
+### Added
+
+- Added `WeatherChangeType.INTER` for TAFTrend.
+- Added methods to retrieve Taf trends by `WeatherChangeType`: taf.becmgs, taf.fms, taf.inters, taf.probs and taf.tempos
+- Turkish translation
+- Added `PrecipitationBegCommand` and `PrecipitationEndCommand` in remark parsing.
+
+### Fixed
+
+- Parsing of remarks added Phenomenon.FC to the list of WeatherConditions when the remarks contained `FCST`
+
+## [1.3.0] - 2021-10-05
+
+### Added
+
+- i18n support for simplified Chinese locale
+- Completed remarks parsing
+
 ## [1.2.0] - 2021-05-04
 
 ### Added
 
--   i18n support for Italian locale
+- i18n support for Italian locale
 
 ## [1.1.1] - 2021-04-20
 
