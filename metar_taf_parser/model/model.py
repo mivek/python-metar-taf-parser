@@ -1,7 +1,8 @@
 import abc
 from datetime import time
 
-from metar_taf_parser.model.enum import Descriptive, Flag, WeatherChangeType, TimeIndicator, IcingIntensity, TurbulenceIntensity
+from metar_taf_parser.model.enum import Descriptive, Flag, WeatherChangeType, TimeIndicator, IcingIntensity, \
+    TurbulenceIntensity
 
 
 class Country:
@@ -317,6 +318,71 @@ class RunwayInfo:
     trend = property(_get_trend, _set_trend)
 
 
+class RunwayReportGroup:
+    """
+    The following data is stored in this class:
+    --
+    RDrDr/ErCrererBrBr
+    Dr (runway identification)
+    Er (deposit on the track)
+    Cr (extension of runway contamination)
+    erer (thickness of the deposit)
+    BrBr (braking conditions)
+    Special case
+    """
+
+    def __init__(self):
+        self._name = None
+        self._deposit = None
+        self._coverage = None
+        self._thickness = None
+        self._braking = None
+        self._special = None
+
+    def _get_name(self):
+        return self._name
+
+    def _set_name(self, value):
+        self._name = value
+
+    def _get_deposit(self):
+        return self._deposit
+
+    def _set_deposit(self, value):
+        self._deposit = value
+
+    def _get_coverage(self):
+        return self._coverage
+
+    def _set_coverage(self, value):
+        self._coverage = value
+
+    def _get_thickness(self):
+        return self._thickness
+
+    def _set_thickness(self, value):
+        self._thickness = value
+
+    def _get_braking(self):
+        return self._braking
+
+    def _set_braking(self, value):
+        self._braking = value
+
+    def _get_special(self):
+        return self._special
+
+    def _set_special(self, value):
+        self._special = value
+
+    name = property(_get_name, _set_name)
+    deposit = property(_get_deposit, _set_deposit)
+    coverage = property(_get_coverage, _set_coverage)
+    thickness = property(_get_thickness, _set_thickness)
+    braking = property(_get_braking, _set_braking)
+    special = property(_get_special, _set_special)
+
+
 class Cloud:
 
     def __init__(self):
@@ -615,6 +681,7 @@ class Metar(AbstractWeatherCode):
         self._altimeter = None
         self._nosig = False
         self._runways_info = []
+        self._runways_rg = []
 
     def _get_temperature(self):
         return self._temperature
@@ -646,11 +713,18 @@ class Metar(AbstractWeatherCode):
     def add_runway_info(self, runway_info: RunwayInfo):
         self._runways_info.append(runway_info)
 
+    def _get_runways_rg(self):
+        return self._runways_rg
+
+    def add_runway_rg(self, runway_rg: RunwayReportGroup):
+        self._runways_rg.append(runway_rg)
+
     temperature = property(_get_temperature, _set_temperature)
     dew_point = property(_get_dew_point, _set_dew_point)
     altimeter = property(_get_altimeter, _set_altimeter)
     nosig = property(_is_nosig, _set_nosig)
     runways_info = property(_get_runways_info)
+    runways_rg = property(_get_runways_rg)
 
 
 class TAF(ITafGroups, AbstractWeatherCode):

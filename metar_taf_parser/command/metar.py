@@ -1,7 +1,8 @@
 import re
 
 from metar_taf_parser.commons import converter
-from metar_taf_parser.model.model import RunwayInfo, Metar
+from metar_taf_parser.model.model import RunwayInfo, RunwayReportGroup, Metar
+from metar_taf_parser.model.enum import RunwayDeposit, RunwayCoverage, RunwayThickness, RunwayBraking, RunwaySpecial
 
 
 class AltimeterCommand:
@@ -70,6 +71,59 @@ class RunwayCommand:
             metar.add_runway_info(runway)
 
 
+class RunwayReport:
+    runway_rg_regex = r'^R((\d{2}\w?)?\/((\d{6})|(\d{2}((\d{2})|(\/\/))((\d{2})|(\/\/)))|(\w{4}\d{2})|(\D{6})))$'
+
+    def __init__(self):
+        self._runway_rg_pattern = re.compile(RunwayReport.runway_rg_regex)
+
+    def can_parse(self, input: str):
+        return self._runway_rg_pattern.match(input)
+
+    def execute(self, metar: Metar, input: str):
+        rrg_matches = self._runway_rg_pattern.findall(input)
+        if rrg_matches:
+            runway_rg = RunwayReportGroup()
+            print(rrg_matches)
+            if rrg_matches[0][1] == '88':
+                runway_rg.name = 'All runways'
+            elif rrg_matches[0][1] == '99':
+                runway_rg.name = 'as previous bulletin'
+            else:
+                runway_rg.name = rrg_matches[0][1]
+            if not rrg_matches[0][2][:1].isalpha():
+                runway_rg.deposit = RunwayDeposit(rrg_matches[0][2][:1])
+                runway_rg.coverage = RunwayCoverage(rrg_matches[0][2][1:2])
+                thickness = rrg_matches[0][2][2:4]
+                if thickness != '//':
+                    if 1 <= int(thickness) <= 90:
+                        runway_rg.thickness = thickness + ' mm'
+                    else:
+                        runway_rg.thickness = RunwayThickness(thickness)
+                else:
+                    runway_rg.thickness = RunwayThickness(thickness)
+                friction = rrg_matches[0][2][4:6]
+                if friction != '//':
+                    if int(friction) >= 0 & int(friction) <= 90:
+                        runway_rg.braking = str(RunwayBraking('coeff')) + ' ' + str(float(int(friction) / 100)) + ' %'
+                    else:
+                        runway_rg.braking = RunwayBraking(friction)
+                else:
+                    runway_rg.braking = RunwayBraking(friction)
+            else:
+                ch_sit_airway = rrg_matches[0][2][:1]
+                if ch_sit_airway == 'C':
+                    friction = rrg_matches[0][2][4:6]
+                    if int(friction) >= 0 & int(friction) <= 90:
+                        runway_rg.braking = str(RunwayBraking('coeff')) + ' ' + str(float(int(friction) / 100)) + ' %'
+                    else:
+                        runway_rg.braking = RunwayBraking(friction)
+                    runway_rg.special = RunwaySpecial(rrg_matches[0][2][:4])
+                else:
+                    runway_rg.special = RunwaySpecial(rrg_matches[0][2])
+            metar.add_runway_rg(runway_rg)
+
+
 class TemperatureCommand:
     regex = r'^(M?\d{2})/(M?\d{2})$'
 
@@ -87,7 +141,8 @@ class TemperatureCommand:
 
 class CommandSupplier:
     def __init__(self):
-        self._commands = [RunwayCommand(), TemperatureCommand(), AltimeterCommand(), AltimeterMercuryCommand()]
+        self._commands = [RunwayReport(), RunwayCommand(), TemperatureCommand(), AltimeterCommand(),
+                          AltimeterMercuryCommand()]
 
     def get(self, input: str):
         for command in self._commands:

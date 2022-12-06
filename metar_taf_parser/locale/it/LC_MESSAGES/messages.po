@@ -1,840 +1,827 @@
 msgid ""
 msgstr ""
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=UTF-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: prop2po"
-"Project-Id-Version: metar_taf_parser"
-"Language: it"
-#:
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
 msgid "CloudQuantity.BKN"
 msgstr "molto nuvoloso"
 
-#:
 msgid "CloudQuantity.FEW"
-msgstr "leggermente nuvoloso"
+msgstr "Leggermente nuvoloso"
 
-#:
 msgid "CloudQuantity.NSC"
 msgstr "Nessuna nuvola significativa"
 
-#:
 msgid "CloudQuantity.OVC"
 msgstr "coperto"
 
-#:
 msgid "CloudQuantity.SCT"
 msgstr "sparse"
 
-#:
 msgid "CloudQuantity.SKC"
 msgstr "cielo sereno"
 
-#:
 msgid "CloudType.AC"
 msgstr "Altocumulo"
 
-#:
 msgid "CloudType.AS"
 msgstr "Altostrato"
 
-#:
 msgid "CloudType.CB"
 msgstr "Cumulonembo"
 
-#:
 msgid "CloudType.CC"
 msgstr "Cirrocumulo"
 
-#:
 msgid "CloudType.CI"
 msgstr "Cirro"
 
-#:
 msgid "CloudType.CS"
 msgstr "Cirrostrato"
 
-#:
 msgid "CloudType.CU"
 msgstr "Cumulo"
 
-#:
 msgid "CloudType.NS"
 msgstr "Nembostrato"
 
-#:
 msgid "CloudType.SC"
 msgstr "Stratocumulo"
 
-#:
 msgid "CloudType.ST"
 msgstr "Strato"
 
-#:
 msgid "CloudType.TCU"
-msgstr "Cumuli torreggiantidecreasing"
+msgstr "Cumuli torreggianti"
 
-#:
 msgid "DepositBrakingCapacity.NOT_REPORTED"
 msgstr "non riportato "
 
-#:
 msgid "DepositBrakingCapacity.POOR"
 msgstr "scarso"
 
-#:
 msgid "DepositBrakingCapacity.MEDIUM_POOR"
 msgstr "medio/scarso"
 
-#:
 msgid "DepositBrakingCapacity.MEDIUM"
 msgstr "medio"
 
-#:
 msgid "DepositBrakingCapacity.MEDIUM_GOOD"
 msgstr "medio/buono"
 
-#:
 msgid "DepositBrakingCapacity.GOOD"
 msgstr "buono"
 
-#:
 msgid "DepositBrakingCapacity.UNRELIABLE"
 msgstr "cifre inaffidabili"
 
-#:
+msgid "DepositBrakingCapacity.COEFF"
+msgstr "coefficiente di aderenza"
+
 msgid "DepositCoverage.NOT_REPORTED"
 msgstr "non riportato"
 
-#:
 msgid "DepositCoverage.LESS_10"
 msgstr "meno del 10%"
 
-#:
 msgid "DepositCoverage.FROM_11_TO_25"
 msgstr "dal 11% al 25%"
 
-#:
 msgid "DepositCoverage.FROM_26_TO_50"
 msgstr "dal 26% al 50%"
 
-#:
 msgid "DepositCoverage.FROM_51_TO_100"
 msgstr "dal 51% al 100%"
 
-#:
+msgid "DepositSpecial.CLOSED"
+msgstr "scalo chiuso"
+
+msgid "DepositSpecial.CLEARED"
+msgstr "pista pulita e asciutta"
+
 msgid "DepositThickness.NOT_REPORTED"
 msgstr "non riportato"
 
-#:
 msgid "DepositThickness.LESS_1_MM"
 msgstr "meno di 1 mm"
 
-#:
 msgid "DepositThickness.THICKNESS_10"
 msgstr "10 cm"
 
-#:
 msgid "DepositThickness.THICKNESS_15"
 msgstr "15 cm"
 
-#:
 msgid "DepositThickness.THICKNESS_20"
 msgstr "20 cm"
 
-#:
 msgid "DepositThickness.THICKNESS_25"
 msgstr "25 cm"
 
-#:
 msgid "DepositThickness.THICKNESS_30"
 msgstr "30 cm"
 
-#:
 msgid "DepositThickness.THICKNESS_35"
 msgstr "35 cm"
 
-#:
 msgid "DepositThickness.THICKNESS_40"
-msgstr "40 cm"
+msgstr "40 cm o più"
 
-#:
 msgid "DepositThickness.CLOSED"
 msgstr "chiusa"
 
-#:
 msgid "DepositType.NOT_REPORTED"
 msgstr "non riportato"
 
-#:
 msgid "DepositType.CLEAR_DRY"
 msgstr "pulita e asciutta"
 
-#:
 msgid "DepositType.DAMP"
 msgstr "umido"
 
-#:
 msgid "DepositType.WET_WATER_PATCHES"
 msgstr "pozzanghere bagnate"
 
-#:
 msgid "DepositType.RIME_FROST_COVERED"
 msgstr "ricoperta di brina"
 
-#:
 msgid "DepositType.DRY_SNOW"
 msgstr "neve asciutta"
 
-#:
 msgid "DepositType.WET_SNOW"
 msgstr "neve bagnata"
 
-#:
 msgid "DepositType.ICE"
 msgstr "ghiaccio"
 
-#:
 msgid "DepositType.COMPACTED_SNOW"
 msgstr "neve compatta"
 
-#:
 msgid "DepositType.FROZEN_RIDGES"
 msgstr "solchi o creste congelate"
 
-#:
+msgid "DepositType.SLUSH"
+msgstr "fanghiglia"
+
 msgid "Descriptive.BC"
 msgstr "banchi di nebbia"
 
-#:
 msgid "Descriptive.BL"
 msgstr "sollevamento alto"
 
-#:
 msgid "Descriptive.DR"
 msgstr "sollevamento basso"
 
-#:
 msgid "Descriptive.FZ"
 msgstr "congelantesi"
 
-#:
 msgid "Descriptive.MI"
 msgstr "strati di nebbia"
 
-#:
 msgid "Descriptive.PR"
 msgstr "parziale"
 
-#:
 msgid "Descriptive.SH"
 msgstr "rovescio"
 
-#:
 msgid "Descriptive.TS"
 msgstr "temporale"
 
-#:
 msgid "Error.prefix"
 msgstr "Si è verificato un errore. Errore nr. "
 
-#:
 msgid "ErrorCode.AirportNotFound"
 msgstr "L’aeroporto non è stato trovato in questa notifica"
 
-#:
 msgid "ErrorCode.InvalidMessage"
 msgstr "Il messaggio non è valido"
 
-#:
+msgid "Flag.AMD"
+msgstr "TAF modificato"
+
+msgid "Flag.AUTO"
+msgstr "METAR automatizzato"
+
+msgid "Flag.CNL"
+msgstr "TAF cancellato"
+
+msgid "Flag.COR"
+msgstr "METAR/TAF corretto"
+
+msgid "Flag.NIL"
+msgstr "nessun dato"
+
+msgid "IcingIntensity.0"
+msgstr "Trace Icing or None"
+
+msgid "IcingIntensity.1"
+msgstr "Light Mixed Icing"
+
+msgid "IcingIntensity.2"
+msgstr "Light Rime Icing In Cloud"
+
+msgid "IcingIntensity.3"
+msgstr "Light Clear Icing In Precipitation"
+
+msgid "IcingIntensity.4"
+msgstr "Moderate Mixed Icing"
+
+msgid "IcingIntensity.5"
+msgstr "Moderate Rime Icing In Cloud"
+
+msgid "IcingIntensity.6"
+msgstr "Moderate Clear Icing In Precipitation"
+
+msgid "IcingIntensity.7"
+msgstr "Severe Mixed Icing"
+
+msgid "IcingIntensity.8"
+msgstr "Severe Rime Icing In Cloud"
+
+msgid "IcingIntensity.9"
+msgstr "Severe Clear Icing In Precipitation"
+
 msgid "Indicator.M"
-msgstr "minore di"
+msgstr "meno di"
 
-#:
 msgid "Indicator.P"
-msgstr "maggiore di"
+msgstr "più grande di"
 
-#:
 msgid "Intensity.-"
-msgstr "Debole"
+msgstr "Light"
 
-#:
 msgid "Intensity.+"
-msgstr "Forte"
+msgstr "Heavy"
 
-#:
 msgid "Intensity.VC"
-msgstr "Nelle vicinanze"
+msgstr "In the vicinity"
 
-#:
 msgid "Phenomenon.BR"
 msgstr "foschia"
 
-#:
 msgid "Phenomenon.DS"
 msgstr "tempesta di polvere "
 
-#:
 msgid "Phenomenon.DU"
 msgstr "polvere su un’area estesa"
 
-#:
 msgid "Phenomenon.DZ"
 msgstr "pioviggine"
 
-#:
 msgid "Phenomenon.FC"
-msgstr "tornado o tromba marina"
+msgstr "nuvole a imbuto"
 
-#:
 msgid "Phenomenon.FG"
 msgstr "nebbia"
 
-#:
 msgid "Phenomenon.FU"
 msgstr "fumo"
 
-#:
 msgid "Phenomenon.GR"
 msgstr "grandine"
 
-#:
 msgid "Phenomenon.GS"
-msgstr "grandine piccola e/o granuli di neve"
+msgstr "grandine leggera e/o granuli di neve"
 
-#:
 msgid "Phenomenon.HZ"
 msgstr "caligine"
 
-#:
 msgid "Phenomenon.IC"
 msgstr "cristalli di ghiaccio"
 
-#:
 msgid "Phenomenon.PL"
 msgstr "granuli di ghiaccio"
 
-#:
 msgid "Phenomenon.PO"
 msgstr "mulinelli di polvere/sabbia"
 
-#:
 msgid "Phenomenon.PY"
 msgstr "schizzi"
 
-#:
 msgid "Phenomenon.RA"
 msgstr "pioggia"
 
-#:
 msgid "Phenomenon.SA"
 msgstr "sabbia"
 
-#:
 msgid "Phenomenon.SG"
 msgstr "neve granulosa"
 
-#:
 msgid "Phenomenon.SN"
 msgstr "neve"
 
-#:
 msgid "Phenomenon.SQ"
-msgstr "groppo"
+msgstr "burrasca"
 
-#:
 msgid "Phenomenon.SS"
 msgstr "tempesta di sabbia"
 
-#:
 msgid "Phenomenon.UP"
 msgstr "precipitazione sconosciuta"
 
-#:
 msgid "Phenomenon.VA"
 msgstr "cenere vulcanica"
 
-#:
 msgid "Phenomenon.TS"
 msgstr "temporale"
 
-#:
 msgid "Remark.AO1"
 msgstr "stazioni automatizzate senza discriminatore di precipitazione"
 
-#:
 msgid "Remark.AO2"
 msgstr "stazione automatizzata con discriminatore di precipitazione"
 
-#:
+msgid "Remark.ALQDS"
+msgstr "tutti i quadranti"
+
+msgid "Remark.Barometer.0"
+msgstr "Increase, then decrease"
+
+msgid "Remark.Barometer.1"
+msgstr "Increase, then steady, or increase then Increase more slowly"
+
+msgid "Remark.Barometer.2"
+msgstr "aumento costante o instabile"
+
+msgid "Remark.Barometer.3"
+msgstr ""
+"Decrease or steady, then increase; or increase then increase more rapidly"
+
+msgid "Remark.Barometer.4"
+msgstr "Steady"
+
+msgid "Remark.Barometer.5"
+msgstr "Decrease, then increase"
+
+msgid "Remark.Barometer.6"
+msgstr "Decrease then steady; or decrease then decrease more slowly"
+
+msgid "Remark.Barometer.7"
+msgstr "Steady or unsteady decrease"
+
+msgid "Remark.Barometer.8"
+msgstr ""
+"Steady or increase, then decrease; or decrease then decrease more rapidly"
+
 msgid "Remark.BASED"
 msgstr "basato"
 
-#:
 msgid "Remark.Ceiling.Height"
 msgstr "base delle nubi tra {0} e {1} piedi"
 
-#:
 msgid "Remark.Ceiling.Second.Location"
-msgstr "base delle nubi di {0} piedi misurato da un secondo sensore situato a {1}"
+msgstr ""
+"base delle nubi di {0} piedi misurato da un secondo sensore situato a {1}"
 
-#:
+msgid "Remark.DSNT"
+msgstr "distante"
+
 msgid "Remark.FCST"
 msgstr "previsione"
 
-#:
 msgid "Remark.FUNNELCLOUD"
 msgstr "nuvole a imbuto"
 
-#:
 msgid "Remark.Hail"
 msgstr "chicchi di grandine più grandi con un diametro di {0} pollici"
 
-#:
 msgid "Remark.Hail.LesserThan"
-msgstr "chicchi di grandine più grandi con un diametro inferiore di {0} pollici"
+msgstr ""
+"chicchi di grandine più grandi con un diametro inferiore di {0} pollici"
 
-#:
+msgid "Remark.Hourly.Maximum.Temperature"
+msgstr "6-hourly maximum temperature of {0}°C"
+
+msgid "Remark.Hourly.Maximum.Minimum.Temperature"
+msgstr ""
+"24-hour maximum temperature of {0}°C and 24-hour minimum temperature of {1}°C"
+
+msgid "Remark.Hourly.Minimum.Temperature"
+msgstr "6-hourly minimum temperature of {0}°C"
+
+msgid "Remark.Hourly.Temperature"
+msgstr "temperatura oraria di {0}°C"
+
+msgid "Remark.Hourly.Temperature.Dew.Point"
+msgstr "temperatura oraria di {0}°C e punto di rugiada di {1}°C"
+
+msgid "Remark.Ice.Accretion.Amount"
+msgstr "{0}/100 of an inch of ice accretion in the past {1} hour(s)"
+
 msgid "Remark.HVY"
 msgstr "pesante"
 
-#:
 msgid "Remark.LGT"
 msgstr "leggero"
 
-#:
+msgid "Remark.LTG"
+msgstr "fulmine"
+
 msgid "Remark.MOD"
 msgstr "moderato"
 
-#:
 msgid "Remark.Obscuration"
-msgstr "{0} strato a {1} piedi composto da {2}"
+msgstr "{0} layer at {1} feet composed of {2}"
 
-#:
 msgid "Remark.ON"
-msgstr "on"
+msgstr "su"
 
-#:
 msgid "Remark.NXT"
 msgstr "prossimo"
 
-#:
 msgid "Remark.PeakWind"
 msgstr "picco di vento di {1} nodi da {0} gradi a {2}:{3}"
 
-#:
+msgid "Remark.Precipitation.Amount.Hourly"
+msgstr "{0}/100 of an inch of precipitation fell in the last hour"
+
+msgid "Remark.Precipitation.Amount.3.6"
+msgstr "{1} inches of precipitation fell in the last {0} hours"
+
+msgid "Remark.Precipitation.Amount.24"
+msgstr "{0} inches of precipitation fell in the last 24 hours"
+
+msgid "Remark.Precipitation.Beg"
+msgstr "{0} {1} beginning at {2}:{3}"
+
 msgid "Remark.Precipitation.Beg.End"
-msgstr "{0} {1} inizia a {2}:{3} e termina a {4}:{5}"
+msgstr "{0} {1} beginning at {2}:{3} ending at {4}:{5}"
 
-#:
+msgid "Remark.Precipitation.End"
+msgstr "{0} {1} ending at {2}:{3}"
+
+msgid "Remark.Pressure.Tendency"
+msgstr "di {0} HPa nelle ultime 3 ore"
+
 msgid "Remark.PRESFR"
-msgstr "pressione in caduta rapidamente "
+msgstr "pressione rapidamente in caduta"
 
-#:
 msgid "Remark.PRESRR"
-msgstr "pressione in salita rapidamente"
+msgstr "pressione rapidamente in salita"
 
-#:
 msgid "Remark.Second.Location.Visibility"
 msgstr "visibilità di {0} SM misurata da un secondo sensore situato a {1}"
 
-#:
 msgid "Remark.Sea.Level.Pressure"
 msgstr "pressione a livello del mare di {0} HPa"
 
-#:
 msgid "Remark.Sector.Visibility"
 msgstr "visibilità di {1} SM in direzione {0}"
 
-#:
 msgid "Remark.SLPNO"
 msgstr "pressione a livello del mare non disponibile"
 
-#:
+msgid "Remark.Snow.Depth"
+msgstr "altezza della neve di {0} pollici"
+
 msgid "Remark.Snow.Increasing.Rapidly"
-msgstr "aumento dell’altezza della neve di {0} pollici nell’ultima ora con un’altezza totale al suolo di {1} pollici"
+msgstr ""
+"aumento dell’altezza della neve di {0} pollici nell’ultima ora con "
+"un’altezza totale al suolo di {1} pollici"
 
-#:
 msgid "Remark.Snow.Pellets"
-msgstr "{0} neve tonda "
+msgstr "{0} snow pellets"
 
-#:
+msgid "Remark.Sunshine.Duration"
+msgstr "{0} minutes of sunshine"
+
 msgid "Remark.Surface.Visibility"
-msgstr "visibilità in superficie di {0} Statute Miles"
+msgstr "visibilità in superficie di {0} miglia terrestri"
 
-#:
 msgid "Remark.Thunderstorm.Location"
 msgstr "temporale {0} dalla stazione"
 
-#:
 msgid "Remark.Thunderstorm.Location.Moving"
 msgstr "temporale {0} dalla stazione si muove in direzione di {1}"
 
-#:
 msgid "Remark.Tornadic.Activity.Beginning"
-msgstr "{0} inizia a {1}:{2} {3} SM {4} dalla stazione"
+msgstr "{0} beginning at {1}:{2} {3} SM {4} of the station"
 
-#:
 msgid "Remark.Tornadic.Activity.BegEnd"
-msgstr "{0} inizia a {1}:{2} e termina a {3}:{4} {5} SM {6} dalla stazione"
+msgstr "{0} beginning at {1}:{2} ending at {3}:{4} {5} SM {6} of the station"
 
-#:
 msgid "Remark.Tornadic.Activity.Ending"
-msgstr "{0} termina a {1}:{2} {3} SM {4} dalla stazione"
+msgstr "{0} ending at {1}:{2} {3} SM {4} of the station"
 
-#:
 msgid "Remark.TORNADO"
 msgstr "tornado"
 
-#:
 msgid "Remark.Tower.Visibility"
-msgstr "visibilità dalla torre di controllo di {0} Statute Miles"
+msgstr "visibilità della torre di controllo di {0} miglia terrestri"
 
-#:
 msgid "Remark.Variable.Prevailing.Visibility"
 msgstr "visibilità prevalentemente variabile tra {0} e {1} SM"
 
-#:
 msgid "Remark.Variable.Sky.Condition"
 msgstr "strato di nuvole che varia tra {0} e {1}"
 
-#:
 msgid "Remark.Variable.Sky.Condition.Height"
 msgstr "strato di nubi a {0} piedi che varia tra {1} e {2}"
 
-#:
 msgid "Remark.VIRGA"
 msgstr "virga"
 
-#:
 msgid "Remark.Virga.Direction"
 msgstr "virga {0} dalla stazione"
 
-#:
 msgid "Remark.WATERSPOUT"
 msgstr "tromba marina"
 
-#:
+msgid "Remark.Water.Equivalent.Snow.Ground"
+msgstr "equivalente in acqua di {0} pollici di neve"
+
 msgid "Remark.WindShift"
 msgstr "spostamento del vento a {0}:{1}"
 
-#:
 msgid "Remark.WindShift.FROPA"
 msgstr "spostamento del vento accompagnato da passaggio frontale a {0}:{1}"
 
-#:
 msgid "MetarFacade.InvalidIcao"
 msgstr "Codice ICAO non valido"
 
-#:
 msgid "Converter.D"
-msgstr "Diminuzione"
+msgstr "diminuzione"
 
-#:
 msgid "Converter.E"
-msgstr "Est"
+msgstr "East"
 
-#:
 msgid "Converter.ENE"
-msgstr "Est Nord Est"
+msgstr "East North East"
 
-#:
 msgid "Converter.ESE"
-msgstr "Est Sud Est"
+msgstr "East South East"
 
-#:
 msgid "Converter.N"
-msgstr "Nord"
+msgstr "North"
 
-#:
 msgid "Converter.NE"
-msgstr "Nord Est"
+msgstr "North East"
 
-#:
 msgid "Converter.NNE"
-msgstr "Nord Nord Est"
+msgstr "North North East"
 
-#:
 msgid "Converter.NNW"
-msgstr "Nord Nord Ovest"
+msgstr "North North West"
 
-#:
 msgid "Converter.NSC"
 msgstr "nessun cambiamento significativo"
 
-#:
 msgid "Converter.NW"
-msgstr "Nord Ovest"
+msgstr "North West"
 
-#:
 msgid "Converter.S"
-msgstr "Sud"
+msgstr "South"
 
-#:
 msgid "Converter.SE"
-msgstr "Sud Est"
+msgstr "South East"
 
-#:
 msgid "Converter.SSE"
-msgstr "Sud Sud Est"
+msgstr "South South East"
 
-#:
 msgid "Converter.SSW"
-msgstr "Sud Sud Ovest"
+msgstr "South South West"
 
-#:
 msgid "Converter.SW"
-msgstr "Sud Ovest"
+msgstr "South West"
 
-#:
 msgid "Converter.U"
-msgstr "sempre più"
+msgstr "in aumento"
 
-#:
 msgid "Converter.VRB"
-msgstr "Variabile"
+msgstr "Variable"
 
-#:
 msgid "Converter.W"
-msgstr "Ovest"
+msgstr "West"
 
-#:
 msgid "Converter.WNW"
-msgstr "Ovest Nord Ovest"
+msgstr "West North West"
 
-#:
 msgid "Converter.WSW"
-msgstr "Ovest Sud Ovest"
+msgstr "West South West"
 
-#:
 msgid "WeatherChangeType.FM"
-msgstr "Da"
+msgstr "From"
 
-#:
 msgid "WeatherChangeType.BECMG"
-msgstr "Diventa"
+msgstr "Becoming"
 
-#:
+msgid "WeatherChangeType.INTER"
+msgstr "Intermittent"
+
 msgid "WeatherChangeType.TEMPO"
-msgstr "Temporanea"
+msgstr "Temporary"
 
-#:
 msgid "WeatherChangeType.PROB"
-msgstr "Probabilità"
+msgstr "Probability"
 
-#:
 msgid "TimeIndicator.AT"
 msgstr "alle"
 
-#:
 msgid "TimeIndicator.FM"
-msgstr "dalle"
+msgstr "From"
 
-#:
 msgid "TimeIndicator.TL"
 msgstr "fino alle"
 
-#:
 msgid "ToString.airport"
 msgstr "aeroporto"
 
-#:
 msgid "ToString.altimeter"
 msgstr "altimetro (hPa)"
 
-#:
 msgid "ToString.amendment"
-msgstr "emendamento"
+msgstr "Miglioramento"
 
-#:
 msgid "ToString.auto"
 msgstr "auto"
 
-#:
+msgid "ToString.baseHeight"
+msgstr "strato di base in piedi"
+
 msgid "ToString.cavok"
 msgstr "cavok"
 
-#:
 msgid "ToString.clouds"
 msgstr "nuvole"
 
-#:
 msgid "ToString.day.month"
 msgstr "giorno del mese"
 
-#:
 msgid "ToString.day.hour"
 msgstr "ora del giorno"
 
-#:
 msgid "ToString.deposit.braking"
 msgstr "capacità frenante"
 
-#:
 msgid "ToString.deposit.coverage"
 msgstr "copertura"
 
-#:
 msgid "ToString.deposit.thickness"
 msgstr "spessore"
 
-#:
 msgid "ToString.deposit.type"
 msgstr "tipo di deposito"
 
-#:
+msgid "ToString.depth"
+msgstr "profondità dello strato in piedi"
+
 msgid "ToString.descriptive"
 msgstr "descrittivo"
 
-#:
 msgid "ToString.dew.point"
 msgstr "punto di rugiada"
 
-#:
 msgid "ToString.end.day.month"
 msgstr "ultimo giorno del mese"
 
-#:
 msgid "ToString.end.hour.day"
 msgstr "ultima ora del giorno"
 
-#:
+msgid "ToString.flags"
+msgstr "bandiere"
+
 msgid "ToString.height.feet"
 msgstr "altezza (ft)"
 
-#:
 msgid "ToString.height.meter"
 msgstr "altezza (m)"
 
-#:
 msgid "ToString.intensity"
 msgstr "intensità"
 
-#:
 msgid "ToString.indicator"
 msgstr "indicatore"
 
-#:
 msgid "ToString.message"
 msgstr "messaggio originale"
 
-#:
 msgid "ToString.name"
 msgstr "nome"
 
-#:
 msgid "ToString.nosig"
 msgstr "nosig"
 
-#:
 msgid "ToString.phenomenons"
 msgstr "fenomeni"
 
-#:
 msgid "ToString.probability"
 msgstr "probabilità"
 
-#:
 msgid "ToString.quantity"
 msgstr "quantità"
 
-#:
 msgid "ToString.remark"
-msgstr "remark"
+msgstr "remarks"
 
-#:
 msgid "ToString.report.time"
 msgstr "ora del rapporto"
 
-#:
 msgid "ToString.runway.info"
 msgstr "informazioni sulle piste"
 
-#:
 msgid "ToString.start.day.month"
 msgstr "primo giorno del mese"
 
-#:
 msgid "ToString.start.hour.day"
 msgstr "prima ora del giorno"
 
-#:
 msgid "ToString.start.minute"
 msgstr "minuto di inizio"
 
-#:
 msgid "ToString.temperature"
 msgstr "temperatura (°C)"
 
-#:
 msgid "ToString.temperature.max"
 msgstr "temperatura massima (°C)"
 
-#:
 msgid "ToString.temperature.min"
 msgstr "temperatura minima (°C)"
 
-#:
 msgid "ToString.trend"
 msgstr "tendenza"
 
-#:
 msgid "ToString.trends"
 msgstr "tendenze"
 
-#:
 msgid "ToString.type"
 msgstr "tipo"
 
-#:
 msgid "ToString.visibility.main"
 msgstr "visibilità principale"
 
-#:
 msgid "ToString.visibility.min"
 msgstr "visibilità minima"
 
-#:
 msgid "ToString.visibility.min.direction"
 msgstr "direzione visibilità minima"
 
-#:
 msgid "ToString.visibility.max"
 msgstr "visibilità massima"
 
-#:
 msgid "ToString.vertical.visibility"
 msgstr "visibilità verticale (ft)"
 
-#:
 msgid "ToString.weather.conditions"
 msgstr "condizioni meteo"
 
-#:
 msgid "ToString.wind.direction"
 msgstr "direzione"
 
-#:
 msgid "ToString.wind.direction.degrees"
 msgstr "direzione (gradi)"
 
-#:
 msgid "ToString.wind.gusts"
 msgstr "raffiche"
 
-#:
 msgid "ToString.wind.min.variation"
 msgstr "variazione minima del vento"
 
-#:
 msgid "ToString.wind.max.variation"
 msgstr "variazione massima del vento"
 
-#:
 msgid "ToString.wind.speed"
 msgstr "velocità"
 
-#:
 msgid "ToString.wind.unit"
 msgstr "unità"
 
+msgid "TurbulenceIntensity.0"
+msgstr "None"
+
+msgid "TurbulenceIntensity.1"
+msgstr "Light turbulence"
+
+msgid "TurbulenceIntensity.2"
+msgstr "Moderate turbulence in clear air, occasional"
+
+msgid "TurbulenceIntensity.3"
+msgstr "Moderate turbulence in clear air, frequent"
+
+msgid "TurbulenceIntensity.4"
+msgstr "Moderate turbulence in cloud, occasional"
+
+msgid "TurbulenceIntensity.5"
+msgstr "Moderate turbulence in cloud, frequent"
+
+msgid "TurbulenceIntensity.6"
+msgstr "Severe turbulence in clear air, occasional"
+
+msgid "TurbulenceIntensity.7"
+msgstr "Severe turbulence in clear air, frequent"
+
+msgid "TurbulenceIntensity.8"
+msgstr "Severe turbulence in cloud, occasional"
+
+msgid "TurbulenceIntensity.9"
+msgstr "Severe turbulence in cloud, frequent"
+
+msgid "TurbulenceIntensity.X"
+msgstr "Extreme turbulence"

@@ -145,3 +145,70 @@ class WeatherChangeType(enum.Enum):
 
     def __str__(self):
         return _('WeatherChangeType.' + self.value)
+
+
+class RunwayDeposit(enum.Enum):
+    CLEAR_DRY = '0'
+    DAMP = '1'
+    WET_WATER_PATCHES = '2'
+    RIME_FROST_COVERED = '3'
+    DRY_SNOW = '4'
+    WET_SNOW = '5'
+    MELTING_SNOW = '6'
+    ICE = '7'
+    COMPACTED_SNOW = '8'
+    FROZEN_RIDGES = '9'
+    NOT_REPORTED = '/'
+
+    def __str__(self):
+        return _('DepositType.' + self.name)
+
+
+class RunwayCoverage(enum.Enum):
+    LESS_10 = '1'
+    FROM_11_TO_25 = '2'
+    FROM_26_TO_50 = '5'
+    FROM_51_TO_100 = '9'
+    NOT_REPORTED = '/'
+
+    def __str__(self):
+        return _('DepositCoverage.' + self.name)
+
+
+class RunwayThickness(enum.Enum):
+    LESS_1_MM = '00'
+    THICKNESS_10 = '92'
+    THICKNESS_15 = '93'
+    THICKNESS_20 = '94'
+    THICKNESS_25 = '95'
+    THICKNESS_30 = '96'
+    THICKNESS_35 = '97'
+    THICKNESS_40 = '98'
+    CLOSED = '99'
+    NOT_REPORTED = '//'
+
+    def __str__(self):
+        return _('DepositThickness.' + self.name)
+
+
+class RunwayBraking(enum.Enum):
+    COEFF = 'coeff'
+    POOR = '91'
+    MEDIUM_POOR = '92'
+    MEDIUM = '93'
+    MEDIUM_GOOD = '94'
+    GOOD = '95'
+    UNRELIABLE = '99'
+    NOT_REPORTED = '//'
+
+    def __str__(self):
+        return _('DepositBrakingCapacity.' + self.name)
+
+
+class RunwaySpecial(enum.Enum):
+    CLOSED = 'SNOCLO'
+    CLEARED = 'CLRD'
+
+    def __str__(self):
+        return _('DepositSpecial.' + self.name)
+

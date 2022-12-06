@@ -103,6 +103,10 @@ msgid "DepositBrakingCapacity.UNRELIABLE"
 msgstr "figures unreliable"
 
 #:
+msgid "DepositBrakingCapacity.COEFF"
+msgstr "friction coefficient"
+
+#:
 msgid "DepositCoverage.NOT_REPORTED"
 msgstr "not reported"
 
@@ -121,6 +125,14 @@ msgstr "from 26% to 50%"
 #:
 msgid "DepositCoverage.FROM_51_TO_100"
 msgstr "from 51% to 100%"
+
+#:
+msgid "DepositSpecial.CLOSED"
+msgstr "closed"
+
+#:
+msgid "DepositSpecial.CLEARED"
+msgstr "clear and dry"
 
 #:
 msgid "DepositThickness.NOT_REPORTED"
