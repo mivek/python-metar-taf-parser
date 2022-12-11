@@ -286,6 +286,11 @@ class RunwayInfo:
         self._min_range = None
         self._max_range = None
         self._trend = None
+        self._indicator = None
+        self._deposit_type = None
+        self._coverage = None
+        self._thickness = None
+        self._braking_capacity = None
 
     def _get_name(self):
         return self._name
@@ -311,10 +316,45 @@ class RunwayInfo:
     def _set_trend(self, value):
         self._trend = value
 
+    def _get_indicator(self):
+        return self._indicator
+
+    def _set_indicator(self, value: str):
+        self._indicator = value
+
+    def _get_deposit_type(self):
+        return self._deposit_type
+
+    def _set_deposit_type(self, value):
+        self._deposit_type = value
+
+    def _get_coverage(self):
+        return self._coverage
+
+    def _set_coverage(self, value):
+        self._coverage = value
+
+    def _get_thickness(self):
+        return self._thickness
+
+    def _set_thickness(self, value):
+        self._thickness = value
+
+    def _get_braking_capacity(self):
+        return self._braking_capacity
+
+    def _set_braking_capacity(self, value):
+        self._braking_capacity = value
+
     name = property(_get_name, _set_name)
     min_range = property(_get_min_range, _set_min_range)
     max_range = property(_get_max_range, _set_max_range)
     trend = property(_get_trend, _set_trend)
+    indicator = property(_get_indicator, _set_indicator)
+    deposit_type = property(_get_deposit_type, _set_deposit_type)
+    coverage = property(_get_coverage, _set_coverage)
+    thickness = property(_get_thickness, _set_thickness)
+    braking_capacity = property(_get_braking_capacity, _set_braking_capacity)
 
 
 class Cloud:

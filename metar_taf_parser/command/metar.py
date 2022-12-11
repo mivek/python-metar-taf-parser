@@ -1,6 +1,7 @@
 import re
 
 from metar_taf_parser.commons import converter
+from metar_taf_parser.model.enum import DepositType, DepositThickness, DepositCoverage, DepositBrakingCapacity
 from metar_taf_parser.model.model import RunwayInfo, Metar
 
 
@@ -41,25 +42,39 @@ class AltimeterMercuryCommand:
 
 class RunwayCommand:
     generic_regex = r'^(R\d{2}\w?/)'
-    runway_max_range_regex = r'^R(\d{2}\w?)/(\d{4})V(\d{3})(\w{0,2})'
-    runway_regex = r'^R(\d{2}\w?)/(\w)?(\d{4})(\w{0,2})$'
+    runway_max_range_regex = r'^R(\d{2}\w?)/(\d{4})V(\d{3,4})([UDN])?(FT)?'
+    runway_regex = r'^R(\d{2}\w?)/([MP])?(\d{4})([UDN])?(FT)?$'
+    runway_deposit_regex = r'^R(\d{2}\w?)/([/\d])([/\d])(//|\d{2})(//|\d{2})$'
 
     def __init__(self):
         self._generic_pattern = re.compile(RunwayCommand.generic_regex)
         self._max_range_pattern = re.compile(RunwayCommand.runway_max_range_regex)
         self._runway_pattern = re.compile(RunwayCommand.runway_regex)
+        self._runway_deposit_pattern = re.compile(RunwayCommand.runway_deposit_regex)
 
     def can_parse(self, input: str):
         return self._generic_pattern.match(input)
 
     def execute(self, metar: Metar, input: str):
-        matches = self._runway_pattern.findall(input)
+        matches = self._runway_deposit_pattern.findall(input)
         runway = RunwayInfo()
         if matches:
             runway.name = matches[0][0]
+            runway.deposit_type = DepositType(matches[0][1])
+            runway.coverage = DepositCoverage(matches[0][2])
+            runway.thickness = DepositThickness(matches[0][3])
+            runway.braking_capacity = DepositBrakingCapacity(matches[0][4])
+            metar.add_runway_info(runway)
+            return
+
+        matches = self._runway_pattern.findall(input)
+        if matches:
+            runway.name = matches[0][0]
+            runway.indicator = matches[0][1]
             runway.min_range = int(matches[0][2])
             runway.trend = matches[0][3]
             metar.add_runway_info(runway)
+            return
 
         matches = self._max_range_pattern.findall(input)
         if matches:

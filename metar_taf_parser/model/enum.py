@@ -32,6 +32,77 @@ class CloudType(enum.Enum):
         return _('CloudType.' + self.value)
 
 
+class DepositBrakingCapacity(enum.Enum):
+    NOT_REPORTED = '//'
+    POOR = '91'
+    MEDIUM_POOR = '92'
+    MEDIUM = '93'
+    MEDIUM_GOOD = '94'
+    GOOD = '95'
+    UNRELIABLE = '99'
+
+    def __str__(self):
+        return _('DepositBrakingCapacity.' + self.name)
+
+
+class DepositCoverage(enum.Enum):
+    NOT_REPORTED = '/'
+    LESS_10 = '1'
+    FROM_11_TO_25 = '2'
+    FROM_26_TO_50 = '5'
+    FROM_51_TO_100 = '9'
+
+    def __str__(self):
+        return _('DepositCoverage.' + self.name)
+
+
+class DepositThickness(enum.Enum):
+    NOT_REPORTED = '//'
+    LESS_1_MM = '00'
+    THICKNESS_10 = '92'
+    THICKNESS_15 = '93'
+    THICKNESS_20 = '94'
+    THICKNESS_25 = '95'
+    THICKNESS_30 = '96'
+    THICKNESS_35 = '97'
+    THICKNESS_40 = '98'
+    CLOSED = '99'
+
+    def __str__(self):
+        return _('DepositThickness.' + self.name)
+
+
+class DepositType(enum.Enum):
+    NOT_REPORTED = '/'
+    CLEAR_DRY = '0'
+    DAMP = '1'
+    WET_WATER_PATCHES = '2'
+    RIME_FROST_COVERED = '3'
+    DRY_SNOW = '4'
+    WET_SNOW = '5'
+    SLUSH = '6'
+    ICE = '7'
+    COMPACTED_SNOW = '8'
+    FROZEN_RIDGES = '9'
+
+    def __str__(self):
+        return _('DepositType.' + self.name)
+
+
+class Descriptive(enum.Enum):
+    SHOWERS = 'SH'
+    SHALLOW = 'MI'
+    PATCHES = 'BC'
+    PARTIAL = 'PR'
+    DRIFTING = 'DR'
+    THUNDERSTORM = 'TS'
+    BLOWING = 'BL'
+    FREEZING = 'FZ'
+
+    def __str__(self):
+        return _('Descriptive.' + self.value)
+
+
 class Flag(enum.Enum):
     AMD = 'AMD'
     AUTO = 'AUTO'
@@ -66,20 +137,6 @@ class Intensity(enum.Enum):
 
     def __str__(self):
         return _('Intensity.' + self.value)
-
-
-class Descriptive(enum.Enum):
-    SHOWERS = 'SH'
-    SHALLOW = 'MI'
-    PATCHES = 'BC'
-    PARTIAL = 'PR'
-    DRIFTING = 'DR'
-    THUNDERSTORM = 'TS'
-    BLOWING = 'BL'
-    FREEZING = 'FZ'
-
-    def __str__(self):
-        return _('Descriptive.' + self.value)
 
 
 class Phenomenon(enum.Enum):

@@ -1,5 +1,11 @@
 # Change Log 
 
+## [ TBD ] - TBD
+
+### Added
+
+- Implement parsing of deposit on a Runway. Properties `indicator`, `deposit_type`, `coverage`, `thickness`, `braking_capacity`.
+
 ## [1.6.0] - 2022-12-04
 
 ### Added

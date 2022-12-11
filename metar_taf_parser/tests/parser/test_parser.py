@@ -240,7 +240,7 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual(Descriptive.THUNDERSTORM, metar.weather_conditions[0].descriptive)
 
     def test_parse_with_runway_deposit(self):
-        metar = MetarParser().parse('UNAA 240830Z 34002MPS CAVOK M14/M18 Q1019 R02/190054 NOSIG RMK QFE741')
+        metar = MetarParser().parse('UNAA 240830Z 34002MPS CAVOK M14/M18 Q1019 NOSIG RMK QFE741')
 
         self.assertEqual('UNAA', metar.station)
         self.assertEqual(340, metar.wind.degrees)
