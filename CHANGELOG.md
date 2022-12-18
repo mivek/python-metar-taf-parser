@@ -1,6 +1,6 @@
 # Change Log 
 
-## [ TBD ] - TBD
+## [ 1.6.1 ] - 2022-12-20
 
 ### Added
 
