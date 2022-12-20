@@ -33,8 +33,12 @@ This package contains the parser module with the `MetarParser` and `TAFParser` c
 
 -   CloudQuantity: Represents the quantity in a cloud layer
 -   CloudType: Represents the type of cloud in a cloud layer
--   Intensity: Represents the intensity of a weather phenomenon
+-   DepositBrakingCapacity: Represents the breaking capacity on a runway
+-   DepositCoverage: Represents the percentage of a runway covered by the deposit
+-   DepositThickness: Represents the thickness of the deposit on a runway
+-   DepositType: Represents the type of deposit on a runway
 -   Descriptive: Represents the descriptive part of a weather phenomenon
+-   Intensity: Represents the intensity of a weather phenomenon
 -   Phenomenon: Represents the phenomenon of a weather phenomenon
 -   TimeIndicator: Indicates the time trend
 -   WeatherChangeType: Indicate the type of trend
@@ -88,12 +92,17 @@ Represents the temperature part of a TAF.
 
 #### RunwayInfo
 
-Contains information on the visibility on a runway
+Represents the visibility or the deposit on a runway.
 
 -   name: `str`. The name of the runway.
 -   min_range: `int`. The minimal visibility distance on the runway.
 -   max_range: `int`. The maximal visibility distance on the runway.
 -   trend: `str`. The trend of the visibility.
+-   indicator: `str`. The indicator on the visual range. `M` for less than and or `P` for greater than.
+-   deposit_type: `DepositType`. The type of deposit.
+-   coverage: `DepositCoverage`. The percentage of coverage.
+-   thickness: `DepositThickness`. The thickness of the deposit.
+-   braking_capacity: `DepositBrakingCapacity`. The braking capacity on the runway.
 
 #### Cloud
 
