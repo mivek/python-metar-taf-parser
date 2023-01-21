@@ -63,7 +63,7 @@ msgid "CloudType.TCU"
 msgstr "Torrecumulus"
 
 #:
-msgid "DepositBrakingCapacity.NOT_REPORTED"
+msgid "DepositBrakingCapacity.//"
 msgstr "no reportado"
 
 #:
@@ -83,11 +83,11 @@ msgid "DepositCoverage.FROM_51_TO_100"
 msgstr "de 51% a 100%"
 
 #:
-msgid "DepositThickness.NOT_REPORTED"
+msgid "DepositThickness.//"
 msgstr "no reportado"
 
 #:
-msgid "DepositThickness.LESS_1_MM"
+msgid "DepositThickness.00"
 msgstr "menos de 1 mm"
 
 #:
@@ -115,11 +115,11 @@ msgid "DepositThickness.THICKNESS_35"
 msgstr "35 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_40"
+msgid "DepositThickness.98"
 msgstr "40 cm o más"
 
 #:
-msgid "DepositThickness.CLOSED"
+msgid "DepositThickness.99"
 msgstr "cerrado"
 
 #:

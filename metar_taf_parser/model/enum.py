@@ -32,19 +32,6 @@ class CloudType(enum.Enum):
         return _('CloudType.' + self.value)
 
 
-class DepositBrakingCapacity(enum.Enum):
-    NOT_REPORTED = '//'
-    POOR = '91'
-    MEDIUM_POOR = '92'
-    MEDIUM = '93'
-    MEDIUM_GOOD = '94'
-    GOOD = '95'
-    UNRELIABLE = '99'
-
-    def __str__(self):
-        return _('DepositBrakingCapacity.' + self.name)
-
-
 class DepositCoverage(enum.Enum):
     NOT_REPORTED = '/'
     LESS_10 = '1'
@@ -54,22 +41,6 @@ class DepositCoverage(enum.Enum):
 
     def __str__(self):
         return _('DepositCoverage.' + self.name)
-
-
-class DepositThickness(enum.Enum):
-    NOT_REPORTED = '//'
-    LESS_1_MM = '00'
-    THICKNESS_10 = '92'
-    THICKNESS_15 = '93'
-    THICKNESS_20 = '94'
-    THICKNESS_25 = '95'
-    THICKNESS_30 = '96'
-    THICKNESS_35 = '97'
-    THICKNESS_40 = '98'
-    CLOSED = '99'
-
-    def __str__(self):
-        return _('DepositThickness.' + self.name)
 
 
 class DepositType(enum.Enum):

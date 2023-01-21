@@ -1,6 +1,16 @@
 # Change Log 
 
-## [ 1.6.1 ] - 2022-12-20
+## [1.6.2] - 2023-01-29
+
+### Fixed
+
+- Parsing of Runway does not fail if thickness and braking capacity are not in the enum.
+
+### Changed
+
+- RunwayInfo properties `thickness` and `braking_capacity` type is changed to string. Enums `DepositThickness` and `DepositBreakingCapacity` are removed.
+
+## [1.6.1] - 2022-12-20
 
 ### Added
 
