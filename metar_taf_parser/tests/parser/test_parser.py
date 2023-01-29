@@ -2,7 +2,7 @@ import unittest
 
 from parameterized import parameterized
 
-from metar_taf_parser.model.enum import Intensity, Phenomenon, Descriptive, WeatherChangeType, CloudQuantity, CloudType, \
+from metar_taf_parser.model.enum import Intensity, Phenomenon, Descriptive, DepositType, DepositCoverage, WeatherChangeType, CloudQuantity, CloudType, \
     TimeIndicator, TurbulenceIntensity, IcingIntensity
 from metar_taf_parser.model.model import AbstractWeatherContainer, Visibility, Wind
 from metar_taf_parser.parser.parser import AbstractParser, MetarParser, _parse_validity, _parse_temperature, TAFParser, \
@@ -275,6 +275,18 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual(Intensity.IN_VICINITY, metar.weather_conditions[2].intensity)
         self.assertEqual(Descriptive.BLOWING, metar.weather_conditions[2].descriptive)
         self.assertEqual(Phenomenon.SNOW, metar.weather_conditions[2].phenomenons[0])
+
+    def test_parse_runway_deposit(self):
+
+        metar = MetarParser().parse('UUDD 212100Z 20005MPS 8000 -FZRA SCT005 M01/M02 Q1010 R14R/590335 NOSIG')
+
+        self.assertEqual('UUDD', metar.station)
+        self.assertEqual(1, len(metar.runways_info))
+        self.assertEqual('14R', metar.runways_info[0].name)
+        self.assertEqual(DepositType.WET_SNOW, metar.runways_info[0].deposit_type)
+        self.assertEqual(DepositCoverage.FROM_51_TO_100, metar.runways_info[0].coverage)
+        self.assertEqual('03 mm', metar.runways_info[0].thickness)
+        self.assertEqual(_('DepositBrakingCapacity.default').format(0.35), metar.runways_info[0].braking_capacity)
 
 
 class FunctionTestCase(unittest.TestCase):

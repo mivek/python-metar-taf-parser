@@ -39,31 +39,31 @@ msgid "CloudType.TCU"
 msgstr "turmartigen Cumulus"
 
 #:
-msgid "DepositBrakingCapacity.NOT_REPORTED"
+msgid "DepositBrakingCapacity.//"
 msgstr "nicht gemeldet"
 
 #:
-msgid "DepositBrakingCapacity.POOR"
+msgid "DepositBrakingCapacity.91"
 msgstr "schlecht"
 
 #:
-msgid "DepositBrakingCapacity.MEDIUM_POOR"
+msgid "DepositBrakingCapacity.92"
 msgstr "schlecht/mäßig"
 
 #:
-msgid "DepositBrakingCapacity.MEDIUM"
+msgid "DepositBrakingCapacity.93"
 msgstr "mäßig"
 
 #:
-msgid "DepositBrakingCapacity.MEDIUM_GOOD"
+msgid "DepositBrakingCapacity.94"
 msgstr "mäßig/gut"
 
 #:
-msgid "DepositBrakingCapacity.GOOD"
+msgid "DepositBrakingCapacity.95"
 msgstr "gut"
 
 #:
-msgid "DepositBrakingCapacity.UNRELIABLE"
+msgid "DepositBrakingCapacity.99"
 msgstr "Werte unzuverlässig"
 
 #:
@@ -87,19 +87,19 @@ msgid "DepositCoverage.FROM_51_TO_100"
 msgstr "von 51% bis 100%"
 
 #:
-msgid "DepositThickness.NOT_REPORTED"
+msgid "DepositThickness.//"
 msgstr "nicht gemeldet"
 
 #:
-msgid "DepositThickness.LESS_1_MM"
+msgid "DepositThickness.00"
 msgstr "weniger als 1 mm"
 
 #:
-msgid "DepositThickness.THICKNESS_40"
+msgid "DepositThickness.98"
 msgstr "40 cm oder mehr"
 
 #:
-msgid "DepositThickness.CLOSED"
+msgid "DepositThickness.99"
 msgstr "geschlossen"
 
 #:

@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
 "Project-Id-Version: metar_taf_parser"
-"Language: zn_CH"
+"Language: zh_CN"
 #:
 msgid "CloudQuantity.BKN"
 msgstr "5-7分云"
@@ -75,19 +75,19 @@ msgid "CloudType.TCU"
 msgstr "高耸积云"
 
 #:
-msgid "DepositBrakingCapacity.NOT_REPORTED"
+msgid "DepositBrakingCapacity.//"
 msgstr "未报告"
 
 #:
-msgid "DepositBrakingCapacity.POOR"
+msgid "DepositBrakingCapacity.91"
 msgstr "差"
 
 #:
-msgid "DepositBrakingCapacity.MEDIUM_POOR"
+msgid "DepositBrakingCapacity.92"
 msgstr "中差"
 
 #:
-msgid "DepositBrakingCapacity.MEDIUM"
+msgid "DepositBrakingCapacity.93"
 msgstr "中"
 
 #:
@@ -95,11 +95,11 @@ msgid "DepositBrakingCapacity.MEDIUM_GOOD"
 msgstr "良好"
 
 #:
-msgid "DepositBrakingCapacity.GOOD"
+msgid "DepositBrakingCapacity.95"
 msgstr "好"
 
 #:
-msgid "DepositBrakingCapacity.UNRELIABLE"
+msgid "DepositBrakingCapacity.99"
 msgstr "数字不可靠"
 
 #:
@@ -123,11 +123,11 @@ msgid "DepositCoverage.FROM_51_TO_100"
 msgstr "从51%到100%"
 
 #:
-msgid "DepositThickness.NOT_REPORTED"
+msgid "DepositThickness.//"
 msgstr "未报告"
 
 #:
-msgid "DepositThickness.LESS_1_MM"
+msgid "DepositThickness.00"
 msgstr "小于 1 毫米"
 
 #:
@@ -155,11 +155,11 @@ msgid "DepositThickness.THICKNESS_35"
 msgstr "35 厘米"
 
 #:
-msgid "DepositThickness.THICKNESS_40"
+msgid "DepositThickness.98"
 msgstr "40厘米或以上"
 
 #:
-msgid "DepositThickness.CLOSED"
+msgid "DepositThickness.99"
 msgstr "已关闭"
 
 #:

@@ -1,8 +1,9 @@
 import unittest
 
 from metar_taf_parser.command.metar import RunwayCommand, CommandSupplier
-from metar_taf_parser.model.enum import DepositType, DepositCoverage, DepositThickness, DepositBrakingCapacity
+from metar_taf_parser.model.enum import DepositType, DepositCoverage
 from metar_taf_parser.model.model import Metar
+from metar_taf_parser.commons.i18n import _
 
 
 class MetarCommandTestCase(unittest.TestCase):
@@ -72,8 +73,8 @@ class MetarCommandTestCase(unittest.TestCase):
         self.assertEqual('05', metar.runways_info[0].name)
         self.assertEqual(DepositType.SLUSH, metar.runways_info[0].deposit_type)
         self.assertEqual(DepositCoverage.FROM_11_TO_25, metar.runways_info[0].coverage)
-        self.assertEqual(DepositThickness.THICKNESS_10, metar.runways_info[0].thickness)
-        self.assertEqual(DepositBrakingCapacity.MEDIUM_GOOD, metar.runways_info[0].braking_capacity)
+        self.assertEqual(_('DepositThickness.92'), metar.runways_info[0].thickness)
+        self.assertEqual(_('DepositBrakingCapacity.94'), metar.runways_info[0].braking_capacity)
 
     def test_parse_runway_deposit_with_not_reported_type(self):
         metar = Metar()
@@ -84,8 +85,8 @@ class MetarCommandTestCase(unittest.TestCase):
         self.assertEqual('05', metar.runways_info[0].name)
         self.assertEqual(DepositType.NOT_REPORTED, metar.runways_info[0].deposit_type)
         self.assertEqual(DepositCoverage.FROM_11_TO_25, metar.runways_info[0].coverage)
-        self.assertEqual(DepositThickness.THICKNESS_10, metar.runways_info[0].thickness)
-        self.assertEqual(DepositBrakingCapacity.MEDIUM_GOOD, metar.runways_info[0].braking_capacity)
+        self.assertEqual(_('DepositThickness.92'), metar.runways_info[0].thickness)
+        self.assertEqual(_('DepositBrakingCapacity.94'), metar.runways_info[0].braking_capacity)
 
     def test_parse_runway_deposit_with_invalid_deposit(self):
         metar = Metar()

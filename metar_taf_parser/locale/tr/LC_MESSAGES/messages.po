@@ -75,31 +75,31 @@ msgid "CloudType.TCU"
 msgstr "Yükselen kümülüs"
 
 #:
-msgid "DepositBrakingCapacity.NOT_REPORTED"
+msgid "DepositBrakingCapacity.//"
 msgstr "rapor edilmedi"
 
 #:
-msgid "DepositBrakingCapacity.POOR"
+msgid "DepositBrakingCapacity.91"
 msgstr "kötü"
 
 #:
-msgid "DepositBrakingCapacity.MEDIUM_POOR"
+msgid "DepositBrakingCapacity.92"
 msgstr "kötü/orta"
 
 #:
-msgid "DepositBrakingCapacity.MEDIUM"
+msgid "DepositBrakingCapacity.93"
 msgstr "orta"
 
 #:
-msgid "DepositBrakingCapacity.MEDIUM_GOOD"
+msgid "DepositBrakingCapacity.94"
 msgstr "orta/iyi"
 
 #:
-msgid "DepositBrakingCapacity.GOOD"
+msgid "DepositBrakingCapacity.95"
 msgstr "iyi"
 
 #:
-msgid "DepositBrakingCapacity.UNRELIABLE"
+msgid "DepositBrakingCapacity.99"
 msgstr "güvenilmez"
 
 #:
@@ -123,11 +123,11 @@ msgid "DepositCoverage.FROM_51_TO_100"
 msgstr "%51 ila %100 arası"
 
 #:
-msgid "DepositThickness.NOT_REPORTED"
+msgid "DepositThickness.//"
 msgstr "rapor edilmedi"
 
 #:
-msgid "DepositThickness.LESS_1_MM"
+msgid "DepositThickness.00"
 msgstr "1 mm'den daha az"
 
 #:
@@ -155,11 +155,11 @@ msgid "DepositThickness.THICKNESS_35"
 msgstr "35 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_40"
+msgid "DepositThickness.98"
 msgstr "40 cm veya daha fazla"
 
 #:
-msgid "DepositThickness.CLOSED"
+msgid "DepositThickness.99"
 msgstr "kullanılmaz"
 
 #:
