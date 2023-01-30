@@ -8,9 +8,27 @@ from metar_taf_parser.command.remark import RemarkCommandSupplier
 from metar_taf_parser.command.taf import TAFCommandSupplier
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import TranslationError
-from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
-from metar_taf_parser.model.model import WeatherCondition, Visibility, Metar, TemperatureDated, \
-    AbstractWeatherContainer, TAF, TAFTrend, MetarTrend, Validity, FMValidity, MetarTrendTime
+from metar_taf_parser.model.enum import (
+    Flag,
+    Intensity,
+    Descriptive,
+    Phenomenon,
+    TimeIndicator,
+    WeatherChangeType,
+)
+from metar_taf_parser.model.model import (
+    WeatherCondition,
+    Visibility,
+    Metar,
+    TemperatureDated,
+    AbstractWeatherContainer,
+    TAF,
+    TAFTrend,
+    MetarTrend,
+    Validity,
+    FMValidity,
+    MetarTrendTime,
+)
 
 
 def parse_delivery_time(abstract_weather_code, time_string):
@@ -40,9 +58,9 @@ def parse_remark(container: AbstractWeatherContainer, line: list, index: int):
     :param index: the index starting the remark ie token RMK
     :return: None
     """
-    remarks = RemarkParser().parse(str.join(' ', line[index + 1:]))
+    remarks = RemarkParser().parse(str.join(" ", line[index + 1 :]))
     container.remarks = remarks
-    container.remark = str.join(' ', remarks)
+    container.remark = str.join(" ", remarks)
 
 
 def _parse_temperature(input: str):
@@ -51,7 +69,7 @@ def _parse_temperature(input: str):
     :param input: the string containing the temperature
     :return: TemperatureDated object
     """
-    parts = input.split('/')
+    parts = input.split("/")
     temperature = TemperatureDated()
 
     temperature.temperature = converter.convert_temperature(parts[0][2:])
@@ -67,7 +85,7 @@ def _parse_validity(input: str):
     :return: Validity object
     """
     validity = Validity()
-    parts = input.split('/')
+    parts = input.split("/")
     validity.start_day = int(parts[0][0:2])
     validity.start_hour = int(parts[0][2:])
     validity.end_day = int(parts[1][0:2])
@@ -94,13 +112,14 @@ class AbstractParser(abc.ABC):
     Abstract class.
     Base parser.
     """
-    FM = 'FM'
-    TEMPO = 'TEMPO'
-    BECMG = 'BECMG'
-    RMK = 'RMK'
-    TOKENIZE_REGEX = r'\s((?=\d\/\dSM)(?<!\s\d\s)|(?!\d\/\dSM))|='
-    INTENSITY_REGEX = r'^(-|\+|VC)'
-    CAVOK = 'CAVOK'
+
+    FM = "FM"
+    TEMPO = "TEMPO"
+    BECMG = "BECMG"
+    RMK = "RMK"
+    TOKENIZE_REGEX = r"\s((?=\d\/\dSM)(?<!\s\d\s)|(?!\d\/\dSM))|="
+    INTENSITY_REGEX = r"^(-|\+|VC)"
+    CAVOK = "CAVOK"
 
     def __init__(self):
         self._common_supplier = CommandSupplier()
@@ -121,22 +140,24 @@ class AbstractParser(abc.ABC):
         if self._intensity_regex_pattern.match(input):
             match = self._intensity_regex_pattern.findall(input)[0]
             weather_condition.intensity = Intensity(match)
-            input = input[len(match):]
+            input = input[len(match) :]
 
         for name, member in Descriptive.__members__.items():
             if member.value in input:
                 weather_condition.descriptive = member
-                input = input[len(member.value):]
+                input = input[len(member.value) :]
 
-        previous_token = ''
-        while input != '' and input != previous_token:
+        previous_token = ""
+        while input != "" and input != previous_token:
             previous_token = input
             for name, member in Phenomenon.__members__.items():
-                if re.match(r'^' + member.value, input):
+                if re.match(r"^" + member.value, input):
                     weather_condition.add_phenomenon(member)
-                    input = input[len(member.value):]
+                    input = input[len(member.value) :]
 
-        return weather_condition if input == '' and weather_condition.is_valid() else None
+        return (
+            weather_condition if input == "" and weather_condition.is_valid() else None
+        )
 
     def tokenize(self, input: str):
         """
@@ -144,9 +165,12 @@ class AbstractParser(abc.ABC):
         :param input: The metar or TAF as string
         :return: List of tokens
         """
+        input = input.replace("METAR", "")
         return list(filter(None, self._tokenize_regex_pattern.split(input)))
 
-    def general_parse(self, abstract_weather_container: AbstractWeatherContainer, input: str):
+    def general_parse(
+        self, abstract_weather_container: AbstractWeatherContainer, input: str
+    ):
         """
         Common parse method for METAR, TAF and trends object
         :param abstract_weather_container: the object to update
@@ -157,22 +181,25 @@ class AbstractParser(abc.ABC):
             abstract_weather_container.cavok = True
             if abstract_weather_container.visibility is None:
                 abstract_weather_container.visibility = Visibility()
-            abstract_weather_container.visibility.distance = '> 10km'
+            abstract_weather_container.visibility.distance = "> 10km"
             return True
 
         command = self._common_supplier.get(input)
         if command:
             return command.execute(abstract_weather_container, input)
 
-        return abstract_weather_container.add_weather_condition(self._parse_weather_condition(input))
+        return abstract_weather_container.add_weather_condition(
+            self._parse_weather_condition(input)
+        )
 
 
 class MetarParser(AbstractParser):
     """
     Parser to Metar messages.
     """
-    AT = 'AT'
-    TL = 'TL'
+
+    AT = "AT"
+    TL = "TL"
 
     def __init__(self):
         super().__init__()
@@ -187,11 +214,21 @@ class MetarParser(AbstractParser):
         :return: the last index of the token that was last parsed
         """
         i = index + 1
-        while i < len(trend_parts) and AbstractParser.TEMPO != trend_parts[i] and AbstractParser.BECMG != trend_parts[i]:
-            if trend_parts[i].startswith(AbstractParser.FM) or trend_parts[i].startswith(MetarParser.TL) or trend_parts[i].startswith(MetarParser.AT):
+        while (
+            i < len(trend_parts)
+            and AbstractParser.TEMPO != trend_parts[i]
+            and AbstractParser.BECMG != trend_parts[i]
+        ):
+            if (
+                trend_parts[i].startswith(AbstractParser.FM)
+                or trend_parts[i].startswith(MetarParser.TL)
+                or trend_parts[i].startswith(MetarParser.AT)
+            ):
 
                 trend_time = MetarTrendTime(TimeIndicator[trend_parts[i][0:2]])
-                trend_time.time = time(int(trend_parts[i][2:4]), int(trend_parts[i][4:6]))
+                trend_time.time = time(
+                    int(trend_parts[i][2:4]), int(trend_parts[i][4:6])
+                )
                 trend.add_time(trend_time)
             else:
                 self.general_parse(trend, trend_parts[i])
@@ -214,10 +251,15 @@ class MetarParser(AbstractParser):
         parse_delivery_time(metar, metar_tab[1])
         index = 2
         while index < len(metar_tab):
-            if not super().general_parse(metar, metar_tab[index]) and not _parse_flags(metar, metar_tab[index]):
-                if 'NOSIG' == metar_tab[index]:
+            if not super().general_parse(metar, metar_tab[index]) and not _parse_flags(
+                metar, metar_tab[index]
+            ):
+                if "NOSIG" == metar_tab[index]:
                     metar.nosig = True
-                elif AbstractParser.TEMPO == metar_tab[index] or AbstractParser.BECMG == metar_tab[index]:
+                elif (
+                    AbstractParser.TEMPO == metar_tab[index]
+                    or AbstractParser.BECMG == metar_tab[index]
+                ):
                     trend = MetarTrend(WeatherChangeType[metar_tab[index]])
                     index = self._parse_trend(index, trend, metar_tab)
                     metar.add_trend(trend)
@@ -236,14 +278,15 @@ class TAFParser(AbstractParser):
     """
     Parser of TAF messages.
     """
-    TAF = 'TAF'
-    PROB = 'PROB'
-    TX = 'TX'
-    TN = 'TN'
+
+    TAF = "TAF"
+    PROB = "PROB"
+    TX = "TX"
+    TN = "TN"
 
     def __init__(self):
         super().__init__()
-        self._validity_pattern = re.compile(r'^\d{4}/\d{4}$')
+        self._validity_pattern = re.compile(r"^\d{4}/\d{4}$")
         self._taf_command_supplier = TAFCommandSupplier()
 
     def parse(self, input: str):
@@ -253,6 +296,7 @@ class TAFParser(AbstractParser):
         :return: a TAF object or None if the message is invalid
         """
         taf = TAF()
+        input = input.replace("TAF")
         lines = self._extract_lines_tokens(input)
         if TAFParser.TAF != lines[0][0]:
             return
@@ -297,18 +341,31 @@ class TAFParser(AbstractParser):
         :param taf_code: The base message
         :return: a list of string representing the lines of the message.
         """
-        single_line = taf_code.replace('\n', ' ')
-        clean_line = re.sub(r'\s{2,}', ' ', single_line)
-        lines = re.sub(r'\s(PROB\d{2}\sTEMPO|TEMPO|INTER|BECMG|FM|PROB)', '\n\g<1>', clean_line).splitlines()
+        single_line = taf_code.replace("\n", " ")
+        clean_line = re.sub(r"\s{2,}", " ", single_line)
+        lines = re.sub(
+            r"\s(PROB\d{2}\sTEMPO|TEMPO|INTER|BECMG|FM|PROB)", "\n\g<1>", clean_line
+        ).splitlines()
         lines_token = [self.tokenize(line) for line in lines]
 
         if len(lines_token) > 1:
             last_line = lines_token[len(lines) - 1]
-            temperatures = list(filter(lambda x: x.startswith(TAFParser.TX) or x.startswith(TAFParser.TN), last_line))
+            temperatures = list(
+                filter(
+                    lambda x: x.startswith(TAFParser.TX) or x.startswith(TAFParser.TN),
+                    last_line,
+                )
+            )
 
             if temperatures:
                 lines_token[0] = lines_token[0] + temperatures
-                lines_token[len(lines) - 1] = list(filter(lambda x: not x.startswith(TAFParser.TX) and not x.startswith(TAFParser.TN), last_line))
+                lines_token[len(lines) - 1] = list(
+                    filter(
+                        lambda x: not x.startswith(TAFParser.TX)
+                        and not x.startswith(TAFParser.TN),
+                        last_line,
+                    )
+                )
         return lines_token
 
     def _parse_line(self, taf: TAF, line_tokens: list):
@@ -365,7 +422,11 @@ class RemarkParser:
 
         while rmk_str:
             try:
-                (rmk_str, rmk_list) = self._supplier.get(rmk_str).execute(rmk_str, rmk_list)
+                (rmk_str, rmk_list) = self._supplier.get(rmk_str).execute(
+                    rmk_str, rmk_list
+                )
             except TranslationError:
-                (rmk_str, rmk_list) = self._supplier.default_command.execute(rmk_str, rmk_list)
+                (rmk_str, rmk_list) = self._supplier.default_command.execute(
+                    rmk_str, rmk_list
+                )
         return rmk_list
