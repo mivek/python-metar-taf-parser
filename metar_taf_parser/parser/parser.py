@@ -144,7 +144,7 @@ class AbstractParser(abc.ABC):
         :param input: The metar or TAF as string
         :return: List of tokens
         """
-        return list(filter(None, self._tokenize_regex_pattern.split(input)))
+        return list(filter(None, self._tokenize_regex_pattern.split(input.replace('METAR',''))))
 
     def general_parse(self, abstract_weather_container: AbstractWeatherContainer, input: str):
         """
