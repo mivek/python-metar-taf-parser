@@ -288,6 +288,15 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual('03 mm', metar.runways_info[0].thickness)
         self.assertEqual(_('DepositBrakingCapacity.default').format(0.35), metar.runways_info[0].braking_capacity)
 
+    def test_parse_empty_wind(self):
+
+        metar = MetarParser().parse('KATW 022045Z 0000KT 10SM SCT120 00/M08 A2996')
+
+        self.assertEqual('KATW', metar.station)
+        self.assertIsNotNone(metar.wind)
+        self.assertEqual(0, metar.wind.speed)
+        self.assertEqual(0, metar.wind._degrees)
+
 
 class FunctionTestCase(unittest.TestCase):
 

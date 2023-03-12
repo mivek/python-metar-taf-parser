@@ -1,5 +1,11 @@
 # Change Log 
 
+## [1.6.3] - 2023-03-12
+
+### Fixed
+
+- Parsing of token `0000KT` no longer causes an error.
+
 ## [1.6.2] - 2023-01-29
 
 ### Fixed
