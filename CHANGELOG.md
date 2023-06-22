@@ -1,5 +1,11 @@
 # Change Log 
 
+## [1.6.4] - 2023-06-TBD
+
+### Fixed
+
+- Parsing of `TAF` with stations starting by `FM`.
+
 ## [1.6.3] - 2023-03-12
 
 ### Fixed
