@@ -801,6 +801,22 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(1, len(taf.becmgs()[5].icings))
         self.assertEqual(2, len(taf.becmgs()[5].turbulence))
 
+    def test_parse_with_station_begining_with_FM(self):
+        taf = TAFParser().parse(
+            """TAF FMMI 082300Z 0900/1006 16006KT 9999 FEW017 BKN020 PROB30
+            TEMPO 0908/0916 4500 RADZ
+            BECMG 0909/0911 10010KT
+            BECMG 0918/0920 16006KT
+            """
+        )
+
+        self.assertIsNotNone(taf)
+        self.assertEqual('FMMI', taf.station)
+
+        self.assertEqual(8, taf.day)
+        self.assertEqual(23, taf.time.hour)
+        self.assertEqual(0, taf.time.minute)
+
 
 class RemarkParserTestCase(unittest.TestCase):
 
