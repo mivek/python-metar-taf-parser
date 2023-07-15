@@ -46,6 +46,8 @@ This package contains the parser module with the `MetarParser` and `TAFParser` c
 
 ### Objects
 
+![model.png](model.png)
+
 #### Wind
 
 Represents the wind part of a metar, taf or trend
