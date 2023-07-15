@@ -23,118 +23,6 @@ class Country:
     name = property(_get_name, _set_name)
 
 
-class Airport:
-    def __init__(self):
-        """ Initiate the attributes """
-        self._name = None
-        self._city = None
-        self._country = None
-        self._iata = None
-        self._icao = None
-        self._latitude = None
-        self._longitude = None
-        self._altitude = None
-        self._timezone = None
-        self._dst = None
-        self._tz_database = None
-
-    def _get_name(self):
-        return self._name
-
-    def _set_name(self, value):
-        self._name = value
-
-    def _get_city(self):
-        return self._city
-
-    def _set_city(self, value):
-        self._city = value
-
-    def _get_country(self):
-        return self._country
-
-    def _set_country(self, value):
-        self._country = value
-
-    def _get_iata(self):
-        return self._iata
-
-    def _set_iata(self, value):
-        self._iata = value
-
-    def _get_icao(self):
-        return self._icao
-
-    def _set_icao(self, value):
-        self._icao = value
-
-    def _get_latitude(self):
-        return self._latitude
-
-    def _set_latitude(self, value):
-        self._latitude = value
-
-    def _get_longitude(self):
-        return self._longitude
-
-    def _set_longitude(self, value):
-        self._longitude = value
-
-    def _set_altitude(self, value):
-        self._altitude = value
-
-    def _get_altitude(self):
-        return self._altitude
-
-    def _get_timezone(self):
-        return self._timezone
-
-    def _set_timezone(self, value):
-        self._timezone = value
-
-    def _get_dst(self):
-        return self._dst
-
-    def _set_dst(self, value):
-        self._dst = value
-
-    def _get_tz_database(self):
-        return self._tz_database
-
-    def _set_tz_database(self, value):
-        self._tz_database = value
-
-    def __repr__(self):
-        return """
-            Airport[name={name}, city={city}, iata={iata}, country={country}, icao={icao},
-            latitude={latitude}, longitude={longitude}, altitude={altitude},
-            timezone={timezone}, dst={dst}, tz_database={tz_database}]""".format(
-            name=self.name,
-            city=self.city,
-            country=self.country,
-            iata=self.iata,
-            icao=self.icao,
-            latitude=self.latitude,
-            longitude=self.longitude,
-            altitude=self.altitude,
-            timezone=self.timezone,
-            dst=self.dst,
-            tz_database=self.tz_database
-        )
-
-    name = property(_get_name, _set_name)
-    city = property(_get_city, _set_city)
-    country = property(_get_country, _set_country)
-    iata = property(_get_iata, _set_iata)
-    icao = property(_get_icao, _set_icao)
-    latitude = property(_get_latitude, _set_latitude)
-    longitude = property(_get_longitude, _set_longitude)
-    altitude = property(_get_altitude, _set_altitude)
-    timezone = property(_get_timezone, _set_timezone)
-    dst = property(_get_dst, _set_dst)
-    tz_database = property(_get_tz_database, _set_tz_database)
-
-
 class Wind:
     def __init__(self):
         self._speed = None
@@ -682,7 +570,6 @@ class AbstractWeatherCode(AbstractWeatherContainer):
         super().__init__()
         self._day = None
         self._time = None
-        self._airport = None
         self._message = None
         self._station = None
         self._flags = set()
@@ -699,12 +586,6 @@ class AbstractWeatherCode(AbstractWeatherContainer):
 
     def _set_time(self, value: time):
         self._time = value
-
-    def _get_airport(self):
-        return self._airport
-
-    def _set_airport(self, value: Airport):
-        self._airport = value
 
     def _get_message(self):
         return self._message
@@ -743,10 +624,9 @@ class AbstractWeatherCode(AbstractWeatherContainer):
         return Flag.NIL in self._flags
 
     def __repr__(self):
-        return 'day={day}, time={time}, airport={airport}, message={message}, station={station}, trends={trends}, flags={flags}, '.format(
+        return 'day={day}, time={time}, message={message}, station={station}, trends={trends}, flags={flags}, '.format(
             day=self.day,
             time=self.time,
-            airport=self.airport,
             message=self.message,
             station=self.station,
             trends=self.trends,
@@ -755,7 +635,6 @@ class AbstractWeatherCode(AbstractWeatherContainer):
 
     day = property(_get_day, _set_day)
     time = property(_get_time, _set_time)
-    airport = property(_get_airport, _set_airport)
     message = property(_get_message, _set_message)
     station = property(_get_station, _set_station)
     trends = property(_get_trends)
