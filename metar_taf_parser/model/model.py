@@ -17,6 +17,9 @@ class Country:
         """ Setter for the name """
         self._name = value
 
+    def __repr__(self):
+        return 'Country[name={name}]'.format(name=self.name)
+
     name = property(_get_name, _set_name)
 
 
@@ -101,6 +104,24 @@ class Airport:
     def _set_tz_database(self, value):
         self._tz_database = value
 
+    def __repr__(self):
+        return """
+            Airport[name={name}, city={city}, iata={iata}, country={country}, icao={icao},
+            latitude={latitude}, longitude={longitude}, altitude={altitude},
+            timezone={timezone}, dst={dst}, tz_database={tz_database}]""".format(
+            name=self.name,
+            city=self.city,
+            country=self.country,
+            iata=self.iata,
+            icao=self.icao,
+            latitude=self.latitude,
+            longitude=self.longitude,
+            altitude=self.altitude,
+            timezone=self.timezone,
+            dst=self.dst,
+            tz_database=self.tz_database
+        )
+
     name = property(_get_name, _set_name)
     city = property(_get_city, _set_city)
     country = property(_get_country, _set_country)
@@ -166,6 +187,14 @@ class Wind:
     def _set_unit(self, value):
         self._unit = value
 
+    def __repr__(self):
+        return """Wind[speed={speed}, direction={direction}, gust={gust}, degrees={degrees}
+        unit={unit}, min_variation={min_variation}, max_variation={max_variation}
+        ]
+        """.format(speed=self.speed, direction=self.direction,
+                   gust=self.gust, degrees=self.degrees, unit=self._unit,
+                   min_variation=self.min_variation, max_variation=self.max_variation)
+
     speed = property(_get_speed, _set_speed)
     direction = property(_get_direction, _set_direction)
     gust = property(_get_gust, _set_gust)
@@ -185,6 +214,9 @@ class WindShear(Wind):
 
     def _set_height(self, value):
         self._height = value
+
+    def __repr__(self):
+        return 'WindShear[height={height}'.format(height=self.height) + super().__repr__() + ']'
 
     height = property(_get_height, _set_height)
 
@@ -212,6 +244,12 @@ class Visibility:
 
     def _set_min_direction(self, value):
         self._min_direction = value
+
+    def __repr__(self):
+        return """Visibility[distance={distance}, min_distance={min_distance}
+        , min_direction={min_direction}]""".format(distance=self.distance,
+                                                   min_direction=self.min_direction,
+                                                   min_distance=self.min_distance)
 
     distance = property(_get_distance, _set_distance)
     min_distance = property(_get_min_distance, _set_min_distance)
@@ -245,6 +283,13 @@ class WeatherCondition:
     def is_valid(self):
         return len(self._phenomenons) != 0 or self._descriptive == Descriptive.THUNDERSTORM
 
+    def __repr__(self):
+        return 'WeatherCondition[intensity={intensity}, descriptive={descriptive}, phenomenons={phenomenons}]'.format(
+            intensity=self.intensity,
+            descriptive=self.descriptive,
+            phenomenons=self.phenomenons
+        )
+
     intensity = property(_get_intensity, _set_intensity)
     descriptive = property(_get_descriptive, _set_descriptive)
     phenomenons = property(_get_phenomenons)
@@ -273,6 +318,13 @@ class TemperatureDated:
 
     def _set_hour(self, value):
         self._hour = value
+
+    def __repr__(self):
+        return 'TemperatureDated[temperature={temperature}, day={day}, hour={hour}]'.format(
+            temperature=self.temperature,
+            day=self.day,
+            hour=self.hour
+        )
 
     temperature = property(_get_temperature, _set_temperature)
     day = property(_get_day, _set_day)
@@ -346,6 +398,23 @@ class RunwayInfo:
     def _set_braking_capacity(self, value):
         self._braking_capacity = value
 
+    def __repr__(self):
+        return """
+            RunwayInfo[name={name}, min_range={min_range}, max_range={max_range},
+            trend={trend}, indicator={indicator}, deposit_type={deposit_type},
+            coverage={coverage}, thickness={thickness}, braking_capacity={braking_capacity}]
+        """.format(
+            name=self.name,
+            min_range=self.min_range,
+            max_range=self.max_range,
+            trend=self.trend,
+            indicator=self.indicator,
+            deposit_type=self.deposit_type,
+            coverage=self.coverage,
+            thickness=self.thickness,
+            braking_capacity=self.braking_capacity
+        )
+
     name = property(_get_name, _set_name)
     min_range = property(_get_min_range, _set_min_range)
     max_range = property(_get_max_range, _set_max_range)
@@ -382,6 +451,13 @@ class Cloud:
     def _get_type(self):
         return self._type
 
+    def __repr__(self):
+        return 'Cloud[height={height}, quantity={quantity}, type={type}]'.format(
+            height=self.height,
+            quantity=self.quantity,
+            type=self.type
+        )
+
     height = property(_get_height, _set_height)
     quantity = property(_get_quantity, _set_quantity)
     type = property(_get_type, _set_type)
@@ -410,6 +486,13 @@ class Icing:
 
     def _set_depth(self, depth: int):
         self._depth = depth
+
+    def __repr__(self):
+        return 'Icing[intensity={intensity}, base_height={base_height}, depth={depth}]'.format(
+            intensity=self.intensity,
+            base_height=self.base_height,
+            depth=self.depth
+        )
 
     intensity = property(_get_intensity, _set_intensity)
     base_height = property(_get_base_height, _set_base_height)
@@ -441,6 +524,13 @@ class Turbulence:
     def _set_depth(self, depth: int):
         self._depth = depth
 
+    def __repr__(self):
+        return 'Turbulence[intensity={intensity}, base_height={base_height}, depth={depth}]'.format(
+            intensity=self.intensity,
+            base_height=self.base_height,
+            depth=self.depth
+        )
+
     intensity = property(_get_intensity, _set_intensity)
     base_height = property(_get_base_height, _set_base_height)
     depth = property(_get_depth, _set_depth)
@@ -462,6 +552,12 @@ class ITafGroups:
 
     def add_icing(self, icing: Icing):
         self._icings.append(icing)
+
+    def __repr__(self):
+        return 'turbulence={turbulence}, icings={icings}'.format(
+            turbulence=self.turbulence,
+            icings=self.icings
+        )
 
     turbulence = property(_get_turbulence)
     icings = property(_get_icings)
@@ -537,6 +633,17 @@ class AbstractWeatherContainer(abc.ABC):
             self._weather_conditions.append(wc)
             return True
 
+    def __repr__(self):
+        return """
+        wind={wind}, visibility={visibility}, vertical_visibility={vertical_visibility},
+        wind_shear={wind_shear}, cavok={cavok}, remark={remark},
+        clouds={clouds}, weather_conditions={weather_conditions}
+        """.format(wind=self.wind, visibility=self.visibility,
+                   vertical_visibility=self.vertical_visibility,
+                   cavok=self.cavok, remark=self.remark,
+                   wind_shear=self.wind_shear,
+                   clouds=str(self.clouds), weather_conditions=self.weather_conditions)
+
     wind = property(_get_wind, _set_wind)
     visibility = property(_get_visibility, _set_visibility)
     vertical_visibility = property(_get_vertical_visibility, _set_vertical_visibility)
@@ -561,6 +668,9 @@ class AbstractValidity(abc.ABC):
 
     def _set_start_hour(self, value: int):
         self._start_hour = value
+
+    def __repr__(self):
+        return 'start_day={start_day}, start_hour={start_hour}'.format(start_day=self.start_day, start_hour=self.start_hour)
 
     start_day = property(_get_start_day, _set_start_day)
     start_hour = property(_get_start_hour, _set_start_hour)
@@ -632,6 +742,17 @@ class AbstractWeatherCode(AbstractWeatherContainer):
     def _is_nil(self):
         return Flag.NIL in self._flags
 
+    def __repr__(self):
+        return 'day={day}, time={time}, airport={airport}, message={message}, station={station}, trends={trends}, flags={flags}, '.format(
+            day=self.day,
+            time=self.time,
+            airport=self.airport,
+            message=self.message,
+            station=self.station,
+            trends=self.trends,
+            flags=self.flags
+        ) + super().__repr__()
+
     day = property(_get_day, _set_day)
     time = property(_get_time, _set_time)
     airport = property(_get_airport, _set_airport)
@@ -686,6 +807,15 @@ class Metar(AbstractWeatherCode):
     def add_runway_info(self, runway_info: RunwayInfo):
         self._runways_info.append(runway_info)
 
+    def __repr__(self):
+        return 'Metar[' + super().__repr__() + ', temperature={temperature}, dew_point={dew_point}, altimeter={altimeter}, nosig={nosig}, runways_info={runways_info}]'.format(
+            temperature=self.temperature,
+            dew_point=self.dew_point,
+            altimeter=self.altimeter,
+            nosig=self.nosig,
+            runways_info=self.runways_info,
+        )
+
     temperature = property(_get_temperature, _set_temperature)
     dew_point = property(_get_dew_point, _set_dew_point)
     altimeter = property(_get_altimeter, _set_altimeter)
@@ -735,6 +865,13 @@ class TAF(ITafGroups, AbstractWeatherCode):
     def fms(self):
         return list(filter(lambda trend: trend.type == WeatherChangeType.FM, self.trends))
 
+    def __repr__(self):
+        return 'TAF[' + AbstractWeatherCode.__repr__(self) + ITafGroups.__repr__(self) + ', validity={validity}, max_temperature={max_temperature}, min_temperature={min_temperature}]'.format(
+            validity=self.validity,
+            max_temperature=self.max_temperature,
+            min_temperature=self.min_temperature
+        )
+
     validity = property(_get_validity, _set_validity)
     max_temperature = property(_get_max_temperature, _set_max_temperature)
     min_temperature = property(_get_min_temperature, _set_min_temperature)
@@ -747,6 +884,9 @@ class AbstractTrend(AbstractWeatherContainer):
 
     def _get_type(self):
         return self._type
+
+    def __repr__(self):
+        return super().__repr__() + ', type={type}'.format(type=self.type)
 
     type = property(_get_type)
 
@@ -764,6 +904,9 @@ class MetarTrendTime:
     def _set_time(self, value: time):
         self._time = value
 
+    def __repr__(self):
+        return 'MetarTrendTime[type={type}, time={time}]'.format(type=self.type, time=self.time)
+
     type = property(_get_type)
     time = property(_get_time, _set_time)
 
@@ -780,6 +923,8 @@ class MetarTrend(AbstractTrend):
     def add_time(self, value: MetarTrendTime):
         self._times.append(value)
 
+    def __repr__(self):
+        return 'MetarTrend[' + super().__repr__() + ', times={times}'.format(times=self.times)
     times = property(_get_times)
 
 
@@ -801,6 +946,8 @@ class TAFTrend(AbstractTrend, ITafGroups):
     def _set_probability(self, prob: int):
         self._probability = prob
 
+    def __repr__(self):
+        return 'TAFTrend[' + ITafGroups.__repr__(self) + ', ' + AbstractTrend.__repr__(self) + ', validity={validity}, probability={probability}'.format(validity=self.validity, probability=self.probability)
     probability = property(_get_probability, _set_probability)
     validity = property(_get_validity, _set_validity)
 
@@ -823,6 +970,9 @@ class Validity(AbstractValidity):
     def _set_end_day(self, value: int):
         self._end_day = value
 
+    def __repr__(self):
+        return 'Validity[' + super().__repr__() + ', end_day={end_day}, end_hour={end_hour}]'.format(end_hour=self.end_hour, end_day=self.end_day)
+
     end_hour = property(_get_end_hour, _set_end_hour)
     end_day = property(_get_end_day, _set_end_day)
 
@@ -838,5 +988,8 @@ class FMValidity(AbstractValidity):
 
     def _set_start_minutes(self, value: int):
         self._start_minutes = value
+
+    def __repr__(self):
+        return 'FMValidity[' + super().__repr__() + ', strart_minutes={start_minutes}]'.format(start_minutes=self.start_minutes)
 
     start_minutes = property(_get_start_minutes, _set_start_minutes)

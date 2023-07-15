@@ -1,6 +1,12 @@
 # Change Log 
 
-## [1.6.4] - 2023-06-TBD
+## [1.6.5] - 2023-07-TBD
+
+### Added
+
+- Implementation of method `__repr__` on class of module `model`.
+
+## [1.6.4] - 2023-06-23
 
 ### Fixed
 
