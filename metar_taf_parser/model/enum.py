@@ -11,7 +11,7 @@ class CloudQuantity(enum.Enum):
     OVC = 'OVC'  # Overcast
     NSC = 'NSC'  # No significant cloud
 
-    def __str__(self):
+    def __repr__(self):
         return _('CloudQuantity.' + self.value)
 
 
@@ -28,7 +28,7 @@ class CloudType(enum.Enum):
     NS = 'NS'  # Nimbostratus
     SC = 'SC'  # Stratocumulus
 
-    def __str__(self):
+    def __repr__(self):
         return _('CloudType.' + self.value)
 
 
@@ -39,7 +39,7 @@ class DepositCoverage(enum.Enum):
     FROM_26_TO_50 = '5'
     FROM_51_TO_100 = '9'
 
-    def __str__(self):
+    def __repr__(self):
         return _('DepositCoverage.' + self.name)
 
 
@@ -56,7 +56,7 @@ class DepositType(enum.Enum):
     COMPACTED_SNOW = '8'
     FROZEN_RIDGES = '9'
 
-    def __str__(self):
+    def __repr__(self):
         return _('DepositType.' + self.name)
 
 
@@ -70,7 +70,7 @@ class Descriptive(enum.Enum):
     BLOWING = 'BL'
     FREEZING = 'FZ'
 
-    def __str__(self):
+    def __repr__(self):
         return _('Descriptive.' + self.value)
 
 
@@ -81,7 +81,7 @@ class Flag(enum.Enum):
     COR = 'COR'
     NIL = 'NIL'
 
-    def __str__(self):
+    def __repr__(self):
         return _('Flag.' + self.value)
 
 
@@ -97,7 +97,7 @@ class IcingIntensity(enum.Enum):
     SEVERE_RIME_ICING_CLOUD = '8'
     SEVERE_CLEAR_ICING_PRECIPITATION = '9'
 
-    def __str__(self) -> str:
+    def __repr__(self) -> str:
         return _('IcingIntensity.' + self.value)
 
 
@@ -106,7 +106,7 @@ class Intensity(enum.Enum):
     HEAVY = '+'
     IN_VICINITY = 'VC'
 
-    def __str__(self):
+    def __repr__(self):
         return _('Intensity.' + self.value)
 
 
@@ -134,7 +134,7 @@ class Phenomenon(enum.Enum):
     SANDSTORM = 'SS'
     FUNNEL_CLOUD = 'FC'
 
-    def __str__(self):
+    def __repr__(self):
         return _('Phenomenon.' + self.value)
 
 
@@ -143,7 +143,7 @@ class TimeIndicator(enum.Enum):
     FM = 'FM'
     TL = 'TL'
 
-    def __str__(self):
+    def __repr__(self):
         return _('TimeIndicator.' + self.value)
 
 
@@ -160,7 +160,7 @@ class TurbulenceIntensity(enum.Enum):
     SEVERE_CLOUD_FREQUENT = '9'
     EXTREME = 'X'
 
-    def __str__(self) -> str:
+    def __repr__(self) -> str:
         return _('TurbuleneIntensity.' + self.value)
 
 
@@ -171,5 +171,5 @@ class WeatherChangeType(enum.Enum):
     PROB = 'PROB'
     INTER = 'INTER'
 
-    def __str__(self):
+    def __repr__(self):
         return _('WeatherChangeType.' + self.value)
