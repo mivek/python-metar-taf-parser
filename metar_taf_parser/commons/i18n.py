@@ -7,7 +7,7 @@ from metar_taf_parser.commons.exception import TranslationError
 
 localedir = os.path.join(os.path.abspath(os.path.dirname(__file__)), '../locale')
 langAvailable = os.listdir(localedir)
-loc = locale.getdefaultlocale()
+loc = locale.getlocale()
 lang = 'en'
 if loc is not None and loc[0] is not None and len(loc[0]) >= 2:
     lang = loc[0][:2]
