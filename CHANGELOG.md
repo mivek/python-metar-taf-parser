@@ -1,10 +1,14 @@
 # Change Log 
 
-## [1.6.5] - 2023-07-TBD
+## [1.6.5] - 2023-08-06
 
 ### Added
 
 - Implementation of method `__repr__` on class of module `model`.
+
+### Fixed
+
+- Use `getlocale()` instead of `getdefaultlocale()`
 
 ## [1.6.4] - 2023-06-23
 
