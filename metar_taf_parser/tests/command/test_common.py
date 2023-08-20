@@ -61,6 +61,16 @@ class CommonTestCase(unittest.TestCase):
         self.assertEqual(20, wind.gust)
         self.assertEqual('KT', wind.unit)
 
+    def test_wind_command_parse_gusts_3_digits(self):
+        command = WindCommand()
+
+        wind = command.parse_wind('12017G015KT')
+        self.assertEqual('ESE', wind.direction)
+        self.assertEqual(120, wind.degrees)
+        self.assertEqual(17, wind.speed)
+        self.assertEqual(15, wind.gust)
+        self.assertEqual('KT', wind.unit)
+
     def test_parse_wind_command_parse_wind_variable(self):
         command = WindCommand()
 

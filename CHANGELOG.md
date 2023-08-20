@@ -1,5 +1,11 @@
 # Change Log 
 
+## [1.7.0] - 2023-08-20
+
+### Added
+
+- `Wind` and `WindShear` elements now supports 3 digits in gusts part
+
 ## [1.6.5] - 2023-08-06
 
 ### Added
