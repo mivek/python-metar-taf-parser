@@ -1,5 +1,11 @@
 # Change Log 
 
+## [1.7.1] - 2023-12-09
+
+### Fixed
+
+- Parsing of `WeatherCondition` tokens with recent (`RE`) intensity.
+
 ## [1.7.0] - 2023-08-20
 
 ### Added
