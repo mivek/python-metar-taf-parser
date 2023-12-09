@@ -297,6 +297,16 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual(0, metar.wind.speed)
         self.assertEqual(0, metar.wind._degrees)
 
+    def test_parse_recent_rain(self):
+        metar = MetarParser().parse('LTAE 250250Z VRB02KT 9999 BKN030 BKN080 06/05 Q1005 RESHRA NOSIG RMK RWY21 07004KT 040V100')
+
+        self.assertEqual('LTAE', metar.station)
+        self.assertEqual(1, len(metar.weather_conditions))
+        self.assertEqual(Intensity.RECENT, metar.weather_conditions[0].intensity)
+        self.assertEquals(Descriptive.SHOWERS, metar.weather_conditions[0].descriptive)
+        self.assertEqual(1, len(metar.weather_conditions[0].phenomenons))
+        self.assertEqual(Phenomenon.RAIN, metar.weather_conditions[0].phenomenons[0])
+
 
 class FunctionTestCase(unittest.TestCase):
 

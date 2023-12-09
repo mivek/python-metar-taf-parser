@@ -99,7 +99,7 @@ class AbstractParser(abc.ABC):
     BECMG = 'BECMG'
     RMK = 'RMK'
     TOKENIZE_REGEX = r'\s((?=\d\/\dSM)(?<!\s\d\s)|(?!\d\/\dSM))|='
-    INTENSITY_REGEX = r'^(-|\+|VC)'
+    INTENSITY_REGEX = r'^(-|\+|VC|RE)'
     CAVOK = 'CAVOK'
 
     def __init__(self):
