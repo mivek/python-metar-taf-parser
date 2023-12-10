@@ -31,12 +31,44 @@ msgid "CloudQuantity.SKC"
 msgstr "pas de nuage"
 
 #:
+msgid "CloudType.AC"
+msgstr "Altocumulus"
+
+#:
+msgid "CloudType.AS"
+msgstr "Altostratus"
+
+#:
 msgid "CloudType.CB"
 msgstr "Cumunolinbus"
 
 #:
 msgid "CloudType.CC"
 msgstr "Cirrocumulus"
+
+#:
+msgid "CloudType.CI"
+msgstr "Cirrus"
+
+#:
+msgid "CloudType.CS"
+msgstr "Cirrostratus"
+
+#:
+msgid "CloudType.CU"
+msgstr "Cumulus"
+
+#:
+msgid "CloudType.NS"
+msgstr "Nimbostratus"
+
+#:
+msgid "CloudType.SC"
+msgstr "Stratocumulus"
+
+#:
+msgid "CloudType.ST"
+msgstr "Stratus"
 
 #:
 msgid "CloudType.TCU"
@@ -71,6 +103,10 @@ msgid "DepositBrakingCapacity.99"
 msgstr "valeurs non fiables"
 
 #:
+msgid "DepositBrakingCapacity.default"
+msgstr "friction coefficient of {0}"
+
+#:
 msgid "DepositCoverage.NOT_REPORTED"
 msgstr "non reportée"
 
@@ -99,12 +135,40 @@ msgid "DepositThickness.00"
 msgstr "moins de 1 mm"
 
 #:
+msgid "DepositThickness.92"
+msgstr "10 cm"
+
+#:
+msgid "DepositThickness.93"
+msgstr "15 cm"
+
+#:
+msgid "DepositThickness.94"
+msgstr "20 cm"
+
+#:
+msgid "DepositThickness.95"
+msgstr "25 cm"
+
+#:
+msgid "DepositThickness.96"
+msgstr "30 cm"
+
+#:
+msgid "DepositThickness.97"
+msgstr "35 cm"
+
+#:
 msgid "DepositThickness.98"
 msgstr "40 cm ou plus"
 
 #:
 msgid "DepositThickness.99"
 msgstr "fermée"
+
+#:
+msgid "DepositThickness.default"
+msgstr "{0} mm"
 
 #:
 msgid "DepositType.NOT_REPORTED"
@@ -271,6 +335,10 @@ msgid "Intensity.+"
 msgstr "Fort"
 
 #:
+msgid "Intensity.RE"
+msgstr "Récent(e)"
+
+#:
 msgid "Intensity.VC"
 msgstr "Au voisinage de"
 
@@ -325,6 +393,10 @@ msgstr "granules de glace"
 #:
 msgid "Phenomenon.PO"
 msgstr "tourbillon de poussières sable"
+
+#:
+msgid "Phenomenon.PY"
+msgstr "spray"
 
 #:
 msgid "Phenomenon.RA"
@@ -611,6 +683,10 @@ msgid "Remark.Variable.Sky.Condition.Height"
 msgstr "couche de nuages à {0} pieds variant entre {1} et {2}"
 
 #:
+msgid "Remark.VIRGA"
+msgstr "virga"
+
+#:
 msgid "Remark.Virga.Direction"
 msgstr "virga au {0} de la station"
 
@@ -699,6 +775,10 @@ msgid "Converter.U"
 msgstr "accroissement"
 
 #:
+msgid "Converter.VRB"
+msgstr "Variable"
+
+#:
 msgid "Converter.W"
 msgstr "Ouest"
 
@@ -755,8 +835,16 @@ msgid "ToString.amendment"
 msgstr "amendement"
 
 #:
+msgid "ToString.auto"
+msgstr "auto"
+
+#:
 msgid "ToString.baseHeight"
 msgstr "Base de la couche en pied"
+
+#:
+msgid "ToString.cavok"
+msgstr "cavok"
 
 #:
 msgid "ToString.clouds"
@@ -835,6 +923,10 @@ msgid "ToString.name"
 msgstr "nom"
 
 #:
+msgid "ToString.nosig"
+msgstr "nosig"
+
+#:
 msgid "ToString.phenomenons"
 msgstr "phénomènes"
 
@@ -891,6 +983,10 @@ msgid "ToString.trends"
 msgstr "tendances"
 
 #:
+msgid "ToString.type"
+msgstr "type"
+
+#:
 msgid "ToString.visibility.main"
 msgstr "visibilité principale"
 
@@ -913,6 +1009,10 @@ msgstr "visibilité verticale (pieds)"
 #:
 msgid "ToString.weather.conditions"
 msgstr "conditions météorologique"
+
+#:
+msgid "ToString.wind.direction"
+msgstr "direction"
 
 #:
 msgid "ToString.wind.direction.degrees"

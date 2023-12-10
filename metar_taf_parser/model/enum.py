@@ -105,6 +105,7 @@ class Intensity(enum.Enum):
     LIGHT = '-'
     HEAVY = '+'
     IN_VICINITY = 'VC'
+    RECENT = 'RE'
 
     def __repr__(self):
         return _('Intensity.' + self.value)

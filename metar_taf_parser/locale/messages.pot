@@ -335,6 +335,10 @@ msgid "Intensity.+"
 msgstr "Heavy"
 
 #:
+msgid "Intensity.RE"
+msgstr "Recent"
+
+#:
 msgid "Intensity.VC"
 msgstr "In the vicinity"
 
