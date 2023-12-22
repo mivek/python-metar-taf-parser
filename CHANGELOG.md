@@ -1,5 +1,11 @@
 # Change Log 
 
+## [1.8.0] - 2023-12-TBD
+
+### Added
+
+- Support of Russian locale thanks to [@a184ot](https://github.com/a184ot)
+
 ## [1.7.1] - 2023-12-09
 
 ### Fixed

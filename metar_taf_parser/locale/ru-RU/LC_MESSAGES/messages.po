@@ -1,0 +1,1084 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=UTF-8"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: prop2po"
+"Project-Id-Version: metar_taf_parser"
+"Language: ru_RU"
+#:
+msgid "CloudQuantity.BKN"
+msgstr "разорванная"
+
+#:
+msgid "CloudQuantity.FEW"
+msgstr "незначительная"
+
+#:
+msgid "CloudQuantity.NSC"
+msgstr "нет значительной облачности"
+
+#:
+msgid "CloudQuantity.OVC"
+msgstr "сплошная"
+
+#:
+msgid "CloudQuantity.SCT"
+msgstr "рассеянная"
+
+#:
+msgid "CloudQuantity.SKC"
+msgstr "ясное небо"
+
+#:
+msgid "CloudType.AC"
+msgstr "Высоко-кучевые"
+
+#:
+msgid "CloudType.AS"
+msgstr "Высокослоистые"
+
+#:
+msgid "CloudType.CB"
+msgstr "Кучево-дождевые"
+
+#:
+msgid "CloudType.CC"
+msgstr "Перисто-кучевые"
+
+#:
+msgid "CloudType.CI"
+msgstr "Перистые"
+
+#:
+msgid "CloudType.CS"
+msgstr "Перисто-слоистые"
+
+#:
+msgid "CloudType.CU"
+msgstr "Кучевые"
+
+#:
+msgid "CloudType.NS"
+msgstr "Слоисто-дождевые"
+
+#:
+msgid "CloudType.SC"
+msgstr "Слоисто-кучевые"
+
+#:
+msgid "CloudType.ST"
+msgstr "Слоистые"
+
+#:
+msgid "CloudType.TCU"
+msgstr "Кучевые башенковидные"
+
+#:
+msgid "DepositBrakingCapacity.//"
+msgstr "нет данных"
+
+#:
+msgid "DepositBrakingCapacity.91"
+msgstr "плохая"
+
+#:
+msgid "DepositBrakingCapacity.92"
+msgstr "плохая/средняя"
+
+#:
+msgid "DepositBrakingCapacity.93"
+msgstr "средняя"
+
+#:
+msgid "DepositBrakingCapacity.94"
+msgstr "средняя/хорошая"
+
+#:
+msgid "DepositBrakingCapacity.95"
+msgstr "хорошая"
+
+#:
+msgid "DepositBrakingCapacity.99"
+msgstr "цифры ненадежны"
+
+#:
+msgid "DepositBrakingCapacity.default"
+msgstr "коэффициент сцепления {0}"
+
+#:
+msgid "DepositCoverage.NOT_REPORTED"
+msgstr "нет данных"
+
+#:
+msgid "DepositCoverage.LESS_10"
+msgstr "менее 10%"
+
+#:
+msgid "DepositCoverage.FROM_11_TO_25"
+msgstr "от 11% до 25%"
+
+#:
+msgid "DepositCoverage.FROM_26_TO_50"
+msgstr "от 26% до 50%"
+
+#:
+msgid "DepositCoverage.FROM_51_TO_100"
+msgstr "от 51% до 100%"
+
+#:
+msgid "DepositThickness.//"
+msgstr "нет данных"
+
+#:
+msgid "DepositThickness.00"
+msgstr "менее 1 мм"
+
+#:
+msgid "DepositThickness.92"
+msgstr "10 cm"
+
+#:
+msgid "DepositThickness.93"
+msgstr "15 cm"
+
+#:
+msgid "DepositThickness.94"
+msgstr "20 cm"
+
+#:
+msgid "DepositThickness.95"
+msgstr "25 cm"
+
+#:
+msgid "DepositThickness.96"
+msgstr "30 cm"
+
+#:
+msgid "DepositThickness.97"
+msgstr "35 cm"
+
+#:
+msgid "DepositThickness.98"
+msgstr "40 см или более"
+
+#:
+msgid "DepositThickness.99"
+msgstr "закрыта"
+
+#:
+msgid "DepositThickness.default"
+msgstr "{0} мм"
+
+#:
+msgid "DepositType.NOT_REPORTED"
+msgstr "нет данных"
+
+#:
+msgid "DepositType.CLEAR_DRY"
+msgstr "чистая и сухая"
+
+#:
+msgid "DepositType.DAMP"
+msgstr "влажный"
+
+#:
+msgid "DepositType.WET_WATER_PATCHES"
+msgstr "влажная или местами вода"
+
+#:
+msgid "DepositType.RIME_FROST_COVERED"
+msgstr "изморозь или иней"
+
+#:
+msgid "DepositType.DRY_SNOW"
+msgstr "сухой снег"
+
+#:
+msgid "DepositType.WET_SNOW"
+msgstr "влажный снег"
+
+#:
+msgid "DepositType.ICE"
+msgstr "лед"
+
+#:
+msgid "DepositType.COMPACTED_SNOW"
+msgstr "уплотненный или укатанный снег"
+
+#:
+msgid "DepositType.FROZEN_RIDGES"
+msgstr "замерзшие колеи или борозды"
+
+#:
+msgid "DepositType.SLUSH"
+msgstr "слякоть"
+
+#:
+msgid "Descriptive.BC"
+msgstr "клочья"
+
+#:
+msgid "Descriptive.BL"
+msgstr "низовая метель"
+
+#:
+msgid "Descriptive.DR"
+msgstr "поземок"
+
+#:
+msgid "Descriptive.FZ"
+msgstr "замерзающий"
+
+#:
+msgid "Descriptive.MI"
+msgstr "поземный"
+
+#:
+msgid "Descriptive.PR"
+msgstr "частичный"
+
+#:
+msgid "Descriptive.SH"
+msgstr "ливни"
+
+#:
+msgid "Descriptive.TS"
+msgstr "гроза"
+
+#:
+msgid "Error.prefix"
+msgstr "Произошла ошибка. Код ошибки n°"
+
+#:
+msgid "ErrorCode.AirportNotFound"
+msgstr "Аэропорт не найден для этого сообщения."
+
+#:
+msgid "ErrorCode.InvalidMessage"
+msgstr "Введенное сообщение неверное."
+
+#:
+msgid "Flag.AMD"
+msgstr "Измененный TAF"
+
+#:
+msgid "Flag.AUTO"
+msgstr "автоматический МЕТАР"
+
+#:
+msgid "Flag.CNL"
+msgstr "отмененный TAF"
+
+#:
+msgid "Flag.COR"
+msgstr "исправленый METAR/TAF"
+
+#:
+msgid "Flag.NIL"
+msgstr "нет данных"
+
+#:
+msgid "IcingIntensity.0"
+msgstr "Обледенения нет"
+
+#:
+msgid "IcingIntensity.1"
+msgstr "Слабое обледенение"
+
+#:
+msgid "IcingIntensity.2"
+msgstr "Слабое обледенение в облаках"
+
+#:
+msgid "IcingIntensity.3"
+msgstr "Слабое обледенение в осадках"
+
+#:
+msgid "IcingIntensity.4"
+msgstr "Умеренное обледенение"
+
+#:
+msgid "IcingIntensity.5"
+msgstr "Умеренное обледенение в облаках"
+
+#:
+msgid "IcingIntensity.6"
+msgstr "Умеренное обледенение в осадках"
+
+#:
+msgid "IcingIntensity.7"
+msgstr "Сильное обледенение"
+
+#:
+msgid "IcingIntensity.8"
+msgstr "Сильное обледенение в облаках"
+
+#:
+msgid "IcingIntensity.9"
+msgstr "Сильное обледенение в осадках"
+
+#:
+msgid "Indicator.M"
+msgstr "менее чем"
+
+#:
+msgid "Indicator.P"
+msgstr "более чем"
+
+#:
+msgid "Intensity.-"
+msgstr "Слабый"
+
+#:
+msgid "Intensity.+"
+msgstr "Сильный"
+
+#:
+msgid "Intensity.RE"
+msgstr "Последний"
+
+#:
+msgid "Intensity.VC"
+msgstr "В непосредственной близости"
+
+#:
+msgid "Phenomenon.BR"
+msgstr "дымка"
+
+#:
+msgid "Phenomenon.DS"
+msgstr "пыльная буря"
+
+#:
+msgid "Phenomenon.DU"
+msgstr "пыль взвешенная в воздухе"
+
+#:
+msgid "Phenomenon.DZ"
+msgstr "морось"
+
+#:
+msgid "Phenomenon.FC"
+msgstr "смерч"
+
+#:
+msgid "Phenomenon.FG"
+msgstr "туман"
+
+#:
+msgid "Phenomenon.FU"
+msgstr "дым"
+
+#:
+msgid "Phenomenon.GR"
+msgstr "град"
+
+#:
+msgid "Phenomenon.GS"
+msgstr "ледяная крупа"
+
+#:
+msgid "Phenomenon.HZ"
+msgstr "мгла"
+
+#:
+msgid "Phenomenon.IC"
+msgstr "ледяные кристаллы"
+
+#:
+msgid "Phenomenon.PL"
+msgstr "град"
+
+#:
+msgid "Phenomenon.PO"
+msgstr "пыльный или снежный вихрь"
+
+#:
+msgid "Phenomenon.PY"
+msgstr "брызги"
+
+#:
+msgid "Phenomenon.RA"
+msgstr "дождь"
+
+#:
+msgid "Phenomenon.SA"
+msgstr "песок"
+
+#:
+msgid "Phenomenon.SG"
+msgstr "снежная крупа"
+
+#:
+msgid "Phenomenon.SN"
+msgstr "снег"
+
+#:
+msgid "Phenomenon.SQ"
+msgstr "шквал"
+
+#:
+msgid "Phenomenon.SS"
+msgstr "песчаная буря"
+
+#:
+msgid "Phenomenon.UP"
+msgstr "неизвестные осадки"
+
+#:
+msgid "Phenomenon.VA"
+msgstr "вулканический пепел"
+
+#:
+msgid "Phenomenon.TS"
+msgstr "гроза"
+
+#:
+msgid "Remark.AO1"
+msgstr "автоматизированная станция без детектора осадков"
+
+#:
+msgid "Remark.AO2"
+msgstr "автоматизированная станция с детектором осадков"
+
+#:
+msgid "Remark.ALQDS"
+msgstr "все квадраты"
+
+#:
+msgid "Remark.Barometer.0"
+msgstr "Росло, а затем падало"
+
+#:
+msgid "Remark.Barometer.1"
+msgstr "Росло, затем не изменялось или росло, затем росло медленнее"
+
+#:
+msgid "Remark.Barometer.2"
+msgstr "не изменялось или неустойчиво росло"
+
+#:
+msgid "Remark.Barometer.3"
+msgstr "Уменьшалось или не изменялось, затем росло; или росло, затем росло быстрее"
+
+#:
+msgid "Remark.Barometer.4"
+msgstr "Неизменное"
+
+#:
+msgid "Remark.Barometer.5"
+msgstr "Росло, а затем падало"
+
+#:
+msgid "Remark.Barometer.6"
+msgstr "Росло, затем не изменялось или росло, затем росло медленнее"
+
+#:
+msgid "Remark.Barometer.7"
+msgstr "не изменялось или неустойчиво росло"
+
+#:
+msgid "Remark.Barometer.8"
+msgstr "Не изменялось или увеличивалось, затем падало; или падало, затем падало быстрее"
+
+#:
+msgid "Remark.BASED"
+msgstr "базовый"
+
+#:
+msgid "Remark.Ceiling.Height"
+msgstr "нижняя граница облаков колеблется между {0} и {1} футами"
+
+#:
+msgid "Remark.Ceiling.Second.Location"
+msgstr "нижняя граница облаков {0} футов, измерена вторым датчиком, расположенным в {1}"
+
+#:
+msgid "Remark.DSNT"
+msgstr "отдалённый"
+
+#:
+msgid "Remark.FCST"
+msgstr "прогноз"
+
+#:
+msgid "Remark.FUNNELCLOUD"
+msgstr "смерч"
+
+#:
+msgid "Remark.Hail"
+msgstr "крупный град диаметром {0} дюймов"
+
+#:
+msgid "Remark.Hail.LesserThan"
+msgstr "крупный град диаметром менее {0} дюймов"
+
+#:
+msgid "Remark.Hourly.Maximum.Temperature"
+msgstr "6-часовая максимальная температура {0}°C"
+
+#:
+msgid "Remark.Hourly.Maximum.Minimum.Temperature"
+msgstr "24-часовая максимальная температура {0}°C и 24-часовая минимальная температура {1}°C"
+
+#:
+msgid "Remark.Hourly.Minimum.Temperature"
+msgstr "6-часовая минимальная температура {0}°C"
+
+#:
+msgid "Remark.Hourly.Temperature"
+msgstr "температура за прошедший час {0}°C"
+
+#:
+msgid "Remark.Hourly.Temperature.Dew.Point"
+msgstr "за прошедший час температура {0}°C и точка росы {1}°C"
+
+#:
+msgid "Remark.Ice.Accretion.Amount"
+msgstr "{0}/100 дюйма льда за последние {1} час(а)"
+
+#:
+msgid "Remark.HVY"
+msgstr "сильный"
+
+#:
+msgid "Remark.LGT"
+msgstr "слабый"
+
+#:
+msgid "Remark.LTG"
+msgstr "молния"
+
+#:
+msgid "Remark.MOD"
+msgstr "умеренный"
+
+#:
+msgid "Remark.Obscuration"
+msgstr "{0} слой на высоте {1} футов состоящий из {2}"
+
+#:
+msgid "Remark.ON"
+msgstr "на"
+
+#:
+msgid "Remark.NXT"
+msgstr "следующий"
+
+#:
+msgid "Remark.PeakWind"
+msgstr "пиковый ветер {1} узлов от {0} градусов на {2}:{3}"
+
+#:
+msgid "Remark.Precipitation.Amount.Hourly"
+msgstr "{0}/100 дюйма осадков выпали за последний час"
+
+#:
+msgid "Remark.Precipitation.Amount.3.6"
+msgstr "{1} дюйма(ов) осадков выпали за последний час"
+
+#:
+msgid "Remark.Precipitation.Amount.24"
+msgstr "{0} дюймов осадков выпали за последние 24 часа"
+
+#:
+msgid "Remark.Precipitation.Beg"
+msgstr "{0} {1} начиная с {2}:{3}"
+
+#:
+msgid "Remark.Precipitation.Beg.End"
+msgstr "{0} {1} , начинающийся в {2}:{3} , заканчивается в {4}:{5}"
+
+#:
+msgid "Remark.Precipitation.End"
+msgstr "{0} {1} заканчивается в {2}:{3}"
+
+#:
+msgid "Remark.Pressure.Tendency"
+msgstr "{0} гектоПаскалей за последние 3 часа"
+
+#:
+msgid "Remark.PRESFR"
+msgstr "быстрое падение давления"
+
+#:
+msgid "Remark.PRESRR"
+msgstr "давление растет быстро"
+
+#:
+msgid "Remark.Second.Location.Visibility"
+msgstr "видимость {0} SM, измеренная вторым датчиком, расположенным в {1}"
+
+#:
+msgid "Remark.Sea.Level.Pressure"
+msgstr "давление уровня моря {0} HPa"
+
+#:
+msgid "Remark.Sector.Visibility"
+msgstr "видимость {1} SM в направлении {0}"
+
+#:
+msgid "Remark.SLPNO"
+msgstr "давление уровня моря недоступно"
+
+#:
+msgid "Remark.Snow.Depth"
+msgstr "глубина снега {0} дюймов"
+
+#:
+msgid "Remark.Snow.Increasing.Rapidly"
+msgstr "глубина снега увеличилась на {0} дюймов за последний час с общей глубиной на земле {1} дюймов"
+
+#:
+msgid "Remark.Snow.Pellets"
+msgstr "{0} снежная крупа"
+
+#:
+msgid "Remark.Sunshine.Duration"
+msgstr "{0} минут солнечного света"
+
+#:
+msgid "Remark.Surface.Visibility"
+msgstr "приземная видимость {0} статутных миль"
+
+#:
+msgid "Remark.Thunderstorm.Location"
+msgstr "гроза {0} станции"
+
+#:
+msgid "Remark.Thunderstorm.Location.Moving"
+msgstr "гроза {0} станции, движется в направлении {1}"
+
+#:
+msgid "Remark.Tornadic.Activity.Beginning"
+msgstr "{0} начинающийся в {1}:{2} {3} SM {4} станции"
+
+#:
+msgid "Remark.Tornadic.Activity.BegEnd"
+msgstr "{0} начинается в {1}:{2} заканчивается в {3}:{4} {5} SM {6} станции"
+
+#:
+msgid "Remark.Tornadic.Activity.Ending"
+msgstr "{0} заканчивается в {1}:{2} {3} SM {4} станции"
+
+#:
+msgid "Remark.TORNADO"
+msgstr "торнадо"
+
+#:
+msgid "Remark.Tower.Visibility"
+msgstr "видимость с вышки {0} статутных миль "
+
+#:
+msgid "Remark.Variable.Prevailing.Visibility"
+msgstr "преобладающая переменная видимости между {0} и {1} SM"
+
+#:
+msgid "Remark.Variable.Sky.Condition"
+msgstr "облачный слой варьируется между {0} и {1}"
+
+#:
+msgid "Remark.Variable.Sky.Condition.Height"
+msgstr "облачный слой на {0} футах колеблется между {1} и {2}"
+
+#:
+msgid "Remark.VIRGA"
+msgstr "дождь не достигающий земли"
+
+#:
+msgid "Remark.Virga.Direction"
+msgstr "дождь не достигающий земли {0} от станции"
+
+#:
+msgid "Remark.WATERSPOUT"
+msgstr "смерч"
+
+#:
+msgid "Remark.Water.Equivalent.Snow.Ground"
+msgstr "водяной эквивалент снега {0} дюймов "
+
+#:
+msgid "Remark.WindShift"
+msgstr "сдвиг ветра в {0}:{1}"
+
+#:
+msgid "Remark.WindShift.FROPA"
+msgstr "сдвиг ветра при прохождении фронта в {0}:{1}"
+
+#:
+msgid "MetarFacade.InvalidIcao"
+msgstr "Неверный код Icao."
+
+#:
+msgid "Converter.D"
+msgstr "уменьшение"
+
+#:
+msgid "Converter.E"
+msgstr "Восток"
+
+#:
+msgid "Converter.ENE"
+msgstr "Восток Северо-Восток"
+
+#:
+msgid "Converter.ESE"
+msgstr "Восток Юго-Восток"
+
+#:
+msgid "Converter.N"
+msgstr "Север"
+
+#:
+msgid "Converter.NE"
+msgstr "Северо-восток"
+
+#:
+msgid "Converter.NNE"
+msgstr "Север Северо-Восток"
+
+#:
+msgid "Converter.NNW"
+msgstr "Север Северо-запад"
+
+#:
+msgid "Converter.NSC"
+msgstr "без существенных изменений"
+
+#:
+msgid "Converter.NW"
+msgstr "Северо-запад"
+
+#:
+msgid "Converter.S"
+msgstr "Юг"
+
+#:
+msgid "Converter.SE"
+msgstr "Юго-Восток"
+
+#:
+msgid "Converter.SSE"
+msgstr "Юг Юго-Восток"
+
+#:
+msgid "Converter.SSW"
+msgstr "Юг - Юго-Запад"
+
+#:
+msgid "Converter.SW"
+msgstr "Юго-Запад"
+
+#:
+msgid "Converter.U"
+msgstr "восходящий"
+
+#:
+msgid "Converter.VRB"
+msgstr "Переменный"
+
+#:
+msgid "Converter.W"
+msgstr "Запад"
+
+#:
+msgid "Converter.WNW"
+msgstr "Запад Северо-Запад"
+
+#:
+msgid "Converter.WSW"
+msgstr "Запад Юго-Запад"
+
+#:
+msgid "WeatherChangeType.FM"
+msgstr "С"
+
+#:
+msgid "WeatherChangeType.BECMG"
+msgstr "Устойчивые изменения"
+
+#:
+msgid "WeatherChangeType.INTER"
+msgstr "Периодический"
+
+#:
+msgid "WeatherChangeType.TEMPO"
+msgstr "Временами"
+
+#:
+msgid "WeatherChangeType.PROB"
+msgstr "Вероятность"
+
+#:
+msgid "TimeIndicator.AT"
+msgstr "в"
+
+#:
+msgid "TimeIndicator.FM"
+msgstr "С"
+
+#:
+msgid "TimeIndicator.TL"
+msgstr "до"
+
+#:
+msgid "ToString.airport"
+msgstr "аэропорт"
+
+#:
+msgid "ToString.altimeter"
+msgstr "высотомер (hPa)"
+
+#:
+msgid "ToString.amendment"
+msgstr "внесение поправок"
+
+#:
+msgid "ToString.auto"
+msgstr "авто"
+
+#:
+msgid "ToString.baseHeight"
+msgstr "нижний край в футах"
+
+#:
+msgid "ToString.cavok"
+msgstr "cavok"
+
+#:
+msgid "ToString.clouds"
+msgstr "облака"
+
+#:
+msgid "ToString.day.month"
+msgstr "день месяца"
+
+#:
+msgid "ToString.day.hour"
+msgstr "час дня"
+
+#:
+msgid "ToString.deposit.braking"
+msgstr "коэффициент сцепления"
+
+#:
+msgid "ToString.deposit.coverage"
+msgstr "покрытие"
+
+#:
+msgid "ToString.deposit.thickness"
+msgstr "толщина"
+
+#:
+msgid "ToString.deposit.type"
+msgstr "состояние покрытия"
+
+#:
+msgid "ToString.depth"
+msgstr "толщина слоя в футах"
+
+#:
+msgid "ToString.descriptive"
+msgstr "описательный"
+
+#:
+msgid "ToString.dew.point"
+msgstr "точка росы"
+
+#:
+msgid "ToString.end.day.month"
+msgstr "последний день месяца"
+
+#:
+msgid "ToString.end.hour.day"
+msgstr "последний час суток"
+
+#:
+msgid "ToString.flags"
+msgstr "флаги"
+
+#:
+msgid "ToString.height.feet"
+msgstr "высота (ft)"
+
+#:
+msgid "ToString.height.meter"
+msgstr "высота (м)"
+
+#:
+msgid "ToString.intensity"
+msgstr "интенсивность"
+
+#:
+msgid "ToString.indicator"
+msgstr "показатель"
+
+#:
+msgid "ToString.message"
+msgstr "исходное сообщение"
+
+#:
+msgid "ToString.name"
+msgstr "имя"
+
+#:
+msgid "ToString.nosig"
+msgstr "изменения не ожидаются"
+
+#:
+msgid "ToString.phenomenons"
+msgstr "явления"
+
+#:
+msgid "ToString.probability"
+msgstr "вероятность"
+
+#:
+msgid "ToString.quantity"
+msgstr "количество"
+
+#:
+msgid "ToString.remark"
+msgstr "примечание"
+
+#:
+msgid "ToString.report.time"
+msgstr "время отчета"
+
+#:
+msgid "ToString.runway.info"
+msgstr "информация о взлетно-посадочных полосах"
+
+#:
+msgid "ToString.start.day.month"
+msgstr "день начала месяца"
+
+#:
+msgid "ToString.start.hour.day"
+msgstr "час начала дня"
+
+#:
+msgid "ToString.start.minute"
+msgstr "минута начала"
+
+#:
+msgid "ToString.temperature"
+msgstr "температура (°C)"
+
+#:
+msgid "ToString.temperature.max"
+msgstr "максимальная температура (°C)"
+
+#:
+msgid "ToString.temperature.min"
+msgstr "минимальная температура (°C)"
+
+#:
+msgid "ToString.trend"
+msgstr "тренд"
+
+#:
+msgid "ToString.trends"
+msgstr "тренды"
+
+#:
+msgid "ToString.type"
+msgstr "тип"
+
+#:
+msgid "ToString.visibility.main"
+msgstr "основная видимость"
+
+#:
+msgid "ToString.visibility.min"
+msgstr "минимальная видимость"
+
+#:
+msgid "ToString.visibility.min.direction"
+msgstr "минимальное направление видимости"
+
+#:
+msgid "ToString.visibility.max"
+msgstr "максимальная видимость"
+
+#:
+msgid "ToString.vertical.visibility"
+msgstr "вертикальная видимость (ft)"
+
+#:
+msgid "ToString.weather.conditions"
+msgstr "погодные условия"
+
+#:
+msgid "ToString.wind.direction"
+msgstr "направление"
+
+#:
+msgid "ToString.wind.direction.degrees"
+msgstr "направление (в градусах)"
+
+#:
+msgid "ToString.wind.gusts"
+msgstr "порывы"
+
+#:
+msgid "ToString.wind.min.variation"
+msgstr "минимальное изменение ветра"
+
+#:
+msgid "ToString.wind.max.variation"
+msgstr "максимальное изменение ветра"
+
+#:
+msgid "ToString.wind.speed"
+msgstr "скорость"
+
+#:
+msgid "ToString.wind.unit"
+msgstr "единицы измерения"
+
+#:
+msgid "TurbulenceIntensity.0"
+msgstr "Нет"
+
+#:
+msgid "TurbulenceIntensity.1"
+msgstr "Слабая турбулентность"
+
+#:
+msgid "TurbulenceIntensity.2"
+msgstr "Умеренная турбулентность при ясном небе, время от времени"
+
+#:
+msgid "TurbulenceIntensity.3"
+msgstr "Умеренная турбулентность при ясном небе, часто"
+
+#:
+msgid "TurbulenceIntensity.4"
+msgstr "Умеренная турбулентность в облаках, время от времени"
+
+#:
+msgid "TurbulenceIntensity.5"
+msgstr "Умеренная турбулентность в облаках, часто"
+
+#:
+msgid "TurbulenceIntensity.6"
+msgstr "Сильные турбулентность при ясном небе, время от времени"
+
+#:
+msgid "TurbulenceIntensity.7"
+msgstr "Сильная турбулентность при ясном небе, часто"
+
+#:
+msgid "TurbulenceIntensity.8"
+msgstr "Сильная турбулентности в облаках, время от времени"
+
+#:
+msgid "TurbulenceIntensity.9"
+msgstr "Сильная турбулентности в облаках, часто"
+
+#:
+msgid "TurbulenceIntensity.X"
+msgstr "Экстремальная турбулентность"
+
