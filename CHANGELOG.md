@@ -1,10 +1,14 @@
 # Change Log 
 
-## [1.8.0] - 2023-12-TBD
+## [1.8.0] - 2024-01-04
 
 ### Added
 
 - Support of Russian locale thanks to [@a184ot](https://github.com/a184ot)
+
+### Fixed
+
+- Reformat object representation. Removed breaking lines in formatting. 
 
 ## [1.7.1] - 2023-12-09
 
