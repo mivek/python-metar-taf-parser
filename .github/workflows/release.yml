@@ -10,13 +10,18 @@ jobs:
   deploy:
     name: Deploy to PYPI
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/metar-taf-parser-mivek/
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.7'
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
@@ -28,6 +33,4 @@ jobs:
           python -m build --sdist --wheel --outdir dist/
 
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@master
-        with:
-          password: ${{ secrets.PYPI_PASSWORD }}
+        uses: pypa/gh-action-pypi-publish@v1.8.11
