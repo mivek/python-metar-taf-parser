@@ -11,7 +11,7 @@ jobs:
     name: Deploy to PYPI
     runs-on: ubuntu-latest
     environment:
-      name: pypi
+      name: release
       url: https://pypi.org/p/metar-taf-parser-mivek/
     permissions:
       id-token: write
