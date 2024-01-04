@@ -268,5 +268,6 @@ The following locales are supported:
 - de
 - pl
 - it
+- ru
 
 To add or complete locales please see [CONTRIBUTING](CONTRIBUTING.md)

@@ -18,7 +18,7 @@ class Country:
         self._name = value
 
     def __repr__(self):
-        return 'Country[name={name}]'.format(name=self.name)
+        return f'Country[name={self.name}]'
 
     name = property(_get_name, _set_name)
 
@@ -76,12 +76,8 @@ class Wind:
         self._unit = value
 
     def __repr__(self):
-        return """Wind[speed={speed}, direction={direction}, gust={gust}, degrees={degrees}
-        unit={unit}, min_variation={min_variation}, max_variation={max_variation}
-        ]
-        """.format(speed=self.speed, direction=self.direction,
-                   gust=self.gust, degrees=self.degrees, unit=self._unit,
-                   min_variation=self.min_variation, max_variation=self.max_variation)
+        return f'Wind[speed={self.speed}, direction={self.direction}, gust={self.gust}, degrees={self.degrees}, '\
+            f'unit={self.unit}, min_variation={self.min_variation}, max_variation={self.max_variation}]'
 
     speed = property(_get_speed, _set_speed)
     direction = property(_get_direction, _set_direction)
@@ -104,7 +100,7 @@ class WindShear(Wind):
         self._height = value
 
     def __repr__(self):
-        return 'WindShear[height={height}'.format(height=self.height) + super().__repr__() + ']'
+        return f'WindShear[height={self.height}' + super().__repr__() + ']'
 
     height = property(_get_height, _set_height)
 
@@ -134,10 +130,8 @@ class Visibility:
         self._min_direction = value
 
     def __repr__(self):
-        return """Visibility[distance={distance}, min_distance={min_distance}
-        , min_direction={min_direction}]""".format(distance=self.distance,
-                                                   min_direction=self.min_direction,
-                                                   min_distance=self.min_distance)
+        return f'Visibility[distance={self.distance}, min_distance={self.min_distance}, '\
+            f'min_direction={self.min_direction}]'
 
     distance = property(_get_distance, _set_distance)
     min_distance = property(_get_min_distance, _set_min_distance)
@@ -172,11 +166,7 @@ class WeatherCondition:
         return len(self._phenomenons) != 0 or self._descriptive == Descriptive.THUNDERSTORM
 
     def __repr__(self):
-        return 'WeatherCondition[intensity={intensity}, descriptive={descriptive}, phenomenons={phenomenons}]'.format(
-            intensity=self.intensity,
-            descriptive=self.descriptive,
-            phenomenons=self.phenomenons
-        )
+        return f'WeatherCondition[intensity={self.intensity}, descriptive={self.descriptive}, phenomenons={self.phenomenons}]'
 
     intensity = property(_get_intensity, _set_intensity)
     descriptive = property(_get_descriptive, _set_descriptive)
@@ -208,11 +198,7 @@ class TemperatureDated:
         self._hour = value
 
     def __repr__(self):
-        return 'TemperatureDated[temperature={temperature}, day={day}, hour={hour}]'.format(
-            temperature=self.temperature,
-            day=self.day,
-            hour=self.hour
-        )
+        return f'TemperatureDated[temperature={self.temperature}, day={self.day}, hour={self.hour}]'
 
     temperature = property(_get_temperature, _set_temperature)
     day = property(_get_day, _set_day)
@@ -287,21 +273,9 @@ class RunwayInfo:
         self._braking_capacity = value
 
     def __repr__(self):
-        return """
-            RunwayInfo[name={name}, min_range={min_range}, max_range={max_range},
-            trend={trend}, indicator={indicator}, deposit_type={deposit_type},
-            coverage={coverage}, thickness={thickness}, braking_capacity={braking_capacity}]
-        """.format(
-            name=self.name,
-            min_range=self.min_range,
-            max_range=self.max_range,
-            trend=self.trend,
-            indicator=self.indicator,
-            deposit_type=self.deposit_type,
-            coverage=self.coverage,
-            thickness=self.thickness,
-            braking_capacity=self.braking_capacity
-        )
+        return f'RunwayInfo[name={self.name}, min_range={self.min_range}, max_range={self.max_range}, '\
+            f'trend={self.trend}, indicator={self.indicator}, deposit_type={self.deposit_type}, '\
+            f'coverage={self.coverage}, thickness={self.thickness}, braking_capacity={self.braking_capacity}]'\
 
     name = property(_get_name, _set_name)
     min_range = property(_get_min_range, _set_min_range)
@@ -340,11 +314,7 @@ class Cloud:
         return self._type
 
     def __repr__(self):
-        return 'Cloud[height={height}, quantity={quantity}, type={type}]'.format(
-            height=self.height,
-            quantity=self.quantity,
-            type=self.type
-        )
+        return f'Cloud[height={self.height}, quantity={self.quantity}, type={self.type}]'
 
     height = property(_get_height, _set_height)
     quantity = property(_get_quantity, _set_quantity)
@@ -376,11 +346,7 @@ class Icing:
         self._depth = depth
 
     def __repr__(self):
-        return 'Icing[intensity={intensity}, base_height={base_height}, depth={depth}]'.format(
-            intensity=self.intensity,
-            base_height=self.base_height,
-            depth=self.depth
-        )
+        return f'Icing[intensity={self.intensity}, base_height={self.base_height}, depth={self.depth}]'
 
     intensity = property(_get_intensity, _set_intensity)
     base_height = property(_get_base_height, _set_base_height)
@@ -413,11 +379,7 @@ class Turbulence:
         self._depth = depth
 
     def __repr__(self):
-        return 'Turbulence[intensity={intensity}, base_height={base_height}, depth={depth}]'.format(
-            intensity=self.intensity,
-            base_height=self.base_height,
-            depth=self.depth
-        )
+        return f'Turbulence[intensity={self.intensity}, base_height={self.base_height}, depth={self.depth}]'
 
     intensity = property(_get_intensity, _set_intensity)
     base_height = property(_get_base_height, _set_base_height)
@@ -442,10 +404,7 @@ class ITafGroups:
         self._icings.append(icing)
 
     def __repr__(self):
-        return 'turbulence={turbulence}, icings={icings}'.format(
-            turbulence=self.turbulence,
-            icings=self.icings
-        )
+        return f'turbulence={self.turbulence}, icings={self.icings}'
 
     turbulence = property(_get_turbulence)
     icings = property(_get_icings)
@@ -522,15 +481,9 @@ class AbstractWeatherContainer(abc.ABC):
             return True
 
     def __repr__(self):
-        return """
-        wind={wind}, visibility={visibility}, vertical_visibility={vertical_visibility},
-        wind_shear={wind_shear}, cavok={cavok}, remark={remark},
-        clouds={clouds}, weather_conditions={weather_conditions}
-        """.format(wind=self.wind, visibility=self.visibility,
-                   vertical_visibility=self.vertical_visibility,
-                   cavok=self.cavok, remark=self.remark,
-                   wind_shear=self.wind_shear,
-                   clouds=str(self.clouds), weather_conditions=self.weather_conditions)
+        return f'wind={self.wind}, visibility={self.visibility}, vertical_visibility={self.vertical_visibility}, '\
+            f'wind_shear={self.wind_shear}, cavok={self.cavok}, remark={self.remark}, '\
+            f'clouds={self.clouds}, weather_conditions={self.weather_conditions}'
 
     wind = property(_get_wind, _set_wind)
     visibility = property(_get_visibility, _set_visibility)
@@ -558,7 +511,7 @@ class AbstractValidity(abc.ABC):
         self._start_hour = value
 
     def __repr__(self):
-        return 'start_day={start_day}, start_hour={start_hour}'.format(start_day=self.start_day, start_hour=self.start_hour)
+        return f'start_day={self.start_day}, start_hour={self.start_hour}'
 
     start_day = property(_get_start_day, _set_start_day)
     start_hour = property(_get_start_hour, _set_start_hour)
@@ -624,14 +577,8 @@ class AbstractWeatherCode(AbstractWeatherContainer):
         return Flag.NIL in self._flags
 
     def __repr__(self):
-        return 'day={day}, time={time}, message={message}, station={station}, trends={trends}, flags={flags}, '.format(
-            day=self.day,
-            time=self.time,
-            message=self.message,
-            station=self.station,
-            trends=self.trends,
-            flags=self.flags
-        ) + super().__repr__()
+        return (f'day={self.day}, time={self.time}, message={self.message}, station={self.station}, '
+                f'trends={self.trends}, flags={self.flags}, ' + super().__repr__())
 
     day = property(_get_day, _set_day)
     time = property(_get_time, _set_time)
@@ -687,13 +634,7 @@ class Metar(AbstractWeatherCode):
         self._runways_info.append(runway_info)
 
     def __repr__(self):
-        return 'Metar[' + super().__repr__() + ', temperature={temperature}, dew_point={dew_point}, altimeter={altimeter}, nosig={nosig}, runways_info={runways_info}]'.format(
-            temperature=self.temperature,
-            dew_point=self.dew_point,
-            altimeter=self.altimeter,
-            nosig=self.nosig,
-            runways_info=self.runways_info,
-        )
+        return 'Metar[' + super().__repr__() + f', temperature={self.temperature}, dew_point={self.dew_point}, altimeter={self.altimeter}, nosig={self.nosig}, runways_info={self.runways_info}]'
 
     temperature = property(_get_temperature, _set_temperature)
     dew_point = property(_get_dew_point, _set_dew_point)
@@ -745,11 +686,7 @@ class TAF(ITafGroups, AbstractWeatherCode):
         return list(filter(lambda trend: trend.type == WeatherChangeType.FM, self.trends))
 
     def __repr__(self):
-        return 'TAF[' + AbstractWeatherCode.__repr__(self) + ITafGroups.__repr__(self) + ', validity={validity}, max_temperature={max_temperature}, min_temperature={min_temperature}]'.format(
-            validity=self.validity,
-            max_temperature=self.max_temperature,
-            min_temperature=self.min_temperature
-        )
+        return 'TAF[' + AbstractWeatherCode.__repr__(self) + ITafGroups.__repr__(self) + f', validity={self.validity}, max_temperature={self.max_temperature}, min_temperature={self.min_temperature}]'
 
     validity = property(_get_validity, _set_validity)
     max_temperature = property(_get_max_temperature, _set_max_temperature)
@@ -765,7 +702,7 @@ class AbstractTrend(AbstractWeatherContainer):
         return self._type
 
     def __repr__(self):
-        return super().__repr__() + ', type={type}'.format(type=self.type)
+        return super().__repr__() + f', type={self.type}'
 
     type = property(_get_type)
 
@@ -784,7 +721,7 @@ class MetarTrendTime:
         self._time = value
 
     def __repr__(self):
-        return 'MetarTrendTime[type={type}, time={time}]'.format(type=self.type, time=self.time)
+        return f'MetarTrendTime[type={self.type}, time={self.time}]'
 
     type = property(_get_type)
     time = property(_get_time, _set_time)
@@ -803,7 +740,8 @@ class MetarTrend(AbstractTrend):
         self._times.append(value)
 
     def __repr__(self):
-        return 'MetarTrend[' + super().__repr__() + ', times={times}'.format(times=self.times)
+        return 'MetarTrend[' + super().__repr__() + f', times={self.times}'
+
     times = property(_get_times)
 
 
@@ -826,7 +764,8 @@ class TAFTrend(AbstractTrend, ITafGroups):
         self._probability = prob
 
     def __repr__(self):
-        return 'TAFTrend[' + ITafGroups.__repr__(self) + ', ' + AbstractTrend.__repr__(self) + ', validity={validity}, probability={probability}'.format(validity=self.validity, probability=self.probability)
+        return 'TAFTrend[' + ITafGroups.__repr__(self) + ', ' + AbstractTrend.__repr__(self) + f', validity={self.validity}, probability={self.probability}'
+
     probability = property(_get_probability, _set_probability)
     validity = property(_get_validity, _set_validity)
 
@@ -869,6 +808,6 @@ class FMValidity(AbstractValidity):
         self._start_minutes = value
 
     def __repr__(self):
-        return 'FMValidity[' + super().__repr__() + ', strart_minutes={start_minutes}]'.format(start_minutes=self.start_minutes)
+        return 'FMValidity[' + super().__repr__() + f', strart_minutes={self.start_minutes}]'
 
     start_minutes = property(_get_start_minutes, _set_start_minutes)
