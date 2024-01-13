@@ -536,7 +536,7 @@ msgstr "température horaire de {0}°C et point de rosée de {1}°C"
 
 #:
 msgid "Remark.Ice.Accretion.Amount"
-msgstr "{0}/100 d''un pouce d''accrétion de glace au cours des {1} dernières heures"
+msgstr "{0}/100 d'un pouce d'accrétion de glace au cours des {1} dernières heures"
 
 #:
 msgid "Remark.HVY"
@@ -572,7 +572,7 @@ msgstr "vent de pointe de {1} noeuds en provenance de {0} degrés à {2}:{3}"
 
 #:
 msgid "Remark.Precipitation.Amount.Hourly"
-msgstr "{0}/100 d''un pouce de précipitation est tombé au cours de la dernière heure"
+msgstr "{0}/100 d'un pouce de précipitation est tombé au cours de la dernière heure"
 
 #:
 msgid "Remark.Precipitation.Amount.3.6"
@@ -636,7 +636,7 @@ msgstr "{0} grésil"
 
 #:
 msgid "Remark.Sunshine.Duration"
-msgstr "{0} minutes d''ensoleillement"
+msgstr "{0} minutes d'ensoleillement"
 
 #:
 msgid "Remark.Surface.Visibility"
@@ -696,7 +696,7 @@ msgstr "trombe"
 
 #:
 msgid "Remark.Water.Equivalent.Snow.Ground"
-msgstr "équivalent d''eau de {0} pouces de neige"
+msgstr "équivalent d'eau de {0} pouces de neige"
 
 #:
 msgid "Remark.WindShift"
@@ -704,7 +704,7 @@ msgstr "changement de vent à {0}:{1}"
 
 #:
 msgid "Remark.WindShift.FROPA"
-msgstr "changement de vent accompagné d''un passage de front à {0}:{1}"
+msgstr "changement de vent accompagné d'un passage de front à {0}:{1}"
 
 #:
 msgid "MetarFacade.InvalidIcao"
