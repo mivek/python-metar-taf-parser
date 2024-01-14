@@ -1,5 +1,12 @@
 # Change Log 
 
+## [1.8.2] - 2024-01-14
+
+### Fixed
+
+- Fix the calm wind regex to prevent parsing error with visibility.
+- Fix single quotes in French translations.
+
 ## [1.8.0] - 2024-01-04
 
 ### Added
