@@ -290,7 +290,7 @@ class MetarParserTestCase(unittest.TestCase):
 
     def test_parse_empty_wind(self):
 
-        metar = MetarParser().parse('KATW 022045Z 0000KT 10SM SCT120 00/M08 A2996')
+        metar = MetarParser().parse('KATW 022045Z 00000KT 10SM SCT120 00/M08 A2996')
 
         self.assertEqual('KATW', metar.station)
         self.assertIsNotNone(metar.wind)
