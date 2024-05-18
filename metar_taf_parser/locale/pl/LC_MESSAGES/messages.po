@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
 "Project-Id-Version: metar_taf_parser"
-"Language: pl_PL"
+"Language: pl"
 #:
 msgid "CloudQuantity.BKN"
 msgstr "Od 5/8 do 7/8"

@@ -259,6 +259,10 @@ msgid "ErrorCode.InvalidMessage"
 msgstr "The entered message is invalid."
 
 #:
+msgid "ErrorCode.IncompleteRunwayInformation"
+msgstr "The runway information is incomplete and cannot be parsed."
+
+#:
 msgid "Flag.AMD"
 msgstr "amended TAF"
 

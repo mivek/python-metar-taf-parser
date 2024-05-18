@@ -1,6 +1,7 @@
 import re
 
 from metar_taf_parser.commons import converter
+from metar_taf_parser.commons.exception import ParseError
 from metar_taf_parser.model.enum import DepositType, DepositCoverage
 from metar_taf_parser.model.model import RunwayInfo, Metar
 from metar_taf_parser.commons.i18n import _
@@ -41,6 +42,22 @@ class AltimeterMercuryCommand:
         metar.altimeter = int(converter.convert_inches_mercury_to_pascal(mercury))
 
 
+def _parse_runway(matches, metar, runway):
+    runway.name = matches[0][0]
+    runway.indicator = matches[0][1]
+    runway.min_range = int(matches[0][2])
+    runway.trend = matches[0][3]
+    metar.add_runway_info(runway)
+
+
+def _parse_runway_max_range(matches, metar, runway):
+    runway.name = matches[0][0]
+    runway.min_range = int(matches[0][1])
+    runway.max_range = int(matches[0][2])
+    runway.trend = matches[0][3]
+    metar.add_runway_info(runway)
+
+
 class RunwayCommand:
     generic_regex = r'^(R\d{2}\w?/)'
     runway_max_range_regex = r'^R(\d{2}\w?)/(\d{4})V(\d{3,4})([UDN])?(FT)?'
@@ -79,31 +96,29 @@ class RunwayCommand:
     def execute(self, metar: Metar, input: str):
         matches = self._runway_deposit_pattern.findall(input)
         runway = RunwayInfo()
-        if matches:
-            runway.name = matches[0][0]
-            runway.deposit_type = DepositType(matches[0][1])
-            runway.coverage = DepositCoverage(matches[0][2])
-            runway.thickness = self.__parse_deposit_thickness(matches[0][3])
-            runway.braking_capacity = self.__parse_deposit_braking_capacity(matches[0][4])
-            metar.add_runway_info(runway)
-            return
+        try:
+            if matches:
+                self.__parse_runway_deposit(matches, metar, runway)
+                return
 
-        matches = self._runway_pattern.findall(input)
-        if matches:
-            runway.name = matches[0][0]
-            runway.indicator = matches[0][1]
-            runway.min_range = int(matches[0][2])
-            runway.trend = matches[0][3]
-            metar.add_runway_info(runway)
-            return
+            matches = self._runway_pattern.findall(input)
+            if matches:
+                _parse_runway(matches, metar, runway)
+                return
 
-        matches = self._max_range_pattern.findall(input)
-        if matches:
-            runway.name = matches[0][0]
-            runway.min_range = int(matches[0][1])
-            runway.max_range = int(matches[0][2])
-            runway.trend = matches[0][3]
-            metar.add_runway_info(runway)
+            matches = self._max_range_pattern.findall(input)
+            if matches:
+                _parse_runway_max_range(matches, metar, runway)
+        except ValueError:
+            raise ParseError(_("ErrorCode.IncompleteRunwayInformation"))
+
+    def __parse_runway_deposit(self, matches, metar, runway):
+        runway.name = matches[0][0]
+        runway.deposit_type = DepositType(matches[0][1])
+        runway.coverage = DepositCoverage(matches[0][2])
+        runway.thickness = self.__parse_deposit_thickness(matches[0][3])
+        runway.braking_capacity = self.__parse_deposit_braking_capacity(matches[0][4])
+        metar.add_runway_info(runway)
 
     def __parse_deposit_thickness(self, input):
         thickness = self._deposit_thickness.get(input, 'DepositThickness.default')

@@ -7,3 +7,11 @@ class TranslationError(Exception):
     def __init__(self, translation: str, message: str):
         self.message = message
         self.translation = translation
+
+
+class ParseError(Exception):
+    def __init__(self, message: str):
+        self.__message = message
+
+    def message(self):
+        return self.__message

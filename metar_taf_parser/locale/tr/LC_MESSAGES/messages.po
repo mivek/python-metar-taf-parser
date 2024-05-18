@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
 "Project-Id-Version: metar_taf_parser"
-"Language: tr_TR"
+"Language: tr"
 #:
 msgid "CloudQuantity.BKN"
 msgstr "parçalı çok bulutlu"
@@ -129,30 +129,6 @@ msgstr "rapor edilmedi"
 #:
 msgid "DepositThickness.00"
 msgstr "1 mm'den daha az"
-
-#:
-msgid "DepositThickness.THICKNESS_10"
-msgstr "10 cm"
-
-#:
-msgid "DepositThickness.THICKNESS_15"
-msgstr "15 cm"
-
-#:
-msgid "DepositThickness.THICKNESS_20"
-msgstr "20 cm"
-
-#:
-msgid "DepositThickness.THICKNESS_25"
-msgstr "25 cm"
-
-#:
-msgid "DepositThickness.THICKNESS_30"
-msgstr "30 cm"
-
-#:
-msgid "DepositThickness.THICKNESS_35"
-msgstr "35 cm"
 
 #:
 msgid "DepositThickness.98"
