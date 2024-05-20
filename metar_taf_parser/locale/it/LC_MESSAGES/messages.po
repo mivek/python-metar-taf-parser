@@ -103,6 +103,10 @@ msgid "DepositBrakingCapacity.99"
 msgstr "cifre inaffidabili"
 
 #:
+msgid "DepositBrakingCapacity.default"
+msgstr "coefficiente di attrito di {0}"
+
+#:
 msgid "DepositCoverage.NOT_REPORTED"
 msgstr "non riportato"
 
@@ -131,27 +135,27 @@ msgid "DepositThickness.00"
 msgstr "meno di 1 mm"
 
 #:
-msgid "DepositThickness.THICKNESS_10"
+msgid "DepositThickness.92"
 msgstr "10 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_15"
+msgid "DepositThickness.93"
 msgstr "15 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_20"
+msgid "DepositThickness.94"
 msgstr "20 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_25"
+msgid "DepositThickness.95"
 msgstr "25 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_30"
+msgid "DepositThickness.96"
 msgstr "30 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_35"
+msgid "DepositThickness.97"
 msgstr "35 cm"
 
 #:
@@ -161,6 +165,10 @@ msgstr "40 cm"
 #:
 msgid "DepositThickness.99"
 msgstr "chiusa"
+
+#:
+msgid "DepositThickness.default"
+msgstr "{0} mm"
 
 #:
 msgid "DepositType.NOT_REPORTED"
@@ -201,6 +209,10 @@ msgstr "neve compatta"
 #:
 msgid "DepositType.FROZEN_RIDGES"
 msgstr "solchi o creste congelate"
+
+#:
+msgid "DepositType.SLUSH"
+msgstr "fanghiglia"
 
 #:
 msgid "Descriptive.BC"
@@ -245,6 +257,66 @@ msgstr "L’aeroporto non è stato trovato in questa notifica"
 #:
 msgid "ErrorCode.InvalidMessage"
 msgstr "Il messaggio non è valido"
+
+#:
+msgid "Flag.AMD"
+msgstr "TAF modificato"
+
+#:
+msgid "Flag.AUTO"
+msgstr "METAR automatizzato"
+
+#:
+msgid "Flag.CNL"
+msgstr "TAF cancellato"
+
+#:
+msgid "Flag.COR"
+msgstr "METAR/TAF corretto"
+
+#:
+msgid "Flag.NIL"
+msgstr "nessun dato"
+
+#:
+msgid "IcingIntensity.0"
+msgstr "Trace di ghiaccio o nessuno"
+
+#:
+msgid "IcingIntensity.1"
+msgstr "Ghiaccio misto leggero"
+
+#:
+msgid "IcingIntensity.2"
+msgstr "Ghiacciamento leggero in nuvola"
+
+#:
+msgid "IcingIntensity.3"
+msgstr "Ghiacciamento chiaro leggero in precipitazione"
+
+#:
+msgid "IcingIntensity.4"
+msgstr "Ghiaccio misto moderato"
+
+#:
+msgid "IcingIntensity.5"
+msgstr "Ghiacciamento moderato in nuvola"
+
+#:
+msgid "IcingIntensity.6"
+msgstr "Ghiacciamento chiaro moderato in precipitazione"
+
+#:
+msgid "IcingIntensity.7"
+msgstr "Ghiaccio misto grave"
+
+#:
+msgid "IcingIntensity.8"
+msgstr "Ghiacciamento grave in nuvola"
+
+#:
+msgid "IcingIntensity.9"
+msgstr "Grave Ghiacciamento chiaro in precipitazione"
 
 #:
 msgid "Indicator.M"
@@ -367,6 +439,46 @@ msgid "Remark.AO2"
 msgstr "stazione automatizzata con discriminatore di precipitazione"
 
 #:
+msgid "Remark.ALQDS"
+msgstr "tutti i quadranti"
+
+#:
+msgid "Remark.Barometer.0"
+msgstr "Incrementa, poi diminuisci"
+
+#:
+msgid "Remark.Barometer.1"
+msgstr "Incrementa, poi stabile, o aumenta poi aumenta più lentamente"
+
+#:
+msgid "Remark.Barometer.2"
+msgstr "aumento costante o instabile"
+
+#:
+msgid "Remark.Barometer.3"
+msgstr "Diminuire o stabile, quindi aumentare; o aumentare poi aumentare più rapidamente"
+
+#:
+msgid "Remark.Barometer.4"
+msgstr "Costante"
+
+#:
+msgid "Remark.Barometer.5"
+msgstr "Diminuire, poi aumentare"
+
+#:
+msgid "Remark.Barometer.6"
+msgstr "Diminuire quindi costante; o diminuire, quindi diminuire più lentamente"
+
+#:
+msgid "Remark.Barometer.7"
+msgstr "Riduzione costante o instabile"
+
+#:
+msgid "Remark.Barometer.8"
+msgstr "Stazionario o aumenta, quindi diminuisce; o diminuire poi diminuisce più rapidamente"
+
+#:
 msgid "Remark.BASED"
 msgstr "basato"
 
@@ -377,6 +489,10 @@ msgstr "base delle nubi tra {0} e {1} piedi"
 #:
 msgid "Remark.Ceiling.Second.Location"
 msgstr "base delle nubi di {0} piedi misurato da un secondo sensore situato a {1}"
+
+#:
+msgid "Remark.DSNT"
+msgstr "distante"
 
 #:
 msgid "Remark.FCST"
@@ -395,12 +511,40 @@ msgid "Remark.Hail.LesserThan"
 msgstr "chicchi di grandine più grandi con un diametro inferiore di {0} pollici"
 
 #:
+msgid "Remark.Hourly.Maximum.Temperature"
+msgstr "Temperatura massima ogni 6 ore di {0}°C"
+
+#:
+msgid "Remark.Hourly.Maximum.Minimum.Temperature"
+msgstr "Temperatura massima ogni 24 ore di {0}°C e temperatura minima ogni 24 ore di {1}°C"
+
+#:
+msgid "Remark.Hourly.Minimum.Temperature"
+msgstr "Temperatura minima su 6 ore di {0}°C"
+
+#:
+msgid "Remark.Hourly.Temperature"
+msgstr "temperatura oraria di {0}°C"
+
+#:
+msgid "Remark.Hourly.Temperature.Dew.Point"
+msgstr "temperatura oraria di {0}°C e punto di rugiada di {1}°C"
+
+#:
+msgid "Remark.Ice.Accretion.Amount"
+msgstr "{0}/100 di pollice di accrescimento di ghiaccio nelle ultime {1} ore"
+
+#:
 msgid "Remark.HVY"
 msgstr "pesante"
 
 #:
 msgid "Remark.LGT"
 msgstr "leggero"
+
+#:
+msgid "Remark.LTG"
+msgstr "fulmine"
 
 #:
 msgid "Remark.MOD"
@@ -423,8 +567,32 @@ msgid "Remark.PeakWind"
 msgstr "picco di vento di {1} nodi da {0} gradi a {2}:{3}"
 
 #:
+msgid "Remark.Precipitation.Amount.Hourly"
+msgstr "Nell''ultima ora è caduto {0}/100 di pollice di precipitazioni"
+
+#:
+msgid "Remark.Precipitation.Amount.3.6"
+msgstr "{1} pollici di precipitazioni sono caduti nelle ultime {0} ore"
+
+#:
+msgid "Remark.Precipitation.Amount.24"
+msgstr "{0} pollici di precipitazioni sono caduti nelle ultime 24 ore"
+
+#:
+msgid "Remark.Precipitation.Beg"
+msgstr "{0} {1} inizia alle {2}:{3}"
+
+#:
 msgid "Remark.Precipitation.Beg.End"
 msgstr "{0} {1} inizia a {2}:{3} e termina a {4}:{5}"
+
+#:
+msgid "Remark.Precipitation.End"
+msgstr "{0} {1} termina alle {2}:{3}"
+
+#:
+msgid "Remark.Pressure.Tendency"
+msgstr "di {0} HPa nelle ultime 3 ore"
 
 #:
 msgid "Remark.PRESFR"
@@ -451,12 +619,20 @@ msgid "Remark.SLPNO"
 msgstr "pressione a livello del mare non disponibile"
 
 #:
+msgid "Remark.Snow.Depth"
+msgstr "altezza della neve di {0} pollici"
+
+#:
 msgid "Remark.Snow.Increasing.Rapidly"
 msgstr "aumento dell’altezza della neve di {0} pollici nell’ultima ora con un’altezza totale al suolo di {1} pollici"
 
 #:
 msgid "Remark.Snow.Pellets"
 msgstr "{0} neve tonda "
+
+#:
+msgid "Remark.Sunshine.Duration"
+msgstr "{0} minuti di sole"
 
 #:
 msgid "Remark.Surface.Visibility"
@@ -513,6 +689,10 @@ msgstr "virga {0} dalla stazione"
 #:
 msgid "Remark.WATERSPOUT"
 msgstr "tromba marina"
+
+#:
+msgid "Remark.Water.Equivalent.Snow.Ground"
+msgstr "equivalente in acqua di {0} pollici di neve"
 
 #:
 msgid "Remark.WindShift"
@@ -615,6 +795,10 @@ msgid "WeatherChangeType.BECMG"
 msgstr "Diventa"
 
 #:
+msgid "WeatherChangeType.INTER"
+msgstr "Intermittente"
+
+#:
 msgid "WeatherChangeType.TEMPO"
 msgstr "Temporanea"
 
@@ -651,6 +835,10 @@ msgid "ToString.auto"
 msgstr "auto"
 
 #:
+msgid "ToString.baseHeight"
+msgstr "strato di base in piedi"
+
+#:
 msgid "ToString.cavok"
 msgstr "cavok"
 
@@ -683,6 +871,10 @@ msgid "ToString.deposit.type"
 msgstr "tipo di deposito"
 
 #:
+msgid "ToString.depth"
+msgstr "profondità dello strato nei piedi"
+
+#:
 msgid "ToString.descriptive"
 msgstr "descrittivo"
 
@@ -697,6 +889,10 @@ msgstr "ultimo giorno del mese"
 #:
 msgid "ToString.end.hour.day"
 msgstr "ultima ora del giorno"
+
+#:
+msgid "ToString.flags"
+msgstr "bandiere"
 
 #:
 msgid "ToString.height.feet"
@@ -837,4 +1033,48 @@ msgstr "velocità"
 #:
 msgid "ToString.wind.unit"
 msgstr "unità"
+
+#:
+msgid "TurbulenceIntensity.0"
+msgstr "Nessuno"
+
+#:
+msgid "TurbulenceIntensity.1"
+msgstr "Turbolenza leggera"
+
+#:
+msgid "TurbulenceIntensity.2"
+msgstr "Moderata turbolenza con aria limpida, occasionale"
+
+#:
+msgid "TurbulenceIntensity.3"
+msgstr "Moderata turbolenza con aria limpida, frequente"
+
+#:
+msgid "TurbulenceIntensity.4"
+msgstr "Moderata turbolenza in nubi, occasionale"
+
+#:
+msgid "TurbulenceIntensity.5"
+msgstr "Moderata turbolenza in nubi, frequente"
+
+#:
+msgid "TurbulenceIntensity.6"
+msgstr "Forte turbolenza in aria limpida, occasionale"
+
+#:
+msgid "TurbulenceIntensity.7"
+msgstr "Forte turbolenza in aria limpida, frequente"
+
+#:
+msgid "TurbulenceIntensity.8"
+msgstr "Forte turbolenza in nubi, occasionale"
+
+#:
+msgid "TurbulenceIntensity.9"
+msgstr "Forte turbolenza in nubi, frequente"
+
+#:
+msgid "TurbulenceIntensity.X"
+msgstr "Estrema turbolenza"
 

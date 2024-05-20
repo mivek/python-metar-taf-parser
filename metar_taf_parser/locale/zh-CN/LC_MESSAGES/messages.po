@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
 "Project-Id-Version: metar_taf_parser"
-"Language: zh_CN"
+"Language: zn-CN"
 #:
 msgid "CloudQuantity.BKN"
 msgstr "5-7分云"
@@ -91,7 +91,7 @@ msgid "DepositBrakingCapacity.93"
 msgstr "中"
 
 #:
-msgid "DepositBrakingCapacity.MEDIUM_GOOD"
+msgid "DepositBrakingCapacity.94"
 msgstr "良好"
 
 #:
@@ -101,6 +101,10 @@ msgstr "好"
 #:
 msgid "DepositBrakingCapacity.99"
 msgstr "数字不可靠"
+
+#:
+msgid "DepositBrakingCapacity.default"
+msgstr "摩擦系数为 {0}"
 
 #:
 msgid "DepositCoverage.NOT_REPORTED"
@@ -131,27 +135,27 @@ msgid "DepositThickness.00"
 msgstr "小于 1 毫米"
 
 #:
-msgid "DepositThickness.THICKNESS_10"
+msgid "DepositThickness.92"
 msgstr "10 厘米"
 
 #:
-msgid "DepositThickness.THICKNESS_15"
+msgid "DepositThickness.93"
 msgstr "15 厘米"
 
 #:
-msgid "DepositThickness.THICKNESS_20"
+msgid "DepositThickness.94"
 msgstr "20 厘米"
 
 #:
-msgid "DepositThickness.THICKNESS_25"
+msgid "DepositThickness.95"
 msgstr "25 厘米"
 
 #:
-msgid "DepositThickness.THICKNESS_30"
+msgid "DepositThickness.96"
 msgstr "30 厘米"
 
 #:
-msgid "DepositThickness.THICKNESS_35"
+msgid "DepositThickness.97"
 msgstr "35 厘米"
 
 #:
@@ -161,6 +165,10 @@ msgstr "40厘米或以上"
 #:
 msgid "DepositThickness.99"
 msgstr "已关闭"
+
+#:
+msgid "DepositThickness.default"
+msgstr "{0} 毫米"
 
 #:
 msgid "DepositType.NOT_REPORTED"
@@ -249,6 +257,42 @@ msgstr "找不到此消息的机场。"
 #:
 msgid "ErrorCode.InvalidMessage"
 msgstr "输入的消息无效。"
+
+#:
+msgid "Flag.AMD"
+msgstr "修正后的TAF"
+
+#:
+msgid "Flag.AUTO"
+msgstr "自动生成的METAR"
+
+#:
+msgid "Flag.CNL"
+msgstr "已取消的TAF"
+
+#:
+msgid "Flag.COR"
+msgstr "已更正的METAR/TAF"
+
+#:
+msgid "Flag.NIL"
+msgstr "暂无数据"
+
+#:
+msgid "IcingIntensity.0"
+msgstr "微量结冰"
+
+#:
+msgid "IcingIntensity.1"
+msgstr "轻度混合结冰"
+
+#:
+msgid "IcingIntensity.2"
+msgstr "云中轻度霜冻结冰"
+
+#:
+msgid "IcingIntensity.7"
+msgstr "重度混合结冰"
 
 #:
 msgid "Indicator.M"
@@ -499,6 +543,18 @@ msgid "Remark.PeakWind"
 msgstr "在 {2}:{3} 有位于 {0} 度，风速 {1} 节的峰值风"
 
 #:
+msgid "Remark.PRESFR"
+msgstr "气压骤降"
+
+#:
+msgid "Remark.PRESRR"
+msgstr "气压骤升"
+
+#:
+msgid "Remark.Sea.Level.Pressure"
+msgstr "海平面气压{0} 百帕"
+
+#:
 msgid "Remark.TORNADO"
 msgstr "龙卷风"
 
@@ -699,6 +755,10 @@ msgid "ToString.end.hour.day"
 msgstr "当日的结束小时"
 
 #:
+msgid "ToString.flags"
+msgstr "旗子"
+
+#:
 msgid "ToString.height.feet"
 msgstr "高度（英尺）"
 
@@ -837,4 +897,20 @@ msgstr "速度"
 #:
 msgid "ToString.wind.unit"
 msgstr "单位"
+
+#:
+msgid "TurbulenceIntensity.0"
+msgstr "无"
+
+#:
+msgid "TurbulenceIntensity.1"
+msgstr "轻度乱流"
+
+#:
+msgid "TurbulenceIntensity.8"
+msgstr "云中偶发重度颠簸"
+
+#:
+msgid "TurbulenceIntensity.X"
+msgstr "极端乱流"
 

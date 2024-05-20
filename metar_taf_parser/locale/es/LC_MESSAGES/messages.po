@@ -16,7 +16,7 @@ msgstr "cubierto"
 
 #:
 msgid "CloudQuantity.SKC"
-msgstr "cielo claro"
+msgstr "cielo despejado"
 
 #:
 msgid "CloudType.AC"
@@ -67,6 +67,10 @@ msgid "DepositBrakingCapacity.//"
 msgstr "no reportado"
 
 #:
+msgid "DepositCoverage.NOT_REPORTED"
+msgstr "no reportado"
+
+#:
 msgid "DepositCoverage.LESS_10"
 msgstr "menos de 10%"
 
@@ -91,27 +95,27 @@ msgid "DepositThickness.00"
 msgstr "menos de 1 mm"
 
 #:
-msgid "DepositThickness.THICKNESS_10"
+msgid "DepositThickness.92"
 msgstr "10 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_15"
+msgid "DepositThickness.93"
 msgstr "15 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_20"
+msgid "DepositThickness.94"
 msgstr "20 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_25"
+msgid "DepositThickness.95"
 msgstr "25 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_30"
+msgid "DepositThickness.96"
 msgstr "30 cm"
 
 #:
-msgid "DepositThickness.THICKNESS_35"
+msgid "DepositThickness.97"
 msgstr "35 cm"
 
 #:
@@ -121,6 +125,10 @@ msgstr "40 cm o más"
 #:
 msgid "DepositThickness.99"
 msgstr "cerrado"
+
+#:
+msgid "DepositThickness.default"
+msgstr "{0} mm"
 
 #:
 msgid "DepositType.NOT_REPORTED"
@@ -165,6 +173,66 @@ msgstr "huellas o cumbres congeladas"
 #:
 msgid "DepositType.SLUSH"
 msgstr "nieve derretida"
+
+#:
+msgid "Descriptive.PR"
+msgstr "parcial"
+
+#:
+msgid "Descriptive.TS"
+msgstr "tormenta"
+
+#:
+msgid "ErrorCode.InvalidMessage"
+msgstr "El mensaje ingresado es inválido."
+
+#:
+msgid "Flag.AMD"
+msgstr "TAF modificado"
+
+#:
+msgid "Flag.AUTO"
+msgstr "METAR automatizado"
+
+#:
+msgid "Flag.CNL"
+msgstr "TAF cancelado"
+
+#:
+msgid "Indicator.M"
+msgstr "menos que"
+
+#:
+msgid "Indicator.P"
+msgstr "más que"
+
+#:
+msgid "Intensity.RE"
+msgstr "reciente"
+
+#:
+msgid "Phenomenon.DS"
+msgstr "tormenta de polvo"
+
+#:
+msgid "Phenomenon.FG"
+msgstr "niebla"
+
+#:
+msgid "Phenomenon.FU"
+msgstr "humo"
+
+#:
+msgid "Phenomenon.RA"
+msgstr "lluvia"
+
+#:
+msgid "Phenomenon.SA"
+msgstr "arena"
+
+#:
+msgid "Phenomenon.SN"
+msgstr "nieve"
 
 #:
 msgid "Phenomenon.SS"
@@ -253,4 +321,152 @@ msgstr "pronóstico"
 #:
 msgid "Remark.FUNNELCLOUD"
 msgstr "nube embudo"
+
+#:
+msgid "Remark.NXT"
+msgstr "siguiente"
+
+#:
+msgid "Remark.TORNADO"
+msgstr "tornado"
+
+#:
+msgid "MetarFacade.InvalidIcao"
+msgstr "El código Icao no es válido."
+
+#:
+msgid "Converter.E"
+msgstr "Este"
+
+#:
+msgid "Converter.N"
+msgstr "Norte"
+
+#:
+msgid "Converter.NE"
+msgstr "Noreste"
+
+#:
+msgid "Converter.NW"
+msgstr "Noroeste"
+
+#:
+msgid "Converter.S"
+msgstr "Sur"
+
+#:
+msgid "Converter.SE"
+msgstr "Sureste"
+
+#:
+msgid "Converter.VRB"
+msgstr "Variable"
+
+#:
+msgid "Converter.W"
+msgstr "Oeste"
+
+#:
+msgid "WeatherChangeType.INTER"
+msgstr "Intermitente"
+
+#:
+msgid "WeatherChangeType.TEMPO"
+msgstr "Temporal"
+
+#:
+msgid "WeatherChangeType.PROB"
+msgstr "Probabilidad"
+
+#:
+msgid "TimeIndicator.FM"
+msgstr "Desde"
+
+#:
+msgid "TimeIndicator.TL"
+msgstr "hasta"
+
+#:
+msgid "ToString.airport"
+msgstr "aeropuerto"
+
+#:
+msgid "ToString.clouds"
+msgstr "nubes"
+
+#:
+msgid "ToString.day.month"
+msgstr "día del mes"
+
+#:
+msgid "ToString.day.hour"
+msgstr "hora del día"
+
+#:
+msgid "ToString.height.feet"
+msgstr "altura (cm)"
+
+#:
+msgid "ToString.height.meter"
+msgstr "altura (m)"
+
+#:
+msgid "ToString.intensity"
+msgstr "intensidad"
+
+#:
+msgid "ToString.indicator"
+msgstr "indicador"
+
+#:
+msgid "ToString.message"
+msgstr "mensaje original"
+
+#:
+msgid "ToString.name"
+msgstr "nombre"
+
+#:
+msgid "ToString.phenomenons"
+msgstr "fenómenos"
+
+#:
+msgid "ToString.probability"
+msgstr "probabilidad"
+
+#:
+msgid "ToString.quantity"
+msgstr "cantidad"
+
+#:
+msgid "ToString.report.time"
+msgstr "hora del informe"
+
+#:
+msgid "ToString.temperature"
+msgstr "temperatura (°C)"
+
+#:
+msgid "ToString.temperature.max"
+msgstr "temperatura máxima (°C)"
+
+#:
+msgid "ToString.temperature.min"
+msgstr "temperatura mínima (°C)"
+
+#:
+msgid "ToString.type"
+msgstr "tipo"
+
+#:
+msgid "ToString.wind.direction"
+msgstr "dirección"
+
+#:
+msgid "ToString.wind.direction.degrees"
+msgstr "dirección (grados)"
+
+#:
+msgid "TurbulenceIntensity.X"
+msgstr "Turbulencia extrema"
 

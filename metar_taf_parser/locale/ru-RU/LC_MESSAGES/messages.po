@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
 "Project-Id-Version: metar_taf_parser"
-"Language: ru_RU"
+"Language: ru-RU"
 #:
 msgid "CloudQuantity.BKN"
 msgstr "разорванная"
@@ -257,6 +257,10 @@ msgstr "Аэропорт не найден для этого сообщения.
 #:
 msgid "ErrorCode.InvalidMessage"
 msgstr "Введенное сообщение неверное."
+
+#:
+msgid "ErrorCode.IncompleteRunwayInformation"
+msgstr "Информация о взлетно-посадочной полосе является неполной и не может быть обработана."
 
 #:
 msgid "Flag.AMD"

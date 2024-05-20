@@ -1,6 +1,7 @@
 import unittest
 
 from metar_taf_parser.command.metar import RunwayCommand, CommandSupplier
+from metar_taf_parser.commons.exception import ParseError
 from metar_taf_parser.model.enum import DepositType, DepositCoverage
 from metar_taf_parser.model.model import Metar
 from metar_taf_parser.commons.i18n import _
@@ -107,6 +108,14 @@ class MetarCommandTestCase(unittest.TestCase):
         self.assertEqual('01L', metar.runways_info[0].name)
         self.assertEqual('P', metar.runways_info[0].indicator)
         self.assertEqual(600, metar.runways_info[0].min_range)
+
+    def test_parse_runway_missing_info(self):
+        metar = Metar()
+        with self.assertRaises(ParseError) as context:
+            RunwayCommand().execute(metar, "R16///////")
+
+        error = context.exception
+        self.assertEqual(_("ErrorCode.IncompleteRunwayInformation"), error.message())
 
     def test_command_supplier(self):
         command_supplier = CommandSupplier()

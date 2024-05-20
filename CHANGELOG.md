@@ -1,5 +1,11 @@
 # Change Log 
 
+## [1.9.0] - 2024-05-19
+
+### Added
+
+- When information about a runway is incomplete in a METAR, a `ParseError` is raised instead of `ValueError`.
+
 ## [1.8.2] - 2024-01-14
 
 ### Fixed
