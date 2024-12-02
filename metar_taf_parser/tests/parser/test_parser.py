@@ -303,7 +303,7 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual('LTAE', metar.station)
         self.assertEqual(1, len(metar.weather_conditions))
         self.assertEqual(Intensity.RECENT, metar.weather_conditions[0].intensity)
-        self.assertEquals(Descriptive.SHOWERS, metar.weather_conditions[0].descriptive)
+        self.assertEqual(Descriptive.SHOWERS, metar.weather_conditions[0].descriptive)
         self.assertEqual(1, len(metar.weather_conditions[0].phenomenons))
         self.assertEqual(Phenomenon.RAIN, metar.weather_conditions[0].phenomenons[0])
 
