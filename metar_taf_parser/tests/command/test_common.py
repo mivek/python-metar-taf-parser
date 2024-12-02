@@ -1,8 +1,14 @@
 import unittest
 
-from metar_taf_parser.command.common import CloudCommand, MainVisibilityNauticalMilesCommand, WindCommand, CommandSupplier
+from metar_taf_parser.command.common import (
+    CloudCommand,
+    CommandSupplier,
+    MainVisibilityNauticalMilesCommand,
+    MinimalVisibilityCommand,
+    WindCommand,
+)
 from metar_taf_parser.model.enum import CloudQuantity, CloudType
-from metar_taf_parser.model.model import Metar
+from metar_taf_parser.model.model import TAF, Metar
 
 
 class CommonTestCase(unittest.TestCase):
@@ -89,6 +95,19 @@ class CommonTestCase(unittest.TestCase):
         command = WindCommand()
         metar = Metar()
         self.assertTrue(command.execute(metar, 'VRB08KT'))
+
+    def test_minimal_visibility_command(self):
+        command = MinimalVisibilityCommand()
+
+        for dir in ['N', 'ne', 's', 'SW']:
+            with self.subTest(dir):
+                vis_str = f'3000{dir}'
+                self.assertTrue(command.can_parse(vis_str))
+
+                taf = TAF()
+                self.assertTrue(command.execute(taf, vis_str))
+                self.assertEqual(taf.visibility.min_distance, 3000)
+                self.assertEqual(taf.visibility.min_direction, dir)
 
     def test_main_visibility_nautical_miles_command_with_greater_than(self):
         command = MainVisibilityNauticalMilesCommand()
