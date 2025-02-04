@@ -1,6 +1,6 @@
 name: Lint commit
 
-on: pull_request_target
+on: pull_request
 
 jobs:
   commitlint:
