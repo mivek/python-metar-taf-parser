@@ -36,10 +36,3 @@ jobs:
       - name: Test with unittest and generates reports
         run: |
           make report
-
-      - name: Upload coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage.xml
-          path: ./coverage.xml
-        if: ${{ always() }}
