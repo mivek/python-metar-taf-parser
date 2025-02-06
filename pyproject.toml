@@ -4,3 +4,36 @@ requires = [
     "wheel"
 ]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "metar-taf-parser-mivek"
+version = "1.9.0"
+description = "Python project parsing metar and taf message"
+readme = "README.md"
+readme-content-type = "text/markdown"
+requires-python = ">=3.7"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Jean-Kevin KPADEY", email = "jeankevin.kpadey@gmail.com" }
+]
+
+keywords = ["metar", "taf", "parser", "icao", "airport"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/mivek/python-metar-taf-parser"
+"Bug Tracker" = "https://github.com/mivek/python-metar-taf-parser/issues"
+
+[project.optional-dependencies]
+tests = ["parameterized", "coverage"]
+
+[tool.setuptools.packages.find]
+exclude = ["metar_taf_parser.tests.common", "metar_taf_parser.tests.command", "metar_taf_parser.tests.parser", "metar_taf_parser.tests"]
+
+[tool.setuptools.package-data]
+"*" = ["locale/*/*/*.po", "locale/*/*/*.mo", "locale/*.pot"]
+
