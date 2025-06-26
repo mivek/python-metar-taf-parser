@@ -334,6 +334,25 @@ class FunctionTestCase(unittest.TestCase):
 
 class TAFParserTestCase(unittest.TestCase):
 
+    def test_parse_without_delivery_time(self):
+        code = """
+        TAF KNYL 2603/2703 20006KT 9999 SKC QNH2974INS
+            FM261000 14004KT 9999 SKC QNH2977INS
+            FM261700 17007KT 9999 SKC QNH2974INS
+            FM262100 19013KT 9999 SKC QNH2967INS AUTOMATED SENSOR METWATCH 2606 TIL 2614 TX42/2623Z TN24/2614Z
+        """
+        taf = TAFParser().parse(code)
+
+        self.assertEqual('KNYL', taf.station)
+        self.assertEqual(26, taf.day)
+        self.assertEqual(3, taf.time.hour)
+        self.assertEqual(0, taf.time.minute)
+
+        self.assertEqual(26, taf.validity.start_day)
+        self.assertEqual(3, taf.validity.start_hour)
+        self.assertEqual(27, taf.validity.end_day)
+        self.assertEqual(3, taf.validity.end_hour)
+
     def test_parse_with_invalid_line_breaks(self):
         code = 'TAF LFPG 150500Z 1506/1612 17005KT 6000 SCT012 \n' + 'TEMPO 1506/1509 3000 BR BKN006 PROB40 \n' + 'TEMPO 1506/1508 0400 BCFG BKN002 PROB40 \n' + 'TEMPO 1512/1516 4000 -SHRA FEW030TCU BKN040 \n' + 'BECMG 1520/1522 CAVOK \n' + 'TEMPO 1603/1608 3000 BR BKN006 PROB40 \n TEMPO 1604/1607 0400 BCFG BKN002 TX17/1512Z TN07/1605Z'
 
