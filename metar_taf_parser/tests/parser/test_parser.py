@@ -333,6 +333,61 @@ class FunctionTestCase(unittest.TestCase):
 
 
 class TAFParserTestCase(unittest.TestCase):
+    def test_parse_tempo_with_visibility(self):
+        code = """TAF MNMG 260600Z 2306/2406 VRB04KT 9999 FEW020 SCT070
+                    TEMPO 2308/2312 9999/8000 RA/DZ BKN020
+                    TEMPO 2314/2316 09010KT 9800/9000 -DZ SCT022 SCT070
+                    BECMG 2321/2323 7000 -TSRA/RA FEW020CB SCT070
+        """
+        taf = TAFParser().parse(code)
+
+        self.assertEqual(len(taf.trends), 3)
+        trend_1, trend_2, trend_3 = taf.trends
+
+        self.assertEqual(trend_1.type, WeatherChangeType.TEMPO)
+        self.assertEqual(trend_1.validity.start_day, 23)
+        self.assertEqual(trend_1.validity.start_hour, 8)
+        self.assertEqual(trend_1.validity.end_day, 23)
+        self.assertEqual(trend_1.validity.end_hour, 12)
+        self.assertEqual(trend_1.visibility.distance, '> 10km')
+        self.assertEqual(trend_1.visibility.min_distance, 8000)
+        self.assertEqual(len(trend_1.clouds), 1)
+        self.assertEqual(trend_1.clouds[0].height, 2000)
+        self.assertEqual(trend_1.clouds[0].quantity, CloudQuantity.BKN)
+
+        self.assertEqual(trend_2.type, WeatherChangeType.TEMPO)
+        self.assertEqual(trend_2.validity.start_day, 23)
+        self.assertEqual(trend_2.validity.start_hour, 14)
+        self.assertEqual(trend_2.validity.end_day, 23)
+        self.assertEqual(trend_2.validity.end_hour, 16)
+        self.assertEqual(trend_2.wind.degrees, 90)
+        self.assertEqual(trend_2.wind.speed, 10)
+        self.assertEqual(trend_2.visibility.distance, '9800m')
+        self.assertEqual(trend_2.visibility.min_distance, 9000)
+        self.assertEqual(trend_2.wind.speed, 10)
+        self.assertEqual(trend_2.wind.unit, 'KT')
+        self.assertEqual(len(trend_2.clouds), 2)
+        self.assertEqual(trend_2.clouds[0].height, 2200)
+        self.assertEqual(trend_2.clouds[0].quantity, CloudQuantity.SCT)
+        self.assertEqual(trend_2.clouds[1].height, 7000)
+        self.assertEqual(trend_2.clouds[1].quantity, CloudQuantity.SCT)
+        self.assertEqual(len(trend_2.weather_conditions), 1)
+        self.assertEqual(trend_2.weather_conditions[0].intensity, Intensity.LIGHT)
+        self.assertEqual(len(trend_2.weather_conditions[0].phenomenons), 1)
+        self.assertEqual(trend_2.weather_conditions[0].phenomenons[0], Phenomenon.DRIZZLE)
+
+        self.assertEqual(trend_3.type, WeatherChangeType.BECMG)
+        self.assertEqual(trend_3.validity.start_day, 23)
+        self.assertEqual(trend_3.validity.start_hour, 21)
+        self.assertEqual(trend_3.validity.end_day, 23)
+        self.assertEqual(trend_3.validity.end_hour, 23)
+        self.assertEqual(trend_3.visibility.distance, '7000m')
+        self.assertEqual(len(trend_3.clouds), 2)
+        self.assertEqual(trend_3.clouds[0].height, 2000)
+        self.assertEqual(trend_3.clouds[0].quantity, CloudQuantity.FEW)
+        self.assertEqual(trend_3.clouds[0].type, CloudType.CB)
+        self.assertEqual(trend_3.clouds[1].height, 7000)
+        self.assertEqual(trend_3.clouds[1].quantity, CloudQuantity.SCT)
 
     def test_parse_with_invalid_line_breaks(self):
         code = 'TAF LFPG 150500Z 1506/1612 17005KT 6000 SCT012 \n' + 'TEMPO 1506/1509 3000 BR BKN006 PROB40 \n' + 'TEMPO 1506/1508 0400 BCFG BKN002 PROB40 \n' + 'TEMPO 1512/1516 4000 -SHRA FEW030TCU BKN040 \n' + 'BECMG 1520/1522 CAVOK \n' + 'TEMPO 1603/1608 3000 BR BKN006 PROB40 \n TEMPO 1604/1607 0400 BCFG BKN002 TX17/1512Z TN07/1605Z'
