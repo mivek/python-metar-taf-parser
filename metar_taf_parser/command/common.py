@@ -163,10 +163,10 @@ class VerticalVisibilityCommand:
 
 
 class MinimalVisibilityCommand:
-    regex = r'^(\d{4}[NnEeSsWw])$'
+    regex = r'^(\d{4})(N|NE|E|SE|S|SW|W|NW)$'
 
     def __init__(self):
-        self._pattern = re.compile(MinimalVisibilityCommand.regex)
+        self._pattern = re.compile(MinimalVisibilityCommand.regex, re.IGNORECASE)
 
     def can_parse(self, visibility_string: str):
         return self._pattern.search(visibility_string)
@@ -179,8 +179,10 @@ class MinimalVisibilityCommand:
         :return:
         """
         matches = self._pattern.search(visibility_string).groups()
-        container.visibility.min_distance = int(matches[0][0:4])
-        container.visibility.min_direction = matches[0][4]
+        if container.visibility is None:
+            container.visibility = Visibility()
+        container.visibility.min_distance = int(matches[0])
+        container.visibility.min_direction = matches[1]
         return True
 
 

@@ -243,7 +243,7 @@ class TAFParser(AbstractParser):
 
     def __init__(self):
         super().__init__()
-        self._validity_pattern = re.compile(r'^\d{4}/\d{4}$')
+        self._validity_or_visibility_pattern = re.compile(r'^\d{4}/\d{4}$')
         self._taf_command_supplier = TAFCommandSupplier()
 
     def parse(self, input: str):
@@ -311,7 +311,7 @@ class TAFParser(AbstractParser):
                 lines_token[len(lines) - 1] = list(filter(lambda x: not x.startswith(TAFParser.TX) and not x.startswith(TAFParser.TN), last_line))
         return lines_token
 
-    def _parse_line(self, taf: TAF, line_tokens: list):
+    def _parse_line(self, taf: 'TAF', line_tokens: list):
         """
         Parses the tokens of the line and updates the TAF object.
         :param taf: TAF object to update
@@ -333,6 +333,28 @@ class TAFParser(AbstractParser):
         self._parse_trend(index, line_tokens, trend)
         taf.add_trend(trend)
 
+    def _is_valid_validity(self, validity: Validity):
+        return validity.start_day < 32 and validity.start_hour < 24 and validity.end_day < 32 and validity.end_hour < 24
+
+    def _parse_visibility(self, visibility_string: str):
+        """For certain weather conditions, the visibility is given as a range such as DDDD/DDDD,
+        e.g. 9999/8000
+        We will interpret this as a minimum distance and distance in meters.
+        """
+        parts = visibility_string.split('/')
+        if len(parts) == 2:
+            first_part = int(parts[0])
+            second_part = int(parts[1])
+            min_distance = min(first_part, second_part)
+            distance = max(first_part, second_part)
+
+            visibility = Visibility()
+            visibility.min_distance = min_distance if min_distance < 9999 else '> 10km'
+            visibility.distance = f"{distance}m" if distance < 9999 else '> 10km'
+
+            return visibility
+        return None
+
     def _parse_trend(self, index: int, line: list, trend: TAFTrend):
         """
         Parses a trend of the TAF
@@ -349,8 +371,12 @@ class TAFParser(AbstractParser):
             elif AbstractParser.RMK == line[i]:
                 parse_remark(trend, line, i)
                 break
-            elif self._validity_pattern.search(line[i]):
-                trend.validity = _parse_validity(line[i])
+            elif self._validity_or_visibility_pattern.search(line[i]):
+                validity = _parse_validity(line[i])
+                if self._is_valid_validity(validity):
+                    trend.validity = validity
+                elif visibility := self._parse_visibility(line[i]):
+                    trend.visibility = visibility
             else:
                 super().general_parse(trend, line[i])
 
