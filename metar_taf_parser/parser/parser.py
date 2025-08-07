@@ -10,8 +10,7 @@ from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import TranslationError
 from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
 from metar_taf_parser.model.model import WeatherCondition, Visibility, Metar, TemperatureDated, \
-    AbstractWeatherContainer, TAF, TAFTrend, MetarTrend, Validity, FMValidity, MetarTrendTime
-
+    AbstractWeatherContainer, TAF as TAFData, TAFTrend, MetarTrend, Validity, FMValidity, MetarTrendTime
 
 def parse_delivery_time(abstract_weather_code, time_string):
     """
@@ -261,7 +260,7 @@ class TAFParser(AbstractParser):
         self._taf_command_supplier = TAFCommandSupplier()
 
     def _parse_initial_taf(self, input: str):
-        taf = TAF()
+        taf = TAFData()
         lines = self._extract_lines_tokens(input)
         if TAFParser.TAF != lines[0][0]:
             return
@@ -330,7 +329,7 @@ class TAFParser(AbstractParser):
                 lines_token[len(lines) - 1] = list(filter(lambda x: not x.startswith(TAFParser.TX) and not x.startswith(TAFParser.TN), last_line))
         return lines_token
 
-    def _parse_line(self, taf: 'TAF', line_tokens: list):
+    def _parse_line(self, taf: TAFData, line_tokens: list):
         """
         Parses the tokens of the line and updates the TAF object.
         :param taf: TAF object to update
@@ -392,7 +391,7 @@ class TAFParser(AbstractParser):
                 break
             elif self._validity_or_visibility_pattern.search(line[i]):
                 validity = _parse_validity(line[i])
-                if self._is_valid_validity(validity):
+                if self._is_valid_validity(validity) and getattr(trend, '_validity', None) is None:
                     trend.validity = validity
                 elif visibility := self._parse_visibility(line[i]):
                     trend.visibility = visibility
