@@ -18,6 +18,11 @@ def parse_delivery_time(abstract_weather_code, time_string):
     Parses the delivery time of a METAR/TAF. It will return False
     if it is not a delivery time but a validity time. If the delivery time
     is not specified, we can assume the start of the validity time is the delivery time.
+
+    This occurred in the line TEMPO 2308/2312 9999/8000 RA/DZ BKN020, where the delivery time is
+    2300/2312, but the validity time that follows, 9999/9000 was parsed as a delivery time,
+    causing the parser to give erroneous results.
+
     :param abstract_weather_code: The TAF or METAR object
     :param time_string: The string representing the delivery time
     :return: None
