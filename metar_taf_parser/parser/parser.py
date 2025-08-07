@@ -15,13 +15,27 @@ from metar_taf_parser.model.model import WeatherCondition, Visibility, Metar, Te
 
 def parse_delivery_time(abstract_weather_code, time_string):
     """
-    Parses the delivery time of a METAR/TAF
+    Parses the delivery time of a METAR/TAF. It will return False
+    if it is not a delivery time but a validity time. If the delivery time
+    is not specified, we can assume the start of the validity time is the delivery time.
+
+    This occurred in the line TEMPO 2308/2312 9999/8000 RA/DZ BKN020, where the delivery time is
+    2300/2312, but the validity time that follows, 9999/9000 was parsed as a delivery time,
+    causing the parser to give erroneous results.
+
     :param abstract_weather_code: The TAF or METAR object
     :param time_string: The string representing the delivery time
     :return: None
     """
-    abstract_weather_code.day = int(time_string[0:2])
-    abstract_weather_code.time = time(int(time_string[2:4]), int(time_string[4:6]))
+    if len(time_string) > 6 and "/" in time_string:
+        # This is a validity string, not a delivery time.
+        abstract_weather_code.day = int(time_string[0:2])
+        abstract_weather_code.time = time(hour=int(time_string[2:4]))
+        return False
+    else:
+        abstract_weather_code.day = int(time_string[0:2])
+        abstract_weather_code.time = time(int(time_string[2:4]), int(time_string[4:6]))
+        return True
 
 
 def _parse_flags(abstract_weather_code, flag_string):
@@ -246,12 +260,7 @@ class TAFParser(AbstractParser):
         self._validity_pattern = re.compile(r'^\d{4}/\d{4}$')
         self._taf_command_supplier = TAFCommandSupplier()
 
-    def parse(self, input: str):
-        """
-        Parses a message into a TAF
-        :param input: the message to parse
-        :return: a TAF object or None if the message is invalid
-        """
+    def _parse_initial_taf(self, input: str):
         taf = TAF()
         lines = self._extract_lines_tokens(input)
         if TAFParser.TAF != lines[0][0]:
@@ -265,9 +274,19 @@ class TAFParser(AbstractParser):
         taf.station = lines[0][index]
         index += 1
         taf.message = input
-        parse_delivery_time(taf, lines[0][index])
-        index += 1
+        if parse_delivery_time(taf, lines[0][index]):
+            index += 1
         taf.validity = _parse_validity(lines[0][index])
+
+        return taf, lines, index
+
+    def parse(self, input: str):
+        """
+        Parses a message into a TAF
+        :param input: the message to parse
+        :return: a TAF object or None if the message is invalid
+        """
+        taf, lines, index = self._parse_initial_taf(input)
 
         for i in range(index + 1, len(lines[0])):
             token = lines[0][i]
@@ -311,7 +330,7 @@ class TAFParser(AbstractParser):
                 lines_token[len(lines) - 1] = list(filter(lambda x: not x.startswith(TAFParser.TX) and not x.startswith(TAFParser.TN), last_line))
         return lines_token
 
-    def _parse_line(self, taf: TAF, line_tokens: list):
+    def _parse_line(self, taf: 'TAF', line_tokens: list):
         """
         Parses the tokens of the line and updates the TAF object.
         :param taf: TAF object to update
