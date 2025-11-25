@@ -307,6 +307,13 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual(1, len(metar.weather_conditions[0].phenomenons))
         self.assertEqual(Phenomenon.RAIN, metar.weather_conditions[0].phenomenons[0])
 
+    def test_parse_clr(self):
+        metar = MetarParser().parse('LFRM 081630Z AUTO 30007KT 260V360 9999 CLR')
+
+        self.assertEqual('LFRM', metar.station)
+        self.assertEqual(1, len(metar.clouds))
+        self.assertEqual(CloudQuantity.CLR, metar.clouds[0].quantity)
+
 
 class FunctionTestCase(unittest.TestCase):
 

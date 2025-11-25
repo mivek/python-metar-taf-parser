@@ -11,6 +11,10 @@ msgid "CloudQuantity.BKN"
 msgstr "Od 5/8 do 7/8"
 
 #:
+msgid "CloudQuantity.CLR"
+msgstr "czyste niebo"
+
+#:
 msgid "CloudQuantity.FEW"
 msgstr "Od 1/8 do 2/8"
 

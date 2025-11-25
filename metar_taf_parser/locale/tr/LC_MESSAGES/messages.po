@@ -11,6 +11,10 @@ msgid "CloudQuantity.BKN"
 msgstr "parçalı çok bulutlu"
 
 #:
+msgid "CloudQuantity.CLR"
+msgstr "gökyüzü açık"
+
+#:
 msgid "CloudQuantity.FEW"
 msgstr "az bulutlu"
 

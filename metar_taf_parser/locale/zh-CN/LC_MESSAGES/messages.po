@@ -5,10 +5,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit"
 "X-Generator: prop2po"
 "Project-Id-Version: metar_taf_parser"
-"Language: zn-CN"
+"Language: zh-CN"
 #:
 msgid "CloudQuantity.BKN"
 msgstr "5-7分云"
+
+#:
+msgid "CloudQuantity.CLR"
+msgstr "天空晴朗"
 
 #:
 msgid "CloudQuantity.FEW"

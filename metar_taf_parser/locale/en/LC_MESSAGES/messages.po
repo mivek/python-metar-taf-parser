@@ -11,6 +11,10 @@ msgid "CloudQuantity.BKN"
 msgstr "broken"
 
 #:
+msgid "CloudQuantity.CLR"
+msgstr "sky clear"
+
+#:
 msgid "CloudQuantity.FEW"
 msgstr "few"
 

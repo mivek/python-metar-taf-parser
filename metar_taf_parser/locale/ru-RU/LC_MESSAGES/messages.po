@@ -11,6 +11,10 @@ msgid "CloudQuantity.BKN"
 msgstr "разорванная"
 
 #:
+msgid "CloudQuantity.CLR"
+msgstr "ясное небо"
+
+#:
 msgid "CloudQuantity.FEW"
 msgstr "незначительная"
 
