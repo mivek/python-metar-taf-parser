@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-    "setuptools>=42",
+    "setuptools >= 77.0.3",
     "wheel"
 ]
 build-backend = "setuptools.build_meta"
@@ -10,7 +10,7 @@ name = "metar-taf-parser-mivek"
 version = "1.9.0"
 description = "Python project parsing metar and taf message"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [
