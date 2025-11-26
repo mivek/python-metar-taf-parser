@@ -5,7 +5,7 @@ from metar_taf_parser.command.common import (
     CommandSupplier,
     MainVisibilityNauticalMilesCommand,
     MinimalVisibilityCommand,
-    WindCommand,
+    WindCommand
 )
 from metar_taf_parser.model.enum import CloudQuantity, CloudType
 from metar_taf_parser.model.model import TAF, Metar
