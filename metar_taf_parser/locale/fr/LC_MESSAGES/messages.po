@@ -11,6 +11,10 @@ msgid "CloudQuantity.BKN"
 msgstr "nuages fragmentés"
 
 #:
+msgid "CloudQuantity.CLR"
+msgstr "ciel dégagé"
+
+#:
 msgid "CloudQuantity.FEW"
 msgstr "peu"
 

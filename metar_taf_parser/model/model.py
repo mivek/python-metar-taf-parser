@@ -1,5 +1,5 @@
 import abc
-from datetime import time
+import datetime
 
 from metar_taf_parser.model.enum import Descriptive, Flag, WeatherChangeType, TimeIndicator, IcingIntensity, TurbulenceIntensity
 
@@ -537,7 +537,7 @@ class AbstractWeatherCode(AbstractWeatherContainer):
     def _get_time(self):
         return self._time
 
-    def _set_time(self, value: time):
+    def _set_time(self, value: datetime.time):
         self._time = value
 
     def _get_message(self):
@@ -717,7 +717,7 @@ class MetarTrendTime:
     def _get_time(self):
         return self._time
 
-    def _set_time(self, value: time):
+    def _set_time(self, value: datetime.time):
         self._time = value
 
     def __repr__(self):

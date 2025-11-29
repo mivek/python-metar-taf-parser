@@ -516,7 +516,7 @@ class ThunderStormLocationMovingCommand(Command):
 
 
 class TornadicActivityBegCommand(Command):
-    regex = '^(TORNADO|FUNNEL CLOUD|WATERSPOUT) (B(\d{2})?(\d{2}))( (\d+)? ([A-Z]{1,2})?)?'
+    regex = r'^(TORNADO|FUNNEL CLOUD|WATERSPOUT) (B(\d{2})?(\d{2}))( (\d+)? ([A-Z]{1,2})?)?'
 
     def __init__(self):
         self._pattern = re.compile(TornadicActivityBegCommand.regex)

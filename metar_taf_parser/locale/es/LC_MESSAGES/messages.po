@@ -7,6 +7,10 @@ msgstr ""
 "Project-Id-Version: metar_taf_parser"
 "Language: es"
 #:
+msgid "CloudQuantity.CLR"
+msgstr "cielo despejado"
+
+#:
 msgid "CloudQuantity.NSC"
 msgstr "sin nubes significativas."
 

@@ -4,8 +4,9 @@ from metar_taf_parser.commons.i18n import _
 
 
 class CloudQuantity(enum.Enum):
-    SKC = 'SKC'   # Sky clear
-    FEW = 'FEW'   # Few
+    CLR = 'CLR'  # Clear
+    SKC = 'SKC'  # Sky clear
+    FEW = 'FEW'  # Few
     BKN = 'BKN'  # Broken
     SCT = 'SCT'  # Scattered
     OVC = 'OVC'  # Overcast

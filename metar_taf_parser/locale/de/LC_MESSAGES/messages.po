@@ -11,6 +11,10 @@ msgid "CloudQuantity.BKN"
 msgstr "stark bewölkt"
 
 #:
+msgid "CloudQuantity.CLR"
+msgstr "wolkenlos"
+
+#:
 msgid "CloudQuantity.FEW"
 msgstr "leicht bewölkt"
 
