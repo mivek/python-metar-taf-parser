@@ -10,14 +10,18 @@ from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import TranslationError
 from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
 from metar_taf_parser.model.model import WeatherCondition, Visibility, Metar, TemperatureDated, \
-    AbstractWeatherContainer, TAF, TAFTrend, MetarTrend, Validity, FMValidity, MetarTrendTime
-
+    AbstractWeatherContainer, TAF as TAFData, TAFTrend, MetarTrend, Validity, FMValidity, MetarTrendTime
 
 def parse_delivery_time(abstract_weather_code, time_string):
     """
     Parses the delivery time of a METAR/TAF. It will return False
     if it is not a delivery time but a validity time. If the delivery time
     is not specified, we can assume the start of the validity time is the delivery time.
+
+    This occurred in the line TEMPO 2308/2312 9999/8000 RA/DZ BKN020, where the delivery time is
+    2300/2312, but the validity time that follows, 9999/9000 was parsed as a delivery time,
+    causing the parser to give erroneous results.
+
     :param abstract_weather_code: The TAF or METAR object
     :param time_string: The string representing the delivery time
     :return: None
@@ -252,11 +256,11 @@ class TAFParser(AbstractParser):
 
     def __init__(self):
         super().__init__()
-        self._validity_pattern = re.compile(r'^\d{4}/\d{4}$')
+        self._validity_or_visibility_pattern = re.compile(r'^\d{4}/\d{4}$')
         self._taf_command_supplier = TAFCommandSupplier()
 
     def _parse_initial_taf(self, input: str):
-        taf = TAF()
+        taf = TAFData()
         lines = self._extract_lines_tokens(input)
         if TAFParser.TAF != lines[0][0]:
             return
@@ -325,7 +329,7 @@ class TAFParser(AbstractParser):
                 lines_token[len(lines) - 1] = list(filter(lambda x: not x.startswith(TAFParser.TX) and not x.startswith(TAFParser.TN), last_line))
         return lines_token
 
-    def _parse_line(self, taf: 'TAF', line_tokens: list):
+    def _parse_line(self, taf: TAFData, line_tokens: list):
         """
         Parses the tokens of the line and updates the TAF object.
         :param taf: TAF object to update
@@ -347,6 +351,28 @@ class TAFParser(AbstractParser):
         self._parse_trend(index, line_tokens, trend)
         taf.add_trend(trend)
 
+    def _is_valid_validity(self, validity: Validity):
+        return validity.start_day < 32 and validity.start_hour < 24 and validity.end_day < 32 and validity.end_hour < 24
+
+    def _parse_visibility(self, visibility_string: str):
+        """For certain weather conditions, the visibility is given as a range such as DDDD/DDDD,
+        e.g. 9999/8000
+        We will interpret this as a minimum distance and distance in meters.
+        """
+        parts = visibility_string.split('/')
+        if len(parts) == 2:
+            first_part = int(parts[0])
+            second_part = int(parts[1])
+            min_distance = min(first_part, second_part)
+            distance = max(first_part, second_part)
+
+            visibility = Visibility()
+            visibility.min_distance = min_distance if min_distance < 9999 else '> 10km'
+            visibility.distance = f"{distance}m" if distance < 9999 else '> 10km'
+
+            return visibility
+        return None
+
     def _parse_trend(self, index: int, line: list, trend: TAFTrend):
         """
         Parses a trend of the TAF
@@ -363,8 +389,12 @@ class TAFParser(AbstractParser):
             elif AbstractParser.RMK == line[i]:
                 parse_remark(trend, line, i)
                 break
-            elif self._validity_pattern.search(line[i]):
-                trend.validity = _parse_validity(line[i])
+            elif self._validity_or_visibility_pattern.search(line[i]):
+                validity = _parse_validity(line[i])
+                if self._is_valid_validity(validity) and getattr(trend, '_validity', None) is None:
+                    trend.validity = validity
+                elif visibility := self._parse_visibility(line[i]):
+                    trend.visibility = visibility
             else:
                 super().general_parse(trend, line[i])
 
