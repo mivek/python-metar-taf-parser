@@ -211,6 +211,7 @@ class RunwayInfo:
         self._name = None
         self._min_range = None
         self._max_range = None
+        self._unit = None
         self._trend = None
         self._indicator = None
         self._deposit_type = None
@@ -235,6 +236,12 @@ class RunwayInfo:
 
     def _set_max_range(self, value):
         self._max_range = value
+
+    def _get_unit(self):
+        return self._unit
+
+    def _set_unit(self, value):
+        self._unit = value
 
     def _get_trend(self):
         return self._trend
@@ -273,13 +280,14 @@ class RunwayInfo:
         self._braking_capacity = value
 
     def __repr__(self):
-        return f'RunwayInfo[name={self.name}, min_range={self.min_range}, max_range={self.max_range}, '\
+        return f'RunwayInfo[name={self.name}, min_range={self.min_range}, max_range={self.max_range}, unit={self.unit}, '\
             f'trend={self.trend}, indicator={self.indicator}, deposit_type={self.deposit_type}, '\
             f'coverage={self.coverage}, thickness={self.thickness}, braking_capacity={self.braking_capacity}]'\
 
     name = property(_get_name, _set_name)
     min_range = property(_get_min_range, _set_min_range)
     max_range = property(_get_max_range, _set_max_range)
+    unit = property(_get_unit, _set_unit)
     trend = property(_get_trend, _set_trend)
     indicator = property(_get_indicator, _set_indicator)
     deposit_type = property(_get_deposit_type, _set_deposit_type)

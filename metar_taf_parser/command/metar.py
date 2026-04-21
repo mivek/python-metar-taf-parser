@@ -2,7 +2,7 @@ import re
 
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import ParseError
-from metar_taf_parser.model.enum import DepositType, DepositCoverage
+from metar_taf_parser.model.enum import DepositType, DepositCoverage, LengthUnit
 from metar_taf_parser.model.model import RunwayInfo, Metar
 from metar_taf_parser.commons.i18n import _
 
@@ -42,11 +42,16 @@ class AltimeterMercuryCommand:
         metar.altimeter = int(converter.convert_inches_mercury_to_pascal(mercury))
 
 
+def _parse_runway_unit(input: str):
+    return LengthUnit.FEET if input == 'FT' else LengthUnit.METERS
+
+
 def _parse_runway(matches, metar, runway):
     runway.name = matches[0][0]
     runway.indicator = matches[0][1]
     runway.min_range = int(matches[0][2])
     runway.trend = matches[0][3]
+    runway.unit = _parse_runway_unit(matches[0][4])
     metar.add_runway_info(runway)
 
 
@@ -55,6 +60,7 @@ def _parse_runway_max_range(matches, metar, runway):
     runway.min_range = int(matches[0][1])
     runway.max_range = int(matches[0][2])
     runway.trend = matches[0][3]
+    runway.unit = _parse_runway_unit(matches[0][4])
     metar.add_runway_info(runway)
 
 

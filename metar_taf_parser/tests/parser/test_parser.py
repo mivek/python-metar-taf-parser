@@ -3,7 +3,7 @@ import unittest
 from parameterized import parameterized
 
 from metar_taf_parser.model.enum import Intensity, Phenomenon, Descriptive, DepositType, DepositCoverage, WeatherChangeType, CloudQuantity, CloudType, \
-    TimeIndicator, TurbulenceIntensity, IcingIntensity
+    TimeIndicator, TurbulenceIntensity, IcingIntensity, LengthUnit
 from metar_taf_parser.model.model import AbstractWeatherContainer, Visibility, Wind
 from metar_taf_parser.parser.parser import AbstractParser, MetarParser, _parse_validity, _parse_temperature, TAFParser, \
     RemarkParser
@@ -90,6 +90,15 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual('27L', metar.runways_info[0].name)
         self.assertEqual(375, metar.runways_info[0].min_range)
         self.assertEqual('N', metar.runways_info[0].trend)
+        self.assertEqual(LengthUnit.METERS, metar.runways_info[0].unit)
+
+    def test_parse_with_runway_visual_range_in_feet(self):
+        metar = MetarParser().parse('KJFK 121651Z 18012KT 9999 R24L/2400FT SCT015 18/12 A2992')
+
+        self.assertEqual(1, len(metar.runways_info))
+        self.assertEqual('24L', metar.runways_info[0].name)
+        self.assertEqual(2400, metar.runways_info[0].min_range)
+        self.assertEqual(LengthUnit.FEET, metar.runways_info[0].unit)
 
     def test_parse_with_tempo(self):
         metar = MetarParser().parse(

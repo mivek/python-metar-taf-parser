@@ -2,7 +2,7 @@ import unittest
 
 from metar_taf_parser.command.metar import RunwayCommand, CommandSupplier
 from metar_taf_parser.commons.exception import ParseError
-from metar_taf_parser.model.enum import DepositType, DepositCoverage
+from metar_taf_parser.model.enum import DepositType, DepositCoverage, LengthUnit
 from metar_taf_parser.model.model import Metar
 from metar_taf_parser.commons.i18n import _
 
@@ -20,6 +20,7 @@ class MetarCommandTestCase(unittest.TestCase):
         self.assertEqual('26', runway_info.name)
         self.assertEqual(600, runway_info.min_range)
         self.assertEqual('U', runway_info.trend)
+        self.assertEqual(LengthUnit.METERS, runway_info.unit)
 
     def test_runway_command_execute_runway(self):
         metar = Metar()
@@ -34,6 +35,7 @@ class MetarCommandTestCase(unittest.TestCase):
         self.assertEqual(550, runway_info.min_range)
         self.assertEqual(700, runway_info.max_range)
         self.assertEqual('U', runway_info.trend)
+        self.assertEqual(LengthUnit.METERS, runway_info.unit)
 
     def test_runway_command_execute_wrong_runway(self):
         metar = Metar()
@@ -54,6 +56,7 @@ class MetarCommandTestCase(unittest.TestCase):
         self.assertEqual(600, metar.runways_info[0].min_range)
         self.assertEqual(1000, metar.runways_info[0].max_range)
         self.assertEqual('', metar.runways_info[0].trend)
+        self.assertEqual(LengthUnit.FEET, metar.runways_info[0].unit)
 
     def test_parse_runway_visual_range_feet_simple(self):
         metar = Metar()
@@ -65,6 +68,7 @@ class MetarCommandTestCase(unittest.TestCase):
         self.assertEqual('01L', metar.runways_info[0].name)
         self.assertEqual(800, metar.runways_info[0].min_range)
         self.assertEqual('', metar.runways_info[0].trend)
+        self.assertEqual(LengthUnit.FEET, metar.runways_info[0].unit)
 
     def test_parse_runway_deposit(self):
         metar = Metar()
@@ -101,6 +105,7 @@ class MetarCommandTestCase(unittest.TestCase):
         self.assertEqual('01L', metar.runways_info[0].name)
         self.assertEqual('M', metar.runways_info[0].indicator)
         self.assertEqual(600, metar.runways_info[0].min_range)
+        self.assertEqual(LengthUnit.FEET, metar.runways_info[0].unit)
 
     def test_parse_runway_with_greater_than_indicator(self):
         metar = Metar()
@@ -108,6 +113,7 @@ class MetarCommandTestCase(unittest.TestCase):
         self.assertEqual('01L', metar.runways_info[0].name)
         self.assertEqual('P', metar.runways_info[0].indicator)
         self.assertEqual(600, metar.runways_info[0].min_range)
+        self.assertEqual(LengthUnit.FEET, metar.runways_info[0].unit)
 
     def test_parse_runway_missing_info(self):
         metar = Metar()
