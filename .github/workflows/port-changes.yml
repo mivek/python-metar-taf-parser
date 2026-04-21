@@ -1,0 +1,105 @@
+name: Port Changes to Sister Repository
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_hash:
+        description: 'Commit hash from this repository to port to the sister repo'
+        required: true
+        type: string
+
+jobs:
+  port-changes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Resolve repository context
+        id: ctx
+        run: |
+          if [[ "${{ github.repository }}" == "mivek/MetarParser" ]]; then
+            echo "target_repo=mivek/python-metar-taf-parser" >> "$GITHUB_OUTPUT"
+            echo "source_lang=Java" >> "$GITHUB_OUTPUT"
+            echo "target_lang=Python" >> "$GITHUB_OUTPUT"
+          else
+            echo "target_repo=mivek/MetarParser" >> "$GITHUB_OUTPUT"
+            echo "source_lang=Python" >> "$GITHUB_OUTPUT"
+            echo "target_lang=Java" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fetch commit metadata and diff
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_HASH: ${{ inputs.commit_hash }}
+        run: |
+          gh api "repos/${{ github.repository }}/commits/$COMMIT_HASH" \
+            --jq '.commit.message | split("\n")[0]' > /tmp/commit_title.txt
+
+          gh api "repos/${{ github.repository }}/commits/$COMMIT_HASH" \
+            --jq '.commit.message' > /tmp/commit_message.txt
+
+          gh api "repos/${{ github.repository }}/commits/$COMMIT_HASH" \
+            -H "Accept: application/vnd.github.diff" \
+            > /tmp/commit.diff
+
+      - name: Build issue body
+        env:
+          COMMIT_HASH: ${{ inputs.commit_hash }}
+        run: |
+          SOURCE_LANG="${{ steps.ctx.outputs.source_lang }}"
+          TARGET_LANG="${{ steps.ctx.outputs.target_lang }}"
+          COMMIT_URL="https://github.com/${{ github.repository }}/commit/$COMMIT_HASH"
+
+          {
+            echo "## Port \`${SOURCE_LANG}\` → \`${TARGET_LANG}\`"
+            echo ""
+            echo "Port commit [\`${COMMIT_HASH}\`](${COMMIT_URL}) from the ${SOURCE_LANG} sister repository."
+            echo ""
+            echo "### Original commit message"
+            echo ""
+            echo '```'
+            cat /tmp/commit_message.txt
+            echo '```'
+            echo ""
+            echo "### Diff to port"
+            echo ""
+            echo '```diff'
+            cat /tmp/commit.diff
+            echo '```'
+            echo ""
+            echo "### Porting instructions"
+            echo ""
+            echo "1. **Understand the intent**: read the diff carefully — identify whether it is a feature, fix, refactor, etc. Do **not** translate code literally."
+            echo "2. **Implement the equivalent** idiomatically in ${TARGET_LANG}, following the architecture and patterns already present in this repository."
+            if [[ "${TARGET_LANG}" == "Java" ]]; then
+              echo "3. **Java conventions to follow**:"
+              echo "   - Add a \`Command\` implementation in the correct sub-package (\`command.common\`, \`command.metar\`, \`command.taf\`, or \`command.remark\`) and register it in the matching \`*CommandSupplier.buildCommands()\`."
+              echo "   - Use \`io.github.mivek.utils.Regex\` (never raw \`java.util.regex\`) for all pattern matching."
+              echo "   - Every class, method, field and package needs a Javadoc comment. Every new package needs a \`package-info.java\`."
+              echo "   - All method parameters must be \`final\`. Classes not designed for inheritance must be \`final\`."
+              echo "   - Human-readable strings go in \`internationalization/messages*.properties\` — never hardcoded."
+              echo "   - ArchUnit rules: command classes must not depend on the \`parser\` package and must implement the local \`Command\` interface."
+              echo "4. **Tests**: coverage thresholds are enforced (98% instruction / 96% branch / 97% complexity). Add or update tests to match the original change."
+            else
+              echo "3. **Python conventions to follow**:"
+              echo "   - Add a \`Command\` class in the correct sub-package (\`command/\`) with a \`regex\` class attribute, \`can_parse(input)\`, and \`execute(weather_obj, input)\`."
+              echo "   - Register the command in the matching \`*CommandSupplier\` (MetarCommandSupplier, TAFCommandSupplier, or common CommandSupplier)."
+              echo "   - Use the \`_()\` function from \`commons.i18n\` for any user-visible strings — never hardcode them."
+              echo "   - Regex patterns must use \`^\` and \`\$\` anchors (exact match)."
+              echo "   - Flake8 must pass (max complexity 10; line length is unrestricted)."
+              echo "4. **Tests**: mirror the test structure in \`metar_taf_parser/tests/\`. Run \`make test\` to verify."
+            fi
+            echo "5. **Open a pull request** whose title follows Conventional Commits: \`<type>(<scope>): <subject>\`."
+          } > /tmp/issue_body.md
+
+      - name: Create issue in target repository
+        env:
+          GH_TOKEN: ${{ secrets.CROSS_REPO_PAT }}
+        run: |
+          TITLE="port: $(cat /tmp/commit_title.txt)"
+          gh issue create \
+            --repo "${{ steps.ctx.outputs.target_repo }}" \
+            --title "$TITLE" \
+            --body-file /tmp/issue_body.md \
+            --assignee "copilot"
