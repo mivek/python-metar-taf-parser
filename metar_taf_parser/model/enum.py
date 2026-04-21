@@ -61,6 +61,14 @@ class DepositType(enum.Enum):
         return _('DepositType.' + self.name)
 
 
+class LengthUnit(enum.Enum):
+    METERS = 'M'
+    FEET = 'FT'
+
+    def __repr__(self):
+        return self.value
+
+
 class Descriptive(enum.Enum):
     SHOWERS = 'SH'
     SHALLOW = 'MI'

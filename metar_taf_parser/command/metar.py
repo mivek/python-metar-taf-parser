@@ -2,7 +2,7 @@ import re
 
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import ParseError
-from metar_taf_parser.model.enum import DepositType, DepositCoverage
+from metar_taf_parser.model.enum import DepositType, DepositCoverage, LengthUnit
 from metar_taf_parser.model.model import RunwayInfo, Metar
 from metar_taf_parser.commons.i18n import _
 
@@ -47,6 +47,7 @@ def _parse_runway(matches, metar, runway):
     runway.indicator = matches[0][1]
     runway.min_range = int(matches[0][2])
     runway.trend = matches[0][3]
+    runway.unit = LengthUnit.FEET if matches[0][4] == LengthUnit.FEET.value else LengthUnit.METERS
     metar.add_runway_info(runway)
 
 
@@ -55,6 +56,7 @@ def _parse_runway_max_range(matches, metar, runway):
     runway.min_range = int(matches[0][1])
     runway.max_range = int(matches[0][2])
     runway.trend = matches[0][3]
+    runway.unit = LengthUnit.FEET if matches[0][4] == LengthUnit.FEET.value else LengthUnit.METERS
     metar.add_runway_info(runway)
 
 
