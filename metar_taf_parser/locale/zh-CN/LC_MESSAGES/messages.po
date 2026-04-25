@@ -719,6 +719,10 @@ msgid "ToString.clouds"
 msgstr "云"
 
 #:
+msgid "ToString.cloud.unit"
+msgstr "云高单位"
+
+#:
 msgid "ToString.day.month"
 msgstr "当月某天"
 
@@ -769,6 +773,10 @@ msgstr "高度（英尺）"
 #:
 msgid "ToString.height.meter"
 msgstr "高度（米）"
+
+#:
+msgid "ToString.height.unit"
+msgstr "高度单位"
 
 #:
 msgid "ToString.intensity"
@@ -867,8 +875,16 @@ msgid "ToString.visibility.max"
 msgstr "最大能见度"
 
 #:
+msgid "ToString.visibility.unit"
+msgstr "能见度单位"
+
+#:
 msgid "ToString.vertical.visibility"
 msgstr "垂直能见度（英尺）"
+
+#:
+msgid "ToString.vertical.visibility.unit"
+msgstr "垂直能见度单位"
 
 #:
 msgid "ToString.weather.conditions"

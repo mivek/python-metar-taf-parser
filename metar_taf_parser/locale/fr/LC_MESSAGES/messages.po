@@ -35,12 +35,44 @@ msgid "CloudQuantity.SKC"
 msgstr "pas de nuage"
 
 #:
+msgid "CloudType.AC"
+msgstr "Altocumulus"
+
+#:
+msgid "CloudType.AS"
+msgstr "Altostratus"
+
+#:
 msgid "CloudType.CB"
 msgstr "Cumunolinbus"
 
 #:
 msgid "CloudType.CC"
 msgstr "Cirrocumulus"
+
+#:
+msgid "CloudType.CI"
+msgstr "Cirrus"
+
+#:
+msgid "CloudType.CS"
+msgstr "Cirrostratus"
+
+#:
+msgid "CloudType.CU"
+msgstr "Cumulus"
+
+#:
+msgid "CloudType.NS"
+msgstr "Nimbostratus"
+
+#:
+msgid "CloudType.SC"
+msgstr "Stratocumulus"
+
+#:
+msgid "CloudType.ST"
+msgstr "Stratus"
 
 #:
 msgid "CloudType.TCU"
@@ -75,6 +107,10 @@ msgid "DepositBrakingCapacity.99"
 msgstr "valeurs non fiables"
 
 #:
+msgid "DepositBrakingCapacity.default"
+msgstr "Coefficient de friction de {0}"
+
+#:
 msgid "DepositCoverage.NOT_REPORTED"
 msgstr "non reportée"
 
@@ -103,12 +139,40 @@ msgid "DepositThickness.00"
 msgstr "moins de 1 mm"
 
 #:
+msgid "DepositThickness.92"
+msgstr "10 cm"
+
+#:
+msgid "DepositThickness.93"
+msgstr "15 cm"
+
+#:
+msgid "DepositThickness.94"
+msgstr "20 cm"
+
+#:
+msgid "DepositThickness.95"
+msgstr "25 cm"
+
+#:
+msgid "DepositThickness.96"
+msgstr "30 cm"
+
+#:
+msgid "DepositThickness.97"
+msgstr "35 cm"
+
+#:
 msgid "DepositThickness.98"
 msgstr "40 cm ou plus"
 
 #:
 msgid "DepositThickness.99"
 msgstr "fermée"
+
+#:
+msgid "DepositThickness.default"
+msgstr "{0} mm"
 
 #:
 msgid "DepositType.NOT_REPORTED"
@@ -337,6 +401,10 @@ msgstr "granules de glace"
 #:
 msgid "Phenomenon.PO"
 msgstr "tourbillon de poussières sable"
+
+#:
+msgid "Phenomenon.PY"
+msgstr "spray"
 
 #:
 msgid "Phenomenon.RA"
@@ -623,6 +691,10 @@ msgid "Remark.Variable.Sky.Condition.Height"
 msgstr "couche de nuages à {0} pieds variant entre {1} et {2}"
 
 #:
+msgid "Remark.VIRGA"
+msgstr "virga"
+
+#:
 msgid "Remark.Virga.Direction"
 msgstr "virga au {0} de la station"
 
@@ -688,7 +760,7 @@ msgstr "Nord Ouest"
 
 #:
 msgid "Converter.S"
-msgstr "Est"
+msgstr "Sud"
 
 #:
 msgid "Converter.SE"
@@ -709,6 +781,10 @@ msgstr "Sud Ouest"
 #:
 msgid "Converter.U"
 msgstr "accroissement"
+
+#:
+msgid "Converter.VRB"
+msgstr "Variable"
 
 #:
 msgid "Converter.W"
@@ -767,12 +843,24 @@ msgid "ToString.amendment"
 msgstr "amendement"
 
 #:
+msgid "ToString.auto"
+msgstr "auto"
+
+#:
 msgid "ToString.baseHeight"
 msgstr "Base de la couche en pied"
 
 #:
+msgid "ToString.cavok"
+msgstr "cavok"
+
+#:
 msgid "ToString.clouds"
 msgstr "nuages"
+
+#:
+msgid "ToString.cloud.unit"
+msgstr "unité de hauteur des nuages"
 
 #:
 msgid "ToString.day.month"
@@ -831,6 +919,10 @@ msgid "ToString.height.meter"
 msgstr "altitude (m)"
 
 #:
+msgid "ToString.height.unit"
+msgstr "unité de hauteur"
+
+#:
 msgid "ToString.intensity"
 msgstr "intensité"
 
@@ -845,6 +937,10 @@ msgstr "message original"
 #:
 msgid "ToString.name"
 msgstr "nom"
+
+#:
+msgid "ToString.nosig"
+msgstr "nosig"
 
 #:
 msgid "ToString.phenomenons"
@@ -869,6 +965,10 @@ msgstr "heure du rapport"
 #:
 msgid "ToString.runway.info"
 msgstr "informations sur la piste"
+
+#:
+msgid "ToString.runway.unit"
+msgstr "Unité de portée visuelle de la piste"
 
 #:
 msgid "ToString.start.day.month"
@@ -903,6 +1003,10 @@ msgid "ToString.trends"
 msgstr "tendances"
 
 #:
+msgid "ToString.type"
+msgstr "type"
+
+#:
 msgid "ToString.visibility.main"
 msgstr "visibilité principale"
 
@@ -919,12 +1023,24 @@ msgid "ToString.visibility.max"
 msgstr "visibilité maximale"
 
 #:
+msgid "ToString.visibility.unit"
+msgstr "unité de visibilité"
+
+#:
 msgid "ToString.vertical.visibility"
 msgstr "visibilité verticale (pieds)"
 
 #:
+msgid "ToString.vertical.visibility.unit"
+msgstr "unité de visibilité verticale"
+
+#:
 msgid "ToString.weather.conditions"
 msgstr "conditions météorologique"
+
+#:
+msgid "ToString.wind.direction"
+msgstr "direction"
 
 #:
 msgid "ToString.wind.direction.degrees"
@@ -993,4 +1109,24 @@ msgstr "Turbulences sévères fréquentes dans les nuages"
 #:
 msgid "TurbulenceIntensity.X"
 msgstr "Turbulence extrême"
+
+#:
+msgid "ReportType.METAR"
+msgstr "Rapport de routine"
+
+#:
+msgid "ReportType.SPECI"
+msgstr "Rapport spécial"
+
+#:
+msgid "ReportType.METAR"
+msgstr "Metar"
+
+#:
+msgid "ReportType.SPECI"
+msgstr "Special"
+
+#:
+msgid "CloudQuantity.NCD"
+msgstr "Aucun nuage détecté"
 

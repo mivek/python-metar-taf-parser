@@ -734,13 +734,14 @@ class TAFParserTestCase(unittest.TestCase):
             'TAF AMD CZBF 300939Z 3010/3022 VRB03KT 6SM -SN OVC015 TEMPO 3010/3012 11/2SM -SN OVC009 \nFM301200 10008KT 2SM -SN OVC010 TEMPO 3012/3022 3/4SM -SN VV007 RMK FCST BASED ON AUTO OBS. NXT FCST BY 301400Z')
 
         # THEN the visibility of the main event is 6 SM
-        self.assertEqual("6SM", taf.visibility.distance)
+        self.assertEqual("6", taf.visibility.distance)
+        self.assertEqual(LengthUnit.STATUTE_MILES, taf.visibility.unit)
         # THEN the visibility of the first tempo is 11/2 SM
-        self.assertEqual("11/2SM", taf.trends[0].visibility.distance)
+        self.assertEqual("11/2", taf.trends[0].visibility.distance)
         # THEN the visibility of the second tempo is 3/4 SM
-        self.assertEqual("3/4SM", taf.trends[2].visibility.distance)
-        # Then the visibility of the FROM part is 2SN
-        self.assertEqual("2SM", taf.trends[1].visibility.distance)
+        self.assertEqual("3/4", taf.trends[2].visibility.distance)
+        # Then the visibility of the FROM part is 2SM
+        self.assertEqual("2", taf.trends[1].visibility.distance)
         self.assertTrue(taf.amendment)
 
     def test_parse_with_remark(self):
@@ -783,12 +784,13 @@ class TAFParserTestCase(unittest.TestCase):
 
         self.assertEqual('KEWR', taf.station)
         self.assertIsNotNone(taf.visibility)
-        self.assertEqual('5SM', taf.visibility.distance)
+        self.assertEqual('5', taf.visibility.distance)
+        self.assertEqual(LengthUnit.STATUTE_MILES, taf.visibility.unit)
         self.assertEqual(4, len(taf.fms()))
-        self.assertEqual('P6SM', taf.fms()[0].visibility.distance)
-        self.assertEqual('P3SM', taf.fms()[1].visibility.distance)
-        self.assertEqual('P4SM', taf.fms()[2].visibility.distance)
-        self.assertEqual('P9SM', taf.fms()[3].visibility.distance)
+        self.assertEqual('P6', taf.fms()[0].visibility.distance)
+        self.assertEqual('P3', taf.fms()[1].visibility.distance)
+        self.assertEqual('P4', taf.fms()[2].visibility.distance)
+        self.assertEqual('P9', taf.fms()[3].visibility.distance)
 
     def test_parse_canceled(self):
         taf = TAFParser().parse('TAF VTBD 281000Z 2812/2912 CNL=')

@@ -755,6 +755,10 @@ msgid "ToString.clouds"
 msgstr "bulutlar"
 
 #:
+msgid "ToString.cloud.unit"
+msgstr "bulut yükseklik birimi"
+
+#:
 msgid "ToString.day.month"
 msgstr "ayın günü"
 
@@ -801,6 +805,10 @@ msgstr "yükseklik (ft)"
 #:
 msgid "ToString.height.meter"
 msgstr "yükseklik (m)"
+
+#:
+msgid "ToString.height.unit"
+msgstr "yükseklik birimi"
 
 #:
 msgid "ToString.intensity"
@@ -899,8 +907,16 @@ msgid "ToString.visibility.max"
 msgstr "maksimum görüş"
 
 #:
+msgid "ToString.visibility.unit"
+msgstr "görüş birimi"
+
+#:
 msgid "ToString.vertical.visibility"
 msgstr "dikey görüş (ft)"
+
+#:
+msgid "ToString.vertical.visibility.unit"
+msgstr "dikey görüş birimi"
 
 #:
 msgid "ToString.weather.conditions"

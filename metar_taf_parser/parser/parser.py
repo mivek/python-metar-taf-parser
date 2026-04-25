@@ -8,7 +8,7 @@ from metar_taf_parser.command.remark import RemarkCommandSupplier
 from metar_taf_parser.command.taf import TAFCommandSupplier
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import TranslationError
-from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
+from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType, ReportType, LengthUnit
 from metar_taf_parser.model.model import WeatherCondition, Visibility, Metar, TemperatureDated, \
     AbstractWeatherContainer, TAF, TAFTrend, MetarTrend, Validity, FMValidity, MetarTrendTime
 
@@ -167,6 +167,12 @@ class AbstractParser(abc.ABC):
             if abstract_weather_container.visibility is None:
                 abstract_weather_container.visibility = Visibility()
             abstract_weather_container.visibility.distance = '> 10km'
+            abstract_weather_container.visibility.unit = LengthUnit.METERS
+            return True
+
+        if 'NSW' == input:
+            abstract_weather_container.nsw = True
+            abstract_weather_container.weather_conditions.clear()
             return True
 
         command = self._common_supplier.get(input)
@@ -216,12 +222,18 @@ class MetarParser(AbstractParser):
         metar = Metar()
 
         metar_tab = self.tokenize(input)
-        metar.station = metar_tab[0]
 
+        # Detect optional METAR/SPECI report-type prefix
+        start_index = 0
+        if metar_tab and metar_tab[0] in ('METAR', 'SPECI'):
+            metar.report_type = ReportType(metar_tab[0])
+            start_index = 1
+
+        metar.station = metar_tab[start_index]
         metar.message = input
 
-        parse_delivery_time(metar, metar_tab[1])
-        index = 2
+        parse_delivery_time(metar, metar_tab[start_index + 1])
+        index = start_index + 2
         while index < len(metar_tab):
             if not super().general_parse(metar, metar_tab[index]) and not _parse_flags(metar, metar_tab[index]):
                 if 'NOSIG' == metar_tab[index]:

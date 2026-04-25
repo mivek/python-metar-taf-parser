@@ -11,6 +11,7 @@ class CloudQuantity(enum.Enum):
     SCT = 'SCT'  # Scattered
     OVC = 'OVC'  # Overcast
     NSC = 'NSC'  # No significant cloud
+    NCD = 'NCD'  # No cloud detected
 
     def __repr__(self):
         return _('CloudQuantity.' + self.value)
@@ -64,6 +65,7 @@ class DepositType(enum.Enum):
 class LengthUnit(enum.Enum):
     METERS = 'M'
     FEET = 'FT'
+    STATUTE_MILES = 'SM'
 
     def __str__(self):
         return self.value
@@ -186,3 +188,11 @@ class WeatherChangeType(enum.Enum):
 
     def __repr__(self):
         return _('WeatherChangeType.' + self.value)
+
+
+class ReportType(enum.Enum):
+    METAR = 'METAR'  # Routine meteorological aerodrome report
+    SPECI = 'SPECI'  # Special meteorological aerodrome report
+
+    def __repr__(self):
+        return _('ReportType.' + self.name)

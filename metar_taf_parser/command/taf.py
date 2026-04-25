@@ -1,6 +1,6 @@
 import re
 
-from metar_taf_parser.model.enum import IcingIntensity, TurbulenceIntensity
+from metar_taf_parser.model.enum import IcingIntensity, TurbulenceIntensity, LengthUnit
 from metar_taf_parser.model.model import ITafGroups, Icing, Turbulence
 
 
@@ -25,6 +25,7 @@ class IcingCommand:
         icing.intensity = IcingIntensity(matches[0])
         icing.base_height = 100 * int(matches[1])
         icing.depth = 1000 * int(matches[2])
+        icing.unit = LengthUnit.FEET
         itaf.add_icing(icing)
 
 
@@ -49,6 +50,7 @@ class TurbulenceCommand:
         turbulence.intensity = TurbulenceIntensity(matches[0])
         turbulence.base_height = 100 * int(matches[1])
         turbulence.depth = 1000 * int(matches[2])
+        turbulence.unit = LengthUnit.FEET
         itaf.add_turbulence(turbulence)
 
 

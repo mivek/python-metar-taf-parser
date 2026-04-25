@@ -399,6 +399,10 @@ msgid "ToString.clouds"
 msgstr "nubes"
 
 #:
+msgid "ToString.cloud.unit"
+msgstr "unidad de altura de nube"
+
+#:
 msgid "ToString.day.month"
 msgstr "día del mes"
 
@@ -413,6 +417,10 @@ msgstr "altura (cm)"
 #:
 msgid "ToString.height.meter"
 msgstr "altura (m)"
+
+#:
+msgid "ToString.height.unit"
+msgstr "unidad de altura"
 
 #:
 msgid "ToString.intensity"

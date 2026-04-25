@@ -8,7 +8,7 @@ from metar_taf_parser.commons.i18n import _
 
 
 class AltimeterCommand:
-    regex = r'^Q(\d{4})$'
+    regex = r'^Q(\d{4}|////)$'
 
     def __init__(self):
         self._pattern = re.compile(AltimeterCommand.regex)
@@ -24,11 +24,12 @@ class AltimeterCommand:
         :return:
         """
         matches = self._pattern.search(input).groups()
-        metar.altimeter = int(matches[0])
+        if matches[0] != '////':
+            metar.altimeter = int(matches[0])
 
 
 class AltimeterMercuryCommand:
-    regex = r'^A(\d{4})$'
+    regex = r'^A(\d{4}|////)$'
 
     def __init__(self):
         self._pattern = re.compile(AltimeterMercuryCommand.regex)
@@ -38,8 +39,9 @@ class AltimeterMercuryCommand:
 
     def execute(self, metar: Metar, input: str):
         matches = self._pattern.search(input).groups()
-        mercury = float(matches[0]) / 100
-        metar.altimeter = int(converter.convert_inches_mercury_to_pascal(mercury))
+        if matches[0] != '////':
+            mercury = float(matches[0]) / 100
+            metar.altimeter = int(converter.convert_inches_mercury_to_pascal(mercury))
 
 
 def _parse_runway_unit(input: str):
@@ -136,7 +138,7 @@ class RunwayCommand:
 
 
 class TemperatureCommand:
-    regex = r'^(M?\d{2})/(M?\d{2})$'
+    regex = r'^(M?\d{2}|///)(/)( |)(M?\d{2}|///)$'
 
     def __init__(self):
         self._pattern = re.compile(TemperatureCommand.regex)
@@ -146,8 +148,12 @@ class TemperatureCommand:
 
     def execute(self, metar: Metar, input: str):
         matches = self._pattern.search(input).groups()
-        metar.temperature = converter.convert_temperature(matches[0])
-        metar.dew_point = converter.convert_temperature(matches[1])
+        temp_str = matches[0]
+        dew_str = matches[3]
+        if temp_str != '///':
+            metar.temperature = converter.convert_temperature(temp_str)
+        if dew_str != '///':
+            metar.dew_point = converter.convert_temperature(dew_str)
 
 
 class CommandSupplier:

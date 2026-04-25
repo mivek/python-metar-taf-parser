@@ -859,6 +859,10 @@ msgid "ToString.clouds"
 msgstr "clouds"
 
 #:
+msgid "ToString.cloud.unit"
+msgstr "cloud height unit"
+
+#:
 msgid "ToString.day.month"
 msgstr "day of the month"
 
@@ -915,6 +919,10 @@ msgid "ToString.height.meter"
 msgstr "height (m)"
 
 #:
+msgid "ToString.height.unit"
+msgstr "height unit"
+
+#:
 msgid "ToString.intensity"
 msgstr "intensity"
 
@@ -957,6 +965,10 @@ msgstr "time of report"
 #:
 msgid "ToString.runway.info"
 msgstr "runways information"
+
+#:
+msgid "ToString.runway.unit"
+msgstr "runway visual range unit"
 
 #:
 msgid "ToString.start.day.month"
@@ -1011,8 +1023,16 @@ msgid "ToString.visibility.max"
 msgstr "maximum visibility"
 
 #:
+msgid "ToString.visibility.unit"
+msgstr "visibility unit"
+
+#:
 msgid "ToString.vertical.visibility"
 msgstr "vertical visibility (ft)"
+
+#:
+msgid "ToString.vertical.visibility.unit"
+msgstr "vertical visibility unit"
 
 #:
 msgid "ToString.weather.conditions"
@@ -1089,4 +1109,16 @@ msgstr "Severe turbulence in cloud, frequent"
 #:
 msgid "TurbulenceIntensity.X"
 msgstr "Extreme turbulence"
+
+#:
+msgid "ReportType.METAR"
+msgstr "Routine report"
+
+#:
+msgid "ReportType.SPECI"
+msgstr "Special report"
+
+#:
+msgid "CloudQuantity.NCD"
+msgstr "no cloud detected"
 
