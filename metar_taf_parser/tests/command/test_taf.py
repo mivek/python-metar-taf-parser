@@ -1,7 +1,7 @@
 import unittest
 
 from metar_taf_parser.command.taf import IcingCommand, TurbulenceCommand, TAFCommandSupplier
-from metar_taf_parser.model.enum import IcingIntensity, TurbulenceIntensity
+from metar_taf_parser.model.enum import IcingIntensity, TurbulenceIntensity, LengthUnit
 from metar_taf_parser.model.model import ITafGroups
 
 
@@ -22,6 +22,7 @@ class TAFCommandTestCase(unittest.TestCase):
         self.assertEqual(IcingIntensity.LIGHT_RIME_ICING_CLOUD, itaf.icings[0].intensity)
         self.assertEqual(3000, itaf.icings[0].base_height)
         self.assertEqual(4000, itaf.icings[0].depth)
+        self.assertEqual(LengthUnit.FEET, itaf.icings[0].unit)
 
     def test_turbulence_command_can_parse(self):
         command = TurbulenceCommand()
@@ -37,6 +38,7 @@ class TAFCommandTestCase(unittest.TestCase):
         self.assertEqual(TurbulenceIntensity.MODERATE_CLEAR_AIR_OCCASIONAL, itaf.turbulence[0].intensity)
         self.assertEqual(100, itaf.turbulence[0].base_height)
         self.assertEqual(4000, itaf.turbulence[0].depth)
+        self.assertEqual(LengthUnit.FEET, itaf.turbulence[0].unit)
 
     def test_command_supplier(self):
         command_supplier = TAFCommandSupplier()

@@ -92,6 +92,7 @@ class WindShear(Wind):
     def __init__(self):
         super().__init__()
         self._height = None
+        self._height_unit = None
 
     def _get_height(self):
         return self._height
@@ -99,10 +100,17 @@ class WindShear(Wind):
     def _set_height(self, value):
         self._height = value
 
+    def _get_height_unit(self):
+        return self._height_unit
+
+    def _set_height_unit(self, value):
+        self._height_unit = value
+
     def __repr__(self):
-        return f'WindShear[height={self.height}' + super().__repr__() + ']'
+        return f'WindShear[height={self.height}, height_unit={self.height_unit}' + super().__repr__() + ']'
 
     height = property(_get_height, _set_height)
+    height_unit = property(_get_height_unit, _set_height_unit)
 
 
 class Visibility:
@@ -110,6 +118,7 @@ class Visibility:
         self._distance = None
         self._min_distance = None
         self._min_direction = None
+        self._unit = None
 
     def _get_distance(self):
         return self._distance
@@ -129,13 +138,20 @@ class Visibility:
     def _set_min_direction(self, value):
         self._min_direction = value
 
+    def _get_unit(self):
+        return self._unit
+
+    def _set_unit(self, value):
+        self._unit = value
+
     def __repr__(self):
         return f'Visibility[distance={self.distance}, min_distance={self.min_distance}, '\
-            f'min_direction={self.min_direction}]'
+            f'min_direction={self.min_direction}, unit={self.unit}]'
 
     distance = property(_get_distance, _set_distance)
     min_distance = property(_get_min_distance, _set_min_distance)
     min_direction = property(_get_min_direction, _set_min_direction)
+    unit = property(_get_unit, _set_unit)
 
 
 class WeatherCondition:
@@ -302,6 +318,7 @@ class Cloud:
         self._height = None
         self._quantity = None
         self._type = None
+        self._unit = None
 
     def _get_height(self):
         return self._height
@@ -321,19 +338,55 @@ class Cloud:
     def _get_type(self):
         return self._type
 
+    def _get_unit(self):
+        return self._unit
+
+    def _set_unit(self, value):
+        self._unit = value
+
     def __repr__(self):
-        return f'Cloud[height={self.height}, quantity={self.quantity}, type={self.type}]'
+        return f'Cloud[height={self.height}, quantity={self.quantity}, type={self.type}, unit={self.unit}]'
 
     height = property(_get_height, _set_height)
     quantity = property(_get_quantity, _set_quantity)
     type = property(_get_type, _set_type)
+    unit = property(_get_unit, _set_unit)
 
 
-class Icing:
+class AbstractWeatherLayer(abc.ABC):
+
     def __init__(self):
-        self._intensity: IcingIntensity = None
         self._base_height = 0
         self._depth = 0
+        self._unit = None
+
+    def _get_base_height(self):
+        return self._base_height
+
+    def _set_base_height(self, base_height: int):
+        self._base_height = base_height
+
+    def _get_depth(self):
+        return self._depth
+
+    def _set_depth(self, depth: int):
+        self._depth = depth
+
+    def _get_unit(self):
+        return self._unit
+
+    def _set_unit(self, unit):
+        self._unit = unit
+
+    base_height = property(_get_base_height, _set_base_height)
+    depth = property(_get_depth, _set_depth)
+    unit = property(_get_unit, _set_unit)
+
+
+class Icing(AbstractWeatherLayer):
+    def __init__(self):
+        super().__init__()
+        self._intensity: IcingIntensity = None
 
     def _get_intensity(self):
         return self._intensity
@@ -341,32 +394,17 @@ class Icing:
     def _set_intensity(self, intensity: IcingIntensity):
         self._intensity = intensity
 
-    def _get_base_height(self):
-        return self._base_height
-
-    def _set_base_height(self, base_height: int):
-        self._base_height = base_height
-
-    def _get_depth(self):
-        return self._depth
-
-    def _set_depth(self, depth: int):
-        self._depth = depth
-
     def __repr__(self):
-        return f'Icing[intensity={self.intensity}, base_height={self.base_height}, depth={self.depth}]'
+        return f'Icing[intensity={self.intensity}, base_height={self.base_height}, depth={self.depth}, unit={self.unit}]'
 
     intensity = property(_get_intensity, _set_intensity)
-    base_height = property(_get_base_height, _set_base_height)
-    depth = property(_get_depth, _set_depth)
 
 
-class Turbulence:
+class Turbulence(AbstractWeatherLayer):
 
     def __init__(self):
+        super().__init__()
         self._intensity: TurbulenceIntensity = None
-        self._base_height = 0
-        self._depth = 0
 
     def _get_intensity(self):
         return self._intensity
@@ -374,24 +412,10 @@ class Turbulence:
     def _set_intensity(self, intensity: TurbulenceIntensity):
         self._intensity = intensity
 
-    def _get_base_height(self):
-        return self._base_height
-
-    def _set_base_height(self, base_height: int):
-        self._base_height = base_height
-
-    def _get_depth(self):
-        return self._depth
-
-    def _set_depth(self, depth: int):
-        self._depth = depth
-
     def __repr__(self):
-        return f'Turbulence[intensity={self.intensity}, base_height={self.base_height}, depth={self.depth}]'
+        return f'Turbulence[intensity={self.intensity}, base_height={self.base_height}, depth={self.depth}, unit={self.unit}]'
 
     intensity = property(_get_intensity, _set_intensity)
-    base_height = property(_get_base_height, _set_base_height)
-    depth = property(_get_depth, _set_depth)
 
 
 class ITafGroups:
@@ -424,6 +448,7 @@ class AbstractWeatherContainer(abc.ABC):
         self._wind = None
         self._visibility = None
         self._vertical_visibility = None
+        self._vertical_visibility_unit = None
         self._wind_shear = None
         self._cavok = None
         self._remark = None
@@ -448,6 +473,12 @@ class AbstractWeatherContainer(abc.ABC):
 
     def _set_vertical_visibility(self, value: int):
         self._vertical_visibility = value
+
+    def _get_vertical_visibility_unit(self):
+        return self._vertical_visibility_unit
+
+    def _set_vertical_visibility_unit(self, value):
+        self._vertical_visibility_unit = value
 
     def _get_wind_shear(self):
         return self._wind_shear
@@ -490,12 +521,14 @@ class AbstractWeatherContainer(abc.ABC):
 
     def __repr__(self):
         return f'wind={self.wind}, visibility={self.visibility}, vertical_visibility={self.vertical_visibility}, '\
+            f'vertical_visibility_unit={self.vertical_visibility_unit}, '\
             f'wind_shear={self.wind_shear}, cavok={self.cavok}, remark={self.remark}, '\
             f'clouds={self.clouds}, weather_conditions={self.weather_conditions}'
 
     wind = property(_get_wind, _set_wind)
     visibility = property(_get_visibility, _set_visibility)
     vertical_visibility = property(_get_vertical_visibility, _set_vertical_visibility)
+    vertical_visibility_unit = property(_get_vertical_visibility_unit, _set_vertical_visibility_unit)
     wind_shear = property(_get_wind_shear, _set_wind_shear)
     cavok = property(_get_cavok, _set_cavok)
     remark = property(_get_remark, _set_remark)

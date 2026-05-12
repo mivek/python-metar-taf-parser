@@ -859,6 +859,10 @@ msgid "ToString.clouds"
 msgstr "clouds"
 
 #:
+msgid "ToString.cloud.unit"
+msgstr ""
+
+#:
 msgid "ToString.day.month"
 msgstr "day of the month"
 
@@ -913,6 +917,10 @@ msgstr "height (ft)"
 #:
 msgid "ToString.height.meter"
 msgstr "height (m)"
+
+#:
+msgid "ToString.height.unit"
+msgstr ""
 
 #:
 msgid "ToString.intensity"
@@ -1007,12 +1015,20 @@ msgid "ToString.visibility.min.direction"
 msgstr "minimum visibility direction"
 
 #:
+msgid "ToString.visibility.unit"
+msgstr ""
+
+#:
 msgid "ToString.visibility.max"
 msgstr "maximum visibility"
 
 #:
 msgid "ToString.vertical.visibility"
 msgstr "vertical visibility (ft)"
+
+#:
+msgid "ToString.vertical.visibility.unit"
+msgstr ""
 
 #:
 msgid "ToString.weather.conditions"

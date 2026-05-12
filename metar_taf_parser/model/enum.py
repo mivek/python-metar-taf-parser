@@ -64,6 +64,7 @@ class DepositType(enum.Enum):
 class LengthUnit(enum.Enum):
     METERS = 'M'
     FEET = 'FT'
+    STATUTE_MILES = 'SM'
 
     def __str__(self):
         return self.value

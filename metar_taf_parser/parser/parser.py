@@ -8,7 +8,7 @@ from metar_taf_parser.command.remark import RemarkCommandSupplier
 from metar_taf_parser.command.taf import TAFCommandSupplier
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import TranslationError
-from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType
+from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType, LengthUnit
 from metar_taf_parser.model.model import WeatherCondition, Visibility, Metar, TemperatureDated, \
     AbstractWeatherContainer, TAF, TAFTrend, MetarTrend, Validity, FMValidity, MetarTrendTime
 
@@ -166,7 +166,8 @@ class AbstractParser(abc.ABC):
             abstract_weather_container.cavok = True
             if abstract_weather_container.visibility is None:
                 abstract_weather_container.visibility = Visibility()
-            abstract_weather_container.visibility.distance = '> 10km'
+            abstract_weather_container.visibility.distance = '>10000'
+            abstract_weather_container.visibility.unit = LengthUnit.METERS
             return True
 
         command = self._common_supplier.get(input)

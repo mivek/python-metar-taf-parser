@@ -302,3 +302,19 @@ msgstr "od"
 msgid "TimeIndicator.TL"
 msgstr "do"
 
+
+#:
+msgid "ToString.cloud.unit"
+msgstr "jednostka wysokości chmur"
+
+#:
+msgid "ToString.height.unit"
+msgstr "jednostka wysokości"
+
+#:
+msgid "ToString.vertical.visibility.unit"
+msgstr "jednostka widzialności pionowej"
+
+#:
+msgid "ToString.visibility.unit"
+msgstr "jednostka widzialności"

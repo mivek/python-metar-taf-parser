@@ -25,10 +25,10 @@ class ConverterTest(unittest.TestCase):
         self.assertEqual(expected, converter.degrees_to_cardinal(input))
 
     def test_convert_visibility_10_km(self):
-        self.assertEqual('> 10km', converter.convert_visibility('9999'))
+        self.assertEqual('>10000', converter.convert_visibility('9999'))
 
     def test_convert_visibility(self):
-        self.assertEqual('4512m', converter.convert_visibility('4512'))
+        self.assertEqual('4512', converter.convert_visibility('4512'))
 
     def test_convert_temperature_minus(self):
         self.assertEqual(-12, converter.convert_temperature('M12'))
@@ -47,6 +47,24 @@ class ConverterTest(unittest.TestCase):
 
     def test_convert_precipitation_amount(self):
         self.assertEqual(2.17, converter.convert_precipitation_amount('0217'))
+
+    def test_convert_visibility_to_km_meters(self):
+        self.assertAlmostEqual(5.0, converter.convert_visibility_to_km('5000', 'M'))
+
+    def test_convert_visibility_to_km_statute_miles(self):
+        self.assertAlmostEqual(1.609344, converter.convert_visibility_to_km('1', 'SM'))
+
+    def test_convert_visibility_to_km_km(self):
+        self.assertAlmostEqual(10.0, converter.convert_visibility_to_km('10', 'KM'))
+
+    def test_convert_visibility_to_km_with_greater_than(self):
+        self.assertAlmostEqual(10.0, converter.convert_visibility_to_km('>10000', 'M'))
+
+    def test_convert_visibility_to_km_unknown_unit(self):
+        self.assertIsNone(converter.convert_visibility_to_km('100', 'FT'))
+
+    def test_convert_visibility_to_km_no_numeric(self):
+        self.assertIsNone(converter.convert_visibility_to_km('abc', 'M'))
 
 
 if __name__ == '__main__':

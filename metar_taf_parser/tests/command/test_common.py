@@ -3,11 +3,14 @@ import unittest
 from metar_taf_parser.command.common import (
     CloudCommand,
     CommandSupplier,
+    MainVisibilityCommand,
     MainVisibilityNauticalMilesCommand,
     MinimalVisibilityCommand,
+    VerticalVisibilityCommand,
     WindCommand,
+    WindShearCommand,
 )
-from metar_taf_parser.model.enum import CloudQuantity, CloudType
+from metar_taf_parser.model.enum import CloudQuantity, CloudType, LengthUnit
 from metar_taf_parser.model.model import TAF, Metar
 
 
@@ -19,6 +22,7 @@ class CommonTestCase(unittest.TestCase):
         self.assertEqual(CloudQuantity.SKC, cloud.quantity)
         self.assertIsNone(cloud.height)
         self.assertIsNone(cloud.type)
+        self.assertIsNone(cloud.unit)
 
     def test_cloud_command_parse_with_height(self):
         command = CloudCommand()
@@ -28,6 +32,7 @@ class CommonTestCase(unittest.TestCase):
         self.assertEqual(CloudQuantity.SCT, cloud.quantity)
         self.assertEqual(1600, cloud.height)
         self.assertIsNone(cloud.type)
+        self.assertEqual(LengthUnit.FEET, cloud.unit)
 
     def test_cloud_command_parse_with_type(self):
         command = CloudCommand()
@@ -37,6 +42,7 @@ class CommonTestCase(unittest.TestCase):
         self.assertEqual(CloudQuantity.SCT, cloud.quantity)
         self.assertEqual(2600, cloud.height)
         self.assertEqual(CloudType.CB, cloud.type)
+        self.assertEqual(LengthUnit.FEET, cloud.unit)
 
     def test_cloud_command_parse_NSC(self):
         command = CloudCommand()
@@ -134,6 +140,58 @@ class CommonTestCase(unittest.TestCase):
         self.assertEqual(CloudQuantity.SCT, cloud.quantity)
         self.assertIsNone(cloud.height)
         self.assertIsNone(cloud.type)
+        self.assertIsNone(cloud.unit)
+
+    def test_main_visibility_command_sets_meters_unit(self):
+        command = MainVisibilityCommand()
+        metar = Metar()
+        command.execute(metar, '5000')
+        self.assertEqual('5000', metar.visibility.distance)
+        self.assertEqual(LengthUnit.METERS, metar.visibility.unit)
+
+    def test_main_visibility_command_9999(self):
+        command = MainVisibilityCommand()
+        metar = Metar()
+        command.execute(metar, '9999')
+        self.assertEqual('>10000', metar.visibility.distance)
+        self.assertEqual(LengthUnit.METERS, metar.visibility.unit)
+
+    def test_main_visibility_nautical_miles_command_sets_statute_miles_unit(self):
+        command = MainVisibilityNauticalMilesCommand()
+        metar = Metar()
+        command.execute(metar, '6SM')
+        self.assertEqual('6', metar.visibility.distance)
+        self.assertEqual(LengthUnit.STATUTE_MILES, metar.visibility.unit)
+
+    def test_main_visibility_nautical_miles_command_fractional(self):
+        command = MainVisibilityNauticalMilesCommand()
+        metar = Metar()
+        command.execute(metar, '1/2SM')
+        self.assertEqual('1/2', metar.visibility.distance)
+        self.assertEqual(LengthUnit.STATUTE_MILES, metar.visibility.unit)
+
+    def test_minimal_visibility_command_sets_meters_unit(self):
+        command = MinimalVisibilityCommand()
+        metar = Metar()
+        command.execute(metar, '3000NE')
+        self.assertEqual(3000, metar.visibility.min_distance)
+        self.assertEqual('NE', metar.visibility.min_direction)
+        self.assertEqual(LengthUnit.METERS, metar.visibility.unit)
+
+    def test_vertical_visibility_command_sets_feet_unit(self):
+        command = VerticalVisibilityCommand()
+        metar = Metar()
+        command.execute(metar, 'VV002')
+        self.assertEqual(200, metar.vertical_visibility)
+        self.assertEqual(LengthUnit.FEET, metar.vertical_visibility_unit)
+
+    def test_wind_shear_command_sets_feet_unit(self):
+        command = WindShearCommand()
+        ws = command.parse_wind_shear('WS020/24045KT')
+        self.assertEqual(2000, ws.height)
+        self.assertEqual(LengthUnit.FEET, ws.height_unit)
+        self.assertEqual(240, ws.degrees)
+        self.assertEqual(45, ws.speed)
 
 
 if __name__ == '__main__':

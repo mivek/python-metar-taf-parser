@@ -15,7 +15,7 @@ CONVERTER_NE = 'Converter.NE'
 REMARK_AO1 = 'Remark.AO1'
 REMARK_PRECIPITATION_BEG_END = 'Remark.Precipitation.Beg.End'
 REMARK_SEA_LEVEL_PRESSURE = 'Remark.Sea.Level.Pressure'
-TEN_KM = '> 10km'
+TEN_KM = '>10000'
 
 
 class AbstractParserTestCase(unittest.TestCase):
@@ -85,7 +85,7 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual('N', metar.wind.direction)
         self.assertEqual('KT', metar.wind.unit)
         self.assertIsNotNone(metar.visibility)
-        self.assertEqual('350m', metar.visibility.distance)
+        self.assertEqual('350', metar.visibility.distance)
         self.assertEqual(8, len(metar.runways_info))
         self.assertEqual('27L', metar.runways_info[0].name)
         self.assertEqual(375, metar.runways_info[0].min_range)
@@ -116,7 +116,7 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual(15, trend.wind.speed)
         self.assertEqual(25, trend.wind.gust)
         self.assertEqual(0, len(trend.times))
-        self.assertEqual('3000m', trend.visibility.distance)
+        self.assertEqual('3000', trend.visibility.distance)
         self.assertEqual(1, len(trend.weather_conditions))
 
         wc = trend.weather_conditions[0]
@@ -185,7 +185,7 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual(240, metar.wind.degrees)
         self.assertEqual(15, metar.wind.speed)
         self.assertEqual(25, metar.wind.gust)
-        self.assertEqual('5000m', metar.visibility.distance)
+        self.assertEqual('5000', metar.visibility.distance)
         self.assertEqual(1100, metar.visibility.min_distance)
         self.assertEqual('w', metar.visibility.min_direction)
 
@@ -207,8 +207,10 @@ class MetarParserTestCase(unittest.TestCase):
         self.assertEqual(30, metar.time.minute)
         self.assertEqual(280, metar.wind.degrees)
         self.assertEqual(2, metar.wind.speed)
-        self.assertEqual('350m', metar.visibility.distance)
+        self.assertEqual('350', metar.visibility.distance)
+        self.assertEqual(LengthUnit.METERS, metar.visibility.unit)
         self.assertEqual(200, metar.vertical_visibility)
+        self.assertEqual(LengthUnit.FEET, metar.vertical_visibility_unit)
         self.assertEqual(Phenomenon.FOG, metar.weather_conditions[0].phenomenons[0])
 
     def test_parse_visibility_Ndv(self):
@@ -221,6 +223,7 @@ class MetarParserTestCase(unittest.TestCase):
 
         self.assertTrue(metar.cavok)
         self.assertEqual(TEN_KM, metar.visibility.distance)
+        self.assertEqual(LengthUnit.METERS, metar.visibility.unit)
         self.assertEqual(9, metar.temperature)
         self.assertEqual(6, metar.dew_point)
         self.assertEqual(1031, metar.altimeter)
@@ -389,7 +392,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(None, taf.wind.gust)
         self.assertEqual('KT', taf.wind.unit)
 
-        self.assertEqual('6000m', taf.visibility.distance)
+        self.assertEqual('6000', taf.visibility.distance)
 
         self.assertEqual(1, len(taf.clouds))
         self.assertEqual(CloudQuantity.SCT, taf.clouds[0].quantity)
@@ -408,7 +411,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(6, trend0.validity.start_hour)
         self.assertEqual(15, trend0.validity.end_day)
         self.assertEqual(9, trend0.validity.end_hour)
-        self.assertEqual('3000m', trend0.visibility.distance)
+        self.assertEqual('3000', trend0.visibility.distance)
         self.assertEqual(1, len(trend0.weather_conditions))
         self.assertIsNone(trend0.weather_conditions[0].intensity)
         self.assertIsNone(trend0.weather_conditions[0].descriptive)
@@ -425,7 +428,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(15, trend_1.validity.end_day)
         self.assertEqual(8, trend_1.validity.end_hour)
         self.assertIsNone(trend_1.wind)
-        self.assertEqual('400m', trend_1.visibility.distance)
+        self.assertEqual('400', trend_1.visibility.distance)
         self.assertEqual(1, len(trend_1.weather_conditions))
         self.assertIsNone(trend_1.weather_conditions[0].intensity)
         self.assertEqual(Descriptive.PATCHES, trend_1.weather_conditions[0].descriptive)
@@ -442,7 +445,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(12, trend_2.validity.start_hour)
         self.assertEqual(15, trend_2.validity.end_day)
         self.assertEqual(16, trend_2.validity.end_hour)
-        self.assertEqual('4000m', trend_2.visibility.distance)
+        self.assertEqual('4000', trend_2.visibility.distance)
         self.assertEqual(1, len(trend_2.weather_conditions))
         self.assertEqual(Intensity.LIGHT, trend_2.weather_conditions[0].intensity)
         self.assertEqual(Descriptive.SHOWERS, trend_2.weather_conditions[0].descriptive)
@@ -468,7 +471,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(3, trend_4.validity.start_hour)
         self.assertEqual(16, trend_4.validity.end_day)
         self.assertEqual(8, trend_4.validity.end_hour)
-        self.assertEqual("3000m", trend_4.visibility.distance)
+        self.assertEqual("3000", trend_4.visibility.distance)
         self.assertEqual(1, len(trend_4.weather_conditions))
         self.assertIsNone(trend_4.weather_conditions[0].intensity)
         self.assertIsNone(trend_4.weather_conditions[0].descriptive)
@@ -485,7 +488,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(4, trend_5.validity.start_hour)
         self.assertEqual(16, trend_5.validity.end_day)
         self.assertEqual(7, trend_5.validity.end_hour)
-        self.assertEqual("400m", trend_5.visibility.distance)
+        self.assertEqual("400", trend_5.visibility.distance)
         self.assertEqual(1, len(trend_5.weather_conditions))
         self.assertIsNone(trend_5.weather_conditions[0].intensity)
         self.assertEqual(Descriptive.PATCHES, trend_5.weather_conditions[0].descriptive)
@@ -561,7 +564,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(1, becmg0.validity.start_hour)
         self.assertEqual(30, becmg0.validity.end_day)
         self.assertEqual(4, becmg0.validity.end_hour)
-        self.assertEqual("4000m", becmg0.visibility.distance)
+        self.assertEqual("4000", becmg0.visibility.distance)
         self.assertIsNone(becmg0.weather_conditions[0].intensity)
         self.assertEqual(Descriptive.SHALLOW, becmg0.weather_conditions[0].descriptive)
         self.assertEqual(1, len(becmg0.weather_conditions[0].phenomenons))
@@ -574,7 +577,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(3, prob0.validity.start_hour)
         self.assertEqual(30, prob0.validity.end_day)
         self.assertEqual(7, prob0.validity.end_hour)
-        self.assertEqual("1500m", prob0.visibility.distance)
+        self.assertEqual("1500", prob0.visibility.distance)
         self.assertIsNone(prob0.weather_conditions[0].intensity)
         self.assertEqual(Descriptive.PATCHES, prob0.weather_conditions[0].descriptive)
         self.assertEqual(1, len(prob0.weather_conditions[0].phenomenons))
@@ -591,7 +594,7 @@ class TAFParserTestCase(unittest.TestCase):
         self.assertEqual(4, prob1.validity.start_hour)
         self.assertEqual(30, prob1.validity.end_day)
         self.assertEqual(7, prob1.validity.end_hour)
-        self.assertEqual("800m", prob1.visibility.distance)
+        self.assertEqual("800", prob1.visibility.distance)
         self.assertIsNone(prob1.weather_conditions[0].intensity)
         self.assertIsNone(prob1.weather_conditions[0].descriptive)
         self.assertEqual(1, len(prob1.weather_conditions[0].phenomenons))
@@ -734,13 +737,14 @@ class TAFParserTestCase(unittest.TestCase):
             'TAF AMD CZBF 300939Z 3010/3022 VRB03KT 6SM -SN OVC015 TEMPO 3010/3012 11/2SM -SN OVC009 \nFM301200 10008KT 2SM -SN OVC010 TEMPO 3012/3022 3/4SM -SN VV007 RMK FCST BASED ON AUTO OBS. NXT FCST BY 301400Z')
 
         # THEN the visibility of the main event is 6 SM
-        self.assertEqual("6SM", taf.visibility.distance)
+        self.assertEqual("6", taf.visibility.distance)
+        self.assertEqual(LengthUnit.STATUTE_MILES, taf.visibility.unit)
         # THEN the visibility of the first tempo is 11/2 SM
-        self.assertEqual("11/2SM", taf.trends[0].visibility.distance)
+        self.assertEqual("11/2", taf.trends[0].visibility.distance)
         # THEN the visibility of the second tempo is 3/4 SM
-        self.assertEqual("3/4SM", taf.trends[2].visibility.distance)
-        # Then the visibility of the FROM part is 2SN
-        self.assertEqual("2SM", taf.trends[1].visibility.distance)
+        self.assertEqual("3/4", taf.trends[2].visibility.distance)
+        # Then the visibility of the FROM part is 2SM
+        self.assertEqual("2", taf.trends[1].visibility.distance)
         self.assertTrue(taf.amendment)
 
     def test_parse_with_remark(self):
@@ -783,12 +787,13 @@ class TAFParserTestCase(unittest.TestCase):
 
         self.assertEqual('KEWR', taf.station)
         self.assertIsNotNone(taf.visibility)
-        self.assertEqual('5SM', taf.visibility.distance)
+        self.assertEqual('5', taf.visibility.distance)
+        self.assertEqual(LengthUnit.STATUTE_MILES, taf.visibility.unit)
         self.assertEqual(4, len(taf.fms()))
-        self.assertEqual('P6SM', taf.fms()[0].visibility.distance)
-        self.assertEqual('P3SM', taf.fms()[1].visibility.distance)
-        self.assertEqual('P4SM', taf.fms()[2].visibility.distance)
-        self.assertEqual('P9SM', taf.fms()[3].visibility.distance)
+        self.assertEqual('P6', taf.fms()[0].visibility.distance)
+        self.assertEqual('P3', taf.fms()[1].visibility.distance)
+        self.assertEqual('P4', taf.fms()[2].visibility.distance)
+        self.assertEqual('P9', taf.fms()[3].visibility.distance)
 
     def test_parse_canceled(self):
         taf = TAFParser().parse('TAF VTBD 281000Z 2812/2912 CNL=')

@@ -3,7 +3,7 @@ import re
 
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.converter import convert_visibility
-from metar_taf_parser.model.enum import CloudQuantity, CloudType
+from metar_taf_parser.model.enum import CloudQuantity, CloudType, LengthUnit
 from metar_taf_parser.model.model import Visibility, Wind, WindShear, Cloud, AbstractWeatherContainer
 
 
@@ -45,6 +45,7 @@ class CloudCommand:
                 cloud.quantity = CloudQuantity[m[0]]
             if m[2] and m[2] != CloudCommand.undefined:
                 cloud.height = 100 * int(m[2])
+                cloud.unit = LengthUnit.FEET
             if m[3] and m[3] != CloudCommand.undefined:
                 cloud.type = CloudType[m[3]]
             return cloud
@@ -75,6 +76,7 @@ class MainVisibilityCommand:
         if container.visibility is None:
             container.visibility = Visibility()
         container.visibility.distance = convert_visibility(matches[0])
+        container.visibility.unit = LengthUnit.METERS
         return True
 
 
@@ -138,6 +140,7 @@ class WindShearCommand:
         matches = self._pattern.search(wind_string).groups()
 
         wind_shear.height = 100 * int(matches[0])
+        wind_shear.height_unit = LengthUnit.FEET
         set_wind_elements(wind_shear, matches[1], matches[2], matches[3], matches[4])
         return wind_shear
 
@@ -156,6 +159,7 @@ class VerticalVisibilityCommand:
     def execute(self, container: AbstractWeatherContainer, visibility_string: str):
         matches = self._pattern.search(visibility_string).groups()
         container.vertical_visibility = 100 * int(matches[0])
+        container.vertical_visibility_unit = LengthUnit.FEET
         return True
 
     def can_parse(self, visibility_string: str):
@@ -183,6 +187,7 @@ class MinimalVisibilityCommand:
             container.visibility = Visibility()
         container.visibility.min_distance = int(matches[0])
         container.visibility.min_direction = matches[1]
+        container.visibility.unit = LengthUnit.METERS
         return True
 
 
@@ -199,7 +204,8 @@ class MainVisibilityNauticalMilesCommand:
     def execute(self, container: AbstractWeatherContainer, visibility_string: str):
         if container.visibility is None:
             container.visibility = Visibility()
-        container.visibility.distance = visibility_string
+        container.visibility.distance = re.sub(r'SM$', '', visibility_string).strip()
+        container.visibility.unit = LengthUnit.STATUTE_MILES
         return True
 
 
