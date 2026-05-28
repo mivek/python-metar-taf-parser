@@ -262,12 +262,65 @@ taf = TAFParser().parse(
 
 ## Internationalization
 
-The following locales are supported:
-- en (default)
-- fr
-- de
-- pl
-- it
-- ru
+### Supported locales
+
+```python
+from metar_taf_parser.commons.i18n import SUPPORTED_LOCALES
+print(SUPPORTED_LOCALES)  # {'de', 'en', 'es', 'fr', 'it', 'pl', 'ru-RU', 'tr', 'zh-CN', ...}
+```
+
+`en` is the default. Partial translations fall back to English automatically — no `TranslationError` is raised for missing keys unless the key is absent from English too.
+
+### Per-call locale (parse-time remarks)
+
+Pass `locale=` to translate remark strings eagerly at parse time:
+
+```python
+from metar_taf_parser.parser.parser import MetarParser
+
+metar = MetarParser().parse(
+    'KTTN 051853Z 04011KT 9999 VCTS SN FZFG BKN003 OVC010 M02/M02 A3006 RMK AO2 SLP013',
+    locale='fr',
+)
+print(metar.remark)  # French remark text
+```
+
+`TAFParser.parse` accepts the same `locale` keyword argument.
+
+### Enum repr locale (lazy, post-parse)
+
+Enum `__repr__` is evaluated lazily when you print or inspect values. Use the `translation_locale` context manager to control the language:
+
+```python
+from metar_taf_parser.commons.i18n import translation_locale
+
+with translation_locale('de'):
+    print([repr(c) for c in metar.clouds])  # German cloud labels
+```
+
+### Dynamic global locale
+
+```python
+from metar_taf_parser.commons.i18n import set_locale, get_locale, reset_locale
+
+set_locale('fr')   # affects all subsequent _() calls in this thread
+get_locale()       # 'fr'
+reset_locale()     # back to module default
+```
+
+`set_locale` / `get_locale` / `reset_locale` are per-thread, so they are safe to use in multi-threaded servers.
+
+### Locale name normalisation
+
+The following forms are all equivalent:
+
+| Input | Resolved dir |
+|-------|-------------|
+| `'zh-CN'` | `zh-CN` |
+| `'zh_CN'` | `zh-CN` |
+| `'zh'` | `zh-CN` |
+| `'ru_RU'` | `ru-RU` |
+| `'fr_FR'` | `fr` |
+| `'xx'` (unknown) | `en` |
 
 To add or complete locales please see [CONTRIBUTING](CONTRIBUTING.md)

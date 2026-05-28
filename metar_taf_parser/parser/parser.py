@@ -8,6 +8,7 @@ from metar_taf_parser.command.remark import RemarkCommandSupplier
 from metar_taf_parser.command.taf import TAFCommandSupplier
 from metar_taf_parser.commons import converter
 from metar_taf_parser.commons.exception import TranslationError
+from metar_taf_parser.commons.i18n import translation_locale
 from metar_taf_parser.model.enum import Flag, Intensity, Descriptive, Phenomenon, TimeIndicator, WeatherChangeType, LengthUnit
 from metar_taf_parser.model.model import WeatherCondition, Visibility, Metar, TemperatureDated, \
     AbstractWeatherContainer, TAF, TAFTrend, MetarTrend, Validity, FMValidity, MetarTrendTime
@@ -208,38 +209,40 @@ class MetarParser(AbstractParser):
             i = i + 1
         return i - 1
 
-    def parse(self, input: str):
+    def parse(self, input: str, locale: str = None):
         """
         Parses an message and returns a METAR
         :param input: The message to parse
+        :param locale: Optional BCP-47/locale string for translated remarks (e.g. 'fr', 'de').
         :return: METAR
         """
-        metar = Metar()
+        with translation_locale(locale):
+            metar = Metar()
 
-        metar_tab = self.tokenize(input)
-        metar.station = metar_tab[0]
+            metar_tab = self.tokenize(input)
+            metar.station = metar_tab[0]
 
-        metar.message = input
+            metar.message = input
 
-        parse_delivery_time(metar, metar_tab[1])
-        index = 2
-        while index < len(metar_tab):
-            if not super().general_parse(metar, metar_tab[index]) and not _parse_flags(metar, metar_tab[index]):
-                if 'NOSIG' == metar_tab[index]:
-                    metar.nosig = True
-                elif AbstractParser.TEMPO == metar_tab[index] or AbstractParser.BECMG == metar_tab[index]:
-                    trend = MetarTrend(WeatherChangeType[metar_tab[index]])
-                    index = self._parse_trend(index, trend, metar_tab)
-                    metar.add_trend(trend)
-                elif AbstractParser.RMK == metar_tab[index]:
-                    parse_remark(metar, metar_tab, index)
-                    break
-                else:
-                    command = self._metar_command_supplier.get(metar_tab[index])
-                    if command:
-                        command.execute(metar, metar_tab[index])
-            index = index + 1
-        return metar
+            parse_delivery_time(metar, metar_tab[1])
+            index = 2
+            while index < len(metar_tab):
+                if not super().general_parse(metar, metar_tab[index]) and not _parse_flags(metar, metar_tab[index]):
+                    if 'NOSIG' == metar_tab[index]:
+                        metar.nosig = True
+                    elif AbstractParser.TEMPO == metar_tab[index] or AbstractParser.BECMG == metar_tab[index]:
+                        trend = MetarTrend(WeatherChangeType[metar_tab[index]])
+                        index = self._parse_trend(index, trend, metar_tab)
+                        metar.add_trend(trend)
+                    elif AbstractParser.RMK == metar_tab[index]:
+                        parse_remark(metar, metar_tab, index)
+                        break
+                    else:
+                        command = self._metar_command_supplier.get(metar_tab[index])
+                        if command:
+                            command.execute(metar, metar_tab[index])
+                index = index + 1
+            return metar
 
 
 class TAFParser(AbstractParser):
@@ -276,35 +279,37 @@ class TAFParser(AbstractParser):
 
         return taf, lines, index
 
-    def parse(self, input: str):
+    def parse(self, input: str, locale: str = None):
         """
         Parses a message into a TAF
         :param input: the message to parse
+        :param locale: Optional locale string for translated remarks (e.g. 'fr', 'de').
         :return: a TAF object or None if the message is invalid
         """
-        taf, lines, index = self._parse_initial_taf(input)
+        with translation_locale(locale):
+            taf, lines, index = self._parse_initial_taf(input)
 
-        for i in range(index + 1, len(lines[0])):
-            token = lines[0][i]
-            command = self._taf_command_supplier.get(token)
-            if AbstractParser.RMK == token:
-                parse_remark(taf, lines[0], i)
-                break
-            elif token.startswith(TAFParser.TX):
-                taf.max_temperature = _parse_temperature(token)
-            elif token.startswith(TAFParser.TN):
-                taf.min_temperature = _parse_temperature(token)
-            elif command:
-                command.execute(taf, token)
-            else:
-                _parse_flags(taf, token)
-                self.general_parse(taf, token)
+            for i in range(index + 1, len(lines[0])):
+                token = lines[0][i]
+                command = self._taf_command_supplier.get(token)
+                if AbstractParser.RMK == token:
+                    parse_remark(taf, lines[0], i)
+                    break
+                elif token.startswith(TAFParser.TX):
+                    taf.max_temperature = _parse_temperature(token)
+                elif token.startswith(TAFParser.TN):
+                    taf.min_temperature = _parse_temperature(token)
+                elif command:
+                    command.execute(taf, token)
+                else:
+                    _parse_flags(taf, token)
+                    self.general_parse(taf, token)
 
-        # Handle the other lines
-        for line in lines[1:]:
-            self._parse_line(taf, line)
+            # Handle the other lines
+            for line in lines[1:]:
+                self._parse_line(taf, line)
 
-        return taf
+            return taf
 
     def _extract_lines_tokens(self, taf_code: str):
         """
@@ -374,13 +379,14 @@ class RemarkParser:
     def __init__(self):
         self._supplier = RemarkCommandSupplier()
 
-    def parse(self, code: str) -> list:
-        rmk_str = code
-        rmk_list = []
+    def parse(self, code: str, locale: str = None) -> list:
+        with translation_locale(locale):
+            rmk_str = code
+            rmk_list = []
 
-        while rmk_str:
-            try:
-                (rmk_str, rmk_list) = self._supplier.get(rmk_str).execute(rmk_str, rmk_list)
-            except TranslationError:
-                (rmk_str, rmk_list) = self._supplier.default_command.execute(rmk_str, rmk_list)
-        return rmk_list
+            while rmk_str:
+                try:
+                    (rmk_str, rmk_list) = self._supplier.get(rmk_str).execute(rmk_str, rmk_list)
+                except TranslationError:
+                    (rmk_str, rmk_list) = self._supplier.default_command.execute(rmk_str, rmk_list)
+            return rmk_list
