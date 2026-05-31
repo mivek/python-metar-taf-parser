@@ -4,6 +4,7 @@ import locale
 import os
 import threading
 from contextlib import contextmanager
+from typing import Optional
 
 from metar_taf_parser.commons.exception import TranslationError
 
@@ -24,7 +25,7 @@ for _loc_name in SUPPORTED_LOCALES:
         _PREFIX_MAP[_prefix] = _loc_name
 
 
-def _resolve(loc: str) -> str:
+def _resolve(loc: Optional[str]) -> str:
     """Normalize a user-supplied locale string to an actual SUPPORTED_LOCALES dir name."""
     if not loc:
         return DEFAULT_LOCALE

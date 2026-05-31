@@ -89,7 +89,7 @@ class TestTranslationLocaleContextManager(unittest.TestCase):
     def test_locale_restored_after_block(self):
         locale_before = get_locale()
         with translation_locale('de'):
-            pass
+            self.assertEqual(get_locale(), 'de')
         self.assertEqual(get_locale(), locale_before)
 
     def test_none_is_noop(self):

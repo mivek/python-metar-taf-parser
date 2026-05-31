@@ -121,32 +121,32 @@ class AbstractParser(abc.ABC):
     def parse(self, input: str):
         pass
 
-    def _parse_weather_condition(self, input: str):
+    def _parse_weather_condition(self, weather_str: str):
         """
         Parses a string into a weather condition. The result is not necessarily valid
-        :param input: The input to parse
+        :param weather_str: The input to parse
         :return: WeatherCondition object
         """
         weather_condition = WeatherCondition()
-        if self._intensity_regex_pattern.match(input):
-            match = self._intensity_regex_pattern.findall(input)[0]
+        if self._intensity_regex_pattern.match(weather_str):
+            match = self._intensity_regex_pattern.findall(weather_str)[0]
             weather_condition.intensity = Intensity(match)
-            input = input[len(match):]
+            weather_str = weather_str[len(match):]
 
         for name, member in Descriptive.__members__.items():
-            if member.value in input:
+            if member.value in weather_str:
                 weather_condition.descriptive = member
-                input = input[len(member.value):]
+                weather_str = weather_str[len(member.value):]
 
         previous_token = ''
-        while input != '' and input != previous_token:
-            previous_token = input
+        while weather_str != '' and weather_str != previous_token:
+            previous_token = weather_str
             for name, member in Phenomenon.__members__.items():
-                if re.match(r'^' + member.value, input):
+                if re.match(r'^' + member.value, weather_str):
                     weather_condition.add_phenomenon(member)
-                    input = input[len(member.value):]
+                    weather_str = weather_str[len(member.value):]
 
-        return weather_condition if input == '' and weather_condition.is_valid() else None
+        return weather_condition if weather_str == '' and weather_condition.is_valid() else None
 
     def tokenize(self, input: str):
         """
