@@ -1,5 +1,6 @@
 import abc
 import datetime
+from typing import Optional
 
 from metar_taf_parser.model.enum import Descriptive, Flag, WeatherChangeType, TimeIndicator, IcingIntensity, TurbulenceIntensity
 
@@ -386,7 +387,7 @@ class AbstractWeatherLayer(abc.ABC):
 class Icing(AbstractWeatherLayer):
     def __init__(self):
         super().__init__()
-        self._intensity: IcingIntensity = None
+        self._intensity: Optional[IcingIntensity] = None
 
     def _get_intensity(self):
         return self._intensity
@@ -404,7 +405,7 @@ class Turbulence(AbstractWeatherLayer):
 
     def __init__(self):
         super().__init__()
-        self._intensity: TurbulenceIntensity = None
+        self._intensity: Optional[TurbulenceIntensity] = None
 
     def _get_intensity(self):
         return self._intensity

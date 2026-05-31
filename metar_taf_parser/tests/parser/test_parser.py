@@ -72,9 +72,9 @@ class AbstractParserTestCase(unittest.TestCase):
 class MetarParserTestCase(unittest.TestCase):
 
     def test_parse(self):
-        input = 'LFPG 170830Z 00000KT 0350 R27L/0375N R09R/0175N R26R/0500D R08L/0400N R26L/0275D R08R/0250N R27R/0300N R09L/0200N FG SCT000 M01/M01 Q1026 NOSIG'
+        metar_str = 'LFPG 170830Z 00000KT 0350 R27L/0375N R09R/0175N R26R/0500D R08L/0400N R26L/0275D R08R/0250N R27R/0300N R09L/0200N FG SCT000 M01/M01 Q1026 NOSIG'
 
-        metar = MetarParser().parse(input)
+        metar = MetarParser().parse(metar_str)
 
         self.assertEqual('LFPG', metar.station)
         self.assertEqual(17, metar.day)
@@ -389,7 +389,7 @@ class TAFParserTestCase(unittest.TestCase):
 
         self.assertEqual(170, taf.wind.degrees)
         self.assertEqual(5, taf.wind.speed)
-        self.assertEqual(None, taf.wind.gust)
+        self.assertIsNone(taf.wind.gust)
         self.assertEqual('KT', taf.wind.unit)
 
         self.assertEqual('6000', taf.visibility.distance)
