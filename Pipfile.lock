@@ -24,12 +24,12 @@
         },
         "build": {
             "hashes": [
-                "sha256:94e17f1db803ab22f46049376c44c8437c52090f0dfdf1adc43df56542d644fb",
-                "sha256:f1a58fe2e5af5b0238a07b9e70207492c79ddebbdb1ad954fc86d62a56be3e0d"
+                "sha256:bd2c8afc603e7a2e0ce70e2ea85f0a6d02043bafbd307f5bada0f98669eca5af",
+                "sha256:f7aaf1ebbb79178a02ba248bb524f2176b256017e17e8e4bd4289c7b38cc2bad"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.10'",
-            "version": "==1.5.1"
+            "version": "==1.6.0"
         },
         "certifi": {
             "hashes": [
